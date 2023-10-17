@@ -1,0 +1,498 @@
+.OTWLogin{
+    font-family: 'Lato', sans-serif;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block; /* Menggunakan flex layout untuk mengatur elemen dalam satu baris */
+    align-items: center; 
+    vertical-align: middle;
+}
+
+.header-logo {
+    width: 200px; /* Atur lebar sesuai dengan kebutuhan Anda */
+    height: 80px; /* Atur tinggi sesuai dengan kebutuhan Anda */
+    object-fit: cover;
+}
+
+.verticalLine {
+    width: 1px; /* Lebar garis vertikal */
+    height: 20px; /* Tinggi garis vertikal (sesuaikan dengan kebutuhan Anda) */
+    background-color: #979797; /* Warna garis vertikal */
+    display: inline-block; /* Membuat elemen ini berada di sebelah teks "Login" */
+    margin-left: 17px; /* Jarak antara teks "Login" dan garis vertikal */
+    margin-right: 17px; /* Jarak antara garis vertikal dan elemen selanjutnya (jika ada) */
+    vertical-align: middle; /* Mengatur vertikal alignment */
+}
+
+.OTWLogin span{
+    margin-top: 5px;
+}
+
+.text-end{
+    display: inline-block;
+    vertical-align: middle; 
+}
+
+.setting-svg {
+    width: 20px; /* Mengatur ukuran SVG */
+    height: 20px; /* Mengatur ukuran SVG */
+    fill: #000; /* Warna isi SVG */
+    vertical-align: middle; /* Mengatur vertikal alignment */
+}
+
+ .hero {
+    height: 100%;
+    width: 100%;
+    margin-left: -16rem;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box {
+    width: 700px;
+    height: 652px;
+    position: relative;
+    margin: 1% auto;
+    padding: 5px;
+    border: solid 1px #03ACF2 ;
+    border-radius: 20px ;
+    box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06);
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+    margin-top: 20px;
+}
+
+.judul-form{
+    color: #00579B;
+    font-size: 24px;
+    font-family: Lato;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+button.social-button {
+    width: 135px;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+button.facebook {
+    background: #5856D6;
+    font-family: robo;
+}
+
+.fb-svg{
+    width: 45%;
+    height: 45%;
+}
+
+button.twitter {
+    background: #00BCD4;
+}
+
+.twitter-svg{
+    width: 35%;
+    /* margin-right: 3px; */
+    height: 35%;
+}
+
+button.google {
+    background: #D84226;
+}
+
+.google-svg{
+    width: 35%;
+    height: 35%;
+}
+
+.divider {
+    width: 348px;
+    left: 180px;
+    margin-top: 35px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 28.71px;
+}
+
+.divider-text {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 15px;
+    font-family: Lato;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.divider-line {
+    width: 68.29px;
+    height: 1px;
+    opacity: 0.64;
+    border: 1px black solid;
+}
+
+.input-group{
+    
+}
+/* .form {
+    width: 80%;
+    max-width: 550px;
+    text-align: center;
+    margin-top: 30px;
+} */
+
+/* h2 {
+    color: #00579B;
+    font-size: 24px;
+    font-family: Lato;
+    font-weight: 700;
+} */
+
+/* .input-container {
+    margin-top: 20px;
+} */
+
+/* label {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: 400;
+    display: block;
+    text-align: left;
+} */
+
+/* input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #03ACF2;
+    border-radius: 4px;
+    padding: 8px;
+} */
+
+/* button.button {
+    background: #03ACF2;
+    color: white;
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 20px;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    cursor: pointer;
+} */
+
+/* .or-divider {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    color: rgba(0, 0, 0, 0.54);
+} */
+
+/* .or-line {
+    flex-grow: 1;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.38);
+} */
+
+/* .or-text {
+    margin: 0 15px;
+} */
+
+/* .social-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+} */
+
+/* button.social-button {
+    flex-grow: 1;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+} */
+
+/* button.facebook {
+    background: #5856D6;
+} */
+
+/* button.twitter {
+    background: #00BCD4;
+} */
+
+/* button.google {
+    background: #D84226;
+}  */
+
+/* Tambahan gaya sesuaikan dengan kebutuhan Anda */
+
+
+/* 
+.form{
+    border: solid 1px;
+    height: 250px;
+    width: 250px;
+    margin-left: 21rem;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+
+.card {
+    width: 699px;
+    height: 651px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.card-background {
+    width: 699px;
+    height: 650.50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: white;
+    box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    border: 1px #03ACF2 solid;
+}
+
+.form {
+    width: 551px;
+    height: 306px;
+    left: 79px;
+    top: 291px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8.50px;
+}
+
+.button {
+    width: 160px;
+    height: 40px;
+    position: relative;
+}
+
+.button-inner {
+    width: 160px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.button-background {
+    width: 160px;
+    height: 40px;
+    background: #03ACF2;
+    border-radius: 19.50px;
+}
+
+.button-text {
+    width: 98px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: 700;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+.label {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.line {
+    width: 547.83px;
+    height: 1px;
+    border: 2px rgba(0, 0, 0, 0.38) solid;
+}
+
+.line-blue {
+    width: 548.54px;
+    height: 1px;
+    border: 2px #03ACF2 solid;
+}
+
+.checkbox {
+    width: 338px;
+    height: 45px;
+    left: 1px;
+    top: 261px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8.50px;
+}
+
+.checkbox-icon {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.checkbox-icon img {
+    width: 26px;
+    height: 26px;
+}
+
+.checkbox-text {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 18px;
+    font-family: Lato;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.password {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.social-buttons {
+    width: 532px;
+    height: 39px;
+    left: 88px;
+    top: 130px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-button {
+    width: 162px;
+    height: 39px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.social-button .button-background {
+    width: 161.83px;
+    height: 39px;
+    border-radius: 8px;
+}
+
+.social-button .button-icon {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.social-button img {
+    width: 26px;
+    height: 26px;
+}
+
+.social-button .button-text {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-family: Roboto;
+    font-weight: 400;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+.divider {
+    width: 348px;
+    left: 180px;
+    top: 224px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 28.71px;
+}
+
+.divider-line {
+    width: 68.29px;
+    height: 1px;
+    opacity: 0.64;
+    border: 1px black solid;
+}
+
+.divider-text {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.title {
+    width: 253.50px;
+    left: 223px;
+    top: 52px;
+    position: absolute;
+    text-align: center;
+    color: #00579B;
+    font-size: 24px;
+    font-family: Lato;
+    font-weight: 700;
+    word-wrap: break-word;
+} */
