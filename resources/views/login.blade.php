@@ -86,14 +86,18 @@
                 <div class="divider-text">Or register with email</div>
                 <div class="divider-line"></div>
             </div>
+
+            <div class="login-form">
+                <form id="login" action="">
+                    <input type="text" class="input-field" name="" id="" placeholder="Name">
+                    <input type="password" class="input-field" name="" id="" placeholder="Password">
+                    <input type="checkbox" class="check-box" name="" id=""><span>Remember me</span>
+                    <button type="submit" class="submit-btn">Log in</button>
+                </form>
+            </div>
+        
             
             
-            <form class="input-group" action="">
-                <input type="text" class="input-field" name="" id="" placeholder="Name">
-                <input type="password" class="input-field" name="" id="" placeholder="Password">
-                <input type="checkbox" class="check-box" name="" id=""><span>Remember me</span>
-                <button type="submit" class="submit-btn">Log in</button>
-            </form>
         </div>
     </div>
 
