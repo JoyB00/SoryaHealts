@@ -151,18 +151,22 @@ button.google {
     border: 1px black solid;
 }
 
-.login-form {
-    top: 120px;
-    left: 20px;
-    position: relative;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    /* flex-direction: row; */
-    align-items: center; /* Pusatkan input fields */
+.input-login{
+    top: 200px;
 }
 
-.input-field{
+/* .login-form {
+    top: 120px;
+    left: 130px;
+    position: relative;
+    width: 65%;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* flex-direction: row; */
+    /* align-items: center; 
+} */
+
+/* .input-field{
     width: 100%;
     padding: 10px 0;
     margin: 5px 0;
@@ -171,7 +175,7 @@ button.google {
     border-right: 0;
     border-bottom: 1px solid #999;
     outline: none;
-}
+} */
 /* .form {
     width: 80%;
     max-width: 550px;
