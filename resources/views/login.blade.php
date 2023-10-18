@@ -54,253 +54,146 @@
             </div>
         </div>
     </header>
+       
+       <div class="row">
+            <div class="col-xl-6 col-sm-12">
+                <div class="hero">
+                    <div class="form-box">
+                        <div class="isinya">
+                            <div class="header-form">
+                                <h2 class="judul-form">Masuk ke Akun Anda</h2>
+                                <div class="social-buttons">
+                                    <div class="facebook">
+                                        <button class="social-button facebook">
+                                            <span> <svg class="fb-svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
+                                                    <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                                        <g transform="scale(5.12,5.12)">
+                                                            <path d="M32,11h5c0.552,0 1,-0.448 1,-1v-6.737c0,-0.524 -0.403,-0.96 -0.925,-0.997c-1.591,-0.113 -4.699,-0.266 -6.934,-0.266c-6.141,0 -10.141,3.68 -10.141,10.368v6.632h-7c-0.552,0 -1,0.448 -1,1v7c0,0.552 0.448,1 1,1h7v19c0,0.552 0.448,1 1,1h7c0.552,0 1,-0.448 1,-1v-19h7.222c0.51,0 0.938,-0.383 0.994,-0.89l0.778,-7c0.066,-0.592 -0.398,-1.11 -0.994,-1.11h-8v-5c0,-1.657 1.343,-3 3,-3z"></path>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <span class="button-text">Facebook</span>
+                                        </button>
+                                    </div>
 
-    <div class="hero">
-        <div class="form-box">
-            <div class="isinya">
-                <div class="header-form">
-                    <h2 class="judul-form">Create Your Account</h2>
-                    <div class="social-buttons">
-                        <div class="facebook">
-                            <button class="social-button facebook">
-                                <span> <svg class="fb-svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
-                                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                                            <g transform="scale(5.12,5.12)">
-                                                <path d="M32,11h5c0.552,0 1,-0.448 1,-1v-6.737c0,-0.524 -0.403,-0.96 -0.925,-0.997c-1.591,-0.113 -4.699,-0.266 -6.934,-0.266c-6.141,0 -10.141,3.68 -10.141,10.368v6.632h-7c-0.552,0 -1,0.448 -1,1v7c0,0.552 0.448,1 1,1h7v19c0,0.552 0.448,1 1,1h7c0.552,0 1,-0.448 1,-1v-19h7.222c0.51,0 0.938,-0.383 0.994,-0.89l0.778,-7c0.066,-0.592 -0.398,-1.11 -0.994,-1.11h-8v-5c0,-1.657 1.343,-3 3,-3z"></path>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </span>
-                                <span class="button-text">Facebook</span>
-                            </button>
-                        </div>
 
+                                    <div class="twitter">
+                                        <button class="social-button twitter">
+                                            <span> <svg class="twitter-svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256">
+                                                    <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                                        <g transform="scale(8.53333,8.53333)">
+                                                            <path d="M28,6.937c-0.957,0.425 -1.985,0.711 -3.064,0.84c1.102,-0.66 1.947,-1.705 2.345,-2.951c-1.03,0.611 -2.172,1.055 -3.388,1.295c-0.973,-1.037 -2.359,-1.685 -3.893,-1.685c-2.946,0 -5.334,2.389 -5.334,5.334c0,0.418 0.048,0.826 0.138,1.215c-4.433,-0.222 -8.363,-2.346 -10.995,-5.574c-0.458,0.788 -0.721,1.704 -0.721,2.683c0,1.85 0.941,3.483 2.372,4.439c-0.874,-0.028 -1.697,-0.268 -2.416,-0.667c0,0.023 0,0.044 0,0.067c0,2.585 1.838,4.741 4.279,5.23c-0.447,0.122 -0.919,0.187 -1.406,0.187c-0.343,0 -0.678,-0.034 -1.003,-0.095c0.679,2.119 2.649,3.662 4.983,3.705c-1.825,1.431 -4.125,2.284 -6.625,2.284c-0.43,0 -0.855,-0.025 -1.273,-0.075c2.361,1.513 5.164,2.396 8.177,2.396c9.812,0 15.176,-8.128 15.176,-15.177c0,-0.231 -0.005,-0.461 -0.015,-0.69c1.043,-0.753 1.948,-1.692 2.663,-2.761z"></path>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <span class="button-text">Twitter</span>
+                                        </button>
+                                    </div>
 
-                        <div class="twitter">
-                            <button class="social-button twitter">
-                                <span> <svg class="twitter-svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256">
-                                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                                            <g transform="scale(8.53333,8.53333)">
-                                                <path d="M28,6.937c-0.957,0.425 -1.985,0.711 -3.064,0.84c1.102,-0.66 1.947,-1.705 2.345,-2.951c-1.03,0.611 -2.172,1.055 -3.388,1.295c-0.973,-1.037 -2.359,-1.685 -3.893,-1.685c-2.946,0 -5.334,2.389 -5.334,5.334c0,0.418 0.048,0.826 0.138,1.215c-4.433,-0.222 -8.363,-2.346 -10.995,-5.574c-0.458,0.788 -0.721,1.704 -0.721,2.683c0,1.85 0.941,3.483 2.372,4.439c-0.874,-0.028 -1.697,-0.268 -2.416,-0.667c0,0.023 0,0.044 0,0.067c0,2.585 1.838,4.741 4.279,5.23c-0.447,0.122 -0.919,0.187 -1.406,0.187c-0.343,0 -0.678,-0.034 -1.003,-0.095c0.679,2.119 2.649,3.662 4.983,3.705c-1.825,1.431 -4.125,2.284 -6.625,2.284c-0.43,0 -0.855,-0.025 -1.273,-0.075c2.361,1.513 5.164,2.396 8.177,2.396c9.812,0 15.176,-8.128 15.176,-15.177c0,-0.231 -0.005,-0.461 -0.015,-0.69c1.043,-0.753 1.948,-1.692 2.663,-2.761z"></path>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </span>
-                                <span class="button-text">Twitter</span>
-                            </button>
-                        </div>
+                                    <div class="google">
+                                        <button class="social-button google">
+                                            <span> <svg class="google-svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
+                                                    <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                                        <g transform="scale(5.12,5.12)">
+                                                            <path d="M25.99609,48c-12.68359,0 -23.00391,-10.31641 -23.00391,-23c0,-12.68359 10.32031,-23 23.00391,-23c5.74609,0 11.24609,2.12891 15.49219,5.99609l0.77344,0.70703l-7.58594,7.58594l-0.70312,-0.60156c-2.22656,-1.90625 -5.05859,-2.95703 -7.97656,-2.95703c-6.76562,0 -12.27344,5.50391 -12.27344,12.26953c0,6.76563 5.50781,12.26953 12.27344,12.26953c4.87891,0 8.73438,-2.49219 10.55078,-6.73828h-11.55078v-10.35547l22.55078,0.03125l0.16797,0.79297c1.17578,5.58203 0.23438,13.79297 -4.53125,19.66797c-3.94531,4.86328 -9.72656,7.33203 -17.1875,7.33203z"></path>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <span class="button-text">Google</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="google">
-                            <button class="social-button google">
-                                <span> <svg class="google-svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
-                                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                                            <g transform="scale(5.12,5.12)">
-                                                <path d="M25.99609,48c-12.68359,0 -23.00391,-10.31641 -23.00391,-23c0,-12.68359 10.32031,-23 23.00391,-23c5.74609,0 11.24609,2.12891 15.49219,5.99609l0.77344,0.70703l-7.58594,7.58594l-0.70312,-0.60156c-2.22656,-1.90625 -5.05859,-2.95703 -7.97656,-2.95703c-6.76562,0 -12.27344,5.50391 -12.27344,12.26953c0,6.76563 5.50781,12.26953 12.27344,12.26953c4.87891,0 8.73438,-2.49219 10.55078,-6.73828h-11.55078v-10.35547l22.55078,0.03125l0.16797,0.79297c1.17578,5.58203 0.23438,13.79297 -4.53125,19.66797c-3.94531,4.86328 -9.72656,7.33203 -17.1875,7.33203z"></path>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </span>
-                                <span class="button-text">Google</span>
-                            </button>
+                            <div class="divider">
+                                <div class="divider-line"></div>
+                                <div class="divider-text">Or register with email</div>
+                                <div class="divider-line"></div>
+                            </div>
+
+                            <div class="tampung">
+                                <form class="row g-3" action="">
+                                    <div class="col-md-8 offset-md-2 col-12">
+                                        <label for="inputName4" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="inputName4">
+                                    </div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="inputPassword4" class="form-label">Password</label>
+                                        <input type="password" class="form-control custom-input" id="inputPassword4">
+                                    </div>
+                                    <div class="form-check offset-md-2 mb-4">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                                    </div>
+                                    <div class="offset-md-2">
+                                        <button type="submit" class="btn btn-primary col-8">Continue</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="divider">
-                    <div class="divider-line"></div>
-                    <div class="divider-text">Or register with email</div>
-                    <div class="divider-line"></div>
-                </div>
-
-                <div class="tampung">
-                    <form class="row g-3" action="">
-                        <div class="col-md-8 offset-md-2 col-12">
-                            <label for="inputName4" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputName4">
-                        </div>
-                        <div class="col-md-8 offset-md-2">
-                            <label for="inputPassword4" class="form-label">Password</label>
-                            <input type="password" class="form-control custom-input" id="inputPassword4">
-                        </div>
-                        <div class="form-check offset-md-2 mb-4">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-                        </div>
-                        <div class="offset-md-2">
-                            <button type="submit" class="btn btn-primary col-8">Continue</button>
-                        </div>
-                    </form>
-                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- <div class="container">
-        <div class="card">
-            <div class="card-background"></div>
-            <div class="form">
-                <h2>Create Your Account</h2>
-
-                <div class="input-container">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name">
-                </div>
-
-                <div class="input-container">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
-                </div>
-
-                <div class="input-container">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
-                </div>
-
-                <div class="input-container">
-                    <label for="repeatPassword">Repeat Password</label>
-                    <input type="password" id="repeatPassword" name="repeatPassword">
-                </div>
-
-                <button type="submit" class="button">Continue</button>
-
-                <div class="or-divider">
-                    <div class="or-line"></div>
-                    <div class="or-text">Or register with email</div>
-                    <div class="or-line"></div>
-                </div>
-
-                <div class="social-buttons">
-                    <button class="social-button facebook">Facebook</button>
-                    <button class="social-button twitter">Twitter</button>
-                    <button class="social-button google">Google</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- <div class="container">
-        <div class="card">
-            <div class="card-background"></div>
-            <div class="card-background"></div>
-            <div class="form">
-                <div class="button">
-                    <div class="button-inner">
-                        <div class="button-background"></div>
-                        <div class="button-text">Continue</div>
+            <div class="col-xl-6 col-sm-12">
+                <div class="temp2">
+                    <div class="header-gambar">
+                        <h2 class="header-desc">Mengapa SorYaHealts ?</h2>
+                        <p class="header-desc para-desc">consectectur adiiscing elit. Suspended sed surna in justo euismod coondimentum.</p>
+                        <img src="{{ asset('images/Register.png')}}" alt="">
                     </div>
                 </div>
-                <div class="label">Name</div>
-                <div class="line"></div>
-                <div class="label">Email</div>
-                <div class="line-blue"></div>
-                <div class="label">Repeat Password*</div>
-                <div class="line"></div>
-                <div class="checkbox">
-                    <div class="checkbox-icon">
-                        <img src="https://via.placeholder.com/26x26" alt="Checkbox" />
-                    </div>
-                    <div class="checkbox-text">
-                        <span>I have read and accept the Terms of </span>
-                        <span class="blue-text">Service & Privacy Policy *</span>
-                    </div>
-                </div>
-                <div class="label">Password</div>
-                <div class="password">•••••••••</div>
-                <div class="line-blue"></div>
             </div>
-        </div>
-        <div class="social-buttons">
-            <div class="social-button facebook">
-                <div class="button-background"></div>
-                <div class="button-icon">
-                    <img src="https://via.placeholder.com/26x26" alt="Facebook" />
-                </div>
-                <div class="button-text">Facebook</div>
-            </div>
-            <div class="social-button twitter">
-                <div class="button-background"></div>
-                <div class="button-text">Twitter</div>
-            </div>
-            <div class="social-button google">
-                <div class="button-background"></div>
-                <div class="button-icon">
-                    <img src="https://via.placeholder.com/14x21" alt="Google" />
-                </div>
-                <div class="button-text">Google</div>
-            </div>
-        </div>
-        <div class="divider">
-            <div class="divider-line"></div>
-            <div class="divider-text">Or register with email</div>
-            <div class="divider-line"></div>
-        </div>
-        <div class="title">Create Your Account</div>
-    </div> -->
+       </div>
 
-    <!-- <div style="width: 100%; height: 100%; position: relative">
-    <div style="width: 699px; height: 651px; left: 0px; top: 0px; position: absolute">
-        <div style="width: 699px; height: 650.50px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06); border-radius: 20px; border: 1px #03ACF2 solid"></div>
-        <div style="width: 699px; height: 650.50px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06); border-radius: 20px; border: 1px #03ACF2 solid"></div>
-    </div>
-    <div style="width: 551px; height: 306px; left: 79px; top: 291px; position: absolute">
-        <div style="width: 160px; height: 40px; left: 390px; top: 264.50px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
-            <div style="width: 160px; height: 40px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div style="width: 160px; height: 40px; background: #03ACF2; border-radius: 19.50px"></div>
-                <div style="width: 98px; text-align: center; color: white; font-size: 16px; font-family: Lato; font-weight: 700; text-transform: uppercase; word-wrap: break-word">Continue</div>
-            </div>
-        </div>
-        <div style="width: 550px; height: 36px; padding-top: 8px; padding-right: 0.76px; left: 0px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 8.50px; display: inline-flex">
-            <div style="color: rgba(0, 0, 0, 0.54); font-size: 16px; font-family: Lato; font-weight: 400; word-wrap: break-word">Name</div>
-            <div style="width: 547.83px; height: 1px; border: 2px rgba(0, 0, 0, 0.38) solid"></div>
-        </div>
-        <div style="width: 550px; height: 47px; padding-right: 1.46px; left: 0px; top: 87px; position: absolute; flex-direction: column; justify-content: center; align-items: flex-start; gap: 34px; display: inline-flex">
-            <div style="color: #03ACF2; font-size: 11px; font-family: Lato; font-weight: 400; word-wrap: break-word">Email</div>
-            <div style="width: 548.54px; height: 1px; border: 2px #03ACF2 solid"></div>
-        </div>
-        <div style="width: 267px; height: 36px; padding-top: 8px; padding-right: 0.37px; left: 283.50px; top: 175px; position: absolute; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 8.50px; display: inline-flex">
-            <div style="color: rgba(0, 0, 0, 0.54); font-size: 16px; font-family: Lato; font-weight: 400; word-wrap: break-word">Repeat Password*</div>
-            <div style="width: 265.95px; height: 1px; border: 2px rgba(0, 0, 0, 0.38) solid"></div>
-        </div>
-        <div style="width: 338px; height: 45px; left: 1px; top: 261px; position: absolute">
-            <div style="width: 26px; height: 26px; left: 0px; top: 5.50px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
-                <div style="width: 26px; height: 26px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                    <img style="width: 26px; height: 26px" src="https://via.placeholder.com/26x26" />
+       <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+                <div class="box-gambar">
+                    <img src="{{ asset('images/logo.png') }}" alt="logo" class="header-logo" style="width:150px;">
                 </div>
-            </div>
-            <div style="width: 294.40px; left: 43.30px; top: 0.50px; position: absolute"><span style="color: rgba(0, 0, 0, 0.87); font-size: 18px; font-family: Lato; font-weight: 400; word-wrap: break-word">I have read and accept the Terms of </span><span style="color: #03ACF2; font-size: 18px; font-family: Lato; font-weight: 400; word-wrap: break-word">Service & Privacy Policy *</span></div>
-        </div>
-        <div style="width: 267px; height: 47px; left: 0px; top: 166px; position: absolute">
-            <div style="left: 0px; top: -1px; position: absolute; color: #03ACF2; font-size: 11px; font-family: Lato; font-weight: 400; word-wrap: break-word">Password</div>
-            <div style="left: 0px; top: 16px; position: absolute; color: rgba(0, 0, 0, 0.54); font-size: 16px; font-family: Lato; font-weight: 400; word-wrap: break-word">•••••••••</div>
-            <div style="width: 266.29px; height: 1px; left: 0.93px; top: 46px; position: absolute; border: 2px #03ACF2 solid"></div>
-        </div>
-    </div>
-    <div style="width: 532px; height: 39px; left: 88px; top: 130px; position: absolute">
-        <div style="width: 162px; height: 39px; left: 0px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="width: 161.83px; height: 39px; background: #5856D6; border-radius: 8px"></div>
-            <div style="width: 13.15px; height: 25px; background: white"></div>
-            <div style="width: 102.66px; text-align: center; color: white; font-size: 18px; font-family: Roboto; font-weight: 400; text-transform: uppercase; word-wrap: break-word">Facebook</div>
-        </div>
-        <div style="width: 162px; height: 39px; left: 184.59px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="width: 161.83px; height: 39px; background: #00BCD4; border-radius: 8px"></div>
-            <div style="width: 102.66px; text-align: center; color: white; font-size: 18px; font-family: Roboto; font-weight: 400; text-transform: uppercase; word-wrap: break-word">twitter</div>
-            <div style="width: 20.23px; height: 16px; background: white"></div>
-        </div>
-        <div style="width: 162px; height: 39px; left: 369.18px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="width: 161.83px; height: 39px; background: #D84226; border-radius: 8px"></div>
-            <div style="width: 102.66px; text-align: center; color: white; font-size: 18px; font-family: Roboto; font-weight: 400; text-transform: uppercase; word-wrap: break-word">Google</div>
-            <img style="width: 14.16px; height: 21.50px" src="https://via.placeholder.com/14x21" />
-        </div>
-    </div>
-    <div style="width: 348px; padding-right: 0.63px; left: 180px; top: 224px; position: absolute; justify-content: center; align-items: center; gap: 28.71px; display: inline-flex">
-        <div style="width: 68.29px; height: 1px; opacity: 0.64; border: 1px black solid"></div>
-        <div style="width: 153.26px; text-align: center; color: rgba(0, 0, 0, 0.54); font-size: 16px; font-family: Lato; font-weight: 400; word-wrap: break-word">Or register with email</div>
-        <div style="width: 68.29px; height: 1px; opacity: 0.64; border: 1px black solid"></div>
-    </div>
-    <div style="width: 253.50px; left: 223px; top: 52px; position: absolute; text-align: center; color: #00579B; font-size: 24px; font-family: Lato; font-weight: 700; word-wrap: break-word">Create Your Account</div>
-</div> -->
+                <p class="text-body-secondary">© 2023</p>
+                </div>
 
+                <div class="col mb-3">
 
+                </div>
+
+                <div class="col mb-3">
+                    <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                        </ul>
+                </div>
+
+                <div class="col mb-3">
+                    <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                        </ul>
+                </div>
+
+                <div class="col mb-3">
+                    <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                        </ul>
+                </div>
+        </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 

@@ -47,7 +47,7 @@
     width: 640px;
     height: 550px;
     position: relative;
-    margin: 1% auto;
+    margin: 3rem auto;
     padding: 5px;
     border: solid 1px #03ACF2 ;
     border-radius: 20px ;
@@ -194,6 +194,26 @@ input.form-control:focus{
     background-color: #03ACF2;
     border-radius: 19px;
     border-color: transparent;
+}
+
+.temp2{
+    margin-left: 7rem;
+    margin-top: 5rem;
+    height: 400px;
+    width: 500px;
+    /* background-color: #D84226; */
+}
+
+.header-desc{
+    font: 'Lato';
+    text-align: center;
+    color: #00579B;
+}
+
+.para-desc{
+    text-align: center;
+    font-size: 20px;
+    color: #9E9E9E;
 }
 
 /* .login-form {
