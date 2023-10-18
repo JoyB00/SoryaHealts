@@ -9,12 +9,6 @@
     vertical-align: middle;
 }
 
-.header-logo {
-    width: 200px; /* Atur lebar sesuai dengan kebutuhan Anda */
-    height: 80px; /* Atur tinggi sesuai dengan kebutuhan Anda */
-    object-fit: cover;
-}
-
 .verticalLine {
     width: 1px; /* Lebar garis vertikal */
     height: 20px; /* Tinggi garis vertikal (sesuaikan dengan kebutuhan Anda) */
@@ -44,20 +38,25 @@
  .hero {
     height: 100%;
     width: 100%;
-    margin-left: -16rem;
+    margin-left: -21rem;
     background-size: cover;
     position: absolute;
 }
 
 .form-box {
-    width: 700px;
-    height: 652px;
+    width: 640px;
+    height: 550px;
     position: relative;
     margin: 1% auto;
     padding: 5px;
     border: solid 1px #03ACF2 ;
     border-radius: 20px ;
     box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06);
+}
+
+.isinya{
+    width: 100%;
+    /* background-color: navajowhite; */
 }
 
 .social-buttons {
@@ -73,7 +72,7 @@
     font-family: Lato;
     font-weight: 700;
     text-align: center;
-    margin-top: 35px;
+    margin-top: 3rem;
     margin-bottom: 35px;
 }
 
@@ -125,7 +124,7 @@ button.google {
 
 .divider {
     width: 348px;
-    left: 180px;
+    left: 145px;
     margin-top: 35px;
     position: absolute;
     display: flex;
@@ -151,8 +150,50 @@ button.google {
     border: 1px black solid;
 }
 
-.input-login{
-    top: 200px;
+.col-md-8.form-check.mt-3{
+    margin-left: 125px;
+    /* background-color: cadetblue; */
+}
+
+.form-check.offset-md-2{
+    margin-left: 123px;
+    /* background-color: beige; */
+}
+
+.tampung{
+    margin-top: 75px;
+
+}
+
+input.form-control{
+    border: none; /* Menghilangkan border bawaan */
+    border-bottom: 2px solid #007BFF;
+    border-radius: 0; /* Menghilangkan sudut bulat jika ada */
+     /* Menghilangkan shadow jika ada */
+    outline: none; /* Menghilangkan outline saat input mendapatkan fokus */
+    transition: border 0.3s; /* Efek transisi untuk border bawah */
+    padding: 0; /* Menghilangkan padding jika diperlukan */
+    background-color: transparent;
+    border-color: black;
+    outline: 0;
+}
+
+label.form-label{
+    color: #0000008A;
+}
+
+input.form-control:focus{
+    background-color: transparent;
+    border-color: black;
+    outline: 0;
+    box-shadow: none;
+    border-bottom: 2px solid #007BFF;
+}
+
+.btn.btn-primary.col-8{
+    background-color: #03ACF2;
+    border-radius: 19px;
+    border-color: transparent;
 }
 
 /* .login-form {
