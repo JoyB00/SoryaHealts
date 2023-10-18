@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SORYA HEALTS</title>
+    <link rel="Icon" href="{{asset('/images/logo_icon.png')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=PT+Sans&display=swap" rel="stylesheet">
@@ -51,15 +52,22 @@
             width: 100%;
         }
 
+        .nav-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
         #navbar {
             background-color: transparent;
             transition: all 300ms linear;
         }
 
         #navbar.scrolled {
-            background-color: #fff;
+            background-color: white;
             transition: background-color 200ms linear;
-            /* box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075); */
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
         }
 
         .actived {
@@ -71,7 +79,7 @@
 
 <body>
     <header class="fixed-top scrolled" id="navbar">
-        <nav class="navbar navbar-expand-lg navbar-light align mx-5">
+        <nav class="navbar nav-top navbar-expand-lg navbar-light align mx-5">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="{{asset('images/logo.png')}}" alt="logo">
@@ -106,10 +114,25 @@
         </nav>
     </header>
 
-    @yield('content')
-
+    <main>
+        @yield('content')
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+        window.onscroll = () => scrollFunction();
+
+        function scrollFunction() {
+            const navbar = document.getElementById("navbar");
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                navbar.classList.add("scrolled")
+            } else {
+                navbar.classList.remove("scrolled")
+            }
+        }
+    </script>
 </body>
+
 
 </html>

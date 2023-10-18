@@ -132,19 +132,10 @@
                         </div>
                     </form>
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        
-            
-            
+            </div>
         </div>
-    </div>
 
-    <!-- <div class="container">
+        <!-- <div class="container">
         <div class="card">
             <div class="card-background"></div>
             <div class="form">
@@ -187,7 +178,7 @@
         </div>
     </div> -->
 
-    <!-- <div class="container">
+        <!-- <div class="container">
         <div class="card">
             <div class="card-background"></div>
             <div class="card-background"></div>
@@ -246,7 +237,7 @@
         <div class="title">Create Your Account</div>
     </div> -->
 
-    <!-- <div style="width: 100%; height: 100%; position: relative">
+        <!-- <div style="width: 100%; height: 100%; position: relative">
     <div style="width: 699px; height: 651px; left: 0px; top: 0px; position: absolute">
         <div style="width: 699px; height: 650.50px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06); border-radius: 20px; border: 1px #03ACF2 solid"></div>
         <div style="width: 699px; height: 650.50px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06); border-radius: 20px; border: 1px #03ACF2 solid"></div>
@@ -310,7 +301,7 @@
 </div> -->
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>
