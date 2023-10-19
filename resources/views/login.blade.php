@@ -194,7 +194,7 @@
                         sapiente non quod velit tempora aliquid atque.</p>
                 </div>
                 <div class="side-image-content">
-                    <img src="{{ asset('images/image-content.png') }}" alt="image" style="width:60%;">
+                    <img src="{{ asset('images/Login.png') }}" alt="image" style="width:60%;">
                 </div>
             </div>
         </div>
@@ -204,33 +204,30 @@
         <div class="content-footer">
             <img src="{{ asset('images/logo.png') }}" alt="logo" class="footer-logo" style="width:150px;">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, nam.</p>
-            <p>&copy; Skyrev Theme 2021</p>
-        </div>
-        <div class="content-footer">
-            <h4>COMPANY</h4>
-            <div class="d-grid gap-4">
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-            </div>
+            <p>&copy; SorYaHealts 2023</p>
         </div>
         <div class="content-footer">
             <h4>SERVICES</h4>
-            <div class="d-grid gap-4">
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
+            <div class="d-grid gap-3">
+                <a href="#" style="text-decoration: none; color: black"><span>Pesan Obat?</span></a>
             </div>
         </div>
         <div class="content-footer">
-            <h4>RESOURCES</h4>
-            <div class="d-grid gap-4">
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
-                <a href="#" style="text-decoration: none; color: black"><span>Lorem ipsum dolor sit</span></a>
+            <h4>LOCATIONS</h4>
+            <div class="d-grid gap-3">
+                <a href="#" style="text-decoration: none; color: black"><span>Yogyakarya</span></a>
+                <a href="#" style="text-decoration: none; color: black"><span>Batam</span></a>
+                <a href="#" style="text-decoration: none; color: black"><span>Bali</span></a>
+                <a href="#" style="text-decoration: none; color: black"><span>Semarang</span></a>
+            </div>
+        </div>
+        <div class="content-footer">
+            <h4>KENAPA PILIH SORYAHEALTS?</h4>
+            <div class="d-grid gap-3">
+                <a href="#" style="text-decoration: none; color: black"><span>Apotik Terbaik</span></a>
+                <a href="#" style="text-decoration: none; color: black"><span>Kualitas Terbaik</span></a>
+                <a href="#" style="text-decoration: none; color: black"><span>Fasilitas Modern</span></a>
+                <a href="#" style="text-decoration: none; color: black"><span>Reputasi Modern</span></a>
             </div>
         </div>
         <div class="content-footer">
@@ -241,7 +238,7 @@
                 <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf030;</i></span></a>
                 <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf0ac;</i></span></a>
             </div>
-            <div class="footer-leng">
+            <!-- <div class="footer-leng">
                 <i style="font-size:24px" class="fa">&#xf0ac;</i>
                 <select id="lenguage" name="lenguage">
                     <option value="english">english</option>
@@ -249,7 +246,7 @@
                     <option value="rusia">rusia</option>
                     <option value="italia">italia</option>
                 </select>
-            </div>
+            </div> -->
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
