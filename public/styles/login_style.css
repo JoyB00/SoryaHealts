@@ -77,6 +77,7 @@
     border-radius: 20px ;
     box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06);
     padding: 6rem 0;
+    background-color: white;
 }
 
 .isinya{
@@ -120,7 +121,6 @@ button.social-button {
 
 button.facebook {
     background: #5856D6;
-    font-family: robo;
     width: fit-content;
 }
 button.facebook:hover{
@@ -290,17 +290,17 @@ footer{
 .content-footer:nth-child(5) .footer-sosmed .fa:hover{
     background-color: black;
 }
-.footer-leng{
+/* .footer-leng{
     border: 2px solid #03ACF2;
     display: flex;
     border-radius: 10px;
     padding: 5px 15px;
     align-items: center;
     width: 75%;
-}
-.footer-leng .fa{
+} */
+/* .footer-leng .fa{
     color: #007BFF;
-}
+} */
 .content-footer:nth-child(5) select{
     width: 100%;
     border-radius: 10px;
@@ -310,7 +310,7 @@ footer{
 }
 .body-login{
     background-image: url('../images/background-rev.jpeg');
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     height: 100%;
     background-size: cover;
 }
@@ -366,9 +366,9 @@ footer{
         flex-direction: column-reverse;
     }
 
-    .dropdown-container.dropdown-menu.dropdown-menu-end.show {
+    /* .dropdown-container.dropdown-menu.dropdown-menu-end.show {
         display: flex;
         justify-items: center;
         justify-content: center;
-    }
+    } */
 }

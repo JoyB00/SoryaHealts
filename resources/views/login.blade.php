@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head data-bs-theme="dark">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
@@ -58,7 +58,7 @@
                             </svg>
                         </span>
                     </a>
-                    <div class="mt-3 dropdown-container dropdown-menu dropdown-menu-end" aria-labelledby="drop2">
+                    <!-- <div class="mt-3 dropdown-container dropdown-menu dropdown-menu-end" aria-labelledby="drop2">
                         <div class="message-body">
                             <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
                                 <i class="fa fa-tachometer"></i>
@@ -77,7 +77,7 @@
                                 <p class="mb-0 fs-6">Logout</p>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
     </header>
@@ -87,7 +87,7 @@
             <div class="form-box animate__animated animate__fadeInLeft">
                 <div class="isinya">
                     <div class="header-form">
-                        <h2 class="judul-form">Create Your Account</h2>
+                        <h2 class="judul-form">Masuk ke Akun Anda</h2>
                         <div class="social-buttons">
                             <div class="facebook">
                                 <button class="social-button facebook">
@@ -157,7 +157,7 @@
 
                     <div class="divider">
                         <div class="divider-line"></div>
-                        <div class="divider-text">Or register with email</div>
+                        <div class="divider-text">Atau masuk dengan email</div>
                         <div class="divider-line"></div>
                     </div>
 
