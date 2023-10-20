@@ -182,7 +182,7 @@ button.google:hover{
     width: 68.29px;
     height: 1px;
     opacity: 0.64;
-    border: 1px black solid;
+    border: 1px solid #D8D8D8;
 }
 
 /* .col-md-8.form-check.mt-3{
