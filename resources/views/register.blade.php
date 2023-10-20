@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
-<!-- using login style.css -->
-
 <body class="body-login">
     <header class="p-3 text-bg-white animate__animated animate__fadeIn">
         <div class="container">
@@ -173,14 +171,14 @@
                                 <label for="noTelp" class="form-label">Nomor Telepon</label>
                                 <input type="number" name="noTelp" class="form-control" id="inputName4">
                             </div>
-                            <div class="col-md-8 offset-md-2 col-12">
+                            <!-- <div class="col-md-8 offset-md-2 col-12">
                                 <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
                                 <input type="text" name="JenisKelamin" class="form-control" id="inputName4">
                             </div>
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="tglLahir" class="form-label">Tanggal Lahir</label>
                                 <input type="month" name="tglLahir" class="form-control" id="inputName4">
-                            </div>
+                            </div> -->
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control" id="inputName4">
@@ -192,10 +190,10 @@
                             </div>
                             <div class="col-md-3 offset-md-2">
                                 <label for="re-password" class="form-label">Re-Password</label>
-                                <input type="re-password" name="re-password" class="form-control custom-input"
+                                <input type="password" name="re-password" class="form-control custom-input"
                                     id="inputRePassword4">
                             </div>
-                            <div class="form-check offset-md-2 mb-4">
+                            <div class="form-check offset-md-2 mb-2">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="form-check-input"
                                     value="1">
                                 <label class="form-check-label" for="remember-me">I have read and accept the Terms of <b>Service & Privacy Policy*</b></label>
