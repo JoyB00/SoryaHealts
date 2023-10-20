@@ -1,0 +1,374 @@
+.OTWLogin{
+    font-family: 'Lato', sans-serif;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block; /* Menggunakan flex layout untuk mengatur elemen dalam satu baris */
+    align-items: center;
+    vertical-align: middle;
+}
+.OTWLogin:hover{
+    border-bottom: 1px solid black;
+}
+
+.verticalLine {
+    width: 1px; /* Lebar garis vertikal */
+    height: 20px; /* Tinggi garis vertikal (sesuaikan dengan kebutuhan Anda) */
+    background-color: #979797; /* Warna garis vertikal */
+    display: inline-block; /* Membuat elemen ini berada di sebelah teks "Login" */
+    margin-left: 17px; /* Jarak antara teks "Login" dan garis vertikal */
+    margin-right: 17px; /* Jarak antara garis vertikal dan elemen selanjutnya (jika ada) */
+    vertical-align: middle; /* Mengatur vertikal alignment */
+}
+
+.OTWLogin span{
+    margin-top: 5px;
+}
+
+.text-end{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.setting-svg {
+    width: 20px; /* Mengatur ukuran SVG */
+    height: 20px; /* Mengatur ukuran SVG */
+    fill: #000; /* Warna isi SVG */
+    vertical-align: middle; /* Mengatur vertikal alignment */
+}
+
+ .hero {
+    margin-top: 2rem;
+    height: 100%;
+    width: 100%;
+    /* background-size: cover;
+    position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1% 8%;
+    gap: 2rem;
+    flex-direction: row;
+    margin-bottom: 4rem;
+}
+.form-box, .side-content{
+    flex: 1 0 50%;
+}
+.side-content{
+    text-align: center;
+}
+.side-content .side-title-content h1{
+    font-size: 25px;
+    font-weight: bold;
+    color: #00579B;
+}
+.side-content .side-description-content p{
+    color: #979797;
+}
+.side-title-content, .side-description-content, .side-image-content{
+    margin: 10px 0;
+}
+.form-box {
+    /* width: 50%; */
+    /* margin: 1% 5%;
+    padding: 5px; */
+    border: solid 1px #03ACF2 ;
+    border-radius: 20px ;
+    box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06);
+    padding: 6rem 0;
+    background-color: white;
+}
+
+.isinya{
+    width: 100%;
+    /* background-color: navajowhite; */
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.judul-form{
+    color: #00579B;
+    font-size: 24px;
+    font-family: Lato;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+button.social-button {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+button.facebook {
+    background: #5856D6;
+    width: fit-content;
+}
+button.facebook:hover{
+    background-color: black;
+}
+
+.fb-svg{
+    width: 20px;
+}
+
+button.twitter {
+    background: #00BCD4;
+}
+button.twitter:hover{
+    background-color: black;
+}
+
+.twitter-svg{
+    width: 20px;
+    /* margin-right: 3px; */
+    /* height: 35%; */
+}
+.social-buttons button{
+    padding: 20px;
+}
+button.google {
+    background: #D84226;
+}
+button.google:hover{
+    background-color: black;
+}
+
+.google-svg{
+    width: 20px;
+    /* height: 35%; */
+}
+
+.divider {
+    padding: 0 40px;
+    width: 100%;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 28.71px;
+}
+
+.divider-text {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 15px;
+    font-family: Lato;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.divider-line {
+    width: 68.29px;
+    height: 1px;
+    opacity: 0.64;
+    border: 1px black solid;
+}
+
+/* .col-md-8.form-check.mt-3{
+    margin-left: 125px;
+    background-color: cadetblue;
+}
+
+.form-check.offset-md-2{
+     margin-left: 123px;
+     background-color: beige;
+} */
+
+.tampung{
+    margin-top: 15px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+input.form-control{
+    border: none; /* Menghilangkan border bawaan */
+    border-bottom: 2px solid #007BFF;
+    border-radius: 0; /* Menghilangkan sudut bulat jika ada */
+     /* Menghilangkan shadow jika ada */
+    outline: none; /* Menghilangkan outline saat input mendapatkan fokus */
+    transition: border 0.3s; /* Efek transisi untuk border bawah */
+    padding: 0; /* Menghilangkan padding jika diperlukan */
+    background-color: transparent;
+    border-color: black;
+    outline: 0;
+}
+
+label.form-label{
+    color: #0000008A;
+}
+
+input.form-control:focus{
+    background-color: transparent;
+    border-color: black;
+    outline: 0;
+    box-shadow: none;
+    border-bottom: 2px solid #007BFF;
+}
+
+.btn.btn-primary.col-8{
+    background-color: #03ACF2;
+    border-radius: 19px;
+    border-color: transparent;
+}
+.btn.btn-primary.col-8:hover{
+    background-color: black;
+}
+.btn-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer{
+    width: 100%;
+    padding: 20px 80px;
+    gap: 1rem;
+    display: grid;
+    margin-bottom: 6rem;
+}
+.content-footer{
+    width: 250px;
+}
+.content-footer p{
+    margin: 20px 0;
+}
+.content-footer h4{
+    color: #03ACF2;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.content-footer:nth-child(5){
+    align-self: center;
+    width: 100%;
+}
+.content-footer:nth-child(5) .footer-sosmed, .content-footer:nth-child(5) .footer-leng{
+    margin: 20px 0;
+}
+.content-footer:nth-child(5) .footer-sosmed{
+    display: flex;
+    gap: 1rem;
+}
+.button-text{
+    font-size: 18px;
+    padding: 40px 10px;
+    text-transform: none;
+}
+.content-footer:nth-child(5) .footer-sosmed .fa{
+    color: #03ACF2;
+    padding: 10px;
+    background-color: gainsboro;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.content-footer:nth-child(5) .footer-sosmed .fa:hover{
+    background-color: black;
+}
+/* .footer-leng{
+    border: 2px solid #03ACF2;
+    display: flex;
+    border-radius: 10px;
+    padding: 5px 15px;
+    align-items: center;
+    width: 75%;
+} */
+/* .footer-leng .fa{
+    color: #007BFF;
+} */
+.content-footer:nth-child(5) select{
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    border: none;
+    outline: none;
+}
+.body-login{
+    background-image: url('../images/background-rev.jpeg');
+    /* background-repeat: no-repeat; */
+    height: 100%;
+    background-size: cover;
+}
+
+.message-body a {
+    font-family: Lato;
+    color: #00579b;
+}
+
+@media only screen and (min-width: 300px) {
+    footer{
+        grid-template-columns: 50% 50%;
+        padding: 10px;
+    }
+    .content-footer{
+        width: 100px;
+        margin: 0 auto;
+    }
+    .footer-leng{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 645px) {
+    footer{
+        grid-template-columns: 33% 33% 33%;
+        padding: 20px 60px;
+    }
+    .content-footer{
+        width: 200px;
+    }
+    .footer-leng{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 980px) {
+    footer{
+        grid-template-columns: auto auto auto auto;
+        padding: 20px 100px;
+    }
+    .footer-leng{
+        width: 75%;
+    }
+}
+@media only screen and (min-width: 1240px) {
+    footer{
+        grid-template-columns: auto auto auto auto auto;
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
+    .hero {
+        flex-direction: column-reverse;
+    }
+
+    /* .dropdown-container.dropdown-menu.dropdown-menu-end.show {
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+    } */
+}
