@@ -1,0 +1,151 @@
+.obat-container {
+    height: 500px;
+    left: 10px;
+    object-fit: cover;
+    position: relative;
+    top: 20px;
+    padding-top: 20px;
+    z-index: 2;
+    overflow-x: hidden;
+    color: white;
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+}
+
+.obat-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.obat-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.obat-container::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background: #4CAF50;
+}
+
+.title-obat{
+    color: #4CAF50; text-align: center;
+}
+
+.kategori-box {
+    width: 200px;
+    height: 250px;
+    left: 10px;
+    object-fit: cover;
+    position: relative;
+    top: 0px;
+    z-index: 2;
+    overflow-x: hidden;
+    border: none;
+    background-color: transparent;
+}
+
+.kategori-box::-webkit-scrollbar {
+    width: 5px;
+}
+
+.kategori-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.kategori-box::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background: #03ACF2;
+}
+
+li {
+    margin: 10px 0;
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+    color: lightslategrey;
+    font-size: 20px;
+
+}
+
+.dropdown{
+    display: none;
+}
+
+a:hover {
+    color: #4CAF50;
+}
+
+
+input.form-control {
+    border: 1px solid grey;
+    border-radius: 20px;
+    transition: border 0.3s;
+    padding: 0;
+    background-color: transparent;
+    border-color: black;
+    outline: 0;
+}
+
+label.form-label {
+    color: #0000008A;
+}
+
+input.form-control:focus {
+    background-color: transparent;
+    border-color: black;
+    outline: 0;
+    box-shadow: none;
+    border: 2px solid #4CAF50;
+}
+
+@media only screen and (max-width: 992px) {  
+    .obat-container {
+        height: 500px;
+        left: 80px;
+        top: 20px;
+        padding-top: 20px;
+        z-index: 2;
+        overflow-x: hidden;
+        color: white;
+        border: 1px solid #4CAF50;
+        border-radius: 10px;
+    }
+    .obat-container{
+        width: 90%;
+    }
+    .card-title{
+        font-size: 20px;
+    }
+    .card-text{
+        font-size: 12px;
+
+        font-weight: lighter;
+    }
+  }
+  @media only screen and (max-width: 576px) {  
+   .container-kategori-jenis{
+    display: none;
+   }
+   .dropdown{
+    display: block;
+   }
+   .obat-container {
+    height: 600px;
+    width: 450px;
+    left: -80px;
+    top: 20px;
+    padding-top: 20px;
+    z-index: 2;
+    overflow-x: hidden;
+    color: white;
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    }
+    .title-obat{
+        text-align: left;
+        margin-left: 50px;
+    }
+    a{
+        font-size: 15px;
+    }
+  }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORYA HEALTS</title>
+    <title>SORYA HEALTS-{{$title}}</title>
     <link rel="Icon" href="{{asset('/images/logo_icon.png')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,13 +106,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll text-center">
                         <li class="nav-item me-3">
-                            <a class="nav-link actived " aria-current="page" href="{{url('/')}}">Home</a>
+                            <a class="nav-link {{ ($title === 'Home') ? 'actived' : ''}}" aria-current="page" href="{{url('/')}}">Home</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link" href="#">Daftar Obat</a>
+                            <a class="nav-link {{ ($title === 'DaftarObat') ? 'actived' : ''}}" href="{{url('/daftarObat')}}">Daftar Obat</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link" href="#">Artikel</a>
+                            <a class="nav-link {{ ($title === 'Artikel') ? 'actived' : ''}}" href="{{url('/artikel')}}">Artikel</a>
                         </li>
                         <li class="nav-item me-3">
                             <a class="nav-link" href="#">About Us</a>

@@ -202,13 +202,12 @@ button.google:hover{
 }
 
 input.form-control{
-    border: none; /* Menghilangkan border bawaan */
+    border: none; 
     border-bottom: 2px solid #007BFF;
-    border-radius: 0; /* Menghilangkan sudut bulat jika ada */
-     /* Menghilangkan shadow jika ada */
-    outline: none; /* Menghilangkan outline saat input mendapatkan fokus */
-    transition: border 0.3s; /* Efek transisi untuk border bawah */
-    padding: 0; /* Menghilangkan padding jika diperlukan */
+    border-radius: 0; 
+    outline: none;
+    transition: border 0.3s; 
+    padding: 0; 
     background-color: transparent;
     border-color: black;
     outline: 0;

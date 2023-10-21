@@ -14,7 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        "title" => "Home"
+    ]);
+});
+
+Route::get('/daftarObat', function () {
+    return view('daftarObat', [
+        "title" => "DaftarObat"
+    ]);
+});
+Route::get('/artikel', function () {
+    return view('artikel', [
+        "title" => "Artikel"
+    ]);
 });
 
 Route::get('/login', function () {
