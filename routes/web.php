@@ -29,6 +29,21 @@ Route::get('/artikel', function () {
         "title" => "Artikel"
     ]);
 });
+Route::get('/tentangKami', function () {
+    return view('tentangKami', [
+        "title" => "Tentang Kami"
+    ]);
+});
+Route::get('/profile', function () {
+    return view('profile', [
+        "title" => "Profile"
+    ]);
+});
+Route::get('/daftarAlamat', function () {
+    return view('daftarAlamat', [
+        "title" => "Daftar Alamat"
+    ]);
+});
 
 Route::get('/login', function () {
     return view('login');

@@ -33,7 +33,7 @@
 
 
 <div class=" px-md-3 px-0 pt-5">
-    <div class="container py-5 mx-5 ">
+    <div class="container pt-5 mx-5 ">
         <h2 style="color: #03ACF2;">Artike Terbaru</h2>
         <div class="row">
             <div class="col-md-8 col-sm-12">

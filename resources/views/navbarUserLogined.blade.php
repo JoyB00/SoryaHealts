@@ -89,6 +89,14 @@
         background-size: auto;
         background-position-y: bottom;
     }
+
+    .dropdown-toggle:focus {
+        border: 0px;
+    }
+
+    .profile-photo:hover {
+        cursor: pointer;
+    }
 </style>
 
 </head>
@@ -115,15 +123,23 @@
                             <a class="nav-link {{ ($title === 'Artikel') ? 'actived' : ''}}" href="{{url('/artikel')}}">Artikel</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link  {{ ($title === 'Tentang Kami') ? 'actived' : ''}}" href="{{url('/tentangKami')}}">About Us</a>
+                            <a class="nav-link  {{ ($title === 'Tentang Kami') ? 'actived' : ''}}" href="{{url('/tentangKami')}}">Tentang Kami</a>
                         </li>
                     </ul>
                     <div class="d-flex justify-content-center" id="navbarNav">
-                        <ul class="nav">
-                            <li class="nav-item mx-1 "><a href="{{url('/login')}}" class="nav-link active border-end" aria-current="page">Login</a></li>
-                            <li class="nav-item mx-1"><a href="#" class="nav-link text-bg-primary rounded-pill ">Register</a></li>
-
-                        </ul>
+                        <label for="dropdownMenu2">
+                            <img class="img-fluid rounded-circle mt-2 profile-photo" src="{{url('https://th.bing.com/th/id/OIP.xo-BCC1ZKFpLL65D93eHcgHaGe?pid=ImgDet&rs=1')}}" style="width: 35px; height: 30px; background-color:grey;">
+                        </label>
+                        <div class="dropdown ">
+                            <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 25px;">
+                                Candra Sihotang
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li><a class="dropdown-item" href="{{url('/profile')}}"><i class="fa-solid fa-user me-2"></i>Profil Anda</a></li>
+                                <li><a class="dropdown-item" href="{{url('/daftarObat')}}"><i class="fa-solid fa-cart-shopping me-2"></i> Keranjang Belanja</a></li>
+                                <li><a class="dropdown-item" href="{{url('/daftarObat')}}"><i class="fa-solid fa-pen me-2"></i>Tulis Testimoni</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
