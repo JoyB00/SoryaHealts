@@ -98,6 +98,16 @@ input.form-control:focus {
     border: 2px solid #4CAF50;
 }
 
+.text-obat{
+    transition: transform .2s ease-in;
+    color: #FFF;
+  }
+  
+  .text-obat:hover{
+    transform: scale(1.05);
+    color: #ffc107;
+  }
+
 @media only screen and (max-width: 992px) {  
     .obat-container {
         height: 500px;

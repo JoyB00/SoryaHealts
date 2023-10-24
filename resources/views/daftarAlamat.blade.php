@@ -1,15 +1,15 @@
 @extends('user')
 
 @section('main')
-<div class="container p-5 pt-2">
+<div class="container p-5 pt-2 ">
     <div class="d-flex justify-content-between">
-        <h2>Semua Alamat</h2>
+        <h2><i class="fa-solid fa-location-dot me-2"></i> Semua Alamat</h2>
         <form action="">
             <button class="form-control btn btn-outline-success btn-md" type="submit"><i class="fa-solid fa-plus"></i> Tambah Alamat</button>
         </form>
     </div>
     <div class="row mx-1">
-        @for ($i = 0; $i < 3; $i++) <div class="col-12 card mt-3 border-success">
+        @for ($i = 0; $i < 3; $i++) <div class="col-12 card mt-4 border-success">
             <div class="card-body row ">
                 <div class="col-10">
                     <h5>Candra Sihotang</h5>

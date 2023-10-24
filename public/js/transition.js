@@ -19,21 +19,21 @@ function scrollFunction() {
     }
 
     // // Daftar Artikel Text
-    const artikelItem = document.getElementById("daftar-item-artikel");
-    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-        artikelItem.classList.add("animate__zoomIn")
-    } else {
-        artikelItem.classList.remove("animate__zoomIn")
-        artikelItem.classList.add("animate__fadeOut")
-    }
+    // const artikelItem = document.getElementById("daftar-item-artikel");
+    // if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    //     artikelItem.classList.add("animate__zoomIn")
+    // } else {
+    //     artikelItem.classList.remove("animate__zoomIn")
+    //     artikelItem.classList.add("animate__fadeOut")
+    // }
 
-    const testimoniItem = document.getElementById("daftar-item-testimoni");
-    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-        testimoniItem.classList.add("animate__zoomIn")
-    } else {
-        testimoniItem.classList.remove("animate__zoomIn")
-        testimoniItem.classList.add("animate__fadeOut")
-    }
+    // const testimoniItem = document.getElementById("daftar-item-testimoni");
+    // if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+    //     testimoniItem.classList.add("animate__zoomIn")
+    // } else {
+    //     testimoniItem.classList.remove("animate__zoomIn")
+    //     testimoniItem.classList.add("animate__fadeOut")
+    // }
 
     
 

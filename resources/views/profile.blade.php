@@ -16,7 +16,7 @@
     </div>
 
     <div class="col-7 px-5 pt-3">
-        <h2>Biodata Diri</h2>
+        <h2><i class="fa-solid fa-user me-2"></i> Biodata Diri</h2>
         <div class="row mt-5">
             <div class="col-5">
                 <h4 style="font-family: lato regular;">Nama</h4>
@@ -57,7 +57,7 @@
                 <h4 style="font-family: lato regular;">: 081234567890</h4>
             </div>
         </div>
-        <form class="mt-3" action="">
+        <form class="mt-4" action="">
             <button class="form-control btn btn-outline-success" type="submit">Edit Profile</button>
         </form>
     </div>

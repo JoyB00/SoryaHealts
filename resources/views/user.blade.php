@@ -12,7 +12,7 @@
         padding-top: 20px;
         z-index: 2;
         overflow-x: hidden;
-        border: 1px solid #4CAF50;
+        border: 2px solid #4CAF50;
         border-radius: 10px;
         margin: 0px auto;
     }
@@ -33,9 +33,11 @@
     a {
         text-decoration: none;
         color: grey;
+        transition: 0.2s;
     }
 
     a:hover {
+        transition: 0.2s;
         color: #03ACF2;
     }
 
@@ -57,10 +59,10 @@
 </style>
 
 
-<div class=" px-md-3 px-0 pt-5">
+<div class=" px-md-3 px-0 pt-5 my-3">
     <div class="container pt-5 mx-5">
         <div class="profile-container">
-            <ul class="d-flex px-5 py-0">
+            <ul class="d-flex px-5 py-0 ">
                 <li class="mb-0 me-5" style="color: grey; list-style: none; font-size: 20px;">
                     <a class=" {{ ($title === 'Profile') ? 'actived' : ''}}" aria-current="page" href="{{url('/profile')}}">Profil Anda</a>
                 </li>
@@ -68,13 +70,13 @@
                     <a class="{{ ($title === 'Daftar Alamat') ? 'actived' : ''}}" href="{{url('/daftarAlamat')}}">Daftar Alamat</a>
                 </li>
                 <li class="mb-0 me-5" style="color: grey; list-style: none; font-size: 20px;">
-                    <a class=" {{ ($title === 'Artikel') ? 'actived' : ''}}" href="{{url('/artikel')}}">Keranjang Belanja</a>
+                    <a class=" {{ ($title === 'Keranjang Belanja') ? 'actived' : ''}}" href="{{url('/keranjang')}}">Keranjang Belanja</a>
                 </li>
                 <li class="mb-0 me-5" style="color: grey; list-style: none; font-size: 20px;">
-                    <a class="  {{ ($title === 'Tentang Kami') ? 'actived' : ''}}" href="{{url('/tentangKami')}}">Testimoni</a>
+                    <a class="  {{ ($title === 'Testimoni') ? 'actived' : ''}}" href="{{url('/testimoni')}}">Testimoni</a>
                 </li>
             </ul>
-            <hr>
+            <hr style="color: #4CAF50;">
 
             @yield('main')
 

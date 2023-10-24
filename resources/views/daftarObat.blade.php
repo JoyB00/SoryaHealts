@@ -81,20 +81,29 @@
             </form>
             <h2 class="mt-3 mb-0 title-obat">Daftar Obat</h2>
             <div class="obat-container row d-flex">
-                @for ($i = 0; $i < 100; $i++) <div class="col-xl-3 col-md-4 col-sm-12 py-3 animate__animated animate__zoomIn">
-                    <div class="card card-obat ms-2 mb-2 ">
-                        <img class="img-fluid mx-auto" src="{{asset('images/home.png')}}">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                @forelse($obat as $item)
+                <div class="col-xl-3 col-md-4 col-sm-12 py-3 animate__animated animate__zoomIn">
+                    <div class="card ms-2 mb-2 item" style="height: 450px; border: 2px solid #4CAF50;">
+                        <img class="img-fluid mx-auto" src="{{$item['image']}}">
+                        <div class="card-body d-flex flex-column pb-0 mb-0 bg-success text-white">
+                            <p><span class="badge rounded-pill border border-white mb-0">{{$item['jenis_obat']}}</span></p>
+                            <a href="{{url('/daftarObat')}}" class="card-title text-obat" style="text-decoration: none; font-size: 18px;">{{$item['nama_obat']}}</a>
+                            <p class="card-text  d-block text-white" style="font-family: Lato light;  font-weight: bold;">{{$item['harga']}}</p>
+                        </div>
+                        <div class="card-footer bg-success border-0" style="background-color: white; border-top: none;">
+                            <p class="mt-1 text-white"><span class="badge border border-white rounded-pill">{{$item['kategori_obat']}}</span> </p>
+                            <a href="#" class="btn btn-warning">Lihat Detail</a>
                         </div>
                     </div>
+                </div>
+                @empty
+                <div class="alert alert-danger">
+                    Data Member masi kosong
+                </div>
+                @endforelse
             </div>
-            @endfor
         </div>
     </div>
-</div>
 
 </div>
 

@@ -15,7 +15,7 @@
 <div class=" px-md-3 px-0 pt-5">
     <div class="container pt-5 mx-5">
         <div class="row">
-            <img class="welcome-img" src="{{asset('images/Illustration.png')}}" alt="home" style="width: 450px;">
+            <!-- <img class="welcome-img" src="{{asset('images/Illustration.png')}}" alt="home" style="width: 450px;"> -->
             <img class=" mx-auto" src="{{asset('images/home.png')}}" alt="home" style="width: 500px;">
         </div>
         <div class="row text-center mt-5">
