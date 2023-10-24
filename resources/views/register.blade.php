@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=PT+Sans&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/login_style.css">
+    <link rel="stylesheet" href="styles/register_style.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -31,8 +31,8 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></ul>
 
                 <div class="text-end">
-                    <a href="{{url('register')}}" class="OTWLogin">
-                        <span>Register</span>
+                    <a href="{{url('login')}}" class="OTWLogin">
+                        <span>Login</span>
                     </a>
                     <span class="verticalLine"></span>
                     <a href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false" class="OTWLogin">
@@ -78,7 +78,7 @@
             <div class="form-box animate__animated animate__fadeInLeft">
                 <div class="isinya">
                     <div class="header-form">
-                        <h2 class="judul-form">Masuk ke Akun Anda</h2>
+                        <h2 class="judul-form">Buat Akun Anda</h2>
                         <div class="social-buttons">
                             <div class="facebook">
                                 <button class="social-button facebook">
@@ -94,7 +94,6 @@
                                     <span class="button-text">Facebook</span>
                                 </button>
                             </div>
-
 
                             <div class="twitter">
                                 <button class="social-button twitter">
@@ -130,28 +129,46 @@
 
                     <div class="divider">
                         <div class="divider-line"></div>
-                        <div class="divider-text">Atau masuk dengan email</div>
+                        <div class="divider-text">Atau daftar dengan email</div>
                         <div class="divider-line"></div>
                     </div>
 
                     <div class="tampung">
-                        <form class="row g-3" action="{{ url('/') }}" method="GET">
-                            @csrf
+                        <form class="row g-3" action="">
+                            <div class="col-md-8 offset-md-2 col-12">
+                                <label for="nama" class="form-label">Nama</label>
+                                <input type="text" name="nama" class="form-control" id="inputName4">
+                            </div>
+                            <div class="col-md-8 offset-md-2 col-12">
+                                <label for="noTelp" class="form-label">Nomor Telepon</label>
+                                <input type="number" name="noTelp" class="form-control" id="inputName4">
+                            </div>
+                            <!-- <div class="col-md-8 offset-md-2 col-12">
+                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
+                                <input type="text" name="JenisKelamin" class="form-control" id="inputName4">
+                            </div>
+                            <div class="col-md-8 offset-md-2 col-12">
+                                <label for="tglLahir" class="form-label">Tanggal Lahir</label>
+                                <input type="month" name="tglLahir" class="form-control" id="inputName4">
+                            </div> -->
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control" id="inputName4">
                             </div>
-                            <div class="col-md-8 offset-md-2">
+                            <div class="col-md-3 offset-md-2">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" name="password" class="form-control custom-input" id="inputPassword4">
                             </div>
-                            <div class="form-check offset-md-2 mb-4">
+                            <div class="col-md-3 offset-md-2">
+                                <label for="re-password" class="form-label">Re-Password</label>
+                                <input type="password" name="re-password" class="form-control custom-input" id="inputRePassword4">
+                            </div>
+                            <div class="form-check offset-md-2 mb-2">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="form-check-input" value="1">
-                                <label class="form-check-label" for="remember-me">Remember Me</label>
+                                <label class="form-check-label" for="remember-me">I have read and accept the Terms of <b>Service & Privacy Policy*</b></label>
                             </div>
                             <div class="btn-container">
-                                <button type="submit" class="btn btn-primary col-8">Login</button>
-                                <input type="hidden" name="login" value="1">
+                                <button type="submit" class="btn btn-primary col-8">Continue</button>
                             </div>
                         </form>
                     </div>
@@ -167,7 +184,7 @@
                         sapiente non quod velit tempora aliquid atque.</p>
                 </div>
                 <div class="side-image-content">
-                    <img src="{{ asset('images/Login.png') }}" alt="image" style="width:60%;">
+                    <img src="{{ asset('images/Register.png') }}" alt="image" style="width:60%;">
                 </div>
             </div>
         </div>

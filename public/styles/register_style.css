@@ -76,7 +76,7 @@
     border: solid 1px #03ACF2 ;
     border-radius: 20px ;
     box-shadow: 0px 3px 49px 9px rgba(0, 0, 0, 0.06);
-    padding: 6rem 0;
+    padding: 3rem 0;
     background-color: white;
 }
 
@@ -196,18 +196,19 @@ button.google:hover{
 } */
 
 .tampung{
-    margin-top: 40px;
+    margin-top: 15px;
     width: 100%;
     padding: 0 10px;
 }
 
 input.form-control{
-    border: none; 
+    border: none; /* Menghilangkan border bawaan */
     border-bottom: 2px solid #007BFF;
-    border-radius: 0; 
-    outline: none;
-    transition: border 0.3s; 
-    padding: 0; 
+    border-radius: 0; /* Menghilangkan sudut bulat jika ada */
+     /* Menghilangkan shadow jika ada */
+    outline: none; /* Menghilangkan outline saat input mendapatkan fokus */
+    transition: border 0.3s; /* Efek transisi untuk border bawah */
+    padding: 0; /* Menghilangkan padding jika diperlukan */
     background-color: transparent;
     border-color: #D8D8D8;
     outline: 0;

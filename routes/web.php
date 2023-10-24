@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,381 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
+
+    $obat = [
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201806080341004677_aludonna-d-SYR.jpg",
+            "product_box_URL" => "aludonna-d-susp-150ml-10149",
+            "nama_obat" => "ALUDONNA D SUSP 150ML",
+            "harga" => "Rp 12.000,- / Botol",
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Flu dan Batuk"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201610040210071922_386-Aludonna.jpg",
+            "product_box_URL" => "aludonna-d-tab-160s-3873",
+            "nama_obat" => "ALUDONNA D TABLET",
+            "harga" => "Rp 5.232,- / Strip",
+            "jenis_obat" => 'Tablet',
+            "kategori_obat" => "Obat Demam"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_2016022503274913_aludonna.jpg",
+            "product_box_URL" => "aludonna-susp-150ml-1604",
+            "nama_obat" => "ALUDONNA SUSP 150ML",
+            "harga" => "Rp 12.000,- / Botol",
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Flu dan Batuk"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190619082944209249_3.-ALUDONNA.jpg",
+            "product_box_URL" => "aludonna-tab-100s-9205",
+            "nama_obat" => "ALUDONNA TABLET",
+            "harga" => "Rp 12.000,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Pereda Nyeri"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20200711013619359225_ALUMY-100ML-1.jpg",
+            "product_box_URL" => "alumy-susp-100ml-10013",
+            "nama_obat" => "ALUMY SUSP 100ML",
+            "harga" => "Rp 12.000,- / Botol",
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Flu dan Batuk"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20230815105136359225_ALUMY.png",
+            "product_box_URL" => "alumy-tab-10s-strip-10015",
+            "nama_obat" => "ALUMY TABLET",
+            "harga" => "Rp 4.805,- / Strip",
+            "jenis_obat" => 'Tablet',
+            "kategori_obat" => "Obat Demam"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190610025924209249_6.-ALUPENT-20MG-TAB-100S.jpg",
+            "product_box_URL" => "alupent-20mg-tab-100s-17731",
+            "nama_obat" => "ALUPENT 20MG TABLET",
+            "harga" => "Rp 12.000,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Pereda Nyeri"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201906180847454677_6.-ALUPENT-INH.jpg",
+            "product_box_URL" => "alupent-inh-17732",
+            "nama_obat" => "ALUPENT INH",
+            "harga" => "Rp 12.000,- / Pcs",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Pereda Nyeri"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201907300908524677_ALUPENT-SYR-125ML.jpg",
+            "product_box_URL" => "alupent-syr-125ml-17733",
+            "nama_obat" => "ALUPENT SIRUP 125ML",
+            "harga" => "Rp 12.000,- / Botol",
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Obat Alergi"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201903281043364677_ALVITA-100-S.jpg",
+            "product_box_URL" => "alvita-tab-100s-16499",
+            "nama_obat" => "ALVITA TABLET",
+            "harga" => "Rp 663,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Obat Demam"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190629112111209249_1.-ALXIL-125MG-D-SYR-60ML.jpg",
+            "product_box_URL" => "alxil-125mg-5ml-d-syr-60ml-15772",
+            "nama_obat" => "ALXIL 125MG/5ML D SIRUP 60ML",
+            "harga" => "Rp 10.500,- / Botol",
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Obat Alergi"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190423013149209249_AXIL.jpg",
+            "product_box_URL" => "alxil-500mg-cap-30s-15771",
+            "nama_obat" => "ALXIL 500MG KAPSUL",
+            "harga" => "Rp 11.350,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Antibiotik"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_2019120401375823085_ALYRENOL.jpg",
+            "product_box_URL" => "alyrenol-5mg-tab-30s-22548",
+            "nama_obat" => "ALYRENOL 5MG TABLET",
+            "harga" => "Rp 5.474,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Antibiotik"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201804260411584677_alzim-5.jpg",
+            "product_box_URL" => "alzim-5mg-tab-30s-15774",
+            "nama_obat" => "ALZIM 5MG TABLET",
+            "harga" => "Rp 12.468,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Antibiotik"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201608010539164677_237-Amadiab.jpg",
+            "product_box_URL" => "amadiab-1mg-tab-3109",
+            "nama_obat" => "AMADIAB 1MG TABLET",
+            "harga" => "Rp 3.384,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Obat Demam"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201609090427091922_632-Amadiab-2.jpg",
+            "product_box_URL" => "amadiab-2mg-tab-3669",
+            "nama_obat" => "AMADIAB 2MG TABLET",
+            "harga" => "Rp 6.476,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Obat Anti Alergi"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201609300418571922_305-Carpiaton.jpg",
+            "product_box_URL" => "carpiaton-100mg-tab-1613",
+            "nama_obat" => "CARPIATON 100MG TABLET",
+            "harga" => "Rp 5.108,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Obat Anti Alergi"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_2017052910285313_1867-Carpiaton-25.png",
+            "product_box_URL" => "carpiaton-25mg-tab-4011",
+            "nama_obat" => "CARPIATON 25MG TABLET",
+            "harga" => "Rp 1.947,- / Kapsul",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Obat Anti Alergi"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201804190207534677_carsida.jpg",
+            "product_box_URL" => "carsida-chew-tab-10s-strip-10079",
+            "nama_obat" => "CARSIDA CHEW TABLET",
+            "harga" => "Rp 3.436,- / Strip",
+            "jenis_obat" => 'Tablet',
+            "kategori_obat" => "Obat Demam"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201810100320464677_carsida.jpeg",
+            "product_box_URL" => "carsida-susp-60ml-10171",
+            "nama_obat" => "CARSIDA SUSP 60ML",
+            "harga" => "Rp 9.999,- / Botol",
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Obat Demam"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201901300346314677_cartilex.jpeg",
+            "product_box_URL" => "cartiflex-tab-1853",
+            "nama_obat" => "CARTIFLEX TABLET",
+            "harga" => "Rp 175.611,- / Botol",
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Obat Demam"
+        ],
+
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20230621090306359225_BIO-OIL.png",
+            "product_box_URL" => "bio-oil-skincare-oil-25ml-32192",
+            "nama_obat" => "BIO-OIL SKINCARE OIL 25ML",
+            "harga" => "Rp 81.174,- / Pcs",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Obat Demam"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20230120013544359225_BIOACNE-1.png",
+            "product_box_URL" => "bioacne-10g-2482",
+            "nama_obat" => "BIOACNE 10G",
+            "harga" => "Rp 35.728,- / Tube",
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Pereda Nyeri"
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/970025.jpg",
+            "product_box_URL" => "biobran-tablet-30s-1274",
+            "nama_obat" => "BIOBRAN TABLET",
+            "harga" => "Rp 87.085,- / Strip",
+            "jenis_obat" => 'Tablet',
+            "kategori_obat" => "Obat Demam"
+        ],
+
+    ];
+
+    $artikel = [
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/12/07090758/Tak-Hanya-Lezat-Ini-X-Manfaat-Kacang-Tanah-yang-Jarang-Diketahui-01.jpg.webp",
+            "judul" => "11 Manfaat Kacang Tanah untuk Kesehatan yang Jarang Diketahui",
+            "topik" => "Makanan Sehat",
+            "author" => "Dr.Boyke",
+            "tanggal_publish" => "24 Oktober 2023",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/10/07071402/Ini-X-Cara-Menurunkan-Berat-Badan-dengan-Cepat-01.jpg.webp",
+            "judul" => "13 Cara Menurunkan Berat Badan dengan Cepat dan Alami",
+            "topik" => "Diet dan Nutrisi",
+            "author" => "Dr.Tirtha",
+            "tanggal_publish" => "27 Oktober 2023",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/10/24055418/Ini-Penanganan-Gawat-Janin-untuk-Mencegah-Komplikasi-.jpg.webp",
+            "judul" => "Ini Penanganan Gawat Janin untuk Mencegah Komplikasi Kehamilan",
+            "topik" => "Kesehatan Fisik",
+            "author" => "Dr.Budi",
+            "tanggal_publish" => "12 Oktober 2023",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/10/24053515/ini-manfaat-sawi-putih-untuk-kesehatan-halodoc.jpg.webp",
+            "judul" => "Ini Manfaat Sawi Putih untuk Kesehatan",
+            "topik" => "Makanan Sehat",
+            "author" => "Dr. Sari",
+            "tanggal_publish" => "30 Oktober 2023",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/10/24042759/waktu-terbaik-memberikan-vaksin-hpv-pada-anak.jpg.webp",
+            "judul" => "Waktu Terbaik Memberikan Vaksin HPV pada Anak",
+            "topik" => "Kesehatan Anak",
+            "author" => "Dr. Rizal",
+            "tanggal_publish" => "28 Oktober 2023",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/10/24043720/berapa-kalori-nasi-goreng-yang-aman-untuk-dikonsumsi-1.jpg.webp",
+            "judul" => "Berapa Kalori Nasi Goreng yang Aman untuk Dikonsumsi?",
+            "topik" => "Diet dan Nutrisi",
+            "author" => "Dr. Tirtha",
+            "tanggal_publish" => "24 November 2022",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/10/23010724/X-Pola-Hidup-Sehat-Agar-Kadar-Kolesterol-Selalu-Normal.jpg.webp",
+            "judul" => "Ketahui Kadar Kolesterol Normal Berdasarkan Usia dan Jenis Kelamin",
+            "topik" => "Diet dan Nutrisi",
+            "author" => "Dr.Tirtha",
+            "tanggal_publish" => "18 Oktober 2023",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/10/20061220/Ini-Kunci-Umur-Panjang-Penduduk-yang-Tinggal-di-Negara-Blue-Zone.jpg.webp",
+            "judul" => "Ini Kunci Umur Panjang Penduduk yang Tinggal di Negara Blue Zone",
+            "topik" => "Kesehatan Fisik",
+            "author" => "Dr. Boyke",
+            "tanggal_publish" => "10 Oktober 2023",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/01/06045423/ketahui-cara-tepat-memilih-facial-wash-untuk-remaja-halodoc.jpg.webp",
+            "judul" => "Ini Urutan Skincare Malam Remaja Agar Kulit Sehat dan Cerah",
+            "topik" => "Kesehatan Fisik",
+            "author" => "Dr.Boyke",
+            "tanggal_publish" => "02 Oktober 2023",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+        [
+            "image" => "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/01/19040153/Adakah-Manfaat-Menyanyikan-Lagu-Nina-Bobo-untuk-Bayi_.jpg.webp",
+            "judul" => "Adakah Manfaat Menyanyikan Lagu Nina Bobo untuk Bayi?",
+            "topik" => "Kesehatan Anak",
+            "author" => "Dr. Sari",
+            "tanggal_publish" => "27 Oktober 2023",
+            "deskripsi" => "“Gawat janin menjadi kondisi yang berbahaya bagi janin dalam kandungan. Kondisi ini dapat memicu berbagai komplikasi, seperti kerusakan otak, cerebral palsy, hingga stillbirth.”"
+        ],
+    ];
+
+    $testimoni = [
+        [
+            "image" => "https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png",
+            "nama" => "Candra Sihotang",
+            "ulasan" => "Situs web apotek ini luar biasa. Saya dapat dengan cepat menemukan obat yang saya butuhkan, dan proses pembeliannya sangat mudah. Pesanan saya tiba dalam waktu singkat.",
+            "rating" => 5
+        ],
+        [
+            "image" => "https://cdn3d.iconscout.com/3d/premium/thumb/men-with-red-cloth-4929602-4118345.png",
+            "nama" => "Tio Pramudya",
+            "ulasan" => "Situs web ini memiliki antarmuka pengguna yang sangat mudah digunakan. Saya dapat dengan cepat menemukan produk yang saya cari, dan fitur pencarian mereka sangat membantu.",
+            "rating" => 4
+        ],
+        [
+            "image" => "https://th.bing.com/th/id/OIP.M9W_NylhFNtCyTRJxJYZbgAAAA?pid=ImgDet&w=450&h=450&rs=1",
+            "nama" => "Dendy Pramartha",
+            "ulasan" => "Harga obat-obatan di situs web ini sangat bersaing. Saya selalu merasa bahwa saya mendapatkan nilai yang baik untuk uang saya. Tidak perlu membayar lebih mahal di apotek fisik.",
+            "rating" => 5
+        ],
+        [
+            "image" => "https://cdn3d.iconscout.com/3d/premium/thumb/entrepreneur-men-4929605-4118348.png",
+            "nama" => "Dr. Tirta",
+            "ulasan" => "Saya suka berbelanja di sini karena mereka menawarkan beragam produk kesehatan, mulai dari obat-obatan hingga suplemen vitamin. Saya dapat dengan mudah menemukan semua yang saya butuhkan dalam satu tempat.",
+            "rating" => 4
+        ],
+    ];
+
+
+    session(['daftarObat' => $obat]);
+    session(['daftarArtikel' => $artikel]);
+    session(['testimoni' => $testimoni]);
+
+    return view('home', [
+        "title" => "Home",
+        'obat' => $obat,
+        'artikel' => $artikel,
+        'testimoni' => $testimoni
+    ]);
+});
+
+Route::get('/daftarObat', function () {
+
+    $obat = session('daftarObat');
+    return view('daftarObat', [
+        "title" => "DaftarObat",
+        "obat" => $obat
+    ]);
+});
+
+Route::get('/artikel', function () {
+    $artikel = session('daftarArtikel');
+    return view('artikel', [
+        "title" => "Artikel",
+        "artikel" => $artikel,
+    ]);
+});
+Route::get('/tentangKami', function () {
+    return view('tentangKami', [
+        "title" => "Tentang Kami"
+    ]);
+});
+Route::get('/profile', function () {
+    return view('profile', [
+        "title" => "Profile"
+    ]);
+});
+Route::get('/daftarAlamat', function () {
+    return view('daftarAlamat', [
+        "title" => "Daftar Alamat"
+    ]);
+});
+Route::get('/keranjang', function () {
+    return view('keranjang', [
+        "title" => "Keranjang Belanja"
+    ]);
+});
+Route::get('/testimoni', function () {
+    return view('testimoni', [
+        "title" => "Testimoni"
+    ]);
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/login', function () {
     return view('login');
 });
 
