@@ -15,6 +15,28 @@
     <link rel="stylesheet" href="styles/login_style.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .wrapper {
+            height: 400px;
+            border: 1px solid salmon;
+
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .wrapper::-webkit-scrollbar {
+            width: 0;
+        }
+
+        .wrapper .kotak {
+            max-width: 110px;
+            height: 110px;
+            line-height: 110px;
+            text-align: center;
+            background-color: greenyellow;
+            margin: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -104,19 +126,19 @@
                                 </div>
                             </div>
 
-                            <div class="col-8 bg-light p-2 mb-2"> <!--konten kanan  (tombol dan deskripsi )-->
+                            <div class="col-8 bg-light p-4 mb-2 "> <!--konten kanan  (tombol dan deskripsi )-->
                                 <div class="row justify-content-start align-items-start p-2">
                                     <div class="col-6"> <!--konten kiri  (deskripsi)-->
-                                        <h3>Judul</h3>
-                                        <div class="row justify-content-start align-items-start"> <!--Label-->
+                                        <h3> judul</h3>
+                                        <div class="row mb-2 justify-content-start align-items-start"> <!--Label-->
                                             <div class="col-6"> <!--konten kiri  (nama)-->
                                                 Label Produk
                                             </div>
-                                            <div class="col-6"> <!--konten kiri  (penjelasa label)-->
+                                            <div class="col-3 text-center border border-primary rounded-pill"> <!--konten kiri  (penjelasa label)-->
                                                 Umum
                                             </div>
                                         </div>
-                                        <div class="row justify-content-start align-items-start "> <!--Harga-->
+                                        <div class="row mb-2 justify-content-start align-items-start "> <!--Harga-->
                                             <div class="col-6"> <!--konten kiri  (nama)-->
                                                 Harga
                                             </div>
@@ -124,12 +146,16 @@
                                                 Rp. 12345
                                             </div>
                                         </div>
-                                        <div class="row justify-content-start align-items-start "> <!--Jumlah-->
+                                        <div class="row mb-2 justify-content-start align-items-start "> <!--Jumlah-->
                                             <div class="col-6"> <!--konten kiri  (nama)-->
                                                 Jumlah
                                             </div>
                                             <div class="col-6"> <!--konten kiri  (penjelasa jumlah)-->
-                                                1
+                                                <div class="row justify-content-center align-items-center g-2">
+                                                    <div class="col-4 bg-primary text-white rounded-5 text-center">+</div>
+                                                    <div class="col-4 text-center">1</div>
+                                                    <div class="col-4 bg-primary text-white rounded-5 text-center">-</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -156,11 +182,7 @@
                         </div>
                         <div class="row m-2">
 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla leo risus, porta vel massa eget, vulputate ultricies sem. Maecenas aliquet risus nec lacus cursus volutpat. Sed at nisi sed lacus posuere rhoncus eget non dolor. Sed eleifend odio et risus consequat, a convallis nisi aliquet. Curabitur dictum risus non tortor pellentesque, eget sagittis est egestas. Donec auctor porttitor diam ut pretium. In egestas, lacus eget ultrices sodales, ex ante accumsan est, consectetur lobortis tellus massa et enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin pellentesque leo non diam imperdiet, vel vulputate nibh vestibulum. In id nunc et dui viverra ornare.
-                            Fusce sed purus quis leo bibendum luctus. Aenean euismod, quam a eleifend porta, urna orci pellentesque elit, et porta nisi sapien in sem. Integer volutpat non tellus a aliquet. Pellentesque eget pharetra ante. Nullam hendrerit enim sit amet dui laoreet viverra. Aenean porta, sem ut convallis finibus, ipsum magna tristique elit, vel tempor sapien ex eu massa. Etiam congue vel tellus ac placerat. Etiam consequat mattis quam, ut rutrum ligula tempor eget. Fusce ipsum erat, condimentum ac feugiat sit amet, tempor ut erat. Nunc urna sem, volutpat at justo ac, hendrerit aliquet erat. Integer condimentum ipsum eget eros faucibus tempor. Ut felis magna, ornare sed eros vitae, vehicula feugiat felis. Phasellus condimentum finibus lectus, vel semper felis ultrices non. Phasellus vestibulum mi nunc, a molestie ante dictum ut. Duis et venenatis quam, eget blandit sapien. Donec tristique ullamcorper orci, eget suscipit mauris semper sit amet.
-                            Phasellus iaculis vehicula auctor. Ut fringilla lectus a justo fermentum, vel ultricies lectus fringilla. Suspendisse potenti. Aenean condimentum, massa vitae mattis varius, lacus odio vulputate massa, eu blandit erat diam vitae urna. Ut posuere eleifend gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec lacus nibh, egestas ut commodo in, mollis non metus.
-                            Sed vel turpis et est euismod rutrum nec a sem. Vestibulum sit amet arcu in ex semper dapibus ultrices sodales elit. Nunc feugiat nisi eu placerat consectetur. Nunc maximus magna purus, eget tempor elit posuere ut. Pellentesque quis nulla nec orci dictum euismod. Mauris ultricies tincidunt placerat. Vivamus ut magna sed enim tincidunt accumsan. Quisque ut cursus ipsum, et bibendum orci. Curabitur cursus finibus purus et lacinia. Aenean ultricies dapibus facilisis.
-                            Integer diam magna, mollis at ultricies et, sollicitudin volutpat mauris. Aliquam erat volutpat. Vestibulum eget facilisis massa. Fusce metus elit, consectetur faucibus orci laoreet, cursus maximus elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean a quam nec ligula pulvinar blandit. Aenean faucibus placerat magna, a varius erat malesuada nec. Vivamus in dolor ultrices, congue arcu a, pharetra mauris. In accumsan consectetur nisi et pharetra. Nam sit amet malesuada purus. Quisque dignissim id elit ac consectetur. Aliquam erat volutpat. Pellentesque lobortis nibh eget nisi accumsan, ac efficitur neque rutrum. Phasellus sagittis posuere faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin blandit mauris vel scelerisque condimentum.
+
                         </div>
                     </div>
 
@@ -171,6 +193,18 @@
                         <div class="row m-2">
 
                             <div class="row row-cols-1 row-cols-md-4 g-4">
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-wkjIdM8fR73nVqwMsxLX8WyOnjr8l82bg&usqp=CAU" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-body-secondary">See Details</small>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col">
                                     <div class="card h-100">
                                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-wkjIdM8fR73nVqwMsxLX8WyOnjr8l82bg&usqp=CAU" class="card-img-top" alt="...">
@@ -222,6 +256,21 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="wrapper">
+                        <div class="kotak">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <div class="card card mb-4 p-4"> <!--card deskripsi-->
                         <div class="card-header bg-transparent mb-0">
