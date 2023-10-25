@@ -107,7 +107,7 @@
     <header class="fixed-top scrolled" id="navbar">
         <nav class="navbar nav-top navbar-expand-lg navbar-light align mx-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{('/')}}">
                     <img src="{{asset('images/logo.png')}}" alt="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

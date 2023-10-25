@@ -99,7 +99,7 @@
     <header class="fixed-top scrolled" id="navbar">
         <nav class="navbar nav-top navbar-expand-lg navbar-light align mx-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{('/')}}">
                     <img src="{{asset('images/logo.png')}}" alt="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,7 +123,7 @@
                     <div class="d-flex justify-content-center" id="navbarNav">
                         <ul class="nav">
                             <li class="nav-item mx-1 "><a href="{{url('/login')}}" class="nav-link active border-end" aria-current="page">Login</a></li>
-                            <li class="nav-item mx-1"><a href="#" class="nav-link text-bg-primary rounded-pill ">Register</a></li>
+                            <li class="nav-item mx-1"><a href="{{url('/register')}}" class="nav-link text-bg-primary rounded-pill ">Register</a></li>
 
                         </ul>
                     </div>
