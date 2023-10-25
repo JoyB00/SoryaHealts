@@ -197,14 +197,14 @@
 
                // Tangani klik pada tombol increment
                $('#incrementButton').click(function() {
-                   count++;
+                   count = count + 5;
                    // Perbarui teks pada elemen dengan id "count"
                    $('#count').text(count);
                });
 
                $('#decrementButton').click(function() {
                    if (count > 0) {
-                       count--;
+                       count = count - 5;
                        // Perbarui teks pada elemen dengan id "count"
                        $('#count').text(count);
                    }

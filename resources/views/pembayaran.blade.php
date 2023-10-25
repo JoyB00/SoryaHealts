@@ -99,17 +99,18 @@
            <div class="modal-dialog">
                <div class="modal-content">
                    <div class="modal-header">
-                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Pembayaran Berhasil</h1>
                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                    </div>
                    <div class="modal-body text-center">
                        <img src="{{ ('images\success.png') }}" alt="">
                    </div>
-                   <div class="modal-footer row mx-5">
-                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Selesai</button>
+                   <form action="{{url('/')}}" method="get">
+                       <div class="modal-footer row mx-5 ">
+                           <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Selesai</button>
+                       </div>
+                   </form>
 
-
-                   </div>
                </div>
            </div>
        </div>
