@@ -353,6 +353,51 @@ Route::get('/', function () {
         ]
     ];
 
+    $keranjang = [
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201806080341004677_aludonna-d-SYR.jpg",
+            "product_box_URL" => "aludonna-d-susp-150ml-10149",
+            "nama_obat" => "ALUDONNA D SUSP 150ML",
+            "harga" => 12000,
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Flu dan Batuk",
+            "golongan" => "bebas",
+            "jumlah" => 3
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201610040210071922_386-Aludonna.jpg",
+            "product_box_URL" => "aludonna-d-tab-160s-3873",
+            "nama_obat" => "ALUDONNA D TABLET",
+            "harga" => 5232,
+            "jenis_obat" => 'Tablet',
+            "kategori_obat" => "Obat Demam",
+            "golongan" => "terbatas",
+            "jumlah" => 4
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_2016022503274913_aludonna.jpg",
+            "product_box_URL" => "aludonna-susp-150ml-1604",
+            "nama_obat" => "ALUDONNA SUSP 150ML",
+            "harga" => 12000,
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Flu dan Batuk",
+            "golongan" => "keras",
+            "jumlah" => 5
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190619082944209249_3.-ALUDONNA.jpg",
+            "product_box_URL" => "aludonna-tab-100s-9205",
+            "nama_obat" => "ALUDONNA TABLET",
+            "harga" => 12000,
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Pereda Nyeri",
+            "golongan" => "keras",
+            "jumlah" => 1
+        ],
+    ];
+
+    session(['keranjang' => $keranjang]);
+
 
     session(['user' => $user]);
     session(['daftarObat' => $obat]);
@@ -366,7 +411,8 @@ Route::get('/', function () {
         'user' => session('user'),
         'obat' => $obat,
         'artikel' => $artikel,
-        'testimoni' => $testimoni
+        'testimoni' => $testimoni,
+        'keranjang' => session('keranjang')
     ]);
 })->name('home');
 
@@ -594,55 +640,11 @@ Route::get('/daftarAlamatChecked', function () {
 });
 
 Route::get('/keranjang', function () {
-    $keranjang = [
-        [
-            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201806080341004677_aludonna-d-SYR.jpg",
-            "product_box_URL" => "aludonna-d-susp-150ml-10149",
-            "nama_obat" => "ALUDONNA D SUSP 150ML",
-            "harga" => 12000,
-            "jenis_obat" => 'Sirup',
-            "kategori_obat" => "Flu dan Batuk",
-            "golongan" => "bebas",
-            "jumlah" => 3
-        ],
-        [
-            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201610040210071922_386-Aludonna.jpg",
-            "product_box_URL" => "aludonna-d-tab-160s-3873",
-            "nama_obat" => "ALUDONNA D TABLET",
-            "harga" => 5232,
-            "jenis_obat" => 'Tablet',
-            "kategori_obat" => "Obat Demam",
-            "golongan" => "terbatas",
-            "jumlah" => 4
-        ],
-        [
-            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_2016022503274913_aludonna.jpg",
-            "product_box_URL" => "aludonna-susp-150ml-1604",
-            "nama_obat" => "ALUDONNA SUSP 150ML",
-            "harga" => 12000,
-            "jenis_obat" => 'Sirup',
-            "kategori_obat" => "Flu dan Batuk",
-            "golongan" => "keras",
-            "jumlah" => 5
-        ],
-        [
-            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190619082944209249_3.-ALUDONNA.jpg",
-            "product_box_URL" => "aludonna-tab-100s-9205",
-            "nama_obat" => "ALUDONNA TABLET",
-            "harga" => 12000,
-            "jenis_obat" => 'Kapsul',
-            "kategori_obat" => "Pereda Nyeri",
-            "golongan" => "keras",
-            "jumlah" => 1
-        ],
-    ];
-
-    session(['keranjang' => $keranjang]);
     return view('keranjang', [
         "title" => "Keranjang Belanja",
         'userLogin' => session('userLogint'),
         'user' => session('user'),
-        'keranjang' => $keranjang
+        'keranjang' =>  session('keranjang')
     ]);
 });
 Route::get('/testimoni', function () {
@@ -725,7 +727,6 @@ Route::get('/transaksi', function () {
 
     session(['ulasan' => $ulasan]);
     $obat = session('daftarObat');
-    $keranjang = session('keranjang');
 
     return view(
         'transaksi',
@@ -734,7 +735,7 @@ Route::get('/transaksi', function () {
             'user' => session('user'),
             'obat' => $obat,
             'ulasan' => $ulasan,
-            'keranjang' => $keranjang,
+            'keranjang' => session('keranjang'),
         ]
     );
 });
