@@ -121,7 +121,7 @@
                 <div class="deskripsi-container" style=" white-space: nowrap; overflow: hidden; text-overflow: clip;">
                     <p id="deskripsi-artikel" class="card-text">{{$artikel[$i]['deskripsi']}}</p>
                 </div>
-                <a href="#" class="btn btn-warning">Lihat Selengkapnya</a>
+                <a href="{{url('artikelDetail')}}" class="btn btn-warning">Lihat Selengkapnya</a>
             </div>
         </div>
 </div>

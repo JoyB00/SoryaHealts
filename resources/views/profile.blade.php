@@ -11,14 +11,14 @@
         </div>
     </div>
 
-    <div class="col-xl-7 col-12 px-md-5 px-0 pt-3">
+    <div class="col-xl-8 col-12 px-md-5 px-0 pt-2">
         <h2><i class="fa-solid fa-user me-2"></i> Biodata Diri</h2>
-        <div class="row mt-5">
+        <div class="row mt-4">
             <div class="col-5">
                 <h4 style="font-family: lato regular; font-weight: bold;">Nama</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular;">: {{$user[0]['nama']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user[0]['nama']}}</h4>
             </div>
         </div>
         <div class="row mt-3">
@@ -26,7 +26,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Tanggal Lahir</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular;">: {{$user[0]['tgl_lahir']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user[0]['tgl_lahir']}}</h4>
             </div>
         </div>
         <div class="row mt-3">
@@ -34,7 +34,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Email</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular;">: {{$user[0]['email']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user[0]['email']}}</h4>
             </div>
         </div>
         <div class="row mt-3">
@@ -42,7 +42,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Jenis Kelamin</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular;">: {{$user[0]['jenis_kelamin']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user[0]['jenis_kelamin']}}</h4>
             </div>
         </div>
         <div class="row mt-3">
@@ -50,7 +50,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Nomor Handphone</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular;">: 081234567890</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: 081234567890</h4>
             </div>
         </div>
         <form class="mt-4" action="">
