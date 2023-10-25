@@ -2,10 +2,30 @@
 
    @section('content')
    <style>
+       * {
+           font-family: Lato;
+       }
+
        .hero-Transaksi {
            margin-top: 100px;
        }
+
+       icon-shape {
+           display: inline-flex;
+           align-items: center;
+           justify-content: center;
+           text-align: center;
+           vertical-align: middle;
+       }
+
+       .icon-sm {
+           width: 2rem;
+           height: 2rem;
+
+       }
    </style>
+
+
 
    <body>
        <!-- End Nav bar -->
@@ -61,12 +81,12 @@
                                <div class="col-8 bg-light p-4 mb-2 "> <!--konten kanan  (tombol dan deskripsi )-->
                                    <div class="row justify-content-start align-items-start p-2">
                                        <div class="col-6"> <!--konten kiri  (deskripsi)-->
-                                           <h3 style="color: #03ACF2;"> judul</h3>
+                                           <h2 style="color: #03ACF2;"> {{$obat[0]['nama_obat']}}</h2>
                                            <div class="row mb-2 justify-content-start align-items-start"> <!--Label-->
                                                <div class="col-6"> <!--konten kiri  (nama)-->
                                                    Label Produk
                                                </div>
-                                               <div class="col-3 text-center border border-primary rounded-pill"> <!--konten kiri  (penjelasa label)-->
+                                               <div class="col-3 text-center border border-primary rounded-pill text-bg-{{ $keranjang[0]['golongan'] == 'bebas' ? 'warning' : ($keranjang[0]['golongan'] == 'Silver' ? 'keras' : 'dark') }} border-dark border border-3"> <!--konten kiri  (penjelasa label)-->
                                                    Umum
                                                </div>
                                            </div>
@@ -75,7 +95,7 @@
                                                    Harga
                                                </div>
                                                <div class="col-6"> <!--konten kiri  (penjelasa harga)-->
-                                                   Rp. 12345
+                                                   Rp. {{$obat[0]['harga']}}
                                                </div>
                                            </div>
                                            <div class="row mb-2 justify-content-start align-items-start "> <!--Jumlah-->
@@ -105,7 +125,7 @@
 
                                        </div>
                                    </div>
-                                   <div class="row justify-content-start align-items-start p-3">
+                                   <div class="row justify-content-start align-items-start p-3 fw-lighter">
                                        deskripsi : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla leo risus, porta vel massa eget, vulputate ultricies sem. Maecenas aliquet risus nec lacus cursus volutpat. Sed at nisi sed lacus posuere rhoncus eget non dolor. Sed eleifend odio et risus consequat, a convallis nisi aliquet.
                                    </div>
                                </div>
@@ -146,6 +166,9 @@
                        </div>
                    </div>
 
+                   <!-- \\\\ -->
+
+                   <!-- \\\\\ -->
 
                    <div class="card card mb-4 p-4"> <!--card deskripsi-->
                        <div class="card-header bg-transparent mb-0">

@@ -25,7 +25,8 @@ Route::get('/', function () {
             "nama_obat" => "ALUDONNA D SUSP 150ML",
             "harga" => "Rp 12.000,- / Botol",
             "jenis_obat" => 'Sirup',
-            "kategori_obat" => "Flu dan Batuk"
+            "kategori_obat" => "Flu dan Batuk",
+            "label" => "umum"
         ],
         [
             "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201610040210071922_386-Aludonna.jpg",
@@ -33,7 +34,8 @@ Route::get('/', function () {
             "nama_obat" => "ALUDONNA D TABLET",
             "harga" => "Rp 5.232,- / Strip",
             "jenis_obat" => 'Tablet',
-            "kategori_obat" => "Obat Demam"
+            "kategori_obat" => "Obat Demam",
+            "label" => "umum"
         ],
         [
             "image" => "https://images.k24klik.com/product/apotek_online_k24klik_2016022503274913_aludonna.jpg",
@@ -417,13 +419,15 @@ Route::get('/transaksi', function () {
 
     session(['ulasan' => $ulasan]);
     $obat = session('daftarObat');
+    $keranjang = session('keranjang');
 
     return view(
         'transaksi',
         [
             'title' => 'Transaksi',
             'obat' => $obat,
-            'ulasan' => $ulasan
+            'ulasan' => $ulasan,
+            'keranjang' => $keranjang,
         ]
     );
 });
