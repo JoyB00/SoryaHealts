@@ -17,21 +17,22 @@
                 <th>Bayar</th>
                 <th></th>
             </thead>
-            @for($item=0; $item < 5; $item++) <tr>
-                <th style="width: 150px;"><img src="images/Register.png" alt="gambarProduk" style="width: 120px;"></th>
-                <th class="py-5">TRENTAL 400MG TABLET (per Tablet)</th>
-                <th class="py-5">Rp <?php echo number_format(100000) ?> / Tablet</th>
+            @for($item=0; $item < count($keranjang); $item++) <tr>
+                <th style="width: 150px;"><img src="{{$keranjang[$item]['image']}}" alt="gambarProduk" style="width: 120px;"></th>
+                <th class="py-5">{{$keranjang[$item]['nama_obat']}}</th>
+                <th class="py-5">Rp <?php echo number_format($keranjang[$item]['harga']) ?> / {{$keranjang[$item]['jenis_obat']}}</th>
                 <th class="pt-3">
                     <div class="mb-3">
                         <label for="kuantitas" class="form-label"></label>
-                        <select id="kuantitas" class="form-select">
+                        <select id="kuantitas" class="form-select" aria-valuenow="">
+                            <option selected> {{$keranjang[$item]['jumlah']}}</option>
                             @for($i=5; $i<=100; $i+=5) <option>{{$i}}</option>
                                 @endfor
                         </select>
                     </div>
                 </th>
                 <th style="width: 150px;"></th>
-                <th class="py-5">Rp <?php echo number_format(120000) ?></th>
+                <th class="py-5">Rp <?php echo number_format($keranjang[$item]['harga'] * $keranjang[$item]['jumlah']) ?></th>
                 <th class="py-5"><a class="link mx-auto" href=""><i class="fa-solid fa-trash"></i></a></th>
                 </tr>
                 @endfor
@@ -57,7 +58,7 @@
                 <h5>Subtotal Harga : Rp <?php echo number_format(120000) ?></h5>
             </div>
             <div class="card-body">
-                <a href="#" class="btn btn-primary pt-2" id="lanjutkanPembayaran"><i class="fa-solid fa-receipt me-2"></i> Lanjutkan Pembayaran</a>
+                <a href="{{url('halamanBeli')}}" class="btn btn-primary pt-2" id="lanjutkanPembayaran"><i class="fa-solid fa-receipt me-2"></i> Lanjutkan Pembayaran</a>
                 <h5 class="text-danger mt-2" style="font-size: 12px; font-style: italic;"><i class="fa-solid fa-warning me-2"></i> cek kembali pesanan anda</h5>
             </div>
         </div>

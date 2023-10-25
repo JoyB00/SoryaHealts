@@ -85,12 +85,12 @@
                         <img class="img-fluid mx-auto" src="{{$item['image']}}">
                         <div class="card-body d-flex flex-column pb-0 mb-0 bg-success text-white">
                             <p><span class="badge rounded-pill border border-white mb-0">{{$item['jenis_obat']}}</span></p>
-                            <a href="{{url('/daftarObat')}}" class="card-title text-obat" style="text-decoration: none; font-size: 18px;">{{$item['nama_obat']}}</a>
+                            <a href="{{url('/transaksi')}}" class="card-title text-obat" style="text-decoration: none; font-size: 18px;">{{$item['nama_obat']}}</a>
                             <p class="card-text  d-block text-white" style="font-family: Lato light;  font-weight: bold;">{{$item['harga']}}</p>
                         </div>
                         <div class="card-footer bg-success border-0" style="background-color: white; border-top: none;">
                             <p class="mt-1 text-white"><span class="badge border border-white rounded-pill">{{$item['kategori_obat']}}</span> </p>
-                            <a href="#" class="btn btn-warning">Lihat Detail</a>
+                            <a href="{{url('/transaksi')}}" class="btn btn-warning">Lihat Detail</a>
                         </div>
                     </div>
                 </div>

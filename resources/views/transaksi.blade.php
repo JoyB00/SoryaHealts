@@ -48,7 +48,7 @@
                                            <hr>
                                            <br>
                                            <br>
-                                           <div class="carousel-indicators justify-content-middle">
+                                           <div class="carousel-indicators justify-content">
                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" aria-label="Slide 3">
                                                    <img src="{{$obat[0]['image']}}" class="d-block w-100" alt="...">
                                                </button>
@@ -108,8 +108,10 @@
 
                                        </div>
                                        <div class="col-6"> <!--konten kiri  (tombol)-->
-                                           <div class="nav mx-sm-0 mx-auto">
-                                               <a href="{{url('/halamanBeli')}}" class="nav-link text-bg-success rounded text-center" style="width: 400px; height:50px; display: flex; justify-content: center; align-items: center;">Tambah Keranjang</a>
+                                           <div class="nav mx-sm-0 mx-auto row">
+                                               <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahKeranjang">
+                                                   Tambah Keranjang
+                                               </button>
 
                                            </div>
 
@@ -143,7 +145,7 @@
                                        <img class="img-fluid mx-auto" src="{{$obat[$i]['image']}}">
                                        <div class="card-body d-flex flex-column pb-0 mb-0 bg-success">
                                            <p><span class="badge rounded-pill border border-white mb-0">{{$obat[$i]['jenis_obat']}}</span></p>
-                                           <a href="{{url('/daftarObat')}}" class="card-title text-obat" style="text-decoration: none; font-size: 18px;">{{$obat[$i]['nama_obat']}}</a>
+                                           <a href="{{url('/daftarObat')}}" class="card-title text-obat text-white" style="text-decoration: none; font-size: 18px;">{{$obat[$i]['nama_obat']}}</a>
                                            <p class="card-text  d-block text-white" style="font-family: Lato light;  font-weight: bold;">{{$obat[$i]['harga']}}</p>
                                        </div>
                                        <div class="card-footer bg-success border-0" style="background-color: white; border-top: none;">
@@ -167,14 +169,18 @@
                            <!-- isi comment -->
                            @for($i=0; $i < count($ulasan); $i++) <div class="card mb-3">
                                <div class="row g-0">
-                                   <div class="col-md-2">
-                                       <img src="..." class="img-fluid rounded-start" alt="...">
+                                   <div class="col-md-2 py-3">
+                                       <img src="https://cdn3d.iconscout.com/3d/premium/thumb/men-with-red-cloth-4929602-4118345.png" class="img-fluid rounded-start" alt="...">
                                    </div>
                                    <div class="col-md-10">
                                        <div class="card-body">
                                            <h5 class="card-title">{{$ulasan[$i]['nama']}}</h5>
                                            <p class="card-text">{{$ulasan[$i]['pesan']}}</p>
-                                           <p class="card-text">BIntang</p>
+                                           <p class="card-text">
+                                               @for($j=0; $j < $ulasan[$i]['bintang']; $j++) <i class="fa-solid fa-star" style="color: #ffdd00;"></i>
+                                                   @endfor
+
+                                           </p>
                                            <p class="card-text"><small class="text-muted">{{$ulasan[$i]['waktu']}}</small></p>
                                        </div>
                                    </div>
@@ -214,3 +220,21 @@
 
    </body>
    @endsection
+
+   <div class="modal fade" id="tambahKeranjang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered">
+           <div class="modal-content">
+               <div class="modal-header bg-success">
+                   <h5 class="modal-title text-white" id="staticBackdropLabel">Berhasil Ditambahkan Ke Keranjang !</h5>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                   Ingin lihat keranjang anda ?
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Keluar</button>
+                   <a href="{{url('keranjang')}}" class="btn btn-success">Lihat Keranjang</a>
+               </div>
+           </div>
+       </div>
+   </div>

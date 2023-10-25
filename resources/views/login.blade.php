@@ -31,7 +31,7 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></ul>
 
                 <div class="text-end">
-                    <a href="{{url('/')}}" class="OTWLogin">
+                    <a href="{{url('/register')}}" class="OTWLogin">
                         <span>Register</span>
                     </a>
                     <span class="verticalLine"></span>
@@ -135,15 +135,15 @@
                     </div>
 
                     <div class="tampung">
-                        <form class="row g-3" action="{{ route('loginCheck') }}" method="POST">
+                        <form class="row g-3" action="{{ route('loginCheck') }}" method="POST" id="login-form">
                             @csrf
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" id="inputName4" >
+                                <input type="email" name="email" class="form-control" id="email" required>
                             </div>
                             <div class="col-md-8 offset-md-2">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control custom-input" id="inputPassword4">
+                                <input type="password" name="password" class="form-control custom-input" id="password" required>
                             </div>
                             <div class="form-check offset-md-2 mb-4">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="form-check-input" value="1">
@@ -223,6 +223,27 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginForm = document.getElementById("login-form");
+
+            loginForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                if (email === "admin@gmail.com" && password === "admin") {
+                    // Arahkan ke halaman admin setelah login berhasil
+                    window.location.href = "{{url('admin')}}";
+                } else if (email != "" && password != "") {
+                    loginForm.method = "POST";
+                    loginForm.action = "{{ url('loginCheck')}}";
+                    loginForm.submit();
+                }
+            });
+        });
     </script>
 </body>
 

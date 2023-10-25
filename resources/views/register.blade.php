@@ -134,41 +134,33 @@
                     </div>
 
                     <div class="tampung">
-                        <form class="row g-3" action="">
+                        <form class="row g-3" method="get" action="{{url('/login')}}">
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="nama" class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" id="inputName4">
+                                <input type="text" name="nama" class="form-control" id="inputName4" required>
                             </div>
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="noTelp" class="form-label">Nomor Telepon</label>
-                                <input type="number" name="noTelp" class="form-control" id="inputName4">
+                                <input type="number" name="noTelp" class="form-control" id="inputName4" required>
                             </div>
-                            <!-- <div class="col-md-8 offset-md-2 col-12">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" name="JenisKelamin" class="form-control" id="inputName4">
-                            </div>
-                            <div class="col-md-8 offset-md-2 col-12">
-                                <label for="tglLahir" class="form-label">Tanggal Lahir</label>
-                                <input type="month" name="tglLahir" class="form-control" id="inputName4">
-                            </div> -->
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" id="inputName4">
+                                <input type="email" name="email" class="form-control" id="inputName4" required>
                             </div>
                             <div class="col-md-3 offset-md-2">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control custom-input" id="inputPassword4">
+                                <input type="password" name="password" class="form-control custom-input" id="inputPassword4" required>
                             </div>
                             <div class="col-md-3 offset-md-2">
                                 <label for="re-password" class="form-label">Re-Password</label>
-                                <input type="password" name="re-password" class="form-control custom-input" id="inputRePassword4">
+                                <input type="password" name="re-password" class="form-control custom-input" id="inputRePassword4" required>
                             </div>
                             <div class="form-check offset-md-2 mb-2">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="form-check-input" value="1">
+                                <input type="checkbox" name="remember-me" id="remember-me" class="form-check-input" value="1" required>
                                 <label class="form-check-label" for="remember-me">I have read and accept the Terms of <b>Service & Privacy Policy*</b></label>
                             </div>
                             <div class="btn-container">
-                                <button type="submit" class="btn btn-primary col-8">Continue</button>
+                                <button type="submit" class="btn btn-primary col-8">Register</button>
                             </div>
                         </form>
                     </div>

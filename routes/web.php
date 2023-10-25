@@ -562,7 +562,7 @@ Route::post('/profileUpdate', function (Illuminate\Http\Request $request) {
         $imageUrl = asset('images/' . $image->getClientOriginalName());
         $user[0]['profile'] = $imageUrl;
     }
-    
+
 
 
     $user[0]['nama'] = $name;
@@ -594,10 +594,55 @@ Route::get('/daftarAlamatChecked', function () {
 });
 
 Route::get('/keranjang', function () {
+    $keranjang = [
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201806080341004677_aludonna-d-SYR.jpg",
+            "product_box_URL" => "aludonna-d-susp-150ml-10149",
+            "nama_obat" => "ALUDONNA D SUSP 150ML",
+            "harga" => 12000,
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Flu dan Batuk",
+            "golongan" => "bebas",
+            "jumlah" => 3
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201610040210071922_386-Aludonna.jpg",
+            "product_box_URL" => "aludonna-d-tab-160s-3873",
+            "nama_obat" => "ALUDONNA D TABLET",
+            "harga" => 5232,
+            "jenis_obat" => 'Tablet',
+            "kategori_obat" => "Obat Demam",
+            "golongan" => "terbatas",
+            "jumlah" => 4
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_2016022503274913_aludonna.jpg",
+            "product_box_URL" => "aludonna-susp-150ml-1604",
+            "nama_obat" => "ALUDONNA SUSP 150ML",
+            "harga" => 12000,
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Flu dan Batuk",
+            "golongan" => "keras",
+            "jumlah" => 5
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190619082944209249_3.-ALUDONNA.jpg",
+            "product_box_URL" => "aludonna-tab-100s-9205",
+            "nama_obat" => "ALUDONNA TABLET",
+            "harga" => 12000,
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Pereda Nyeri",
+            "golongan" => "keras",
+            "jumlah" => 1
+        ],
+    ];
+
+    session(['keranjang' => $keranjang]);
     return view('keranjang', [
         "title" => "Keranjang Belanja",
         'userLogin' => session('userLogint'),
         'user' => session('user'),
+        'keranjang' => $keranjang
     ]);
 });
 Route::get('/testimoni', function () {
@@ -667,7 +712,7 @@ Route::get('/transaksi', function () {
         [
             'nama' => 'user2',
             'pesan' => 'obat murah dan asli, admin ramah dan baik',
-            'bintang' => 5,
+            'bintang' => 4,
             'waktu' => 'minggu, 14 febuari 2012'
         ],
         [
@@ -686,6 +731,7 @@ Route::get('/transaksi', function () {
         'transaksi',
         [
             'title' => 'Transaksi',
+            'user' => session('user'),
             'obat' => $obat,
             'ulasan' => $ulasan,
             'keranjang' => $keranjang,
@@ -724,57 +770,15 @@ Route::get('/halamanBeli', function () {
         ]
     ];
 
-    $keranjang = [
-        [
-            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201806080341004677_aludonna-d-SYR.jpg",
-            "product_box_URL" => "aludonna-d-susp-150ml-10149",
-            "nama_obat" => "ALUDONNA D SUSP 150ML",
-            "harga" => 12000,
-            "jenis_obat" => 'Sirup',
-            "kategori_obat" => "Flu dan Batuk",
-            "golongan" => "bebas",
-            "jumlah" => 3
-        ],
-        [
-            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201610040210071922_386-Aludonna.jpg",
-            "product_box_URL" => "aludonna-d-tab-160s-3873",
-            "nama_obat" => "ALUDONNA D TABLET",
-            "harga" => 5232,
-            "jenis_obat" => 'Tablet',
-            "kategori_obat" => "Obat Demam",
-            "golongan" => "terbatas",
-            "jumlah" => 4
-        ],
-        [
-            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_2016022503274913_aludonna.jpg",
-            "product_box_URL" => "aludonna-susp-150ml-1604",
-            "nama_obat" => "ALUDONNA SUSP 150ML",
-            "harga" => 12000,
-            "jenis_obat" => 'Sirup',
-            "kategori_obat" => "Flu dan Batuk",
-            "golongan" => "keras",
-            "jumlah" => 5
-        ],
-        [
-            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190619082944209249_3.-ALUDONNA.jpg",
-            "product_box_URL" => "aludonna-tab-100s-9205",
-            "nama_obat" => "ALUDONNA TABLET",
-            "harga" => 12000,
-            "jenis_obat" => 'Kapsul',
-            "kategori_obat" => "Pereda Nyeri",
-            "golongan" => "keras",
-            "jumlah" => 1
-        ],
-    ];
 
-    session(['keranjang' => $keranjang]);
     session(['alamat' => $alamat]);
     session(['MetodePembayaran' => $MetodePembayaran]);
     return view(
         'halamanBeli',
         [
             'title' => 'Beli',
-            'keranjang' => $keranjang,
+            'user' => session('user'),
+            'keranjang' => session('keranjang'),
             'alamat' => $alamat,
             'MetodePembayaran' => $MetodePembayaran
         ]
@@ -787,6 +791,7 @@ Route::get('/pembayaran', function () {
         'pembayaran',
         [
             'title' => 'Pembayaran',
+            'user' => session('user'),
             'keranjang' => $keranjang
         ]
     );
@@ -803,191 +808,191 @@ Route::get('/dashboard', function () {
 Route::get('/suppliers', function () {
     return view(
         'Admin/suppliers',
-    [
-        'pemasok' =>[
-            [
-                'no'=> 1,
-                'nama'=> 'Arif Suryo',
-                'noTelp'=> '012312332',
-                'email'=> 'blabla@gmail.com',
-                'action'=> ''
-            ],
-            [
-                'no'=> 2,
-                'nama'=> 'dendy',
-                'noTelp' => '07890128192',
-                'email' => 'lololo@gmail.com',
-                'action' => ''
+        [
+            'pemasok' => [
+                [
+                    'no' => 1,
+                    'nama' => 'Arif Suryo',
+                    'noTelp' => '012312332',
+                    'email' => 'blabla@gmail.com',
+                    'action' => ''
+                ],
+                [
+                    'no' => 2,
+                    'nama' => 'dendy',
+                    'noTelp' => '07890128192',
+                    'email' => 'lololo@gmail.com',
+                    'action' => ''
+                ]
+
             ]
-            
         ]
-    ]
-);
+    );
 });
 
 Route::get('/customers', function () {
     return view(
         'Admin/customers',
-    [
-        'pelanggan' =>[
-            [
-                'no'=> 1,
-                'nama'=> 'Brader',
-                'gender'=> 'L',
-                'noTelp'=> '123',
-                'alamat'=> 'semarang',
-                'tglLahir'=> '12-12-1222',
-                'action'=> ''
-            ],
-            [
-                'no'=> 2,
-                'nama'=> 'Ucok',
-                'gender'=> 'P',
-                'noTelp'=> '1232123',
-                'alamat'=> 'jawa',
-                'tglLahir'=> '13-32-1312',
-                'action'=> ''
+        [
+            'pelanggan' => [
+                [
+                    'no' => 1,
+                    'nama' => 'Brader',
+                    'gender' => 'L',
+                    'noTelp' => '123',
+                    'alamat' => 'semarang',
+                    'tglLahir' => '12-12-1222',
+                    'action' => ''
+                ],
+                [
+                    'no' => 2,
+                    'nama' => 'Ucok',
+                    'gender' => 'P',
+                    'noTelp' => '1232123',
+                    'alamat' => 'jawa',
+                    'tglLahir' => '13-32-1312',
+                    'action' => ''
+                ]
+
             ]
-            
         ]
-    ]
-);
+    );
 });
 
 Route::get('/users', function () {
     return view(
         'Admin/users',
-    [
-        'pekerja' =>[
-            [
-                'no'=> 1,
-                'id'=> 'SP2023',
-                'nama'=> 'Pariban',
-                'email'=> 'pariban@gmail.com',
-                'password'=> '123321',
-                'action' => ''
-            ],
-            [
-                'no'=> 2,
-                'id'=> 'SL2022',
-                'nama'=> 'Alibaba',
-                'email'=> 'Alibaba@gmail.com',
-                'password'=> '789987',
-                'action' => ''
+        [
+            'pekerja' => [
+                [
+                    'no' => 1,
+                    'id' => 'SP2023',
+                    'nama' => 'Pariban',
+                    'email' => 'pariban@gmail.com',
+                    'password' => '123321',
+                    'action' => ''
+                ],
+                [
+                    'no' => 2,
+                    'id' => 'SL2022',
+                    'nama' => 'Alibaba',
+                    'email' => 'Alibaba@gmail.com',
+                    'password' => '789987',
+                    'action' => ''
+                ]
+
             ]
-            
         ]
-    ]
-);
+    );
 });
 
 Route::get('/products', function () {
     return view(
         'Admin/products',
-    [
-        'obat' =>[
-            [
-                'no'=> 1,
-                'id'=> 'P2023',
-                'nama'=> 'Panadol',
-                'golongan'=> 'Strip',
-                'jenis'=> 'Obat Demam',
-                'dosis'=> '3mg',
-                'deskripsi'=> 'lorem lorem baelah',
-                'stock' => 23,
-                'action' => ''
-            ],
-            [
-                'no'=> 2,
-                'id'=> 'R2023',
-                'nama'=> 'Rhinofed',
-                'golongan'=> 'Strip',
-                'jenis'=> 'Obat Pilek',
-                'dosis'=> '7mg',
-                'deskripsi'=> 'lorem lorem ajlaah',
-                'stock' => 22,
-                'action' => ''
+        [
+            'obat' => [
+                [
+                    'no' => 1,
+                    'id' => 'P2023',
+                    'nama' => 'Panadol',
+                    'golongan' => 'Strip',
+                    'jenis' => 'Obat Demam',
+                    'dosis' => '3mg',
+                    'deskripsi' => 'lorem lorem baelah',
+                    'stock' => 23,
+                    'action' => ''
+                ],
+                [
+                    'no' => 2,
+                    'id' => 'R2023',
+                    'nama' => 'Rhinofed',
+                    'golongan' => 'Strip',
+                    'jenis' => 'Obat Pilek',
+                    'dosis' => '7mg',
+                    'deskripsi' => 'lorem lorem ajlaah',
+                    'stock' => 22,
+                    'action' => ''
+                ]
+
             ]
-            
         ]
-    ]
-);
+    );
 });
 
 Route::get('/transactions_stockIn', function () {
     return view(
         'Admin/transactions_stockIn',
-    [
-        'obat' =>[
-            [
-                'no'=> 1,
-                'id'=> 'P2023',
-                'nama'=> 'Panadol',
-                'qty'=> 3,
-                'action' => ''
-            ],
-            [
-                'no'=> 2,
-                'id'=> 'M2023',
-                'nama'=> 'Medixon',
-                'qty'=> 4,
-                'action' => ''
+        [
+            'obat' => [
+                [
+                    'no' => 1,
+                    'id' => 'P2023',
+                    'nama' => 'Panadol',
+                    'qty' => 3,
+                    'action' => ''
+                ],
+                [
+                    'no' => 2,
+                    'id' => 'M2023',
+                    'nama' => 'Medixon',
+                    'qty' => 4,
+                    'action' => ''
+                ]
+
             ]
-            
         ]
-    ]
-);
+    );
 });
 
 Route::get('/transactions_stockOut', function () {
     return view(
         'Admin/transactions_stockOut',
-    [
-        'obat' =>[
-            [
-                'no'=> 1,
-                'id'=> 'P2023',
-                'nama'=> 'Panadol',
-                'qty'=> 3,
-                'action' => ''
+        [
+            'obat' => [
+                [
+                    'no' => 1,
+                    'id' => 'P2023',
+                    'nama' => 'Panadol',
+                    'qty' => 3,
+                    'action' => ''
+                ]
             ]
         ]
-    ]
-);
+    );
 });
 
 Route::get('/reports_sales', function () {
     return view(
         'Admin/reports_sales',
-    [
-        'hasil_jual' =>[
-            [
-                'no'=> 1,
-                'nama'=> 'Panadol',
-                'harga'=> 12000,
-                'qty'=> 3,
-                'total'=> 36000,
-                'action' => ''
+        [
+            'hasil_jual' => [
+                [
+                    'no' => 1,
+                    'nama' => 'Panadol',
+                    'harga' => 12000,
+                    'qty' => 3,
+                    'total' => 36000,
+                    'action' => ''
+                ]
             ]
         ]
-    ]
-);
+    );
 });
 
 Route::get('/reports_stockIn', function () {
     return view(
         'Admin/reports_stockIn',
-    [
-        'hasil_masuk' =>[
-            [
-                'no'=> 1,
-                'nama'=> 'Panadol',
-                'harga'=> 12000,
-                'qty'=> 3,
-                'total'=> 36000,
-                'action' => ''
+        [
+            'hasil_masuk' => [
+                [
+                    'no' => 1,
+                    'nama' => 'Panadol',
+                    'harga' => 12000,
+                    'qty' => 3,
+                    'total' => 36000,
+                    'action' => ''
+                ]
             ]
         ]
-    ]
-);
+    );
 });
