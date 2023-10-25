@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -26,6 +27,24 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+  <style>
+    .sidebar{
+      background-color: #00579b;
+    }
+
+    .brand-link{
+      background-color: white;
+    }
+
+    span.brand-text.font-weight-light{
+      color: black;
+    }
+    
+    .main-sidebar .nav-link.active {
+        color: white; /* Ganti dengan warna yang Anda inginkan, dalam hal ini putih */
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -116,8 +135,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
 
-      <a href="index3.html" class="brand-link">
-        <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+      <a href="#" class="brand-link">
+        <img src="{{asset('images/logooo-01.png')}}" alt="SorYaHealts Logo" class="brand-image" style="width: 35px;">
         <span class="brand-text font-weight-light">SorYaHealts</span>
       </a>
 
@@ -168,7 +187,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('products')}}" class="nav-link">
+              <a href="{{url('products')}}" class="nav-link{{ Request::is('products*') ? ' active' : '' }}">
                 <i class="nav-icon fas fa-box"></i>
                 <p>
                   Products
@@ -198,10 +217,10 @@
                 </li>
               </ul>
             </li>
-            
+
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cart-shopping"></i>
+                <i class="nav-icon fas fa-money"></i>
                 <p>
                   Transactions
                   <i class="fas fa-angle-left right"></i>
@@ -260,10 +279,10 @@
 
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+      <strong>Copyright &copy; 2014-2023 <a href="#">SorYaHealts</a>.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.2.0
+        <!-- <b>Version</b> 3.2.0 -->
       </div>
     </footer>
 

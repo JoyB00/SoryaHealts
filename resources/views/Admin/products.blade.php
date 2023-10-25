@@ -33,7 +33,7 @@
             <th>Dosis</th>
             <th>Deskripsi Obat</th>
             <th>Stock</th>
-            <th  style="width: 200px;">Action</th>
+            <!-- <th  style="width: 200px;">Action</th> -->
         </tr>
         @forelse ($obat as $item)
         <tr>
@@ -45,10 +45,10 @@
             <td>{{ $item["dosis"] }}</td>
             <td>{{ $item["deskripsi"] }}</td>
             <td>{{ $item["stock"] }}</td>
-            <td class="d-flex justify-content-between" style="width: 200px;">
+            <!-- <td class="d-flex justify-content-between" style="width: 200px;">
                 <a href="" class="btn btn-primary ms-1" style="border-radius: 10px;" data-toggle="modal" data-target="#updateModal">Update</a>
                 <a href="" class="btn btn-danger" style="border-radius: 10px;" data-toggle="modal" data-target="#deleteModal">Delete</a>
-            </td>
+            </td> -->
         </tr>
         @empty
         <div class="alert alert-danger">Data Kelas masi kosong</div>
