@@ -21,7 +21,7 @@
                    <div class="col-md-12"> <!-- ukuran dari form pembatas -->
                        <div class="card mb-4 p-4">
                            <div class="row m-2">
-                               <div class="col-4"> <!--konten kiri  (gambar)-->
+                               <div class="col-xl-4 col-12"> <!--konten kiri  (gambar)-->
                                    <div class="row">
                                        <div id="carouselExampleIndicators" class="carousel slide">
                                            <div class="carousel-inner">
@@ -66,7 +66,7 @@
                                    </div>
                                </div>
 
-                               <div class="col-8 bg-light p-4 mb-2 "> <!--konten kanan  (tombol dan deskripsi )-->
+                               <div class="col-xl-8 col-12 bg-light p-4 mb-2 "> <!--konten kanan  (tombol dan deskripsi )-->
                                    <div class="row justify-content-start align-items-start p-2">
                                        <div class="col-6"> <!--konten kiri  (deskripsi)-->
                                            <h2 style="color: #03ACF2;"> {{$obat[0]['nama_obat']}}</h2>
@@ -74,7 +74,7 @@
                                                <div class="col-6"> <!--konten kiri  (nama)-->
                                                    Label Produk
                                                </div>
-                                               <div class="col-3 text-center border border-primary rounded-pill text-bg-{{ $keranjang[0]['golongan'] == 'bebas' ? 'warning' : ($keranjang[0]['golongan'] == 'Silver' ? 'keras' : 'dark') }} border-dark border border-3"> <!--konten kiri  (penjelasa label)-->
+                                               <div class="col-6 text-center border border-primary rounded-pill text-bg-{{ $keranjang[0]['golongan'] == 'bebas' ? 'warning' : ($keranjang[0]['golongan'] == 'Silver' ? 'keras' : 'dark') }} border-dark border border-3"> <!--konten kiri  (penjelasa label)-->
                                                    Umum
                                                </div>
                                            </div>
@@ -82,15 +82,15 @@
                                                <div class="col-6"> <!--konten kiri  (nama)-->
                                                    Harga
                                                </div>
-                                               <div class="col-6"> <!--konten kiri  (penjelasa harga)-->
-                                                   Rp. {{$obat[0]['harga']}}
+                                               <div class="col-xl-6 col-12"> <!--konten kiri  (penjelasa harga)-->
+                                                   {{$obat[0]['harga']}}
                                                </div>
                                            </div>
                                            <div class="row mb-2 justify-content-start align-items-start "> <!--Jumlah-->
                                                <div class="col-6"> <!--konten kiri  (nama)-->
                                                    Jumlah
                                                </div>
-                                               <div class="col-6"> <!--konten kiri  (penjelasa jumlah)-->
+                                               <div class="col-xl-6 col-12"> <!--konten kiri  (penjelasa jumlah)-->
                                                    <div class="row justify-content-center align-items-center g-2">
 
                                                        <div class="col-4">

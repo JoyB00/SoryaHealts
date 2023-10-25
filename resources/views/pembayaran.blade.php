@@ -30,17 +30,17 @@
                                            </div>
                                            <div class="col-10">
                                                <strong>{{$keranjang[$i]['nama_obat']}}</strong>
-                                               <div class="row justify-content-center g-2">
-                                                   <div class="col-2">Deskripsi</div>
-                                                   <div class="col-10">: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                               <div class="row mt-2">
+                                                   <div class="col-xl-2 col-12">Deskripsi</div>
+                                                   <div class="col-xl-10 col-12">: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                                                </div>
-                                               <div class="row justify-content-center align-items-center g-2">
-                                                   <div class="col-2">Harga</div>
-                                                   <div class="col-10">: Rp {{$keranjang[$i]['harga']}}</div>
+                                               <div class="row mt-2">
+                                                   <div class="col-xl-2 col-12">Harga</div>
+                                                   <div class="col-xl-10 col-12">: Rp {{$keranjang[$i]['harga']}}</div>
                                                </div>
-                                               <div class="row justify-content-center align-items-center g-2">
-                                                   <div class="col-2">Jumlah</div>
-                                                   <div class="col-10">: {{$keranjang[$i]['jumlah']}}</div>
+                                               <div class="row mt-2">
+                                                   <div class="col-xl-2 col-12">Jumlah</div>
+                                                   <div class="col-xl-10 col-12">: {{$keranjang[$i]['jumlah']}}</div>
                                                </div>
                                            </div>
                                        </div>
@@ -49,7 +49,7 @@
 
                            </div>
                            <div class="row g-4 m-2 p-4 justify-content-center align-items-center">
-                               <div class="col-6">
+                               <div class="col-xl-6 col-12">
                                    <div class="card card mb-4 p-4">
                                        <div class="card-header bg-transparent mb-2">
                                            <h5 class="text-start"> Metode Pembayaran</h5>
@@ -68,7 +68,7 @@
                                    </div>
 
                                </div>
-                               <div class="col-6">
+                               <div class="col-xl-6 col-12">
                                    <div class="card-header bg-transparent mb-2">
 
                                        <div class="row justify-content-center align-items-center g-2">
