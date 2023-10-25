@@ -111,7 +111,7 @@
             radial-gradient(at 23% 93%, hsla(82, 62%, 61%, 1) 0px, transparent 50%),
             radial-gradient(at 51% 95%, hsla(19, 78%, 73%, 1) 0px, transparent 50%);
 
-        border-radius: 10px 10px 0px 0px ;
+        border-radius: 10px 10px 0px 0px;
     }
 </style>
 

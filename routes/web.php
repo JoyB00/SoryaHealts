@@ -393,47 +393,136 @@ Route::get('/login', function () {
 });
 
 Route::get('/transaksi', function () {
+
+    $ulasan = [
+        [
+            'nama' => 'user1',
+            'pesan' => 'obat sangat manjur, admin ramah dan baik',
+            'bintang' => 5,
+            'waktu' => 'senin, 12 januari 2012'
+        ],
+        [
+            'nama' => 'user2',
+            'pesan' => 'obat murah dan asli, admin ramah dan baik',
+            'bintang' => 5,
+            'waktu' => 'minggu, 14 febuari 2012'
+        ],
+        [
+            'nama' => 'user3',
+            'pesan' => 'pengiriman cepat, pilihan obat banyak',
+            'bintang' => 5,
+            'waktu' => 'kamis, 14 maret 2012'
+        ]
+    ];
+
+    session(['ulasan' => $ulasan]);
+    $obat = session('daftarObat');
+
     return view(
         'transaksi',
         [
-            'obat' => [
-                ["nama_obat" => "obat 1"],
-                ["jenis_obat" => "umum"],
-                ["kategori_obat" => "oles"],
-                ["golongan_obat" => "semua umur"],
-                ["harga_obat" => 1000],
-                ["stock_obat" => 100],
-                ["dosis_obat" => 10],
-                ["deskripsi" => "obat untuk orang sakit kulit"],
-            ],
-            [
-                ["nama_obat" => "obat 2"],
-                ["jenis_obat" => "anjuran Dokter"],
-                ["kategori_obat" => "minum"],
-                ["golongan_obat" => "dewasa"],
-                ["harga_obat" => 9000],
-                ["stock_obat" => 100],
-                ["dosis_obat" => 5],
-                ["deskripsi" => "obat untuk orang sakit lambung"],
-            ],
-            [
-                ["nama_obat" => "obat 3"],
-                ["jenis_obat" => "umum"],
-                ["kategori_obat" => "minum"],
-                ["golongan_obat" => "balita"],
-                ["harga_obat" => 1900],
-                ["stock_obat" => 100],
-                ["dosis_obat" => 10],
-                ["deskripsi" => "obat untuk balita yang demam"],
-            ]
+            'title' => 'Transaksi',
+            'obat' => $obat,
+            'ulasan' => $ulasan
         ]
     );
 });
 
 Route::get('/halamanBeli', function () {
-    return view('halamanBeli');
+    $alamat = [
+        [
+            "alamat_lengkap" => "Jalan Melati No. 456, Desa Harapan Jaya, Kabupaten Mawar Sejahtera, Provinsi Cinta Damai",
+        ],
+        [
+            "alamat_lengkap" => "Jalan Mawar No. 123, Desa Bunga Indah, Kabupaten Serumpun, Provinsi Damai Sejati",
+        ],
+        [
+            "alamat_lengkap" => "Jalan Anggrek 789, Desa Mekar Sari, Kabupaten Bunga Abadi, Provinsi Sejuk Indah",
+        ],
+        [
+            "alamat_lengkap" => "Jalan Dahlia 101, Desa Sentosa Makmur, Kabupaten Teratai Bahagia, Provinsi Surga Damai",
+        ]
+    ];
+
+    $MetodePembayaran = [
+        [
+            "metode" => "BCA"
+        ],
+        [
+            "metode" => "BRI"
+        ],
+        [
+            "metode" => "MANDIRI"
+        ],
+        [
+            "metode" => "COD"
+        ]
+    ];
+
+    $keranjang = [
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201806080341004677_aludonna-d-SYR.jpg",
+            "product_box_URL" => "aludonna-d-susp-150ml-10149",
+            "nama_obat" => "ALUDONNA D SUSP 150ML",
+            "harga" => 12000,
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Flu dan Batuk",
+            "golongan" => "bebas",
+            "jumlah" => 3
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201610040210071922_386-Aludonna.jpg",
+            "product_box_URL" => "aludonna-d-tab-160s-3873",
+            "nama_obat" => "ALUDONNA D TABLET",
+            "harga" => 5232,
+            "jenis_obat" => 'Tablet',
+            "kategori_obat" => "Obat Demam",
+            "golongan" => "terbatas",
+            "jumlah" => 4
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_2016022503274913_aludonna.jpg",
+            "product_box_URL" => "aludonna-susp-150ml-1604",
+            "nama_obat" => "ALUDONNA SUSP 150ML",
+            "harga" => 12000,
+            "jenis_obat" => 'Sirup',
+            "kategori_obat" => "Flu dan Batuk",
+            "golongan" => "keras",
+            "jumlah" => 5
+        ],
+        [
+            "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190619082944209249_3.-ALUDONNA.jpg",
+            "product_box_URL" => "aludonna-tab-100s-9205",
+            "nama_obat" => "ALUDONNA TABLET",
+            "harga" => 12000,
+            "jenis_obat" => 'Kapsul',
+            "kategori_obat" => "Pereda Nyeri",
+            "golongan" => "keras",
+            "jumlah" => 1
+        ],
+    ];
+
+    session(['keranjang' => $keranjang]);
+    session(['alamat' => $alamat]);
+    session(['MetodePembayaran' => $MetodePembayaran]);
+    return view(
+        'halamanBeli',
+        [
+            'title' => 'Beli',
+            'keranjang' => $keranjang,
+            'alamat' => $alamat,
+            'MetodePembayaran' => $MetodePembayaran
+        ]
+    );
 });
 
 Route::get('/pembayaran', function () {
-    return view('pembayaran');
+    $keranjang = session('keranjang');
+    return view(
+        'pembayaran',
+        [
+            'title' => 'Pembayaran',
+            'keranjang' => $keranjang
+        ]
+    );
 });
