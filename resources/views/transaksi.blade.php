@@ -94,16 +94,18 @@
                                                    <div class="row justify-content-center align-items-center g-2">
 
                                                        <div class="col-4">
-                                                           <button type="button" class="btn btn-primary btn-lg">+</button>
+                                                           <button type="button" class="btn btn-primary btn-lg" id="decrementButton">-</button>
                                                        </div>
-                                                       <div class="col-4 text-center">1</div>
-
+                                                       <div class=" col-4 text-center">
+                                                           <p id="count">0</p>
+                                                       </div>
                                                        <div class="col-4">
-                                                           <button type="button" class="btn btn-primary btn-lg">-</button>
+                                                           <button type="button" class="btn btn-primary btn-lg" id="incrementButton">+</button>
                                                        </div>
                                                    </div>
                                                </div>
                                            </div>
+
                                        </div>
                                        <div class="col-6"> <!--konten kiri  (tombol)-->
                                            <div class="nav mx-sm-0 mx-auto">
@@ -186,7 +188,29 @@
        </div>
        </div>
 
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+       <script>
+           $(document).ready(function() {
+               // Inisialisasi nilai awal
+               var count = 0;
 
+               // Tangani klik pada tombol increment
+               $('#incrementButton').click(function() {
+                   count++;
+                   // Perbarui teks pada elemen dengan id "count"
+                   $('#count').text(count);
+               });
+
+               $('#decrementButton').click(function() {
+                   if (count > 0) {
+                       count--;
+                       // Perbarui teks pada elemen dengan id "count"
+                       $('#count').text(count);
+                   }
+               });
+           });
+       </script>
 
    </body>
    @endsection
