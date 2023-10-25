@@ -99,20 +99,6 @@
     .profile-photo:hover {
         cursor: pointer;
     }
-
-    .background {
-        background-color: #99ffa0;
-        background-image:
-            radial-gradient(at 97% 21%, hsla(155, 84%, 67%, 1) 0px, transparent 50%),
-            radial-gradient(at 79% 0%, hsla(229, 60%, 74%, 1) 0px, transparent 50%),
-            radial-gradient(at 18% 36%, hsla(178, 67%, 77%, 1) 0px, transparent 50%),
-            radial-gradient(at 97% 92%, hsla(168, 83%, 68%, 1) 0px, transparent 50%),
-            radial-gradient(at 29% 64%, hsla(35, 77%, 74%, 1) 0px, transparent 50%),
-            radial-gradient(at 23% 93%, hsla(82, 62%, 61%, 1) 0px, transparent 50%),
-            radial-gradient(at 51% 95%, hsla(19, 78%, 73%, 1) 0px, transparent 50%);
-
-        border-radius: 10px 10px 0px 0px ;
-    }
 </style>
 
 </head>
@@ -144,16 +130,21 @@
                     </ul>
                     <div class="d-flex justify-content-center" id="navbarNav">
                         <label for="dropdownMenu2">
-                            <img class="img-fluid rounded-circle mt-2 profile-photo" src="{{url('https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png')}}" style="width: 35px; height: 35px; background-color:grey;">
+                            <img class="img-fluid rounded-circle mt-2 profile-photo" src="{{$user[0]['profile']}}" style="width: 35px; height: 35px; background-color:grey;">
                         </label>
                         <div class="dropdown ">
                             <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 25px;">
-                                Candra Sihotang
+                                {{$user[0]['nama']}}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <li><a class="dropdown-item" href="{{url('/profile')}}"><i class="fa-solid fa-user me-2"></i>Profil Anda</a></li>
                                 <li><a class="dropdown-item" href="{{url('/keranjang')}}"><i class="fa-solid fa-cart-shopping me-2"></i> Keranjang Belanja</a></li>
                                 <li><a class="dropdown-item" href="{{url('/testimoni')}}"><i class="fa-solid fa-pen me-2"></i>Tulis Testimoni</a></li>
+
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <li><button class="dropdown-item" type="submit"><i class=" fa-solid fa-right-from-bracket me-2"></i>LogOut</button></li>
+                                </form>
                             </ul>
                         </div>
                     </div>
@@ -165,49 +156,47 @@
     <main>
         @yield('content')
         <!-- footer -->
-        <div class="">
-            <footer class="animate__animated animate__fadeInUp mb-0">
-                <div class="content-footer">
-                    <img src="{{ asset('images/logo.png') }}" alt="logo" class="footer-logo" style="width:150px;">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, nam.</p>
-                    <p>&copy; SorYaHealts 2023</p>
+        <footer class="animate__animated animate__fadeInUp mb-0">
+            <div class="content-footer">
+                <img src="{{ asset('images/logo.png') }}" alt="logo" class="footer-logo" style="width:150px;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, nam.</p>
+                <p>&copy; SorYaHealts 2023</p>
+            </div>
+            <div class="content-footer">
+                <h4>SERVICES</h4>
+                <div class="d-grid gap-3">
+                    <a href="#" style="text-decoration: none; color: black"><span>Pesan Obat?</span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span>Testimoni Apotek</span></a>
                 </div>
-                <div class="content-footer">
-                    <h4>SERVICES</h4>
-                    <div class="d-grid gap-3">
-                        <a href="#" style="text-decoration: none; color: black"><span>Pesan Obat?</span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span>Testimoni Apotek</span></a>
-                    </div>
+            </div>
+            <div class="content-footer">
+                <h4>LOCATIONS</h4>
+                <div class="d-grid gap-3">
+                    <a href="#" style="text-decoration: none; color: black"><span>Yogyakarya</span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span>Batam</span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span>Bali</span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span>Semarang</span></a>
                 </div>
-                <div class="content-footer">
-                    <h4>LOCATIONS</h4>
-                    <div class="d-grid gap-3">
-                        <a href="#" style="text-decoration: none; color: black"><span>Yogyakarya</span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span>Batam</span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span>Bali</span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span>Semarang</span></a>
-                    </div>
+            </div>
+            <div class="content-footer">
+                <h4>KENAPA PILIH SORYAHEALTS?</h4>
+                <div class="d-grid gap-3">
+                    <a href="#" style="text-decoration: none; color: black"><span>Apotik Terbaik</span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span>Kualitas Terbaik</span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span>Fasilitas Modern</span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span>Reputasi Modern</span></a>
                 </div>
-                <div class="content-footer">
-                    <h4>KENAPA PILIH SORYAHEALTS?</h4>
-                    <div class="d-grid gap-3">
-                        <a href="#" style="text-decoration: none; color: black"><span>Apotik Terbaik</span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span>Kualitas Terbaik</span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span>Fasilitas Modern</span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span>Reputasi Modern</span></a>
-                    </div>
+            </div>
+            <div class="content-footer">
+                <div class="footer-sosmed">
+                    <a href="#" style="text-decoration: none; color: black"><span><i class="fa fa-facebook-f" style="font-size:24px"></i></span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf08c;</i></span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf099;</i></span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf030;</i></span></a>
+                    <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf0ac;</i></span></a>
                 </div>
-                <div class="content-footer">
-                    <div class="footer-sosmed">
-                        <a href="#" style="text-decoration: none; color: black"><span><i class="fa fa-facebook-f" style="font-size:24px"></i></span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf08c;</i></span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf099;</i></span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf030;</i></span></a>
-                        <a href="#" style="text-decoration: none; color: black"><span><i style="font-size:24px" class="fa">&#xf0ac;</i></span></a>
-                    </div>
-                </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

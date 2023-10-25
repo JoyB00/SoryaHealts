@@ -28,10 +28,10 @@
 <div class="container p-5 pt-2 ">
     <h2><i class="fa-solid fa-pen me-2"></i> Testimnoni</h2>
     <div class="row">
-        <div class="col-4">
-            <img src="{{asset('images/home.png')}}" alt="" class="mx-auto w-100 my-5">
+        <div class="col-md-4 col-12">
+            <img src="{{asset('images/foto_testimoni.png')}}" alt="" class="mx-auto w-100 my-5">
         </div>
-        <div class="col-8 card">
+        <div class="col-md-8 col-12 card">
             <div class="card-body">
                 <h5 style="text-align: end;">Berikan Rating Apotek SorYaHealts</h5>
                 <form action="">

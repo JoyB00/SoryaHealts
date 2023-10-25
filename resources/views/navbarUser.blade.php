@@ -19,6 +19,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="styles/login_style.css">
+    <link rel="stylesheet" href="styles/owl.carousel.min.css">
+    <link rel="stylesheet" href="styles/owl.theme.default.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 </head>
@@ -178,9 +180,74 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
 
     <script src="js/transition.js"></script>
-
+    <script>
+        $('.owl-carousel-obat').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        })
+        $('.owl-carousel-artikel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+        $('.owl-carousel-artikel-terbaru').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        })
+        $('.owl-carousel-testimoni').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+    </script>
 
 
 

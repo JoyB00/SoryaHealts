@@ -30,8 +30,8 @@
 }
 
 .kategori-box {
-    width: 200px;
-    height: 250px;
+    width: 250px;
+    height: 220px;
     left: 10px;
     object-fit: cover;
     position: relative;
@@ -63,11 +63,10 @@ li {
 a {
     text-decoration: none;
     color: lightslategrey;
-    font-size: 20px;
 
 }
 
-.dropdown{
+.dropdown-obat{
     display: none;
 }
 

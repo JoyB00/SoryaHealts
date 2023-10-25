@@ -1,12 +1,12 @@
 @extends('user')
 
 @section('main')
-<div class="container p-5 pt-2 ">
+<div class="container p-sm-5 p-1 pt-2 mx-md-auto mx-0">
     <div class="d-flex justify-content-between">
         <h2><i class="fa-solid fa-cart-shopping me-2"></i> Troli Belanja Kamu</h2>
         <a href="#lanjutkanPembayaran" class="btn btn-success pt-2"><i class="fa-solid fa-receipt me-2"></i> Bayar</a>
     </div>
-    <div class="mt-3 row mx-2">
+    <div class="mt-3 row mx-md-2 mx-0">
         <table class="table">
             <thead>
                 <th colspan="1">Produk</th>
@@ -38,7 +38,7 @@
         </table>
     </div>
     <div class="mt-3 row mx-2">
-        <div class="card col-6 p-0 ">
+        <div class="card col-md-6 col-12 p-0 ">
             <div class="card-body bg-light">
                 <h5>Syarat & Ketentuan</h5>
             </div>
@@ -52,7 +52,7 @@
                 </ul>
             </div>
         </div>
-        <div class="card col-5 ms-5 p-0">
+        <div class="card col-md-5 col-12 ms-md-5 ms-0 mt-md-0 mt-3 p-0">
             <div class="card-body bg-light">
                 <h5>Subtotal Harga : Rp <?php echo number_format(120000) ?></h5>
             </div>

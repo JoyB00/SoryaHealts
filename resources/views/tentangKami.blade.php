@@ -1,4 +1,4 @@
-@extends('navbarUser')
+@extends(empty(session('userLogint')) || $userLogin[0]['email']==='' ? 'navbarUser' : 'navbarUserLogined')
 
 @section('content')
 <style>

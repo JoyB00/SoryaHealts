@@ -1,0 +1,55 @@
+.profile-container {
+    width: 1211px;
+    height: 600px;
+    object-fit: cover;
+    position: relative;
+    top: 0px;
+    left: 20px;
+    padding-top: 20px;
+    z-index: 2;
+    overflow-x: hidden;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    margin: 0px auto;
+}
+
+.profile-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.profile-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.profile-container::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background: #4CAF50;
+}
+
+a {
+    text-decoration: none;
+    color: grey;
+    transition: 0.2s;
+}
+
+a:hover {
+    transition: 0.2s;
+    color: #03ACF2;
+}
+
+#formFile {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+#labelFile {
+    text-align: center;
+    margin: 20px;
+    cursor: pointer;
+    color: white;
+}
+

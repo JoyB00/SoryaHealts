@@ -31,7 +31,7 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></ul>
 
                 <div class="text-end">
-                    <a href="{{url('register')}}" class="OTWLogin">
+                    <a href="{{url('/')}}" class="OTWLogin">
                         <span>Register</span>
                     </a>
                     <span class="verticalLine"></span>
@@ -135,11 +135,11 @@
                     </div>
 
                     <div class="tampung">
-                        <form class="row g-3" action="{{ url('/') }}" method="GET">
+                        <form class="row g-3" action="{{ route('loginCheck') }}" method="POST">
                             @csrf
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" id="inputName4">
+                                <input type="email" name="email" class="form-control" id="inputName4" >
                             </div>
                             <div class="col-md-8 offset-md-2">
                                 <label for="password" class="form-label">Password</label>

@@ -1,8 +1,10 @@
-@extends('navbarUserLogined')
+@extends(empty(session('userLogint')) || $userLogin[0]['email']==='' ? 'navbarUser' : 'navbarUserLogined')
+
+
 
 @section('content')
 <style>
-    /* .background {
+    .background {
         background-color: #99ffa0;
         background-image:
             radial-gradient(at 97% 21%, hsla(155, 84%, 67%, 1) 0px, transparent 50%),
@@ -14,20 +16,19 @@
             radial-gradient(at 51% 95%, hsla(19, 78%, 73%, 1) 0px, transparent 50%);
 
         border-radius: 0px 0px 200px 200px;
-    } */
+    }
 </style>
 
 <link rel="stylesheet" href="styles/home_style.css">
-<div class="">
+<div class="background">
     <div class=" mb-0 pt-5">
         <div class="row p-md-5 pt-sm-0 px-sm-3 welcome-class">
             <div class="col-sm-6 col-12 mt-5 animate__animated animate__fadeInLeft">
-                <h1 class="ps-5" style="font-size: 3vw;">Selamat Datang di <span style="color: #03ACF2;">SorYaHealts!</span></h1>
+                <h1 class="ps-5" style="font-size: 2.8vw;">Selamat Datang di SorYaHealts!</h1>
                 <p class="ps-5 text-dark">Kami adalah apotek yang berkomitmen untuk memberikan pelayanan kesehatan yang berkualitas kepada Anda dan keluarga</p>
                 <div class="d-flex ps-4">
                     <ul class="nav mx-sm-0 mx-auto">
-                        <li class="nav-item mx-1 "><a href="#" class="nav-link active" aria-current="page">More Info</a></li>
-                        <li class="nav-item mx-1 text-center"><a href="{{url('/login')}}" class="nav-link text-bg-success rounded-pill border-end" style="width: 200px;">Register Now</a></li>
+                        <li class="nav-item ms-3 text-bg-success rounded-pill "><a href="{{url('tentangKami')}}" class="nav-link text-white" aria-current="page">Info Selengkapnya </a></li>
                 </div>
             </div>
             <div class="col-6 container-welcome-img pe-0">
@@ -44,21 +45,21 @@
                             <p><i class="fa-solid fa-user " style="color: #03acf2; font-size: 70px;"></i></p>
                             <h2 class="ms-2 text-success fw-bold">+5000<br><span class="text-black fs-3">Pengguna</span></h2>
                         </div>
-                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. </p>
+                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Lebih dari 5000 pengguna sudah berkunjung dan menjadi bagian keluarga sehat apotek SorYaHealts</p>
                     </a>
                     <a href="#daftar-obat-text" class="col-md-4 col-12 card p-4 my-md-0 my-3 animate__animated animate__zoomIn card-info-obat" style="text-decoration: none;">
                         <div class="d-flex text-left justify-content-center">
                             <p><i class="fa-solid fa-tablets" style="color: #03acf2; font-size: 70px;"></i></p>
                             <h2 class="ms-2 text-success fw-bold">+2000<br><span class="text-black fs-3">Obat</span></h2>
                         </div>
-                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. </p>
+                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Tersedia berbagai macam jenis maupun kategori obat yang membantu menjaga kesehatan anda </p>
                     </a>
                     <a href="#daftar-item-text" class="col-md-4 col-12 card p-4 animate__animated animate__zoomIn card-info-artikel" style="text-decoration: none;">
                         <div class="d-flex text-left justify-content-center ">
                             <p><i class="fa-regular fa-newspaper" style="color: #03acf2; font-size: 70px;"></i></p>
                             <h2 class="ms-2 text-success fw-bold">+100<br><span class="text-black fs-3">Artikel</span></h2>
                         </div>
-                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. </p>
+                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Ketahui berbagai tata cara dalam menjaga kesehatan anda melalui artikel-artikel yang sudah kami sediakan</p>
                     </a>
                 </div>
             </div>

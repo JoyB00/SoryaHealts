@@ -89,7 +89,7 @@ Route::get('/', function () {
             "nama_obat" => "ALUPENT SIRUP 125ML",
             "harga" => "Rp 12.000,- / Botol",
             "jenis_obat" => 'Sirup',
-            "kategori_obat" => "Obat Alergi"
+            "kategori_obat" => "Obat Anti Alergi"
         ],
         [
             "image" => "https://images.k24klik.com/product/apotek_online_k24klik_201903281043364677_ALVITA-100-S.jpg",
@@ -105,7 +105,7 @@ Route::get('/', function () {
             "nama_obat" => "ALXIL 125MG/5ML D SIRUP 60ML",
             "harga" => "Rp 10.500,- / Botol",
             "jenis_obat" => 'Sirup',
-            "kategori_obat" => "Obat Alergi"
+            "kategori_obat" => "Obat Anti Alergi"
         ],
         [
             "image" => "https://images.k24klik.com/product/apotek_online_k24klik_20190423013149209249_AXIL.jpg",
@@ -325,64 +325,325 @@ Route::get('/', function () {
         ],
     ];
 
+    $user = [
+        [
+            "id" => 1,
+            "profile" => "https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png",
+            "nama" => "Candra Sihotang",
+            "tgl_lahir" => "3 Maret 2003",
+            "email" => "candraSihotang12@gmail.com",
+            "jenis_kelamin" => "Pria",
+            "no_hp" => "089456123789",
+            "alamat" => [
+                [
+                    "alamat_lengkap" => "Jalan Melati No. 456, Desa Harapan Jaya, Kabupaten Mawar Sejahtera, Provinsi Cinta Damai",
+                ],
+                [
+                    "alamat_lengkap" => "Jalan Mawar No. 123, Desa Bunga Indah, Kabupaten Serumpun, Provinsi Damai Sejati",
+                ],
+                [
+                    "alamat_lengkap" => "Jalan Anggrek 789, Desa Mekar Sari, Kabupaten Bunga Abadi, Provinsi Sejuk Indah",
+                ],
+                [
+                    "alamat_lengkap" => "Jalan Dahlia 101, Desa Sentosa Makmur, Kabupaten Teratai Bahagia, Provinsi Surga Damai",
+                ]
+            ]
+        ]
+    ];
 
+
+    session(['user' => $user]);
     session(['daftarObat' => $obat]);
     session(['daftarArtikel' => $artikel]);
     session(['testimoni' => $testimoni]);
 
+
     return view('home', [
         "title" => "Home",
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
         'obat' => $obat,
         'artikel' => $artikel,
         'testimoni' => $testimoni
     ]);
-});
+})->name('home');
 
 Route::get('/daftarObat', function () {
 
     $obat = session('daftarObat');
     return view('daftarObat', [
         "title" => "DaftarObat",
-        "obat" => $obat
+        'userLogin' => session('userLogint'),
+        "obat" => $obat,
+        'user' => session('user'),
+        'sort_by' => '',
+    ]);
+});
+Route::get('/daftarObatSirup', function () {
+
+    $obat = session('daftarObat');
+    return view('daftarObat', [
+        "title" => "DaftarObat",
+        'userLogin' => session('userLogint'),
+        "obat" => $obat,
+        'user' => session('user'),
+        'sort_by' => 'Sirup',
+    ]);
+});
+Route::get('/daftarObatKapsul', function () {
+
+    $obat = session('daftarObat');
+    return view('daftarObat', [
+        "title" => "DaftarObat",
+        'userLogin' => session('userLogint'),
+        "obat" => $obat,
+        'user' => session('user'),
+        'sort_by' => 'Kapsul',
+    ]);
+});
+Route::get('/daftarObatTablet', function () {
+
+    $obat = session('daftarObat');
+    return view('daftarObat', [
+        "title" => "DaftarObat",
+        'userLogin' => session('userLogint'),
+        "obat" => $obat,
+        'user' => session('user'),
+        'sort_by' => 'Tablet',
+    ]);
+});
+Route::get('/daftarObatDemam', function () {
+
+    $obat = session('daftarObat');
+    return view('daftarObat', [
+        "title" => "DaftarObat",
+        'userLogin' => session('userLogint'),
+        "obat" => $obat,
+        'user' => session('user'),
+        'sort_by' => 'Obat Demam',
+    ]);
+});
+Route::get('/daftarObatPeredaNyeri', function () {
+
+    $obat = session('daftarObat');
+    return view('daftarObat', [
+        "title" => "DaftarObat",
+        'userLogin' => session('userLogint'),
+        "obat" => $obat,
+        'user' => session('user'),
+        'sort_by' => 'Pereda Nyeri',
+    ]);
+});
+Route::get('/daftarObatAntiAlergi', function () {
+
+    $obat = session('daftarObat');
+    return view('daftarObat', [
+        "title" => "DaftarObat",
+        'userLogin' => session('userLogint'),
+        "obat" => $obat,
+        'user' => session('user'),
+        'sort_by' => 'Obat Anti Alergi',
+    ]);
+});
+Route::get('/daftarObatAntibiotik', function () {
+
+    $obat = session('daftarObat');
+    return view('daftarObat', [
+        "title" => "DaftarObat",
+        'userLogin' => session('userLogint'),
+        "obat" => $obat,
+        'user' => session('user'),
+        'sort_by' => 'Antibiotik',
+    ]);
+});
+Route::get('/daftarObatFludanBatuk', function () {
+
+    $obat = session('daftarObat');
+    return view('daftarObat', [
+        "title" => "DaftarObat",
+        'userLogin' => session('userLogint'),
+        "obat" => $obat,
+        'user' => session('user'),
+        'sort_by' => 'Flu dan Batuk',
     ]);
 });
 
+Route::get('/artikelDetail', function () {
+    $artikel = session('daftarArtikel');
+    return view('detailArtikel', [
+        "title" => "Artikel",
+        "artikel" => $artikel,
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
+        'sort_by' => '',
+    ]);
+});
 Route::get('/artikel', function () {
     $artikel = session('daftarArtikel');
     return view('artikel', [
         "title" => "Artikel",
         "artikel" => $artikel,
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
+        'sort_by' => '',
     ]);
 });
+Route::get('/artikelMakananSehat', function () {
+    $artikel = session('daftarArtikel');
+    return view('artikel', [
+        "title" => "Artikel",
+        "artikel" => $artikel,
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
+        'sort_by' => 'Makanan Sehat',
+    ]);
+});
+Route::get('/artikelDiet', function () {
+    $artikel = session('daftarArtikel');
+    return view('artikel', [
+        "title" => "Artikel",
+        "artikel" => $artikel,
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
+        'sort_by' => 'Diet dan Nutrisi',
+    ]);
+});
+Route::get('/artikelKesehatanFisik', function () {
+    $artikel = session('daftarArtikel');
+    return view('artikel', [
+        "title" => "Artikel",
+        "artikel" => $artikel,
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
+        'sort_by' => 'Kesehatan Fisik',
+    ]);
+});
+Route::get('/artikelKesehatanAnak', function () {
+    $artikel = session('daftarArtikel');
+    return view('artikel', [
+        "title" => "Artikel",
+        "artikel" => $artikel,
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
+        'sort_by' => 'Kesehatan Anak',
+    ]);
+});
+
 Route::get('/tentangKami', function () {
     return view('tentangKami', [
-        "title" => "Tentang Kami"
+        "title" => "Tentang Kami",
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
     ]);
 });
+
 Route::get('/profile', function () {
+
     return view('profile', [
-        "title" => "Profile"
+        "title" => "Profile",
+        "user" => session('user'),
+        'userLogin' => session('userLogint'),
     ]);
-});
+})->name('profile');
+
+Route::post('/profileUpdate', function (Illuminate\Http\Request $request) {
+    $name = $request->input('nama');
+    $email = $request->input('email');
+    $noHp = $request->input('noHp');
+    $tglLahir = $request->input('tglLahir');
+    $gender = $request->input('gender');
+    $image = $request->file('image');
+    $user = $request->session()->get('user');
+    if ($request->hasFile('image')) {
+
+        $imagePath =  $image->move(public_path('images'), $image->getClientOriginalName());
+        $imageUrl = asset('images/' . $image->getClientOriginalName());
+        $user[0]['profile'] = $imageUrl;
+    }
+    
+
+
+    $user[0]['nama'] = $name;
+    $user[0]['email'] = $email;
+    $user[0]['noHp'] = $noHp;
+    $user[0]['tgl_lahir'] = $tglLahir;
+    $user[0]['jenis_kelamin'] = $gender;
+
+    $request->session()->put('user', $user);
+
+    return redirect()->route('profile')->with('success', 'Data sesi diperbarui.');
+})->name('profileUpdate');
+
 Route::get('/daftarAlamat', function () {
     return view('daftarAlamat', [
-        "title" => "Daftar Alamat"
+        "title" => "Daftar Alamat",
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
+        'checked' => ''
     ]);
 });
+Route::get('/daftarAlamatChecked', function () {
+    return view('daftarAlamat', [
+        "title" => "Daftar Alamat",
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
+        'checked' => 'check'
+    ]);
+});
+
 Route::get('/keranjang', function () {
     return view('keranjang', [
-        "title" => "Keranjang Belanja"
+        "title" => "Keranjang Belanja",
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
     ]);
 });
 Route::get('/testimoni', function () {
     return view('testimoni', [
-        "title" => "Testimoni"
+        "title" => "Testimoni",
+        'userLogin' => session('userLogint'),
+        'user' => session('user'),
     ]);
 });
 
 Route::get('/login', function () {
-    return view('login');
-});
+    $userLogin = [
+        [
+            "email" => '',
+            "password" => '',
+        ]
+    ];
+    session(['userLogint' => $userLogin]);
+
+    return view('login', [
+        'userLogin' => session('userLogin'),
+    ]);
+})->name('login');
+
+Route::post('/loginCheck', function (Illuminate\Http\Request $request) {
+
+    $email = $request->input('email');
+    $password = $request->input('password');
+    if ($email == '' || $password == '') {
+        return redirect()->back()->with('error', 'Gagal Login');
+    } else {
+        $userLogin = $request->session()->get('userLogint');
+        $userLogin[0]['email'] = $email;
+        $userLogin[0]['password'] = $password;
+        $request->session()->put('userLogint', $userLogin);
+        return redirect()->route('home');
+    }
+})->name('loginCheck');
+
+Route::post('/logout', function (Illuminate\Http\Request $request) {
+
+    $userLogin = $request->session()->get('userLogint');
+    $userLogin[0]['email'] = '';
+    $userLogin[0]['password'] = '';
+    $request->session()->put('userLogint', $userLogin);
+
+    return redirect()->route('home');
+})->name('logout');
 
 Route::get('/register', function () {
     return view('register');
