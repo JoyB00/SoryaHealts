@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use app\Models\Detail_Transaksi;
 use Illuminate\Http\Request;
 
