@@ -95,7 +95,7 @@ class AlamatController extends Controller
         try {
             $alamat = Alamat::find($id);
             if (!$alamat) {
-                throw new \Exception('Berita tidak ditemukan');
+                throw new \Exception('Alamat tidak ditemukan');
             }
 
             $alamat->delete();
