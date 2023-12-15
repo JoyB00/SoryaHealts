@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\api\AlamatController;
+use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\client\UserClient;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('/alamat', AlamatController::class);
+Route::post('register', [UserClient::class, 'register']);
+Route::post('login', [UserClient::class, 'login'])->name('login');
+Route::get('register/verify/{verify_key}', [UserClient::class, 'verify'])->name('verify');
 
+Route::get('/dashboard', function () {
+    return view('Admin/dashboard');
+})->name('admin');
+
+
+
+// Baruu
 
 Route::get('/', function () {
 
@@ -416,584 +430,439 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/daftarObat', function () {
+// Route::get('/daftarObat', function () {
 
-    $obat = session('daftarObat');
-    return view('daftarObat', [
-        "title" => "DaftarObat",
-        'userLogin' => session('userLogint'),
-        "obat" => $obat,
-        'user' => session('user'),
-        'sort_by' => '',
-    ]);
-});
-Route::get('/daftarObatSirup', function () {
+//     $obat = session('daftarObat');
+//     return view('daftarObat', [
+//         "title" => "DaftarObat",
+//         'userLogin' => session('userLogint'),
+//         "obat" => $obat,
+//         'user' => session('user'),
+//         'sort_by' => '',
+//     ]);
+// });
+// Route::get('/daftarObatSirup', function () {
 
-    $obat = session('daftarObat');
-    return view('daftarObat', [
-        "title" => "DaftarObat",
-        'userLogin' => session('userLogint'),
-        "obat" => $obat,
-        'user' => session('user'),
-        'sort_by' => 'Sirup',
-    ]);
-});
-Route::get('/daftarObatKapsul', function () {
+//     $obat = session('daftarObat');
+//     return view('daftarObat', [
+//         "title" => "DaftarObat",
+//         'userLogin' => session('userLogint'),
+//         "obat" => $obat,
+//         'user' => session('user'),
+//         'sort_by' => 'Sirup',
+//     ]);
+// });
+// Route::get('/daftarObatKapsul', function () {
 
-    $obat = session('daftarObat');
-    return view('daftarObat', [
-        "title" => "DaftarObat",
-        'userLogin' => session('userLogint'),
-        "obat" => $obat,
-        'user' => session('user'),
-        'sort_by' => 'Kapsul',
-    ]);
-});
-Route::get('/daftarObatTablet', function () {
+//     $obat = session('daftarObat');
+//     return view('daftarObat', [
+//         "title" => "DaftarObat",
+//         'userLogin' => session('userLogint'),
+//         "obat" => $obat,
+//         'user' => session('user'),
+//         'sort_by' => 'Kapsul',
+//     ]);
+// });
+// Route::get('/daftarObatTablet', function () {
 
-    $obat = session('daftarObat');
-    return view('daftarObat', [
-        "title" => "DaftarObat",
-        'userLogin' => session('userLogint'),
-        "obat" => $obat,
-        'user' => session('user'),
-        'sort_by' => 'Tablet',
-    ]);
-});
-Route::get('/daftarObatDemam', function () {
+//     $obat = session('daftarObat');
+//     return view('daftarObat', [
+//         "title" => "DaftarObat",
+//         'userLogin' => session('userLogint'),
+//         "obat" => $obat,
+//         'user' => session('user'),
+//         'sort_by' => 'Tablet',
+//     ]);
+// });
+// Route::get('/daftarObatDemam', function () {
 
-    $obat = session('daftarObat');
-    return view('daftarObat', [
-        "title" => "DaftarObat",
-        'userLogin' => session('userLogint'),
-        "obat" => $obat,
-        'user' => session('user'),
-        'sort_by' => 'Obat Demam',
-    ]);
-});
-Route::get('/daftarObatPeredaNyeri', function () {
+//     $obat = session('daftarObat');
+//     return view('daftarObat', [
+//         "title" => "DaftarObat",
+//         'userLogin' => session('userLogint'),
+//         "obat" => $obat,
+//         'user' => session('user'),
+//         'sort_by' => 'Obat Demam',
+//     ]);
+// });
+// Route::get('/daftarObatPeredaNyeri', function () {
 
-    $obat = session('daftarObat');
-    return view('daftarObat', [
-        "title" => "DaftarObat",
-        'userLogin' => session('userLogint'),
-        "obat" => $obat,
-        'user' => session('user'),
-        'sort_by' => 'Pereda Nyeri',
-    ]);
-});
-Route::get('/daftarObatAntiAlergi', function () {
+//     $obat = session('daftarObat');
+//     return view('daftarObat', [
+//         "title" => "DaftarObat",
+//         'userLogin' => session('userLogint'),
+//         "obat" => $obat,
+//         'user' => session('user'),
+//         'sort_by' => 'Pereda Nyeri',
+//     ]);
+// });
+// Route::get('/daftarObatAntiAlergi', function () {
 
-    $obat = session('daftarObat');
-    return view('daftarObat', [
-        "title" => "DaftarObat",
-        'userLogin' => session('userLogint'),
-        "obat" => $obat,
-        'user' => session('user'),
-        'sort_by' => 'Obat Anti Alergi',
-    ]);
-});
-Route::get('/daftarObatAntibiotik', function () {
+//     $obat = session('daftarObat');
+//     return view('daftarObat', [
+//         "title" => "DaftarObat",
+//         'userLogin' => session('userLogint'),
+//         "obat" => $obat,
+//         'user' => session('user'),
+//         'sort_by' => 'Obat Anti Alergi',
+//     ]);
+// });
+// Route::get('/daftarObatAntibiotik', function () {
 
-    $obat = session('daftarObat');
-    return view('daftarObat', [
-        "title" => "DaftarObat",
-        'userLogin' => session('userLogint'),
-        "obat" => $obat,
-        'user' => session('user'),
-        'sort_by' => 'Antibiotik',
-    ]);
-});
-Route::get('/daftarObatFludanBatuk', function () {
+//     $obat = session('daftarObat');
+//     return view('daftarObat', [
+//         "title" => "DaftarObat",
+//         'userLogin' => session('userLogint'),
+//         "obat" => $obat,
+//         'user' => session('user'),
+//         'sort_by' => 'Antibiotik',
+//     ]);
+// });
+// Route::get('/daftarObatFludanBatuk', function () {
 
-    $obat = session('daftarObat');
-    return view('daftarObat', [
-        "title" => "DaftarObat",
-        'userLogin' => session('userLogint'),
-        "obat" => $obat,
-        'user' => session('user'),
-        'sort_by' => 'Flu dan Batuk',
-    ]);
-});
+//     $obat = session('daftarObat');
+//     return view('daftarObat', [
+//         "title" => "DaftarObat",
+//         'userLogin' => session('userLogint'),
+//         "obat" => $obat,
+//         'user' => session('user'),
+//         'sort_by' => 'Flu dan Batuk',
+//     ]);
+// });
 
-Route::get('/artikelDetail', function () {
-    $artikel = session('daftarArtikel');
-    return view('detailArtikel', [
-        "title" => "Artikel",
-        "artikel" => $artikel,
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-        'sort_by' => '',
-    ]);
-});
-Route::get('/artikel', function () {
-    $artikel = session('daftarArtikel');
-    return view('artikel', [
-        "title" => "Artikel",
-        "artikel" => $artikel,
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-        'sort_by' => '',
-    ]);
-});
-Route::get('/artikelMakananSehat', function () {
-    $artikel = session('daftarArtikel');
-    return view('artikel', [
-        "title" => "Artikel",
-        "artikel" => $artikel,
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-        'sort_by' => 'Makanan Sehat',
-    ]);
-});
-Route::get('/artikelDiet', function () {
-    $artikel = session('daftarArtikel');
-    return view('artikel', [
-        "title" => "Artikel",
-        "artikel" => $artikel,
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-        'sort_by' => 'Diet dan Nutrisi',
-    ]);
-});
-Route::get('/artikelKesehatanFisik', function () {
-    $artikel = session('daftarArtikel');
-    return view('artikel', [
-        "title" => "Artikel",
-        "artikel" => $artikel,
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-        'sort_by' => 'Kesehatan Fisik',
-    ]);
-});
-Route::get('/artikelKesehatanAnak', function () {
-    $artikel = session('daftarArtikel');
-    return view('artikel', [
-        "title" => "Artikel",
-        "artikel" => $artikel,
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-        'sort_by' => 'Kesehatan Anak',
-    ]);
-});
+// Route::get('/artikelDetail', function () {
+//     $artikel = session('daftarArtikel');
+//     return view('detailArtikel', [
+//         "title" => "Artikel",
+//         "artikel" => $artikel,
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//         'sort_by' => '',
+//     ]);
+// });
+// Route::get('/artikel', function () {
+//     $artikel = session('daftarArtikel');
+//     return view('artikel', [
+//         "title" => "Artikel",
+//         "artikel" => $artikel,
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//         'sort_by' => '',
+//     ]);
+// });
+// Route::get('/artikelMakananSehat', function () {
+//     $artikel = session('daftarArtikel');
+//     return view('artikel', [
+//         "title" => "Artikel",
+//         "artikel" => $artikel,
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//         'sort_by' => 'Makanan Sehat',
+//     ]);
+// });
+// Route::get('/artikelDiet', function () {
+//     $artikel = session('daftarArtikel');
+//     return view('artikel', [
+//         "title" => "Artikel",
+//         "artikel" => $artikel,
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//         'sort_by' => 'Diet dan Nutrisi',
+//     ]);
+// });
+// Route::get('/artikelKesehatanFisik', function () {
+//     $artikel = session('daftarArtikel');
+//     return view('artikel', [
+//         "title" => "Artikel",
+//         "artikel" => $artikel,
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//         'sort_by' => 'Kesehatan Fisik',
+//     ]);
+// });
+// Route::get('/artikelKesehatanAnak', function () {
+//     $artikel = session('daftarArtikel');
+//     return view('artikel', [
+//         "title" => "Artikel",
+//         "artikel" => $artikel,
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//         'sort_by' => 'Kesehatan Anak',
+//     ]);
+// });
 
-Route::get('/tentangKami', function () {
-    return view('tentangKami', [
-        "title" => "Tentang Kami",
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-    ]);
-});
+// Route::get('/tentangKami', function () {
+//     return view('tentangKami', [
+//         "title" => "Tentang Kami",
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//     ]);
+// });
 
-Route::get('/profile', function () {
+// Route::get('/profile', function () {
 
-    return view('profile', [
-        "title" => "Profile",
-        "user" => session('user'),
-        'userLogin' => session('userLogint'),
-    ]);
-})->name('profile');
+//     return view('profile', [
+//         "title" => "Profile",
+//         "user" => session('user'),
+//         'userLogin' => session('userLogint'),
+//     ]);
+// })->name('profile');
 
-Route::post('/profileUpdate', function (Illuminate\Http\Request $request) {
-    $name = $request->input('nama');
-    $email = $request->input('email');
-    $noHp = $request->input('noHp');
-    $tglLahir = $request->input('tglLahir');
-    $gender = $request->input('gender');
-    $image = $request->file('image');
-    $user = $request->session()->get('user');
-    if ($request->hasFile('image')) {
+// Route::post('/profileUpdate', function (Illuminate\Http\Request $request) {
+//     $name = $request->input('nama');
+//     $email = $request->input('email');
+//     $noHp = $request->input('noHp');
+//     $tglLahir = $request->input('tglLahir');
+//     $gender = $request->input('gender');
+//     $image = $request->file('image');
+//     $user = $request->session()->get('user');
+//     if ($request->hasFile('image')) {
 
-        $imagePath =  $image->move(public_path('images'), $image->getClientOriginalName());
-        $imageUrl = asset('images/' . $image->getClientOriginalName());
-        $user[0]['profile'] = $imageUrl;
-    }
+//         $imagePath =  $image->move(public_path('images'), $image->getClientOriginalName());
+//         $imageUrl = asset('images/' . $image->getClientOriginalName());
+//         $user[0]['profile'] = $imageUrl;
+//     }
 
 
 
-    $user[0]['nama'] = $name;
-    $user[0]['email'] = $email;
-    $user[0]['noHp'] = $noHp;
-    $user[0]['tgl_lahir'] = $tglLahir;
-    $user[0]['jenis_kelamin'] = $gender;
+//     $user[0]['nama'] = $name;
+//     $user[0]['email'] = $email;
+//     $user[0]['noHp'] = $noHp;
+//     $user[0]['tgl_lahir'] = $tglLahir;
+//     $user[0]['jenis_kelamin'] = $gender;
 
-    $request->session()->put('user', $user);
+//     $request->session()->put('user', $user);
 
-    return redirect()->route('profile')->with('success', 'Data sesi diperbarui.');
-})->name('profileUpdate');
+//     return redirect()->route('profile')->with('success', 'Data sesi diperbarui.');
+// })->name('profileUpdate');
 
-Route::get('/daftarAlamat', function () {
-    return view('daftarAlamat', [
-        "title" => "Daftar Alamat",
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-        'checked' => ''
-    ]);
-});
-Route::get('/daftarAlamatChecked', function () {
-    return view('daftarAlamat', [
-        "title" => "Daftar Alamat",
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-        'checked' => 'check'
-    ]);
-});
+// Route::get('/daftarAlamat', function () {
+//     return view('daftarAlamat', [
+//         "title" => "Daftar Alamat",
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//         'checked' => ''
+//     ]);
+// });
+// Route::get('/daftarAlamatChecked', function () {
+//     return view('daftarAlamat', [
+//         "title" => "Daftar Alamat",
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//         'checked' => 'check'
+//     ]);
+// });
 
-Route::get('/keranjang', function () {
-    return view('keranjang', [
-        "title" => "Keranjang Belanja",
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-        'keranjang' =>  session('keranjang')
-    ]);
-});
-Route::get('/testimoni', function () {
-    return view('testimoni', [
-        "title" => "Testimoni",
-        'userLogin' => session('userLogint'),
-        'user' => session('user'),
-    ]);
-});
+// Route::get('/keranjang', function () {
+//     return view('keranjang', [
+//         "title" => "Keranjang Belanja",
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//         'keranjang' =>  session('keranjang')
+//     ]);
+// });
+// Route::get('/testimoni', function () {
+//     return view('testimoni', [
+//         "title" => "Testimoni",
+//         'userLogin' => session('userLogint'),
+//         'user' => session('user'),
+//     ]);
+// });
 
-Route::get('/login', function () {
-    $userLogin = [
-        [
-            "email" => '',
-            "password" => '',
-        ]
-    ];
-    session(['userLogint' => $userLogin]);
+// Route::get('/login', function () {
+//     $userLogin = [
+//         [
+//             "email" => '',
+//             "password" => '',
+//         ]
+//     ];
+//     session(['userLogint' => $userLogin]);
 
-    return view('login', [
-        'userLogin' => session('userLogin'),
-    ]);
-})->name('login');
+//     return view('login', [
+//         'userLogin' => session('userLogin'),
+//     ]);
+// })->name('login');
 
-Route::post('/loginCheck', function (Illuminate\Http\Request $request) {
+// Route::post('/loginCheck', function (Illuminate\Http\Request $request) {
 
-    $email = $request->input('email');
-    $password = $request->input('password');
-    if ($email == '' || $password == '') {
-        return redirect()->back()->with('error', 'Gagal Login');
-    } else {
-        $userLogin = $request->session()->get('userLogint');
-        $userLogin[0]['email'] = $email;
-        $userLogin[0]['password'] = $password;
-        $request->session()->put('userLogint', $userLogin);
-        return redirect()->route('home');
-    }
-})->name('loginCheck');
+//     $email = $request->input('email');
+//     $password = $request->input('password');
+//     if ($email == '' || $password == '') {
+//         return redirect()->back()->with('error', 'Gagal Login');
+//     } else {
+//         $userLogin = $request->session()->get('userLogint');
+//         $userLogin[0]['email'] = $email;
+//         $userLogin[0]['password'] = $password;
+//         $request->session()->put('userLogint', $userLogin);
+//         return redirect()->route('home');
+//     }
+// })->name('loginCheck');
 
-Route::post('/logout', function (Illuminate\Http\Request $request) {
+// Route::post('/logout', function (Illuminate\Http\Request $request) {
 
-    $userLogin = $request->session()->get('userLogint');
-    $userLogin[0]['email'] = '';
-    $userLogin[0]['password'] = '';
-    $request->session()->put('userLogint', $userLogin);
+//     $userLogin = $request->session()->get('userLogint');
+//     $userLogin[0]['email'] = '';
+//     $userLogin[0]['password'] = '';
+//     $request->session()->put('userLogint', $userLogin);
 
-    return redirect()->route('home');
-})->name('logout');
+//     return redirect()->route('home');
+// })->name('logout');
 
 Route::get('/register', function () {
     return view('register');
-});
+})->name('register');
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');;
 
-Route::get('/transaksi', function () {
+// Route::get('/transaksi', function () {
 
-    $ulasan = [
-        [
-            'nama' => 'user1',
-            'pesan' => 'obat sangat manjur, admin ramah dan baik',
-            'bintang' => 5,
-            'waktu' => 'senin, 12 januari 2012'
-        ],
-        [
-            'nama' => 'user2',
-            'pesan' => 'obat murah dan asli, admin ramah dan baik',
-            'bintang' => 4,
-            'waktu' => 'minggu, 14 febuari 2012'
-        ],
-        [
-            'nama' => 'user3',
-            'pesan' => 'pengiriman cepat, pilihan obat banyak',
-            'bintang' => 5,
-            'waktu' => 'kamis, 14 maret 2012'
-        ]
-    ];
+//     $ulasan = [
+//         [
+//             'nama' => 'user1',
+//             'pesan' => 'obat sangat manjur, admin ramah dan baik',
+//             'bintang' => 5,
+//             'waktu' => 'senin, 12 januari 2012'
+//         ],
+//         [
+//             'nama' => 'user2',
+//             'pesan' => 'obat murah dan asli, admin ramah dan baik',
+//             'bintang' => 4,
+//             'waktu' => 'minggu, 14 febuari 2012'
+//         ],
+//         [
+//             'nama' => 'user3',
+//             'pesan' => 'pengiriman cepat, pilihan obat banyak',
+//             'bintang' => 5,
+//             'waktu' => 'kamis, 14 maret 2012'
+//         ]
+//     ];
 
-    session(['ulasan' => $ulasan]);
-    $obat = session('daftarObat');
+//     session(['ulasan' => $ulasan]);
+//     $obat = session('daftarObat');
 
-    return view(
-        'transaksi',
-        [
-            'title' => 'Transaksi',
-            'user' => session('user'),
-            'obat' => $obat,
-            'ulasan' => $ulasan,
-            'keranjang' => session('keranjang'),
-        ]
-    );
-});
+//     return view(
+//         'transaksi',
+//         [
+//             'title' => 'Transaksi',
+//             'user' => session('user'),
+//             'obat' => $obat,
+//             'ulasan' => $ulasan,
+//             'keranjang' => session('keranjang'),
+//         ]
+//     );
+// });
 
-Route::get('/halamanBeli', function () {
-    $alamat = [
-        [
-            "alamat_lengkap" => "Jalan Melati No. 456, Desa Harapan Jaya, Kabupaten Mawar Sejahtera, Provinsi Cinta Damai",
-        ],
-        [
-            "alamat_lengkap" => "Jalan Mawar No. 123, Desa Bunga Indah, Kabupaten Serumpun, Provinsi Damai Sejati",
-        ],
-        [
-            "alamat_lengkap" => "Jalan Anggrek 789, Desa Mekar Sari, Kabupaten Bunga Abadi, Provinsi Sejuk Indah",
-        ],
-        [
-            "alamat_lengkap" => "Jalan Dahlia 101, Desa Sentosa Makmur, Kabupaten Teratai Bahagia, Provinsi Surga Damai",
-        ]
-    ];
+// Route::get('/halamanBeli', function () {
+//     $alamat = [
+//         [
+//             "alamat_lengkap" => "Jalan Melati No. 456, Desa Harapan Jaya, Kabupaten Mawar Sejahtera, Provinsi Cinta Damai",
+//         ],
+//         [
+//             "alamat_lengkap" => "Jalan Mawar No. 123, Desa Bunga Indah, Kabupaten Serumpun, Provinsi Damai Sejati",
+//         ],
+//         [
+//             "alamat_lengkap" => "Jalan Anggrek 789, Desa Mekar Sari, Kabupaten Bunga Abadi, Provinsi Sejuk Indah",
+//         ],
+//         [
+//             "alamat_lengkap" => "Jalan Dahlia 101, Desa Sentosa Makmur, Kabupaten Teratai Bahagia, Provinsi Surga Damai",
+//         ]
+//     ];
 
-    $MetodePembayaran = [
-        [
-            "metode" => "BCA"
-        ],
-        [
-            "metode" => "BRI"
-        ],
-        [
-            "metode" => "MANDIRI"
-        ],
-        [
-            "metode" => "COD"
-        ]
-    ];
+//     $MetodePembayaran = [
+//         [
+//             "metode" => "BCA"
+//         ],
+//         [
+//             "metode" => "BRI"
+//         ],
+//         [
+//             "metode" => "MANDIRI"
+//         ],
+//         [
+//             "metode" => "COD"
+//         ]
+//     ];
 
 
-    session(['alamat' => $alamat]);
-    session(['MetodePembayaran' => $MetodePembayaran]);
-    return view(
-        'halamanBeli',
-        [
-            'title' => 'Beli',
-            'user' => session('user'),
-            'keranjang' => session('keranjang'),
-            'alamat' => $alamat,
-            'MetodePembayaran' => $MetodePembayaran
-        ]
-    );
-});
+//     session(['alamat' => $alamat]);
+//     session(['MetodePembayaran' => $MetodePembayaran]);
+//     return view(
+//         'halamanBeli',
+//         [
+//             'title' => 'Beli',
+//             'user' => session('user'),
+//             'keranjang' => session('keranjang'),
+//             'alamat' => $alamat,
+//             'MetodePembayaran' => $MetodePembayaran
+//         ]
+//     );
+// });
 
-Route::get('/pembayaran', function () {
-    $keranjang = session('keranjang');
-    return view(
-        'pembayaran',
-        [
-            'title' => 'Pembayaran',
-            'user' => session('user'),
-            'keranjang' => $keranjang
-        ]
-    );
-});
+// Route::get('/pembayaran', function () {
+//     $keranjang = session('keranjang');
+//     return view(
+//         'pembayaran',
+//         [
+//             'title' => 'Pembayaran',
+//             'user' => session('user'),
+//             'keranjang' => $keranjang
+//         ]
+//     );
+// });
 
-Route::get('/admin', function () {
-    return view('admin');
-});
+// Route::get('/admin', function () {
+//     return view('admin');
+// });
 
-Route::get('/dashboard', function () {
-    return view('Admin/dashboard');
-});
+
 
 Route::get('/suppliers', function () {
     return view(
         'Admin/suppliers',
-        [
-            'pemasok' => [
-                [
-                    'no' => 1,
-                    'nama' => 'Arif Suryo',
-                    'noTelp' => '012312332',
-                    'email' => 'blabla@gmail.com',
-                    'action' => ''
-                ],
-                [
-                    'no' => 2,
-                    'nama' => 'dendy',
-                    'noTelp' => '07890128192',
-                    'email' => 'lololo@gmail.com',
-                    'action' => ''
-                ]
-
-            ]
-        ]
     );
 });
 
 Route::get('/customers', function () {
     return view(
         'Admin/customers',
-        [
-            'pelanggan' => [
-                [
-                    'no' => 1,
-                    'nama' => 'Brader',
-                    'gender' => 'L',
-                    'noTelp' => '123',
-                    'alamat' => 'semarang',
-                    'tglLahir' => '12-12-1222',
-                    'action' => ''
-                ],
-                [
-                    'no' => 2,
-                    'nama' => 'Ucok',
-                    'gender' => 'P',
-                    'noTelp' => '1232123',
-                    'alamat' => 'jawa',
-                    'tglLahir' => '13-32-1312',
-                    'action' => ''
-                ]
 
-            ]
-        ]
     );
 });
 
 Route::get('/users', function () {
     return view(
         'Admin/users',
-        [
-            'pekerja' => [
-                [
-                    'no' => 1,
-                    'id' => 'SP2023',
-                    'nama' => 'Pariban',
-                    'email' => 'pariban@gmail.com',
-                    'password' => '123321',
-                    'action' => ''
-                ],
-                [
-                    'no' => 2,
-                    'id' => 'SL2022',
-                    'nama' => 'Alibaba',
-                    'email' => 'Alibaba@gmail.com',
-                    'password' => '789987',
-                    'action' => ''
-                ]
-
-            ]
-        ]
     );
 });
 
 Route::get('/products', function () {
     return view(
         'Admin/products',
-        [
-            'obat' => [
-                [
-                    'no' => 1,
-                    'id' => 'P2023',
-                    'nama' => 'Panadol',
-                    'golongan' => 'Strip',
-                    'jenis' => 'Obat Demam',
-                    'dosis' => '3mg',
-                    'deskripsi' => 'lorem lorem baelah',
-                    'stock' => 23,
-                    'action' => ''
-                ],
-                [
-                    'no' => 2,
-                    'id' => 'R2023',
-                    'nama' => 'Rhinofed',
-                    'golongan' => 'Strip',
-                    'jenis' => 'Obat Pilek',
-                    'dosis' => '7mg',
-                    'deskripsi' => 'lorem lorem ajlaah',
-                    'stock' => 22,
-                    'action' => ''
-                ]
-
-            ]
-        ]
     );
 });
 
 Route::get('/transactions_stockIn', function () {
     return view(
         'Admin/transactions_stockIn',
-        [
-            'obat' => [
-                [
-                    'no' => 1,
-                    'id' => 'P2023',
-                    'nama' => 'Panadol',
-                    'qty' => 3,
-                    'action' => ''
-                ],
-                [
-                    'no' => 2,
-                    'id' => 'M2023',
-                    'nama' => 'Medixon',
-                    'qty' => 4,
-                    'action' => ''
-                ]
-
-            ]
-        ]
     );
 });
 
 Route::get('/transactions_stockOut', function () {
     return view(
-        'Admin/transactions_stockOut',
-        [
-            'obat' => [
-                [
-                    'no' => 1,
-                    'id' => 'P2023',
-                    'nama' => 'Panadol',
-                    'qty' => 3,
-                    'action' => ''
-                ]
-            ]
-        ]
+        'Admin/transactions_stockOut'
     );
 });
 
 Route::get('/reports_sales', function () {
     return view(
-        'Admin/reports_sales',
-        [
-            'hasil_jual' => [
-                [
-                    'no' => 1,
-                    'nama' => 'Panadol',
-                    'harga' => 12000,
-                    'qty' => 3,
-                    'total' => 36000,
-                    'action' => ''
-                ]
-            ]
-        ]
+        'Admin/reports_sales'
     );
 });
 
 Route::get('/reports_stockIn', function () {
     return view(
-        'Admin/reports_stockIn',
-        [
-            'hasil_masuk' => [
-                [
-                    'no' => 1,
-                    'nama' => 'Panadol',
-                    'harga' => 12000,
-                    'qty' => 3,
-                    'total' => 36000,
-                    'action' => ''
-                ]
-            ]
-        ]
+        'Admin/reports_stockIn'
     );
 });

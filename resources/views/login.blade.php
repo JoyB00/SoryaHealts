@@ -79,6 +79,19 @@
                 <div class="isinya">
                     <div class="header-form">
                         <h2 class="judul-form">Masuk ke Akun Anda</h2>
+                        @if(session('message'))
+                        <div class="alert alert-success mx-3 text-center">
+                            {{session('message')}}
+                        </div>
+                        @endif
+
+                        @if(session('error'))
+                        <div class="alert alert-danger mx-3 text-center">
+                            {{session('error')}}
+                        </div>
+                        @endif
+
+
                         <div class="social-buttons">
                             <div class="facebook">
                                 <button class="social-button facebook">
@@ -135,7 +148,7 @@
                     </div>
 
                     <div class="tampung">
-                        <form class="row g-3" action="{{ route('loginCheck') }}" method="POST" id="login-form">
+                        <form class="row g-3" method="POST" id="login-form">
                             @csrf
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="email" class="form-label">Email</label>
@@ -225,7 +238,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 
-    <script>
+    <!-- <script>
         document.addEventListener("DOMContentLoaded", function() {
             const loginForm = document.getElementById("login-form");
 
@@ -244,7 +257,7 @@
                 }
             });
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

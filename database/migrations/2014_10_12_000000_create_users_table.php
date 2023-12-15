@@ -16,10 +16,14 @@ return new class extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('jenis_kelamin');
-            $table->integer('no_telp');
-            $table->date('tanggal_lahir');
+            $table->string('jenis_kelamin')->nullable();
+            $table->string('no_telp');
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('role');
+            $table->string('verify_key');
+            $table->integer('active')->nullable();
             $table->timestamps();
+            $table->timestamp('email_verified_at')->nullable();
         });
     }
 

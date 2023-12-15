@@ -79,6 +79,11 @@
                 <div class="isinya">
                     <div class="header-form">
                         <h2 class="judul-form">Buat Akun Anda</h2>
+                        @if(session('error'))
+                        <div class="alert alert-danger mx-3 text-center">
+                            {{session('error')}}
+                        </div>
+                        @endif
                         <div class="social-buttons">
                             <div class="facebook">
                                 <button class="social-button facebook">
@@ -134,27 +139,25 @@
                     </div>
 
                     <div class="tampung">
-                        <form class="row g-3" method="get" action="{{url('/login')}}">
+                        <form class="row g-3" method="post">
+                            @csrf
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="nama" class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" id="inputName4" required>
+                                <input type="text" name="nama" class="form-control" id="inputName4" placeholder="Masukkan Nama" required>
                             </div>
                             <div class="col-md-8 offset-md-2 col-12">
-                                <label for="noTelp" class="form-label">Nomor Telepon</label>
-                                <input type="number" name="noTelp" class="form-control" id="inputName4" required>
+                                <label for="no_telp" class="form-label">Nomor Telepon</label>
+                                <input type="number" name="no_telp" class="form-control" id="inputName4" placeholder="Masukkan No Telpon (Minimal 11 digit)" required>
                             </div>
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" id="inputName4" required>
+                                <input type="email" name="email" class="form-control" id="inputName4" placeholder="Masukkan Email" required>
                             </div>
-                            <div class="col-md-3 offset-md-2">
+                            <div class="col-md-8 offset-md-2">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control custom-input" id="inputPassword4" required>
+                                <input type="password" name="password" class="form-control custom-input" id="inputPassword4" placeholder="Masukkan Password (Minimal 8 karakter)" required>
                             </div>
-                            <div class="col-md-3 offset-md-2">
-                                <label for="re-password" class="form-label">Re-Password</label>
-                                <input type="password" name="re-password" class="form-control custom-input" id="inputRePassword4" required>
-                            </div>
+
                             <div class="form-check offset-md-2 mb-2">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="form-check-input" value="1" required>
                                 <label class="form-check-label" for="remember-me">I have read and accept the Terms of <b>Service & Privacy Policy*</b></label>
