@@ -12,10 +12,18 @@ class Detail_Pengadaan extends Model
     protected $table = 'detail_pengadaans';
     protected $primaryKey = 'id';
 
-    
     protected $fillable = [
-        'fk_id_pengadaan',
-        'fk_id_obat',
+        'id_pengadaian',
+        'id_obat',
         'jumlah_obat'
     ];
+
+    public function obat()
+    {
+        return $this->belongsTo(Obat::class, 'id_obat');
+    }
+
+    public function pengadaan(){
+        return $this->belongsTo(Pengadaan_Obat::class, 'id_pengadaan');
+    }
 }

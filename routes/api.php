@@ -25,3 +25,8 @@ Route::group(
     }
 
 );
+
+Route::apiResource('alamats', AlamatController::class);
+Route::apiResource('detail_pengadaans', DetailPengadaanController::class);
+Route::apiResource('detail_transaksis', DetailTransaksiController::class);
+Route::apiResource('mutasi_danas', MutasiDanaController::class);
