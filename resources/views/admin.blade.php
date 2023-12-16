@@ -99,7 +99,7 @@
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block">Admin Sorya Health</a>
           </div>
         </div>
 
@@ -129,7 +129,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('/suppliers')}}" class="nav-link{{ Request::is('suppliers*') ? ' active' : '' }}">
+              <a href="{{route('supplierIndex')}}" class="nav-link{{ Request::is('supplier*') ? ' active' : '' }}">
                 <i class="nav-icon fas fa-truck"></i>
                 <p>
                   Suppliers
@@ -138,7 +138,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('products')}}" class="nav-link{{ Request::is('products*') ? ' active' : '' }}">
+              <a href="{{route('obatIndex')}}" class="nav-link{{ Request::is('obat*') ? ' active' : '' }}">
                 <i class="nav-icon fas fa-box"></i>
                 <p>
                   Products
@@ -149,21 +149,21 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
-                  Customers/Users
+                  Customers/Staff
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{url ('customers')}}" class="nav-link{{ Request::is('customers*') ? ' active' : '' }}">
+                  <a href="{{route('customerIndex')}}" class="nav-link{{ Request::is('customers*') ? ' active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Customer</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url ('users')}}" class="nav-link{{ Request::is('users*') ? ' active' : '' }}">
+                  <a href="{{route('stafIndex')}}" class="nav-link{{ Request::is('users*') ? ' active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>User</p>
+                    <p>Staff</p>
                   </a>
                 </li>
               </ul>
@@ -179,13 +179,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{url('transactions_stockIn')}}" class="nav-link">
+                  <a href="{{route('pengadaanIndex')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Stock In</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('transactions_stockOut')}}" class="nav-link">
+                  <a href="{{route('pengadaanIndex')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Stock Out</p>
                   </a>

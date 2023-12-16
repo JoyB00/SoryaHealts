@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\MailSend;
 use \Illuminate\Support\Facades\Session;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+session_start();
 
 class UserClient extends Controller
 {
@@ -17,7 +20,24 @@ class UserClient extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $client = new Client();
+            $url = "http://127.0.0.1:8000/api/user";
+            $response = $client->request('GET', $url, [
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
+                ]
+            ]);
+            $content = $response->getBody()->getContents();
+            $contentArray = json_decode($content, true);
+
+            $pelanggan = $contentArray["data"];
+
+            return view('Admin.customers', ['pelanggan' => $pelanggan]);
+        } catch (\Exception $e) {
+            return view('Admin.customers', ['pelanggan' => []]);
+        }
     }
 
     public function register(Request $request)
@@ -47,7 +67,7 @@ class UserClient extends Controller
             $data = $contentArray['user'];
 
             $details = [
-                'username' => $request->username,
+                'username' => $request->nama,
                 'website' => 'Atma Library',
                 'datetime' => date('Y-m-d H:i:s'),
                 'url' => request()->getHttpHost() . '/register/verify/' . $data['verify_key'],
@@ -57,7 +77,7 @@ class UserClient extends Controller
 
             Session::flash('message', 'Link verifikasi telah dikirim ke email anda. Silahkan cek email anda untuk mengaktifkan akun.');
 
-            return redirect()->route('login', ['user' => $contentArray['user'],]);
+            return redirect()->route('login');
         } catch (\Exception $e) {
             Session::flash('error',  $e->getMessage());
             return redirect()->route('register');
@@ -98,13 +118,20 @@ class UserClient extends Controller
             ]);
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
-            $data = $contentArray['user'];
 
-            if ($data['role'] == 'admin') {
-                return redirect()->route('admin', ['user' => $contentArray['user'],]);
+            $userData = $contentArray['user'];
+            $user = User::firstOrNew(['email' => $userData['email']]);
+
+            $user->role = $userData['role'];
+            $user->save();
+
+            Auth::login($user);
+            $_SESSION['access_token'] = $contentArray['access_token'];
+
+            if ($userData['role'] == 'admin') {
+                return redirect()->route('admin')->with('user', $userData);
             } else {
-
-                return redirect()->route('home', ['user' => $contentArray['user'],]);
+                return redirect()->route('home', ['user' => $contentArray['user']]);
             }
         } catch (\Exception $e) {
             $errorCode = $e->getCode();

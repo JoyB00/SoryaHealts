@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\api\AlamatController;
 use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\client\ObatClient;
+use App\Http\Controllers\client\PengadaanClient;
+use App\Http\Controllers\client\StafClient;
+use App\Http\Controllers\client\SupplierClient;
 use App\Http\Controllers\client\UserClient;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
@@ -18,15 +22,56 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/alamat', AlamatController::class);
-Route::post('register', [UserClient::class, 'register']);
-Route::post('login', [UserClient::class, 'login'])->name('login');
+Route::post('/register', [UserClient::class, 'register']);
+Route::post('/login', [UserClient::class, 'login'])->name('login');
 Route::get('register/verify/{verify_key}', [UserClient::class, 'verify'])->name('verify');
 
-Route::get('/dashboard', function () {
-    return view('Admin/dashboard');
-})->name('admin');
+
+Route::group(
+    ['middleware' =>  ['auth', 'cekRole:admin']],
+    function () {
+        Route::get('/dashboard', function () {
+            return view('Admin/dashboard');
+        })->name('admin');
+
+        Route::get('/customer', [UserClient::class, 'index'])->name('customerIndex');
+
+        // Supplier
+        Route::get('/suppliers', [SupplierClient::class, 'index'])->name('supplierIndex');
+        Route::post('/suppliers', [SupplierClient::class, 'store'])->name('supplierStore');
+        Route::get('/suppliers/{id}', [SupplierClient::class, 'show'])->name('supplierShow');
+        Route::put('/suppliers/{id}', [SupplierClient::class, 'update'])->name('supplierUpdate');
+        Route::delete('/suppliers/{id}', [SupplierClient::class, 'destroy'])->name('supplierDelete');
+
+        // Obat
+        Route::get('/obat', [ObatClient::class, 'index'])->name('obatIndex');
+        Route::post('/obat', [ObatClient::class, 'store'])->name('obatStore');
+        Route::get('/obat/{id}', [ObatClient::class, 'show'])->name('obatShow');
+        Route::put('/obat/{id}', [ObatClient::class, 'update'])->name('obatUpdate');
+        Route::delete('/obat/{id}', [ObatClient::class, 'destroy'])->name('obatDelete');
+
+        // Staf
+        Route::get('/staf', [StafClient::class, 'index'])->name('stafIndex');
+        Route::post('/staf', [StafClient::class, 'store'])->name('stafStore');
+        Route::get('/staf/{id}', [StafClient::class, 'show'])->name('stafShow');
+        Route::put('/staf/{id}', [StafClient::class, 'update'])->name('stafUpdate');
+        Route::delete('/staf/{id}', [StafClient::class, 'destroy'])->name('stafDelete');
+
+        // Pengadaan Obat
+        Route::get('/pengadaanObat', [PengadaanClient::class, 'index'])->name('pengadaanIndex');
+        Route::post('/pengadaanObat', [PengadaanClient::class, 'store'])->name('pengadaanStore');
+    }
+);
 
 
+
+Route::get('/register', function () {
+    return view('register');
+})->name('register');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
 // Baruu
 
@@ -708,13 +753,7 @@ Route::get('/', function () {
 //     return redirect()->route('home');
 // })->name('logout');
 
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');;
 
 // Route::get('/transaksi', function () {
 
@@ -818,11 +857,7 @@ Route::get('/login', function () {
 
 
 
-Route::get('/suppliers', function () {
-    return view(
-        'Admin/suppliers',
-    );
-});
+
 
 Route::get('/customers', function () {
     return view(

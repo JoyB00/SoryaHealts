@@ -12,6 +12,26 @@ use \Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+
+    public function index()
+    {
+        try {
+            $user = User::where('role', 'customer')->get();
+
+            return response()->json([
+                'data' => $user,
+                'status' => true,
+                'message' => 'Berhasil ambil data'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage(),
+                'data' => []
+            ], 400);
+        }
+    }
+
     public function register(Request $request)
     {
         $registrationData = $request->all();
@@ -37,7 +57,6 @@ class UserController extends Controller
         return response([
             'message' => 'Register Success',
             'user' => $user,
-            'role' => $user->role
         ], 200);
     }
 
@@ -63,7 +82,7 @@ class UserController extends Controller
         $user = Auth::user();
 
         if ($user->active != 1) {
-            return response(['message' => 'Akun anda belum diverifikasi, Silahkan cek email Anda'], 402);
+            return response(['message' => 'Akun anda belum diverifikasi, Silahkan cek email Anda'], 401);
         }
 
         $token = $user->createToken('Authentication Token')->accessToken;
