@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Alamat;
 use Illuminate\Http\Request;
 
@@ -95,7 +96,7 @@ class AlamatController extends Controller
         try {
             $alamat = Alamat::find($id);
             if (!$alamat) {
-                throw new \Exception('Berita tidak ditemukan');
+                throw new \Exception('Alamat tidak ditemukan');
             }
 
             $alamat->delete();
@@ -113,4 +114,6 @@ class AlamatController extends Controller
             ], 400);
         }
     }
+
+ 
 }

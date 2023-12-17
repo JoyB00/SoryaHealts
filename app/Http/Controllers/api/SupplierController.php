@@ -3,19 +3,20 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Supplier;
 use Illuminate\Http\Request;
+use App\Models\Supplier;
 
 class SupplierController extends Controller
 {
     public function index()
     {
         try {
-            $alamat = Supplier::all();
+            $supplier = Supplier::all();
+
             return response()->json([
+                'data' => $supplier,
                 'status' => true,
-                'message' => 'Berhasil ambil data',
-                'data' => $alamat
+                'message' => 'Berhasil ambil data'
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -29,12 +30,12 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         try {
-            $alamat = Supplier::create($request->all());
+            $supplier = Supplier::create($request->all());
 
             return response()->json([
+                'data' => $supplier,
                 'status' => true,
                 'message' => 'Berhasil insert data',
-                'data' => $alamat
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -44,18 +45,19 @@ class SupplierController extends Controller
             ], 400);
         }
     }
+
     public function show($id)
     {
         try {
-            $alamat = Supplier::find($id);
+            $supplier = Supplier::find($id);
 
-            if (!$alamat) {
-                throw new \Exception('Alamat tidak ditemukan');
+            if (!$supplier) {
+                throw new \Exception('Supplier tidak ditemukan');
             }
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',
-                'data' => $alamat
+                'data' => $supplier
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -65,20 +67,21 @@ class SupplierController extends Controller
             ], 400);
         }
     }
+
     public function update(Request $request, $id)
     {
         try {
-            $alamat = Supplier::find($id);
-            if (!$alamat) {
-                throw new \Exception('Alamat tidak ditemukan');
+            $supplier = Supplier::find($id);
+            if (!$supplier) {
+                throw new \Exception('Supplier tidak ditemukan');
             }
 
-            $alamat->update($request->all());
+            $supplier->update($request->all());
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil update data',
-                'data' => $alamat
+                'data' => $supplier
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -88,20 +91,21 @@ class SupplierController extends Controller
             ], 400);
         }
     }
+
     public function destroy($id)
     {
         try {
-            $alamat = Supplier::find($id);
-            if (!$alamat) {
-                throw new \Exception('Berita tidak ditemukan');
+            $supplier = Supplier::find($id);
+            if (!$supplier) {
+                throw new \Exception('Supplier tidak ditemukan');
             }
 
-            $alamat->delete();
+            $supplier->delete();
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil delete data',
-                'data' => $alamat
+                'data' => $supplier
             ], 200);
         } catch (\Exception $e) {
             return response()->json([

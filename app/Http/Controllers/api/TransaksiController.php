@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Models\Transaksi;
 
 class TransaksiController extends Controller
 {

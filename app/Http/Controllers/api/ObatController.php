@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Obat;
 use Illuminate\Http\Request;
+use App\Models\Obat;
 
 class ObatController extends Controller
 {
-
     public function index()
     {
         try {
-            $alamat = Obat::all();
+            $obat = Obat::all();
+
             return response()->json([
+                'data' => $obat,
                 'status' => true,
-                'message' => 'Berhasil ambil data',
-                'data' => $alamat
+                'message' => 'Berhasil ambil data'
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -30,12 +30,12 @@ class ObatController extends Controller
     public function store(Request $request)
     {
         try {
-            $alamat = Obat::create($request->all());
+            $obat = Obat::create($request->all());
 
             return response()->json([
+                'data' => $obat,
                 'status' => true,
                 'message' => 'Berhasil insert data',
-                'data' => $alamat
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -45,18 +45,19 @@ class ObatController extends Controller
             ], 400);
         }
     }
+
     public function show($id)
     {
         try {
-            $alamat = Obat::find($id);
+            $obat = Obat::find($id);
 
-            if (!$alamat) {
-                throw new \Exception('Alamat tidak ditemukan');
+            if (!$obat) {
+                throw new \Exception('Obat tidak ditemukan');
             }
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',
-                'data' => $alamat
+                'data' => $obat
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -66,20 +67,21 @@ class ObatController extends Controller
             ], 400);
         }
     }
+
     public function update(Request $request, $id)
     {
         try {
-            $alamat = Obat::find($id);
-            if (!$alamat) {
-                throw new \Exception('Alamat tidak ditemukan');
+            $obat = Obat::find($id);
+            if (!$obat) {
+                throw new \Exception('Obat tidak ditemukan');
             }
 
-            $alamat->update($request->all());
+            $obat->update($request->all());
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil update data',
-                'data' => $alamat
+                'data' => $obat
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -89,20 +91,21 @@ class ObatController extends Controller
             ], 400);
         }
     }
+
     public function destroy($id)
     {
         try {
-            $alamat = Obat::find($id);
-            if (!$alamat) {
-                throw new \Exception('Berita tidak ditemukan');
+            $obat = Obat::find($id);
+            if (!$obat) {
+                throw new \Exception('Obat tidak ditemukan');
             }
 
-            $alamat->delete();
+            $obat->delete();
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil delete data',
-                'data' => $alamat
+                'data' => $obat
             ], 200);
         } catch (\Exception $e) {
             return response()->json([

@@ -3,19 +3,20 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Staf;
 use Illuminate\Http\Request;
+use App\Models\Staf;
 
 class StafController extends Controller
 {
     public function index()
     {
         try {
-            $alamat = Staf::all();
+            $staf = Staf::all();
+
             return response()->json([
+                'data' => $staf,
                 'status' => true,
-                'message' => 'Berhasil ambil data',
-                'data' => $alamat
+                'message' => 'Berhasil ambil data'
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -29,12 +30,12 @@ class StafController extends Controller
     public function store(Request $request)
     {
         try {
-            $alamat = Staf::create($request->all());
+            $staf = Staf::create($request->all());
 
             return response()->json([
+                'data' => $staf,
                 'status' => true,
                 'message' => 'Berhasil insert data',
-                'data' => $alamat
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -44,18 +45,19 @@ class StafController extends Controller
             ], 400);
         }
     }
+
     public function show($id)
     {
         try {
-            $alamat = Staf::find($id);
+            $staf = Staf::find($id);
 
-            if (!$alamat) {
-                throw new \Exception('Alamat tidak ditemukan');
+            if (!$staf) {
+                throw new \Exception('Staf tidak ditemukan');
             }
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',
-                'data' => $alamat
+                'data' => $staf
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -65,20 +67,21 @@ class StafController extends Controller
             ], 400);
         }
     }
+
     public function update(Request $request, $id)
     {
         try {
-            $alamat = Staf::find($id);
-            if (!$alamat) {
-                throw new \Exception('Alamat tidak ditemukan');
+            $staf = Staf::find($id);
+            if (!$staf) {
+                throw new \Exception('Staf tidak ditemukan');
             }
 
-            $alamat->update($request->all());
+            $staf->update($request->all());
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil update data',
-                'data' => $alamat
+                'data' => $staf
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -88,20 +91,21 @@ class StafController extends Controller
             ], 400);
         }
     }
+
     public function destroy($id)
     {
         try {
-            $alamat = Staf::find($id);
-            if (!$alamat) {
-                throw new \Exception('Berita tidak ditemukan');
+            $staf = Staf::find($id);
+            if (!$staf) {
+                throw new \Exception('Staf tidak ditemukan');
             }
 
-            $alamat->delete();
+            $staf->delete();
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil delete data',
-                'data' => $alamat
+                'data' => $staf
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
