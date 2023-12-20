@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORYA HEALTS-{{$title}}</title>
+    <title>SORYA HEALTS</title>
     <link rel="Icon" href="{{asset('/images/logo_icon.png')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,25 +116,25 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll text-center">
                         <li class="nav-item me-3">
-                            <a class="nav-link {{ ($title === 'Home') ? 'actived' : ''}}" aria-current="page" href="{{url('/')}}">Home</a>
+                            <a class="nav-link {{ (Request::is('/')) ? 'actived' : '' }}" aria-current="page" href="{{route('home')}}">Home</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link {{ ($title === 'DaftarObat') ? 'actived' : ''}}" href="{{url('/daftarObat')}}">Daftar Obat</a>
+                            <a class="nav-link {{ (Request::is('*Obat')) ? 'actived' : '' }}" href="{{route('daftarObat')}}">Daftar Obat</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link {{ ($title === 'Artikel') ? 'actived' : ''}}" href="{{url('/artikel')}}">Artikel</a>
+                            <a class="nav-link {{ (Request::is('Artikel')) ? 'actived' : '' }}" href="{{route('artikel')}}">Artikel</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link  {{ ($title === 'Tentang Kami') ? 'actived' : ''}}" href="{{url('/tentangKami')}}">Tentang Kami</a>
+                            <a class="nav-link  {{ (Request::is('TentangKami')) ? 'actived' : '' }}" href="{{route('tentangKami')}}">About Us</a>
                         </li>
                     </ul>
                     <div class="d-flex justify-content-center" id="navbarNav">
                         <label for="dropdownMenu2">
-                            <img class="img-fluid rounded-circle mt-2 profile-photo" src="{{$user[0]['profile']}}" style="width: 35px; height: 35px; background-color:grey;">
+                            <img class="img-fluid rounded-circle mt-2 profile-photo" src="{{ auth()->user()->profile ? auth()->user()->profile : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="width: 35px; height: 35px; background-color:grey;">
                         </label>
                         <div class="dropdown ">
                             <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 25px;">
-                                {{$user[0]['nama']}}
+                                {{auth()->user()->nama}}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <li><a class="dropdown-item" href="{{url('/profile')}}"><i class="fa-solid fa-user me-2"></i>Profil Anda</a></li>

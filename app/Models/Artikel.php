@@ -5,22 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Obat extends Model
+class Artikel extends Model
 {
     use HasFactory;
-
     public $timestamps = false;
-    protected $table = 'obats';
+    protected $table = 'artikels';
     protected $primaryKey = 'id';
+
     protected $fillable = [
-        'nama_obat',
+        'gambar_artikel',
+        'judul',
+        'topik',
+        'author',
+        'tanggal_publish',
         'deskripsi',
-        'jenis_obat',
-        'harga_obat',
-        'stok_obat',
-        'kategori_obat',
-        'dosis',
-        'golongan_obat',
-        'gambar_obat',
     ];
 }

@@ -31,7 +31,7 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></ul>
 
                 <div class="text-end">
-                    <a href="{{url('/register')}}" class="OTWLogin">
+                    <a href="{{route('register')}}" class="OTWLogin">
                         <span>Register</span>
                     </a>
                     <span class="verticalLine"></span>

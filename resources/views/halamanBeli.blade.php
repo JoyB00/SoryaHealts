@@ -1,4 +1,4 @@
-@extends('navbarUserLogined')
+@extends(Auth::check() ? 'navbarUserLogined' : 'navbarUser')
 
 @section('content')
 

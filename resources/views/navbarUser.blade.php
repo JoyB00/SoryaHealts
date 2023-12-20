@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORYA HEALTS-{{$title}}</title>
+    <title>SORYA HEALTS</title>
     <link rel="Icon" href="{{asset('/images/logo_icon.png')}}">
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=PT+Sans&display=swap" rel="stylesheet">
@@ -108,22 +110,22 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll text-center">
                         <li class="nav-item me-3">
-                            <a class="nav-link {{ ($title === 'Home') ? 'actived' : ''}}" aria-current="page" href="{{url('/')}}">Home</a>
+                            <a class="nav-link {{ (Request::is('/')) ? 'actived' : '' }}" aria-current="page" href="{{route('home')}}">Home</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link {{ ($title === 'DaftarObat') ? 'actived' : ''}}" href="{{url('/daftarObat')}}">Daftar Obat</a>
+                            <a class="nav-link {{ (Request::is('DaftarObat')) ? 'actived' : '' }}" href="{{route('daftarObat')}}">Daftar Obat</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link {{ ($title === 'Artikel') ? 'actived' : ''}}" href="{{url('/artikel')}}">Artikel</a>
+                            <a class="nav-link {{ (Request::is('Artikel')) ? 'actived' : '' }}" href="{{route('artikel')}}">Artikel</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link  {{ ($title === 'Tentang Kami') ? 'actived' : ''}}" href="{{url('/tentangKami')}}">About Us</a>
+                            <a class="nav-link  {{ (Request::is('TentangKami')) ? 'actived' : '' }}" href="{{route('tentangKami')}}">About Us</a>
                         </li>
                     </ul>
                     <div class="d-flex justify-content-center" id="navbarNav">
                         <ul class="nav">
-                            <li class="nav-item mx-1 "><a href="{{url('/login')}}" class="nav-link active border-end" aria-current="page">Login</a></li>
-                            <li class="nav-item mx-1"><a href="{{url('/register')}}" class="nav-link text-bg-primary rounded-pill ">Register</a></li>
+                            <li class="nav-item mx-1 "><a href="{{route('login')}}" class="nav-link active border-end" aria-current="page">Login</a></li>
+                            <li class="nav-item mx-1"><a href="{{route('register')}}" class="nav-link text-bg-primary rounded-pill ">Register</a></li>
 
                         </ul>
                     </div>

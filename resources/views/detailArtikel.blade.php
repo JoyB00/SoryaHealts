@@ -1,4 +1,4 @@
-@extends(empty(session('userLogint')) || $userLogin[0]['email']==='' ? 'navbarUser' : 'navbarUserLogined')
+@extends(Auth::check() ? 'navbarUserLogined' : 'navbarUser')
 
 @section('content')
 

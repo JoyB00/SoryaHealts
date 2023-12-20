@@ -3,19 +3,20 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Detail_Pengadaan;
+use App\Models\Artikel;
 use Illuminate\Http\Request;
 
-class DetailPengadaanController extends Controller
+class ArtikelController extends Controller
 {
     public function index()
     {
         try {
-            $detailPengadaan = Detail_Pengadaan::with('obat', 'pengadaan')->get();
+            $artikel = Artikel::all();
+
             return response()->json([
+                'data' => $artikel,
                 'status' => true,
-                'message' => 'Berhasil ambil data',
-                'data' => $detailPengadaan
+                'message' => 'Berhasil ambil data'
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -29,12 +30,12 @@ class DetailPengadaanController extends Controller
     public function store(Request $request)
     {
         try {
-            $detailPengadaan = Detail_Pengadaan::create($request->all());
+            $artikel = Artikel::create($request->all());
 
             return response()->json([
+                'data' => $artikel,
                 'status' => true,
                 'message' => 'Berhasil insert data',
-                'data' => $detailPengadaan
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -48,15 +49,15 @@ class DetailPengadaanController extends Controller
     public function show($id)
     {
         try {
-            $detailPengadaan = Detail_Pengadaan::find($id);
+            $artikel = Artikel::find($id);
 
-            if (!$detailPengadaan) {
-                throw new \Exception('Detail pengadaan tidak ditemukan');
+            if (!$artikel) {
+                throw new \Exception('Supplier tidak ditemukan');
             }
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',
-                'data' => $detailPengadaan
+                'data' => $artikel
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -70,17 +71,17 @@ class DetailPengadaanController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $detailPengadaan = Detail_Pengadaan::find($id);
-            if (!$detailPengadaan) {
-                throw new \Exception('Detail pengadaan tidak ditemukan');
+            $artikel = Artikel::find($id);
+            if (!$artikel) {
+                throw new \Exception('Supplier tidak ditemukan');
             }
 
-            $detailPengadaan->update($request->all());
+            $artikel->update($request->all());
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil update data',
-                'data' => $detailPengadaan
+                'data' => $artikel
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -94,17 +95,17 @@ class DetailPengadaanController extends Controller
     public function destroy($id)
     {
         try {
-            $detailPengadaan = Detail_Pengadaan::find($id);
-            if (!$detailPengadaan) {
-                throw new \Exception('Detail pengadaan tidak ditemukan');
+            $artikel = Artikel::find($id);
+            if (!$artikel) {
+                throw new \Exception('Supplier tidak ditemukan');
             }
 
-            $detailPengadaan->delete();
+            $artikel->delete();
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil delete data',
-                'data' => $detailPengadaan
+                'data' => $artikel
             ], 200);
         } catch (\Exception $e) {
             return response()->json([

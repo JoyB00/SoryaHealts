@@ -1,4 +1,4 @@
-@extends(empty(session('userLogint')) || $userLogin[0]['email']==='' ? 'navbarUser' : 'navbarUserLogined')
+@extends(Auth::check() ? 'navbarUserLogined' : 'navbarUser')
 
 
 
@@ -28,7 +28,7 @@
                 <p class="ps-5 text-dark">Kami adalah apotek yang berkomitmen untuk memberikan pelayanan kesehatan yang berkualitas kepada Anda dan keluarga</p>
                 <div class="d-flex ps-4">
                     <ul class="nav mx-sm-0 mx-auto">
-                        <li class="nav-item ms-3 text-bg-success rounded-pill "><a href="{{url('tentangKami')}}" class="nav-link text-white" aria-current="page">Info Selengkapnya </a></li>
+                        <li class="nav-item ms-3 text-bg-success rounded-pill "><a href="{{route('tentangKami')}}" class="nav-link text-white" aria-current="page">Info Selengkapnya </a></li>
                 </div>
             </div>
             <div class="col-6 container-welcome-img pe-0">
@@ -43,21 +43,21 @@
                     <a href="#daftar-item-testimoni" class="col-md-4 col-12 card p-4 animate__animated animate__zoomIn card-info-user" style="text-decoration: none;">
                         <div class="d-flex text-left justify-content-center">
                             <p><i class="fa-solid fa-user " style="color: #03acf2; font-size: 70px;"></i></p>
-                            <h2 class="ms-2 text-success fw-bold">+5000<br><span class="text-black fs-3">Pengguna</span></h2>
+                            <h2 class="ms-2 text-success fw-bold">{{count($userAll)}}++<br><span class="text-black fs-3">Pengguna</span></h2>
                         </div>
-                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Lebih dari 5000 pengguna sudah berkunjung dan menjadi bagian keluarga sehat apotek SorYaHealts</p>
+                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Lebih dari {{count($userAll)}} pengguna sudah berkunjung dan menjadi bagian keluarga sehat apotek SorYaHealts</p>
                     </a>
                     <a href="#daftar-obat-text" class="col-md-4 col-12 card p-4 my-md-0 my-3 animate__animated animate__zoomIn card-info-obat" style="text-decoration: none;">
                         <div class="d-flex text-left justify-content-center">
                             <p><i class="fa-solid fa-tablets" style="color: #03acf2; font-size: 70px;"></i></p>
-                            <h2 class="ms-2 text-success fw-bold">+2000<br><span class="text-black fs-3">Obat</span></h2>
+                            <h2 class="ms-2 text-success fw-bold">{{count($obat)}}++<br><span class="text-black fs-3">Obat</span></h2>
                         </div>
                         <p style="text-align: center; font-size: 10px; margin: 0 50px;">Tersedia berbagai macam jenis maupun kategori obat yang membantu menjaga kesehatan anda </p>
                     </a>
                     <a href="#daftar-item-text" class="col-md-4 col-12 card p-4 animate__animated animate__zoomIn card-info-artikel" style="text-decoration: none;">
                         <div class="d-flex text-left justify-content-center ">
                             <p><i class="fa-regular fa-newspaper" style="color: #03acf2; font-size: 70px;"></i></p>
-                            <h2 class="ms-2 text-success fw-bold">+100<br><span class="text-black fs-3">Artikel</span></h2>
+                            <h2 class="ms-2 text-success fw-bold">{{count($artikel)}}++<br><span class="text-black fs-3">Artikel</span></h2>
                         </div>
                         <p style="text-align: center; font-size: 10px; margin: 0 50px;">Ketahui berbagai tata cara dalam menjaga kesehatan anda melalui artikel-artikel yang sudah kami sediakan</p>
                     </a>
@@ -72,7 +72,7 @@
     <h1 class="ms-5 mt-5 title-section" style="font-size: 3vw;">Daftar Obat</h1>
     <div class="d-flex justify-content-between pe-5">
         <p class="ps-5 text-secondary pe-5">SorYaHealts menyediakan berbagai jenis obat yang akan selalu membantu menunjang kesehatan anda!</p>
-        <a href="{{url('/daftarObat')}}" class="nav-link ">Lihat Semua <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
+        <a href="{{route('daftarObat')}}" class="nav-link ">Lihat Semua <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
     </div>
 </div>
 <!-- Foto obat -->
@@ -84,23 +84,29 @@
     <!-- carousel Obat-->
     <div class="container col-7">
         <div class="owl-carousel owl-carousel-obat owl-theme mousewheel">
-            @for($i=0; $i < count($obat); $i++) <div class="item">
+            @forelse($obat as $item) <div class="item">
                 <div class="card ms-2 mb-2 item" style="height: 450px; border: 2px solid #4CAF50;">
-                    <img class="img-fluid mx-auto" src="{{$obat[$i]['image']}}">
+                    <img class="img-fluid mx-auto" src="{{asset('public/images/obat/'. $item['gambar_obat'])}}">
                     <div class="card-body d-flex flex-column pb-0 mb-0 bg-success">
-                        <p><span class="badge rounded-pill border border-white mb-0">{{$obat[$i]['jenis_obat']}}</span></p>
-                        <a href="{{url('/transaksi')}}" class="card-title text-obat" style="text-decoration: none; font-size: 18px;">{{$obat[$i]['nama_obat']}}</a>
-                        <p class="card-text  d-block text-white" style="font-family: Lato light;  font-weight: bold;">{{$obat[$i]['harga']}}</p>
+                        <p><span class="badge rounded-pill border border-white mb-0">{{$item['jenis_obat']}}</span></p>
+                        <a href="{{url('/transaksi')}}" class="card-title text-obat" style="text-decoration: none; font-size: 18px; display: -webkit-box; overflow: hidden; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                            {{$item['nama_obat']}}
+                        </a>
+                        <p class="card-text  d-block text-white" style="font-family: Lato light;  font-weight: bold;">{{$item['harga']}}</p>
                     </div>
                     <div class="card-footer bg-success border-0" style="background-color: white; border-top: none;">
-                        <p class="mt-1 text-white"><span class="badge border border-white rounded-pill">{{$obat[$i]['kategori_obat']}}</span> </p>
+                        <p class="mt-1 text-white"><span class="badge border border-white rounded-pill">{{$item['kategori_obat']}}</span> </p>
                         <a href="{{url('/transaksi')}}" class="btn btn-warning">Lihat Detail</a>
                     </div>
                 </div>
+            </div>
+            @empty
+            <div class="alert alert-danger">
+                Data Obat Tidak Tersedia
+            </div>
+            @endforelse
         </div>
-        @endfor
     </div>
-</div>
 </div>
 
 <!-- daftar Artikel -->
@@ -108,24 +114,28 @@
     <h1 class="ms-5 mt-5 title-section" style="font-size: 3vw;">Artikel Kesehatan</h1>
     <div class="d-flex justify-content-between pe-5">
         <p class="ps-5 text-secondary">SorYaHealts memberikan pilihan artikel tentang kesehatan sebagai tambahan ilmu dalam merawat kesehatan anda!</p>
-        <a href="{{url('/artikel')}}" class="nav-link ">Lihat Semua <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
+        <a href="{{route('artikel')}}" class="nav-link ">Lihat Semua <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
     </div>
 </div>
 <!-- Foto Artikel -->
 <div class="owl-carousel owl-carousel-artikel owl-theme px-5">
-    @for($i=0; $i < count($artikel); $i++) <div class="item">
+    @forelse($artikel as $item) <div class="item">
         <div class="card mb-3" style="height: 500px;">
-            <img src="{{$artikel[$i]['image']}}" class="card-img-top w-100 mx-auto" alt="...">
+            <img src="{{asset('public/images/artikel/'. $item['gambar_artikel'])}}" class="card-img-top w-100 mx-auto" alt="...">
             <div class="card-body bg-success text-white d-flex flex-column justify-content-between">
-                <h5 class="card-title">{{$artikel[$i]['judul']}}</h5>
+                <h5 class="card-title">{{$item['judul']}}</h5>
                 <div class="deskripsi-container" style=" white-space: nowrap; overflow: hidden; text-overflow: clip;">
-                    <p id="deskripsi-artikel" class="card-text">{{$artikel[$i]['deskripsi']}}</p>
+                    <p id="deskripsi-artikel" class="card-text">{{$item['deskripsi']}}</p>
                 </div>
                 <a href="{{url('artikelDetail')}}" class="btn btn-warning">Lihat Selengkapnya</a>
             </div>
         </div>
-</div>
-@endfor
+    </div>
+    @empty
+    <div class="alert alert-danger">
+        Data Artikel Tidak Tersedia
+    </div>
+    @endforelse
 </div>
 
 <!-- daftar Testimoni -->
@@ -141,28 +151,32 @@
     <!-- carousel Testimoni-->
     <div class="container col-8">
         <div class="owl-carousel owl-carousel-testimoni owl-theme">
-            @for($i=0; $i < count($testimoni); $i++) <div class="item">
+            @forelse($testimoni as $item) <div class="item">
                 <div class="card" style="height: 400px; border-radius: 50px;">
                     <div class="card-body">
                         <div class="d-flex ms-sm-3 ms-0 mt-4">
-                            <img class="img-fluid  rounded-circle" src="{{$testimoni[$i]['image']}}" style="width: 50px; height: 50px; background-color:white;">
-                            <h5 class="my-auto ms-1 userTesti-name">{{$testimoni[$i]['nama']}}</h5>
+                            <img class="img-fluid  rounded-circle" src="{{$item['image']}}" style="width: 50px; height: 50px; background-color:white;">
+                            <h5 class="my-auto ms-1 userTesti-name">{{$item['nama']}}</h5>
                         </div>
-                        <p class="card-text ms-0 mt-3 userTesti-text " style="text-align: justify;"><i class="fa-solid fa-quote-left"></i> {{$testimoni[$i]['ulasan']}} <i class="fa-solid fa-quote-right"></i></p>
+                        <p class="card-text ms-0 mt-3 userTesti-text " style="text-align: justify;"><i class="fa-solid fa-quote-left"></i> {{$item['ulasan']}} <i class="fa-solid fa-quote-right"></i></p>
                     </div>
                     <div class="card-footer d-flex float-right bg-success">
                         <p style="font-weight: bold; margin-right: 10px; color: white;">Rating: </p>
-                        @for($j=0; $j < ($testimoni[$i]['rating']); $j++) <p><i class="fa-solid fa-star" style="color: #ffdd00;"></i></p>
+                        @for($j=0; $j < $item['rating']; $j++) <p><i class="fa-solid fa-star" style="color: #ffdd00;"></i></p>
                             @endfor
                     </div>
                 </div>
+            </div>
+            @empty
+            <div class="alert alert-danger">
+                Data Testimoni Tidak Tersedia
+            </div>
+            @endforelse
         </div>
-        @endfor
     </div>
-</div>
-<div class="col-4 img-testimoni">
-    <img class="mt-5" src="{{asset('images/foto_testimoni.png')}}" alt="home" style="width: 430px;">
-</div>
+    <div class="col-4 img-testimoni">
+        <img class="mt-5" src="{{asset('images/foto_testimoni.png')}}" alt="home" style="width: 430px;">
+    </div>
 </div>
 </div>
 

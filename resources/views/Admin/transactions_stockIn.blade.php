@@ -21,7 +21,7 @@
                                         <path d="M11,2v9h-9v2h9v9h2v-9h9v-2h-9v-9z"></path>
                                     </g>
                                 </g>
-                            </svg>Add Produck</button>
+                            </svg>Tambah Pengadaan</button>
 
                     </ol>
                 </div>
@@ -31,155 +31,119 @@
     <table class="table table-striped border-dark text-center">
         <tr class="">
             <th>No</th>
-            <th>ID</th>
-            <th>Nama Obat</th>
-            <th>Qty</th>
-            <th style="width: 200px;">Action</th>
+            <th>Nama Supplier</th>
+            <th>Tanggal Pengadaan</th>
+            <th>Action</th>
         </tr>
         @forelse ($pengadaan as $item)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $item["id_supplier"] }}</td>
+            <td>{{ $item["supplier"]["nama_supplier"] }}</td>
             <td>{{ $item["tanggal_pengadaan"] }}</td>
-            <td class="d-flex justify-content-between" style="width: 200px;">
-                <a href="" class="btn btn-primary ms-1" style="border-radius: 10px;" data-toggle="modal" data-target="#updateModal">Update</a>
-                <a href="" class="btn btn-danger" style="border-radius: 10px;" data-toggle="modal" data-target="#deleteModal">Delete</a>
+            <td class="d-flex justify-content-center">
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn {{$item['status']==0 ? 'btn-primary' : 'btn-success'}} mx-2" style="border-radius: 10px;" data-toggle="modal" data-target="#editModal{{ $item['id'] }}">
+                        {{$item['status']==0 ? 'Detail' : 'Selesai'}}
+                    </button>
+                    @if($item['status']==0)
+                    <button class="btn btn-danger" type="button" style="border-radius: 10px;" data-target="#deleteModal{{ $item['id'] }}" data-toggle="modal">
+                        Batal
+                    </button>
+                    @endif
+                </div>
             </td>
         </tr>
+
+        <!-- Modal Detail Pengadaan -->
+        <div class="modal fade" id="editModal{{ $item['id'] }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content bg-blue">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Edit Pengadaan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="get" action="{{ route('pengadaanShow') }}">
+                        @csrf
+                        <div class="modal-body">
+                            Apakah Anda melihat detail pengadaan ?
+                            <div class="form-group">
+                                <input type="number" class="form-control bg-blue" id="id" placeholder="Masukan id" value="{{ $item['id'] }}" name="idPengadaan" hidden>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-danger" id="confirmDelete">Yes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Batal Pengadaan -->
+        <div class="modal fade" id="deleteModal{{ $item['id'] }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content bg-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Edit Pengadaan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post" action="{{ route('pengadaanDelete',['id' => $item['id']]) }}">
+                        @csrf
+                        @method('Delete')
+                        <div class="modal-body">
+                            Apakah Anda yakin membatalkan pengadaan ini ?
+                            <div class="form-group">
+                                <input type="number" class="form-control bg-blue" id="id" placeholder="Masukan id" value="{{ $item['id'] }}" name="idPengadaan" hidden>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-danger" id="confirmDelete">Yes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         @empty
         <div class="alert alert-danger">Data Kelas masi kosong</div>
         @endforelse
     </table>
 </div>
 
-<!-- Modal for Update -->
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="productModalLabel">Update User</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="productID">ID: </label>
-                        <input type="text" class="form-control" id="supplierID" placeholder="unTouchable">
-                    </div>
-                    <div class="form-group">
-                        <label for="productName">Nama Obat: </label>
-                        <input type="text" class="form-control" id="UserName" placeholder="Masukan Nama User">
-                    </div>
-                    <div class="form-group">
-                        <label for="productGolongan">Golongan Obat:</label>
-                        <input type="text" class="form-control" id="golongan" placeholder="Masukan Golongan Obat">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label for="productJenis">Jenis Obat:</label>
-                            <select class="form-control" id="jenis">
-                                <option value="" disabled selected>Pilih jenis obat</option>
-                                <option value="strip">Strip</option>
-                                <option value="kapsul">Kapsul</option>
-                                <option value="tablet">Tablet</option>
-                            </select>
 
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label for="productStock">Stock</label>
-                            <input type="number" class="form-control" id="stock" placeholder="Masukan Jumlah Obat">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="productDeskripsi">Deskripsi Obat:</label>
-                        <input type="text" class="form-control" id="deskripsi" placeholder="Masukan Deskripsi Obat">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-danger">Reset</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal for Delete -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete Supplier</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Apakah Anda yakin ingin menghapus product ini?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-danger" id="confirmDelete">Yes</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Supplier Modal -->
 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="productModalLabel">Add Stok In</h5>
+                <h5 class="modal-title" id="productModalLabel">Pengadaan Obat</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="productID">ID: </label>
-                        <input type="text" class="form-control" id="supplierID" placeholder="unTouchable">
+                <form method="post" action="{{ route('pengadaanStore') }}">
+                    @csrf
+                    <div class="col form-group">
+                        <label for="productJenis">Supplier</label>
+                        <select class="form-control" id="jenis" name="supplier" required>
+                            <option value="" disabled selected>Pilih Supplier</option>
+                            @foreach ($suppliers as $item)
+                            <option value="{{$item['id']}}">{{$item['nama_supplier']}}</option>
+                            @endforeach
+                        </select>
+                        <!-- <input type="text" class="form-control" id="jenis" placeholder="Masukan Jenis Obat"> -->
                     </div>
-                    <div class="form-group">
-                        <label for="productName">Nama Obat: </label>
-                        <input type="text" class="form-control" id="UserName" placeholder="Masukan Nama User">
-                    </div>
-                    <div class="form-group">
-                        <label for="productGolongan">Golongan Obat:</label>
-                        <input type="text" class="form-control" id="golongan" placeholder="Masukan Golongan Obat">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label for="productJenis">Jenis Obat:</label>
-                            <select class="form-control" id="jenis">
-                                <option value="" disabled selected>Pilih jenis obat</option>
-                                <option value="strip">Strip</option>
-                                <option value="kapsul">Kapsul</option>
-                                <option value="tablet">Tablet</option>
-                            </select>
-                            <!-- <input type="text" class="form-control" id="jenis" placeholder="Masukan Jenis Obat"> -->
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label for="productStock">Stock</label>
-                            <input type="number" class="form-control" id="stock" placeholder="Masukan Jumlah Obat">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="productDeskripsi">Deskripsi Obat:</label>
-                        <input type="text" class="form-control" id="deskripsi" placeholder="Masukan Deskripsi Obat">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Lakukan Pengadaan</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-danger">Reset</button>
             </div>
         </div>
     </div>
