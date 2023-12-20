@@ -27,10 +27,14 @@ class ProfileClient extends Controller
 
         $id = auth()->user()->id;
 
-        $profil = $request->file('profile');
-        $profil_ekstensi = $profil->extension();
-        $profile_nama = date('ymdhis') . "." . $profil_ekstensi;
-        $profil->move(public_path('public/images'), $profile_nama);
+        if ($request->hasFile('profile')) {
+            $profil = $request->file('profile');
+            $profil_ekstensi = $profil->extension();
+            $profile_nama = date('ymdhis') . "." . $profil_ekstensi;
+            $profil->move(public_path('public/images'), $profile_nama);
+        } else {
+            $profile_nama = auth()->user()->profile;
+        }
 
         $parameter = [
             'nama' => $nama,
@@ -55,7 +59,9 @@ class ProfileClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $user = $contentArray["data"];
+
             Session::flash('message', 'Berhasil Memperbarui Data User');
+            toastr()->error('Please enter a valid amount. Minimum top-up is IDR 50,000.');
 
             return redirect()->route('updateProfile', ['user' => $user]);
         } catch (\Exception $e) {
