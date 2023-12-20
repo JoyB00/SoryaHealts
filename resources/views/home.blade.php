@@ -154,9 +154,9 @@
             @forelse($testimoni as $item) <div class="item">
                 <div class="card" style="height: 400px; border-radius: 50px;">
                     <div class="card-body">
-                        <div class="d-flex ms-sm-3 ms-0 mt-4">
-                            <img class="img-fluid  rounded-circle" src="{{$item['image']}}" style="width: 50px; height: 50px; background-color:white;">
-                            <h5 class="my-auto ms-1 userTesti-name">{{$item['nama']}}</h5>
+                        <div class="d-flex ms-sm-2 ms-0 mt-4">
+                            <img class="img-fluid  rounded-circle" src="{{ auth()->user()->profile ? auth()->user()->profile : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="width: 75px; height: 75px; background-color:white;">
+                            <h5 class="my-auto ms-1 userTesti-name">{{$item['user']['nama']}}</h5>
                         </div>
                         <p class="card-text ms-0 mt-3 userTesti-text " style="text-align: justify;"><i class="fa-solid fa-quote-left"></i> {{$item['ulasan']}} <i class="fa-solid fa-quote-right"></i></p>
                     </div>

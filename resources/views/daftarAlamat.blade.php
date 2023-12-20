@@ -19,7 +19,7 @@
     <div class="row">
         @forelse($alamat as $item)
         <div class="card mt-4 border-success">
-            <div class="card-body row card-body-checked bg-success text-white">
+            <div class="card-body row card-body-checked bg-outline-success">
                 <div class="col-sm-10 col-9">
                     <h5>{{$user->nama}}</h5>
                     <p class="m-0" style="font-family: lato regular;">{{$user->no_telp}}</p>
@@ -27,20 +27,16 @@
                     <div class="d-flex">
                         <ul class="nav">
                             <li class="nav-item ">
-                                <button class="btn text-white edit-alamat-btn" data-bs-toggle="modal" data-bs-target="#editAlamat" data-id="{{ $item['id'] }}">Edit</button>
+                                <button class="btn edit-alamat-btn" data-bs-toggle="modal" data-bs-target="#editAlamat" data-id="{{ $item['id'] }}">Edit</button>
                             </li>
                             <li class="nav-item mt-1 p-1">
-                                <div style="height: 25; width: 3; background-color: white;"></div>
+                                <div style="height: 25; width: 3; background-color: black;"></div>
                             </li>
                             <li class="nav-item">
-                                <button class="btn text-white delete-alamat-btn" data-bs-toggle="modal" data-bs-target="#hapusAlamat" data-id="{{ $item['id'] }}">Hapus</button>
+                                <button class="btn delete-alamat-btn" data-bs-toggle="modal" data-bs-target="#hapusAlamat" data-id="{{ $item['id'] }}">Hapus</button>
                             </li>
                         </ul>
                     </div>
-                </div>
-
-                <div class="col-2 my-auto ps-5">
-                    <p class="text-white " style="font-size: 30px;"><i class="fa-solid fa-check"></i></p>
                 </div>
             </div>
         </div>
@@ -60,7 +56,7 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width: 900px;">
             <div class="modal-content ">
                 <div class="modal-header bg bg-success">
-                    <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Edit Alamat</h1>
+                    <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Hapus Alamat</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
