@@ -29,8 +29,8 @@ class HomeClient extends Controller
 
     public function formTestimoni()
     {
-        $testimoni = Testimoni::inRandomOrder()->get();
-        return view('testimoni', ['testimoni' => $testimoni]);
+        // $testimoni = Testimoni::inRandomOrder()->get();
+        return view('testimoni');
     }
 
     public function sortByJenisObat(Request $request)

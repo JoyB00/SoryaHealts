@@ -34,7 +34,7 @@
         <div class="col-md-8 col-12 card">
             <div class="card-body">
                 <h5 style="text-align: end;">Berikan Rating Apotek SorYaHealts</h5>
-                <form action="" method="post">
+                <form action="{{ route('testimoniStore') }}" method="post">
                     @csrf
                     <div class="star-widget">
                         <input type="radio" name="rate" id="rate-5">
@@ -52,16 +52,33 @@
                     <div class="container-comment mt-3">
                         <h5 class="">Berikan Ulasan Anda </h5>
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="ulasan" style="height: 200px"></textarea>
                             <label for="floatingTextarea2">Comments</label>
                         </div>
+                        <input name="rating" id="rating" value="0" hidden>
                         <button class="form-control btn btn-primary btn-sm rounded-pill mt-4" type="submit">Kirim</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var rateInputs = document.querySelectorAll('input[name="rate"]');
+
+        rateInputs.forEach(function(input) {
+            input.addEventListener('change', function() {
+                var selectedRating = document.querySelector('input[name="rate"]:checked').id.split('-')[1];
+                document.getElementById('rating').value = selectedRating;
+                // Menampilkan nilai rating yang dipilih pada console
+                console.log(selectedRating);
+            });
+        });
+    });
+</script>
+
 
 @endsection
