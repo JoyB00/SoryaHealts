@@ -15,8 +15,6 @@ class Detail_Transaksi extends Model
         'id_transaksi',
         'id_obat',
         'jumlah_obat',
-        'review',
-        'ratings',
     ];
 
     public function transaksi()

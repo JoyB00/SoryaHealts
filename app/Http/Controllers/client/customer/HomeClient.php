@@ -14,7 +14,7 @@ class HomeClient extends Controller
     public function getAllData()
     {
         $obat = Obat::inRandomOrder()->get();
-        $testimoni = Testimoni::inRandomOrder()->get();;
+        $testimoni = Testimoni::inRandomOrder()->get();
         $artikel = Artikel::inRandomOrder()->get();
         $userAll = User::where('role', 'customer')->get();
 

@@ -3,11 +3,13 @@
 use App\Http\Controllers\api\AlamatController;
 use App\Http\Controllers\api\ArtikelController;
 use App\Http\Controllers\api\DetailPengadaanController;
+use App\Http\Controllers\api\DetailTransaksiController;
 use App\Http\Controllers\api\MutasiDanaController;
 use App\Http\Controllers\api\ObatController;
 use App\Http\Controllers\api\PengadaanObatController;
 use App\Http\Controllers\api\StafController;
 use App\Http\Controllers\api\SupplierController;
+use App\Http\Controllers\api\TransaksiController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\client\DetailPengadaan;
 use App\Http\Controllers\client\DetailPengadaanClient;
@@ -36,6 +38,7 @@ Route::group(
         // customer
         Route::post('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
         Route::get('/user', [UserController::class, 'index']);
+        Route::put('/user/{id}', [UserController::class, 'update']);
 
         // supplier
         Route::get('/suppliers', [SupplierController::class, 'index']);
@@ -100,8 +103,36 @@ Route::group(
         Route::get('/alamat/{id}', [AlamatController::class,'show']);
         Route::put('/alamat/{id}', [AlamatController::class, 'update']);    
         Route::delete('/alamat/{id}', [AlamatController::class, 'destroy']);
-    }
 
+        // Transaksi
+        Route::get('/transaksi', [PengadaanObatController::class, 'index']);
+        Route::post('/transaksi', [PengadaanObatController::class, 'store']);
+        Route::get('/transaksi/{id}', [PengadaanObatController::class, 'show']);
+        Route::delete('/transaksi/{id}', [PengadaanObatController::class, 'destroy']);
+
+
+        // Detail Transaksi
+        Route::get('/keranjang', [DetailTransaksiController::class, 'index']);
+        Route::post('/keranjang', [DetailTransaksiController::class, 'store']);
+        Route::get('/keranjang/{id}', [DetailTransaksiController::class, 'show']);
+        Route::put('/keranjang/{id}', [DetailTransaksiController::class, 'update']);
+        Route::delete('/keranjang/{id}', [DetailTransaksiController::class, 'destroy']);
+    
+
+        // Transaksi
+        Route::get('/transaksi', [TransaksiController::class, 'index']);
+        Route::post('/transaksi', [TransaksiController::class, 'store']);
+        Route::get('/transaksi/{id}', [TransaksiController::class, 'show']);
+        Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy']);
+
+
+        // Detail Transaksi
+        Route::get('/keranjang', [DetailTransaksiController::class, 'index']);
+        Route::post('/keranjang', [DetailTransaksiController::class, 'store']);
+        Route::get('/keranjang/{id}', [DetailTransaksiController::class, 'show']);
+        Route::put('/keranjang/{id}', [DetailTransaksiController::class, 'update']);
+        Route::delete('/keranjang/{id}', [DetailTransaksiController::class, 'destroy']);
+    }
 );
 
 // Route::apiResource('alamats', AlamatController::class);

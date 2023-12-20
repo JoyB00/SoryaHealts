@@ -6,7 +6,7 @@
     <div class="col-xl-4 col-12 card mt-4 mx-xl-0 mx-auto" style="height: 360px; width: 360px;">
         <div class="card-body p-4 ">
             <div class="card mx-auto" style="height: 300px; width: 300px;">
-                <img id="imagePreview" class="mx-auto" src="{{$user[0]['profile']}}" style="height: 300px; width: 300px;">
+                <img class="img-fluid rounded-circle mt-2 profile-photo" src="{{ auth()->user()->profile ? auth()->user()->profile : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="height: 300px; width: 300px;">
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Nama</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user[0]['nama']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user['nama']}}</h4>
             </div>
         </div>
         <div class="row mt-3">
@@ -26,7 +26,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Tanggal Lahir</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user[0]['tgl_lahir']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user['tanggal_lahir']}}</h4>
             </div>
         </div>
         <div class="row mt-3">
@@ -34,7 +34,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Email</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user[0]['email']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user['email']}}</h4>
             </div>
         </div>
         <div class="row mt-3">
@@ -42,7 +42,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Jenis Kelamin</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user[0]['jenis_kelamin']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user['jenis_kelamin']}}</h4>
             </div>
         </div>
         <div class="row mt-3">
@@ -50,7 +50,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Nomor Handphone</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular; font-size: 18px;">: 081234567890</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user['no_telp']}}</h4>
             </div>
         </div>
         <form class="mt-4" action="">
@@ -65,7 +65,7 @@
         const fileInput = document.getElementById('formFile');
         const imagePreview = document.getElementById('imagePreview');
 
-        const file = fileInput.files[0];
+        const file = fileInput.files;
 
         if (file) {
             const reader = new FileReader();
@@ -89,13 +89,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('profileUpdate') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('updateProfile') }}" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="row">
                         <div class="col-5 my-1">
                             <h3 class="text-center" style="font-size: 18px;">Silahkan Edit Data Profile Anda</h3>
                             <div class="card mx-auto" style="height: 200px; width: 200px;">
-                                <img id="imagePreview" class="mx-auto" src="{{$user[0]['profile']}}" style="height: 200px; width: 200px;">
+                                <img id="imagePreview" class="mx-auto" src="{{$user['profile']}}" style="height: 200px; width: 200px;">
                             </div>
                             <div class="mb-3 mt-3 card bg-success mx-auto" style="width: 200px;">
                                 <input style="font-family: Lato light;" type="file" id="formFile" accept="image/*" onchange="previewImage()" name="image">
@@ -110,7 +111,7 @@
                                     <label for="nama" class="mb-1">Nama</label>
                                 </div>
                                 <div class="col-8">
-                                    <input style="font-family: Lato light;" id="nama" type="text" name="nama" class="form-control" value="{{$user[0]['nama']}}" required>
+                                    <input style="font-family: Lato light;" id="nama" type="text" name="nama" class="form-control" value="{{$user['nama']}}" required>
                                 </div>
                             </div>
 
@@ -130,7 +131,7 @@
                                     <label for="email" class="mb-1">Email</label>
                                 </div>
                                 <div class="col-8">
-                                    <input style="font-family: Lato light;" id="email" type="text" class="form-control" value="{{$user[0]['email']}}" name="email" required>
+                                    <input style="font-family: Lato light;" id="email" type="text" class="form-control" value="{{$user['email']}}" name="email" required>
                                 </div>
                             </div>
 
@@ -140,7 +141,7 @@
                                     <label for="jenisKelamin" class="mb-1">Jenis Kelamin</label>
                                 </div>
                                 <div class="col-8">
-                                    @if($user[0]['jenis_kelamin'] === 'Pria')
+                                    @if($user['jenis_kelamin'] === 'Pria')
                                     <input style="font-family: Lato light;" class="form-check-input" name="gender" type="radio" name="flexRadioDefault" id="pria" value="Pria" checked>
                                     <label class="form-check-label mx-3" for="pria">
                                         Pria
@@ -149,7 +150,7 @@
                                     <label class="form-check-label ms-3" for="wanita">
                                         Wanita
                                     </label>
-                                    @elseif($user[0]['jenis_kelamin'] === 'Wanita')
+                                    @elseif($user['jenis_kelamin'] === 'Wanita')
                                     <input style="font-family: Lato light;" class="form-check-input" name="gender" type="radio" name="flexRadioDefault" id="pria" value="Pria">
                                     <label class="form-check-label mx-3" for="pria">
                                         Pria
@@ -177,7 +178,7 @@
                                     <label for="noHp" class="mb-1">No Hp</label>
                                 </div>
                                 <div class="col-8">
-                                    <input style="font-family: Lato light;" id="noHp" type="number" class="form-control" value="{{$user[0]['no_hp']}}" required>
+                                    <input style="font-family: Lato light;" id="no_telp" name="no_telp" type="number" class="form-control" value="{{$user['no_hp']}}" required>
                                 </div>
                             </div>
                             <div class="row mt-4 pe-5" style="font-size: 17px;">

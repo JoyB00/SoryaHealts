@@ -9,7 +9,11 @@ use App\Http\Controllers\client\admin\StafClient;
 use App\Http\Controllers\client\admin\SupplierClient;
 use App\Http\Controllers\client\customer\HomeClient;
 use App\Http\Controllers\client\customer\TestimoniClient;
+use App\Http\Controllers\client\customer\KeranjangClient;
+use App\Http\Controllers\client\customer\ProfileClient;
+use App\Http\Controllers\client\customer\TransaksiClient;
 use App\Http\Controllers\client\UserClient;
+use App\Models\Transaksi;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
 
@@ -91,6 +95,10 @@ Route::group(
         Route::get('/FormTestimoni', [HomeClient::class, 'formTestimoni'])->name('formTestimoni');
         Route::post('/FormTestimoni', [TestimoniClient::class, 'store'])->name('testimoniStore');
         
+        Route::get('/profile', [ProfileClient::class, 'gotoProfile'])->name('gotoProfile');
+        Route::get('/keranjang', [KeranjangClient::class, 'gotoKeranjang'])->name('gotoKeranjang');
+        Route::post('/transaksi', [TransaksiClient::class, 'store'])->name('transaksi');
+        Route::put('/profile', [ProfileClient::class, 'update'])->name('updateProfile');
     }
 );
 
@@ -893,45 +901,45 @@ Route::get('/TentangKami', [HomeClient::class, 'tentangKami'])->name('tentangKam
 
 
 
-Route::get('/customers', function () {
-    return view(
-        'Admin/customers',
+// Route::get('/customers', function () {
+//     return view(
+//         'Admin/customers',
 
-    );
-});
+//     );
+// });
 
-Route::get('/users', function () {
-    return view(
-        'Admin/users',
-    );
-});
+// Route::get('/users', function () {
+//     return view(
+//         'Admin/users',
+//     );
+// });
 
-Route::get('/products', function () {
-    return view(
-        'Admin/products',
-    );
-});
+// Route::get('/products', function () {
+//     return view(
+//         'Admin/products',
+//     );
+// });
 
-Route::get('/transactions_stockIn', function () {
-    return view(
-        'Admin/transactions_stockIn',
-    );
-});
+// Route::get('/transactions_stockIn', function () {
+//     return view(
+//         'Admin/transactions_stockIn',
+//     );
+// });
 
-Route::get('/transactions_stockOut', function () {
-    return view(
-        'Admin/transactions_stockOut'
-    );
-});
+// Route::get('/transactions_stockOut', function () {
+//     return view(
+//         'Admin/transactions_stockOut'
+//     );
+// });
 
-Route::get('/reports_sales', function () {
-    return view(
-        'Admin/reports_sales'
-    );
-});
+// Route::get('/reports_sales', function () {
+//     return view(
+//         'Admin/reports_sales'
+//     );
+// });
 
-Route::get('/reports_stockIn', function () {
-    return view(
-        'Admin/reports_stockIn'
-    );
-});
+// Route::get('/reports_stockIn', function () {
+//     return view(
+//         'Admin/reports_stockIn'
+//     );
+// });
