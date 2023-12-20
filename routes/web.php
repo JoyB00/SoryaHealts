@@ -95,6 +95,7 @@ Route::group(
         Route::get('/profile', [ProfileClient::class, 'gotoProfile'])->name('gotoProfile');
         Route::get('/keranjang', [KeranjangClient::class, 'gotoKeranjang'])->name('gotoKeranjang');
         Route::post('/transaksi', [TransaksiClient::class, 'store'])->name('transaksi');
+        Route::put('/profile', [ProfileClient::class, 'update'])->name('updateProfile');
     }
 );
 Route::get('/', [HomeClient::class, 'getAllData'])->name('home');

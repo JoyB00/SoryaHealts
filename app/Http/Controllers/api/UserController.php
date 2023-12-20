@@ -102,4 +102,31 @@ class UserController extends Controller
             'message' => 'Logged out'
         ]);
     }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $user = User::find($id);
+            if (!$user) {
+                throw new \Exception('user tidak ditemukan');
+            }
+
+            $user->update($request->all());
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Berhasil update data',
+                'data' => $user
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json(
+                [
+                    'status' => false,
+                    'message' => $e->getMessage(),
+                    'data' => []
+                ],
+                400
+            );
+        }
+    }
 }

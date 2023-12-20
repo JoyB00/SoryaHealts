@@ -204,4 +204,9 @@ class UserClient extends Controller
             'customer' => $customer, 'staff' => $staff, 'mutasi_dana' => $mutasiDana
         ]);
     }
+
+    public function gotoProfile()
+    {
+        return view('profile');
+    }
 }

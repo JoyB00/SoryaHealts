@@ -38,6 +38,7 @@ Route::group(
         // customer
         Route::post('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
         Route::get('/user', [UserController::class, 'index']);
+        Route::put('/user/{id}', [UserController::class, 'update']);
 
         // supplier
         Route::get('/suppliers', [SupplierController::class, 'index']);
@@ -84,6 +85,21 @@ Route::group(
         Route::get('/mutasiPenjualan', [MutasiDanaController::class, 'indexPenjualan']);
         Route::get('/mutasiPembelian', [MutasiDanaController::class, 'indexPembelian']);
         Route::post('/mutasiDana', [MutasiDanaController::class, 'store']);
+
+        // Transaksi
+        Route::get('/transaksi', [PengadaanObatController::class, 'index']);
+        Route::post('/transaksi', [PengadaanObatController::class, 'store']);
+        Route::get('/transaksi/{id}', [PengadaanObatController::class, 'show']);
+        Route::delete('/transaksi/{id}', [PengadaanObatController::class, 'destroy']);
+
+
+        // Detail Transaksi
+        Route::get('/keranjang', [DetailTransaksiController::class, 'index']);
+        Route::post('/keranjang', [DetailTransaksiController::class, 'store']);
+        Route::get('/keranjang/{id}', [DetailTransaksiController::class, 'show']);
+        Route::put('/keranjang/{id}', [DetailTransaksiController::class, 'update']);
+        Route::delete('/keranjang/{id}', [DetailTransaksiController::class, 'destroy']);
+    
 
         // Transaksi
         Route::get('/transaksi', [TransaksiController::class, 'index']);

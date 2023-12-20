@@ -26,7 +26,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Tanggal Lahir</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user['tgl_lahir']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user['tanggal_lahir']}}</h4>
             </div>
         </div>
         <div class="row mt-3">
@@ -50,7 +50,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Nomor Handphone</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular; font-size: 18px;">: 081234567890</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user['no_telp']}}</h4>
             </div>
         </div>
         <form class="mt-4" action="">
@@ -89,8 +89,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('updateProfile') }}" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="row">
                         <div class="col-5 my-1">
                             <h3 class="text-center" style="font-size: 18px;">Silahkan Edit Data Profile Anda</h3>
@@ -177,7 +178,7 @@
                                     <label for="noHp" class="mb-1">No Hp</label>
                                 </div>
                                 <div class="col-8">
-                                    <input style="font-family: Lato light;" id="noHp" type="number" class="form-control" value="{{$user['no_hp']}}" required>
+                                    <input style="font-family: Lato light;" id="no_telp" name="no_telp" type="number" class="form-control" value="{{$user['no_hp']}}" required>
                                 </div>
                             </div>
                             <div class="row mt-4 pe-5" style="font-size: 17px;">
