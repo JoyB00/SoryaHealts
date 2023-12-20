@@ -34,6 +34,8 @@ Route::group(
     ['middleware' =>  ['auth', 'cekRole:admin']],
     function () {
 
+
+
         Route::get('/dashboard', [UserClient::class, 'gotoDashboardAdmin'])->name('admin');
         Route::get('/customer', [UserClient::class, 'index'])->name('customerIndex');
 
@@ -90,6 +92,7 @@ Route::group(
         Route::get('/DetailObat', [ObatClient::class, 'show'])->name('detailObat');
         Route::get('/DetailArtikel', [ArtikelClient::class, 'show'])->name('detailArtikel');
         Route::get('/profile', [ProfileClient::class, 'gotoProfile'])->name('gotoProfile');
+        Route::put('/profile', [ProfileClient::class, 'update'])->name('updateProfile');
     }
 );
 

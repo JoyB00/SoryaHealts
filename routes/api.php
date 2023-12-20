@@ -38,7 +38,7 @@ Route::group(
         Route::post('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
 
 
-        // supplier
+        // user
         Route::get('/user', [UserController::class, 'index']);
         Route::post('/user', [UserController::class, 'store']);
         Route::get('/user/{id}', [UserController::class, 'show']);

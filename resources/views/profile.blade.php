@@ -89,8 +89,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('updateProfile') }}" enctype=" multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="row">
                         <div class="col-5 my-1">
                             <h3 class="text-center" style="font-size: 18px;">Silahkan Edit Data Profile Anda</h3>

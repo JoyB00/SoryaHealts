@@ -102,4 +102,40 @@ class UserController extends Controller
             'message' => 'Logged out'
         ]);
     }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $validationRules = [
+                'nama' => 'max:60',
+                'email' => 'email:rfc,dns|unique:users,email,' . $id,
+                'password' => 'min:8',
+                'no_telp' => 'min:11',
+            ];
+
+            $validate = Validator::make($request->all(), $validationRules);
+
+            if ($validate->fails()) {
+                return response(['message' => $validate->errors()->first()], 400);
+            }
+
+            $user = User::find($id);
+
+            if (!$user) {
+                return response(['message' => 'User not found'], 404);
+            }
+            $user->update($request->all());
+
+            return response([
+                'message' => 'User data updated successfully',
+                'user' => $user,
+            ], 200);
+        } catch (\Exception $e) {
+            return response([
+                'status' => false,
+                'message' => $e->getMessage(),
+                'data' => []
+            ], 400);
+        }
+    }
 }
