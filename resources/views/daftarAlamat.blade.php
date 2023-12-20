@@ -59,55 +59,57 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <form method="POST" action="{{ route('alamatStore') }}">
+                        @csrf
+                        <div class="row">
+                            <div class="col-sm-5 col-12 my-1">
+                                <h3 class="text-center" style="font-size: 18px;">Silahkan Tambahkan Alamat Anda</h3>
+                                <div class="card mx-auto mt-5" style="height: 250px; width: 250px;">
+                                    <img id="imagePreview" class="mx-auto " src="{{$user['profile']}}" style="height: 250px; width: 250px;">
+                                </div>
+                            </div>
+                            <div class="col-sm-7 col-12 mt-5 ms-sm-0 ms-4">
+                                <!-- Input Nama -->
+                                <div class="row mb-3" style="font-size: 17px;">
+                                    <div class="col-3">
+                                        <label for="nama" class="mb-1">Nama</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input style="font-family: Lato light; background-color: white" id="nama" type="text" name="nama" class="form-control" value="{{$user['nama']}}" disabled>
+                                    </div>
+                                </div>
 
-                    <div class="row">
-                        <div class="col-sm-5 col-12 my-1">
-                            <h3 class="text-center" style="font-size: 18px;">Silahkan Tambahkan Alamat Anda</h3>
-                            <div class="card mx-auto mt-5" style="height: 250px; width: 250px;">
-                                <img id="imagePreview" class="mx-auto " src="{{$user['profile']}}" style="height: 250px; width: 250px;">
+                                <!-- Input noHp -->
+                                <div class="row mb-3" style="font-size: 17px;">
+                                    <div class="col-3">
+                                        <label for="noHp" class="mb-1">No Hp</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input style="font-family: Lato light; background-color: white;" id="noHp" type="number" class="form-control" value="{{$user->no_telp}}" disabled>
+                                    </div>
+                                </div>
+
+                                <!-- Input Alamat -->
+                                <div class="row mb-3" style="font-size: 17px;">
+                                    <div class="form-floating col-11">
+                                        <textarea class="form-control ps-3" id="floatingTextarea2" style="height: 200px" name="deskripsi" required></textarea>
+                                        <label for="floatingTextarea2" class="ms-3">Detail Alamat</label>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4 pe-5" style="font-size: 17px;">
+                                    <button type="submit" class="btn btn-outline-success">Tambah Alamat</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-7 col-12 mt-5 ms-sm-0 ms-4">
-                            <!-- Input Nama -->
-                            <div class="row mb-3" style="font-size: 17px;">
-                                <div class="col-3">
-                                    <label for="nama" class="mb-1">Nama</label>
-                                </div>
-                                <div class="col-8">
-                                    <input style="font-family: Lato light;" id="nama" type="text" name="nama" class="form-control" value="{{$user['nama']}}" disabled>
-                                </div>
-                            </div>
-
-                            <!-- Input noHp -->
-                            <div class="row mb-3" style="font-size: 17px;">
-                                <div class="col-3">
-                                    <label for="noHp" class="mb-1">No Hp</label>
-                                </div>
-                                <div class="col-8">
-                                    <input style="font-family: Lato light;" id="noHp" type="number" class="form-control" value="{{$user['no_hp']}}" disabled>
-                                </div>
-                            </div>
-                            <div class="row mb-3" style="font-size: 17px;">
-                                <div class="form-floating col-11">
-                                    <textarea class="form-control ps-3" id="floatingTextarea2" style="height: 200px" required></textarea>
-                                    <label for="floatingTextarea2" class="ms-3">Detail Alamat</label>
-                                </div>
-
-                            </div>
-                            <div class="row mt-4 pe-5" style="font-size: 17px;">
-                                <button type="submit" class="btn btn-outline-success">Simpan Perubahan</button>
-                            </div>
-
-                        </div>
-                    </div>
-
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Modal Edit Alamat -->
-    <div class="modal fade" id="modalAlamatEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true"> -->
+    <div class="modal fade" id="modalAlamatEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 900px;">
             <div class="modal-content ">
                 <div class="modal-header bg bg-success">

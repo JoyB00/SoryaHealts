@@ -172,10 +172,10 @@
             </div>
             <div class="side-content animate__animated animate__fadeInRight">
                 <div class="side-title-content">
-                    <h1>Apotek online, solusi mudah dan cepat untuk mendapatkan obat-obatan </h1>
+                    <h1>SorYaHealts, solusi mudah dan cepat untuk mendapatkan obat-obatan </h1>
                 </div>
                 <div class="side-description-content">
-                    <p>Dapatkan obat-obatan yang Anda butuhkan dengan mudah dan cepat. Apotek online kami menyediakan berbagai macam obat-obatan dengan harga yang terjangkau.</p>
+                    <p>Dapatkan obat-obatan yang Anda butuhkan dengan mudah dan cepat. Kami menyediakan berbagai macam obat-obatan dengan harga yang terjangkau.</p>
                 </div>
                 <div class="side-image-content">
                     <img src="{{ asset('images/Register.png') }}" alt="image" style="width:60%;">

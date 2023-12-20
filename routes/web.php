@@ -90,17 +90,35 @@ Route::group(
 Route::group(
     ['middleware' =>  ['auth', 'cekRole:admin,customer']],
     function () {
+        //Logout
         Route::post('/logout', [UserClient::class, 'logout'])->name('logout');
+
+        //DetailObat
         Route::get('/DetailObat', [ObatClient::class, 'show'])->name('detailObat');
+
+        //Detailartikel
         Route::get('/DetailArtikel', [ArtikelClient::class, 'show'])->name('detailArtikel');
+
+        //formTestimoni
         Route::get('/FormTestimoni', [HomeClient::class, 'formTestimoni'])->name('formTestimoni');
         Route::post('/FormTestimoni', [TestimoniClient::class, 'store'])->name('testimoniStore');
 
+        //profile
         Route::get('/profile', [ProfileClient::class, 'gotoProfile'])->name('gotoProfile');
-        Route::get('/keranjang', [KeranjangClient::class, 'gotoKeranjang'])->name('gotoKeranjang');
-        Route::post('/transaksi', [TransaksiClient::class, 'store'])->name('transaksi');
         Route::put('/profile', [ProfileClient::class, 'update'])->name('updateProfile');
+
+        //keranjang
+        Route::get('/keranjang', [KeranjangClient::class, 'gotoKeranjang'])->name('gotoKeranjang');
+
+        //transaksi
+        Route::post('/transaksi', [TransaksiClient::class, 'store'])->name('transaksi');
+
+        //alamat
         Route::get('/alamat', [AlamatClient::class, 'gotoAlamat'])->name('gotoAlamat');
+        // Route::post('/alamat', [AlamatClient::class, 'gotoAlamat'])->name('gotoAlamat');
+        // Route::post('/alamat', [AlamatClient::class, 'index'])->name('alamatIndex');
+        Route::post('/alamat', [AlamatClient::class, 'store'])->name('alamatStore');
+        Route::put('/alamat/{id}', [AlamatClient::class, 'update'])->name('updateAlamat');
     }
 );
 

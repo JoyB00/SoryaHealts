@@ -37,32 +37,6 @@ class AlamatClient extends Controller
         // }
     }
 
-    public function index()
-    {
-        try {
-            $client = new Client();
-            $url = "http://127.0.0.1:8000/api/alamat";
-            $response = $client->request('GET', $url, [
-                'headers' => [
-                    'Content-type' => 'application/json',
-                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
-                ]
-            ]);
-
-            $content = $response->getBody()->getContents();
-            // $data = json_decode($content, true);
-            $contentArray = json_decode($content, true);
-
-            $alamat = $contentArray["data"];
-
-            return view('alamat', ['alamat' => $alamat]);
-            // return view('home', compact('testimoni'));
-        } catch (\Exception $e) {
-            // Catch any other exceptions
-            return view('alamat', ['alamat' => []]);
-        }
-    }
-
     public function show(string $id)
     {
         try {
@@ -107,19 +81,19 @@ class AlamatClient extends Controller
         }
     }
 
-    public function update(Request $request, string $id)
+    public function store(Request $request)
     {
-        $idUser = auth()->user()->id;;
         $deskripsi = $request->deskripsi;
 
         $parameter = [
-            'id_user' => $idUser,
+            'id_user' => auth()->user()->id,
             'deskripsi' => $deskripsi,
         ];
-        try {
+
+        // try {
             $client = new Client();
-            $url = "http://127.0.0.1:8000/api/alamat/$id";
-            $response = $client->request('PUT', $url, [
+            $url = "http://127.0.0.1:8000/api/alamat";
+            $response = $client->request('POST', $url, [
                 'headers' => [
                     'Content-type' => 'application/json',
                     'Authorization' => 'Bearer ' . $_SESSION['access_token']
@@ -129,11 +103,38 @@ class AlamatClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $alamat = $contentArray["data"];
-            Session::flash('message', 'Berhasil Memperbarui Data Alamat');
+            Session::flash('message', 'Berhasil Menambah Data Alamat');
+            return redirect()->route('gotoAlamat', ['alamat' => $alamat]);
+        // } catch (\Exception $e) {
+        //     return redirect()->route('gotoAlamat');
+        // }
+    }
 
-            return redirect()->route('alamatIndex', ['alamat' => $alamat]);
-        } catch (\Exception $e) {
-            return redirect()->route('alamatIndex');
-        }
+    public function update(Request $request, string $id)
+    {
+        $deskripsi = $request->deskripsi;
+
+        $parameter = [
+            'deskripsi' => $deskripsi,
+        ];
+        // try {
+        $client = new Client();
+        $url = "http://127.0.0.1:8000/api/alamat/$id";
+        $response = $client->request('PUT', $url, [
+            'headers' => [
+                'Content-type' => 'application/json',
+                'Authorization' => 'Bearer ' . $_SESSION['access_token']
+            ],
+            'body' => json_encode($parameter),
+        ]);
+        $content = $response->getBody()->getContents();
+        $contentArray = json_decode($content, true);
+        $alamat = $contentArray["data"];
+        Session::flash('message', 'Berhasil Memperbarui Data Alamat');
+
+        return redirect()->route('updateAlamat', ['alamat' => $alamat]);
+        // } catch (\Exception $e) {
+        //     return redirect()->route('alamatIndex');
+        // }
     }
 }
