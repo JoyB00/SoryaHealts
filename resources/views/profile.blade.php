@@ -1,7 +1,6 @@
 @extends('user')
 
 @section('main')
-
 <div class="row ps-md-5 ps-3">
     <div class="col-xl-4 col-12 card mt-4 mx-xl-0 mx-auto" style="height: 360px; width: 360px;">
         <div class="card-body p-4 ">
@@ -60,11 +59,11 @@
 </div>
 
 
+
 <script>
     function previewImage() {
         const fileInput = document.getElementById('formFile');
         const imagePreview = document.getElementById('imagePreview');
-
         const file = fileInput.files;
 
         if (file) {
@@ -74,12 +73,14 @@
                 imagePreview.src = e.target.result;
             };
 
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file[0]); // Menggunakan file pertama dalam daftar file (jika ada)
         }
     }
 </script>
 
+
 @endsection
+
 
 <div class="modal fade" id="profileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 900px;">

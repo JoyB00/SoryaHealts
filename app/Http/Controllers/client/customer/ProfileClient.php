@@ -42,24 +42,24 @@ class ProfileClient extends Controller
         ];
 
 
-        // try {
-        $client = new Client();
-        $url = "http://127.0.0.1:8000/api/user/$id";
-        $response = $client->request('PUT', $url, [
-            'headers' => [
-                'Content-type' => 'application/json',
-                'Authorization' => 'Bearer ' . $_SESSION['access_token']
-            ],
-            'body' => json_encode($parameter),
-        ]);
-        $content = $response->getBody()->getContents();
-        $contentArray = json_decode($content, true);
-        $user = $contentArray["data"];
-        Session::flash('message', 'Berhasil Memperbarui Data User');
+        try {
+            $client = new Client();
+            $url = "http://127.0.0.1:8000/api/user/$id";
+            $response = $client->request('PUT', $url, [
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
+                ],
+                'body' => json_encode($parameter),
+            ]);
+            $content = $response->getBody()->getContents();
+            $contentArray = json_decode($content, true);
+            $user = $contentArray["data"];
+            Session::flash('message', 'Berhasil Memperbarui Data User');
 
-        return redirect()->route('updateProfile', ['user' => $user]);
-        // } catch (\Exception $e) {
-        //     return redirect()->route('updateProfile', ['user' => $user]);
-        // }
+            return redirect()->route('updateProfile', ['user' => $user]);
+        } catch (\Exception $e) {
+            return redirect()->route('updateProfile', ['user' => $user]);
+        }
     }
 }
