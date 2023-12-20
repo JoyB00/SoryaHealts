@@ -62,7 +62,7 @@ class AlamatClient extends Controller
 
     public function destroy(string $id)
     {
-        try {
+        // try {
             $client = new Client();
             $url = "http://127.0.0.1:8000/api/alamat/$id";
             $response = $client->request('Delete', $url, [
@@ -75,10 +75,10 @@ class AlamatClient extends Controller
             $contentArray = json_decode($content, true);
             $alamat = $contentArray["data"];
             Session::flash('message', 'Berhasil Menghapus Data Alamat');
-            return redirect()->route('alamatIndex', ['alamat' => $alamat]);
-        } catch (\Exception $e) {
-            return redirect()->route('alamatIndex');
-        }
+            return redirect()->route('gotoAlamat', ['alamat' => $alamat]);
+        // } catch (\Exception $e) {
+        //     return redirect()->route('gotoAlamat');
+        // }
     }
 
     public function store(Request $request)

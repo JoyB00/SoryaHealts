@@ -115,11 +115,10 @@ Route::group(
 
         //alamat
         Route::get('/alamat', [AlamatClient::class, 'gotoAlamat'])->name('gotoAlamat');
-        // Route::post('/alamat', [AlamatClient::class, 'gotoAlamat'])->name('gotoAlamat');
-        // Route::post('/alamat', [AlamatClient::class, 'index'])->name('alamatIndex');
         Route::post('/alamat', [AlamatClient::class, 'store'])->name('alamatStore');
         Route::put('/alamat/{id}', [AlamatClient::class, 'update'])->name('updateAlamat');
-        
+        Route::delete('/alamat/{id}', [AlamatClient::class, 'destroy'])->name('deleteAlamat');
+
     }
 );
 

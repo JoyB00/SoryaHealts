@@ -32,7 +32,9 @@
                             <li class="nav-item mt-1 p-1">
                                 <div style="height: 25; width: 3; background-color: white;"></div>
                             </li>
-                            <li class="nav-item"><button class="btn text-white ">Hapus</button></li>
+                            <li class="nav-item">
+                                <button class="btn text-white delete-alamat-btn" data-bs-toggle="modal" data-bs-target="#hapusAlamat" data-id="{{ $item['id'] }}">Hapus</button>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -52,6 +54,31 @@
     </div>
 
     @endsection
+
+    <!-- Modal Hapus Alamat -->
+    <div class="modal fade" id="hapusAlamat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 900px;">
+            <div class="modal-content ">
+                <div class="modal-header bg bg-success">
+                    <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Edit Alamat</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="deleteAlamatForm" data-action="{{ route('deleteAlamat', ['id' => '__alamat_id__']) }}">
+                        @csrf
+                        @method('delete')
+                        <div class="modal-body">
+                            Apakah Anda yakin ingin menghapus alamat ini?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-danger" id="confirmDelete">Yes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal Edit Alamat -->
     <div class="modal fade" id="editAlamat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
@@ -170,6 +197,7 @@
         </div>
     </div>
 
+    <!-- ambil id alamat untuk edit -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const editAlamatButtons = document.querySelectorAll('.edit-alamat-btn');
@@ -184,6 +212,26 @@
 
                     editAlamatForm.setAttribute('action', updatedAction);
                     editAlamatModal.show();
+                });
+            });
+        });
+    </script>
+
+    <!-- ambil id alamat untuk hapus -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteAlamatButtons = document.querySelectorAll('.delete-alamat-btn');
+            const deleteAlamatModal = new bootstrap.Modal(document.getElementById('hapusAlamat'));
+            const deleteAlamatForm = document.getElementById('deleteAlamatForm');
+
+            deleteAlamatButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const alamatId = this.getAttribute('data-id');
+                    const formAction = deleteAlamatForm.getAttribute('data-action');
+                    const updatedAction = formAction.replace('__alamat_id__', alamatId);
+
+                    deleteAlamatForm.setAttribute('action', updatedAction);
+                    deleteAlamatModal.show();
                 });
             });
         });
