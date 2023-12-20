@@ -48,7 +48,6 @@ class DetailPengadaanClient extends Controller
             $pengadaan = Pengadaan_Obat::with('supplier')->where('id', $id_pengadaan)->first();
             $checkProduk = Detail_Pengadaan::with('obat')->where('id_pengadaan', $pengadaan['id'])->where('id_obat', $id_obat)->first();
 
-
             if (is_null($checkProduk)) {
                 $parameter = [
                     'id_pengadaan' => $id_pengadaan,

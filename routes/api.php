@@ -94,26 +94,18 @@ Route::group(
 
 
         // Detail Transaksi
-        Route::get('/keranjang', [DetailTransaksiController::class, 'index']);
+        Route::get('/keranjang', [DetailPengadaanController::class, 'index']);
         Route::post('/keranjang', [DetailTransaksiController::class, 'store']);
         Route::get('/keranjang/{id}', [DetailTransaksiController::class, 'show']);
         Route::put('/keranjang/{id}', [DetailTransaksiController::class, 'update']);
         Route::delete('/keranjang/{id}', [DetailTransaksiController::class, 'destroy']);
-    
+
 
         // Transaksi
         Route::get('/transaksi', [TransaksiController::class, 'index']);
         Route::post('/transaksi', [TransaksiController::class, 'store']);
         Route::get('/transaksi/{id}', [TransaksiController::class, 'show']);
         Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy']);
-
-
-        // Detail Transaksi
-        Route::get('/keranjang', [DetailTransaksiController::class, 'index']);
-        Route::post('/keranjang', [DetailTransaksiController::class, 'store']);
-        Route::get('/keranjang/{id}', [DetailTransaksiController::class, 'show']);
-        Route::put('/keranjang/{id}', [DetailTransaksiController::class, 'update']);
-        Route::delete('/keranjang/{id}', [DetailTransaksiController::class, 'destroy']);
     }
 );
 

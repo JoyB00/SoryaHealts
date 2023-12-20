@@ -80,7 +80,7 @@ class TransaksiClient extends Controller
 
         return redirect()->route('gotoKeranjang', ['transaksi' => $data, 'keranjang' => $detailTransaksi]);
         // } catch (\Exception $e) {
-        //     return redirect()->route('keranjang', ['transaksi' => [], 'keranjang' => []]);
+        //     return redirect()->route('gotoKeranjang', ['transaksi' => [], 'keranjang' => []]);
         // }
     }
 }

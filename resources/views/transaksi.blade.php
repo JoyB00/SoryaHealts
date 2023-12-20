@@ -70,7 +70,7 @@
                                         Dosis : {{$obat['dosis']}}
                                     </div>
                                     <div class="nav mx-sm-0 mx-auto row">
-                                        @if(is_null($transaksi))
+                                        @if(is_null($transaksi) || $transaksi['status']==1)
                                         <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#tambahKeranjang">
                                             Buat Transaksi
                                         </button>
@@ -131,17 +131,17 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-success">
-                <h5 class="modal-title text-white" id="staticBackdropLabel">Berhasil Ditambahkan Ke Keranjang !</h5>
+                <h5 class="modal-title text-white" id="staticBackdropLabel">Pindahkan Ke Keranjang</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Ingin lihat keranjang anda ?
+                Ingin pindahkan ke keranjang anda ?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Keluar</button>
-                <form action="{{route('transaksi')}}" method="post">
+                <form action="{{ empty($transaksi) || $transaksi['status']==1 ? route('transaksi') : route('storeKeranjang') }}" method="post">
                     @csrf
-                    <input type="text" value="{{$obat['id']}}" name="idObat" hidden >
+                    <input type="text" value="{{$obat['id']}}" name="idObat" hidden>
                     <input type="text" value="1" name="countValue" id="countValue" hidden>
                     <button type="submit" class="btn btn-success">Lihat Keranjang</button>
                 </form>

@@ -9,6 +9,7 @@ use App\Models\Mutasi_Dana;
 use App\Models\Obat;
 use App\Models\Pengadaan_Obat;
 use App\Models\Supplier;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use \Illuminate\Support\Facades\Session;
@@ -36,8 +37,6 @@ class MutasiDanaClient extends Controller
                     ->where('pengadaan_obats.status', 1)
                     ->get();
             }
-
-
             return view('Admin.reports_pembelian', ['mutasiDana' => $mutasiDana, 'detailPengadaan' => $detailPengadaan]);
         } catch (\Exception $e) {
             return view('Admin.reports_pembelian', ['mutasiDana' => []]);
@@ -59,7 +58,9 @@ class MutasiDanaClient extends Controller
 
             $mutasiDana = $contentArray["data"];
             if (!is_null($mutasiDana)) {
-                $detailTransaksi = Detail_Transaksi::where('id_transaksi', $mutasiDana['id_transaksi'])->get();
+                $detailTransaksi = Detail_Transaksi::join('transaksis', 'detail_transaksis.id_transaksi', '=', 'transaksis.id')
+                    ->where('transaksis.status', 1)
+                    ->get();
             }
 
             return view('Admin.reports_penjualan', ['mutasiDana' => $mutasiDana, 'detailTransaksi' => $detailTransaksi]);
@@ -112,5 +113,47 @@ class MutasiDanaClient extends Controller
         } catch (\Exception $e) {
             return redirect()->route('Admin.transactions_stockIn');
         }
+    }
+
+    public function storeTransaksiUser(Request $request)
+    {
+        $idTransaksi = $request->idTransaksi;
+        $totalHarga = $request->totalHarga;
+
+        $current_mutasiDana = Mutasi_Dana::all()->last();
+        $transaksi = Transaksi::where('id', $idTransaksi)->first();
+        $detail_transaksi = Detail_Transaksi::where('id_transaksi', $idTransaksi)->get();
+
+        $parameter = [
+            'id_transaksi' => $idTransaksi,
+            'detail_mutasi' => "Transaksi Obat User Apotek",
+            'saldo' => $current_mutasiDana['saldo'] + $totalHarga,
+        ];
+        // try {
+
+        $client = new Client();
+        $url = "http://127.0.0.1:8000/api/mutasiDana";
+        $response = $client->request('POST', $url, [
+            'headers' => [
+                'Content-type' => 'application/json',
+                'Authorization' => 'Bearer ' . $_SESSION['access_token']
+            ],
+            'body' => json_encode($parameter),
+        ]);
+        $content = $response->getBody()->getContents();
+        $contentArray = json_decode($content, true);
+
+        $transaksi['status'] = 1;
+        $transaksi->save();
+
+        $detail_transaksi->each(function ($item) {
+            $obat = Obat::find($item['id_obat']);
+            $obat['stok_obat'] = $obat['stok_obat'] - $item['jumlah_obat'];
+            $obat->save();
+        });
+        return redirect()->route('home');
+        // } catch (\Exception $e) {
+        //     return redirect()->back();
+        // }
     }
 }

@@ -48,11 +48,16 @@ class DetailTransaksiController extends Controller
     public function show($id)
     {
         try {
-            $detailTransaksi = Detail_Transaksi::with('obat')->where('id_transaksi', $id)->get();
+            $detailTransaksi = Detail_Transaksi::with('obat', 'transaksi')
+                ->join('transaksis', 'detail_transaksis.id_transaksi', '=', 'transaksis.id')
+                ->where('transaksis.id', $id)
+                ->where('transaksis.status', 0)
+                ->get();
 
-            if (!$detailTransaksi) {
+            if ($detailTransaksi->isEmpty()) {
                 throw new \Exception('Detail transaksi tidak ditemukan');
             }
+
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',

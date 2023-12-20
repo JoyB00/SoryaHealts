@@ -100,6 +100,7 @@ class ObatClient extends Controller
     public function show(Request $request)
     {
         $id = $request->id_obat;
+        // dd($id);
 
         try {
             $client = new Client();
@@ -115,7 +116,7 @@ class ObatClient extends Controller
 
             $obat = $contentArray["data"];
 
-            $transaksi = Transaksi::where('id_user', auth()->user()->id)->first();
+            $transaksi = Transaksi::where('id_user', auth()->user()->id)->where('status', 0)->first();
             return view('transaksi', ['obat' => $obat, 'transaksi' => $transaksi]);
         } catch (\Exception $e) {
             return view('transaksi', ['obat' => []]);

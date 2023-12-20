@@ -26,21 +26,21 @@
                                 @for($i=0; $i < count($keranjang); $i++) <div class="row m-2"> <!-- obat yang dibeli-->
                                     <div class="row g-2 border rounded p-2">
                                         <div class="col-2 justify-content-center align-items-center">
-                                            <img src="{{$keranjang[$i]['image']}}" alt="" class="img-thumbnail">
+                                            <img src="{{asset('public/images/obat/'. $keranjang[$i]['obat']['gambar_obat'])}}" alt="" class="img-thumbnail">
                                         </div>
                                         <div class="col-10">
-                                            <strong>{{$keranjang[$i]['nama_obat']}}</strong>
-                                            <div class="row mt-2">
-                                                <div class="col-xl-2 col-12">Deskripsi</div>
-                                                <div class="col-xl-10 col-12">: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
+                                            <strong>{{$keranjang[$i]['obat']['nama_obat']}}</strong>
                                             <div class="row mt-2">
                                                 <div class="col-xl-2 col-12">Harga</div>
-                                                <div class="col-xl-10 col-12">: Rp {{$keranjang[$i]['harga']}}</div>
+                                                <div class="col-xl-10 col-12">: Rp {{$keranjang[$i]['obat']['harga_obat']}}</div>
                                             </div>
                                             <div class="row mt-2">
                                                 <div class="col-xl-2 col-12">Jumlah</div>
-                                                <div class="col-xl-10 col-12">: {{$keranjang[$i]['jumlah']}}</div>
+                                                <div class="col-xl-10 col-12">: {{$keranjang[$i]['jumlah_obat']}}</div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-xl-2 col-12">Dosis</div>
+                                                <div class="col-xl-10 col-12">: {{$keranjang[$i]['obat']['dosis']}}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -52,19 +52,13 @@
                             <div class="col-xl-6 col-12">
                                 <div class="card card mb-4 p-4">
                                     <div class="card-header bg-transparent mb-2">
-                                        <h5 class="text-start"> Metode Pembayaran</h5>
+                                        <h5 class="text-start"> Metode Pembayaran : {{$transaksi['metode_pembayaran']}}</h5>
                                     </div>
                                     <div class="row justify-content-center align-items-center">
                                         <img src="{{ ('images\Qris.png') }}" alt="">
                                     </div>
                                     <hr>
-                                    <div class="col-10">
-                                        <p class="text-center"> Masukkan kartu BCA dan PIN</p>
-                                        <p>Pilih menu Transaksi Lainnya > Transfer > BCA Virtual Account</p>
-                                        <p>Masukkan nomor Virtual Account DANA (contoh: 390108981234567)</p>
-                                        <p>Masukkan nominal yang ingin diisi</p>
-                                        <p>Ikuti petunjuk selanjutnya hingga transaksi selesai.</p>
-                                    </div>
+
                                 </div>
 
                             </div>
@@ -76,14 +70,25 @@
                                             <h5 class="text-start"> Total Pembayaran </h5>
                                         </div>
                                         <div class="col-6 ">
-                                            <h5 class="text-start"> Rp. 61232 </h5>
+                                            <h5 class="text-start"> Rp.
+                                                <?php
+                                                $totalHarga = 0;
+
+                                                for ($i = 0; $i < count($keranjang); $i++) {
+                                                    $totalHarga = $totalHarga + ($keranjang[$i]['obat']['harga_obat'] * $keranjang[$i]['jumlah_obat']);
+                                                }
+                                                $totalHarga = $totalHarga + 10000;
+                                                echo $totalHarga
+                                                ?> </h5>
                                         </div>
 
                                     </div>
                                 </div>
 
                                 <div class="row justify-content-start align-items-start p-2">
-                                    <button type="button" class="btn text-bg-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">BAYAR</button>
+                                    <form action="{{route('mutasiDanaTransaksi')}}">
+                                        <button type="button" class="btn text-bg-success btn-lg w-100" data-bs-toggle="modal" data-bs-target="#pembayaranModal">BAYAR</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -94,23 +99,25 @@
     </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+    <!-- Modal for Delete -->
+    <div class="modal fade" id="pembayaranModal" tabindex="-1" role="dialog" aria-labelledby="pembayaranModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content ">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Pembayaran Berhasil</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="pembayaranModalLabel">Selesaikan Transaksi</h5>
                 </div>
-                <div class="modal-body text-center">
-                    <img src="{{ ('images\success.png') }}" alt="">
-                </div>
-                <form action="{{url('/')}}" method="get">
-                    <div class="modal-footer row mx-5 ">
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Selesai</button>
+                <form method="post" action="{{ route('mutasiDanaTransaksi') }}">
+                    @csrf
+                    <div class="modal-body">
+                        Apakah semua detail transaksi anda sudah benar ?
+                    </div>
+                    <div class="modal-footer">
+                        <input type="text" name="totalHarga" value="{{$totalHarga}}" hidden>
+                        <input type="text" name="idTransaksi" value="{{$transaksi['id']}}" hidden>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-danger" id="confirmDelete">Yes</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
