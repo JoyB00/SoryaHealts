@@ -8,6 +8,7 @@ use App\Http\Controllers\client\admin\PengadaanClient;
 use App\Http\Controllers\client\admin\StafClient;
 use App\Http\Controllers\client\admin\SupplierClient;
 use App\Http\Controllers\client\customer\HomeClient;
+use App\Http\Controllers\client\customer\ProfileClient;
 use App\Http\Controllers\client\UserClient;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
@@ -88,8 +89,7 @@ Route::group(
         Route::post('/logout', [UserClient::class, 'logout'])->name('logout');
         Route::get('/DetailObat', [ObatClient::class, 'show'])->name('detailObat');
         Route::get('/DetailArtikel', [ArtikelClient::class, 'show'])->name('detailArtikel');
-        //baru
-        Route::get('/profile', [UserClient::class, 'gotoProfile'])->name('profile');
+        Route::get('/profile', [ProfileClient::class, 'gotoProfile'])->name('gotoProfile');
     }
 );
 
