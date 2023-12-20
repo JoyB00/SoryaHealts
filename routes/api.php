@@ -1,14 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-use App\Http\Controllers\api\ObatController;
-
-use App\Http\Controllers\api\PengadaanObatController;
-use App\Http\Controllers\api\StafController;
-use App\Http\Controllers\api\SupplierController;
-use App\Http\Controllers\api\TestimoniController;
-use App\Http\Controllers\api\TransaksiController;
-=======
 use App\Http\Controllers\api\AlamatController;
 use App\Http\Controllers\api\ArtikelController;
 use App\Http\Controllers\api\DetailPengadaanController;
@@ -18,12 +9,9 @@ use App\Http\Controllers\api\PengadaanObatController;
 use App\Http\Controllers\api\StafController;
 use App\Http\Controllers\api\SupplierController;
 use App\Http\Controllers\api\UserController;
-<<<<<<< HEAD
->>>>>>> main
-=======
+
 use App\Http\Controllers\client\DetailPengadaan;
 use App\Http\Controllers\client\DetailPengadaanClient;
->>>>>>> main
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,18 +26,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::apiResource('obat', ObatController::class);
-Route::apiResource('pengadaanObat', PengadaanObatController::class);
-Route::apiResource('staf', StafController::class);
-Route::apiResource('supplier', SupplierController::class);
-Route::apiResource('testimoni', TestimoniController::class);
-Route::apiResource('transaksi', TransaksiController::class);
-=======
 Route::post('/register', [App\Http\Controllers\api\UserController::class, 'register']);
 Route::post('/login', [App\Http\Controllers\api\UserController::class, 'login']);
 
@@ -60,7 +36,14 @@ Route::group(
         Route::get('/alamat', [App\Http\Controllers\api\AlamatController::class, 'index']);
         // customer
         Route::post('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
+
+
+        // supplier
         Route::get('/user', [UserController::class, 'index']);
+        Route::post('/user', [UserController::class, 'store']);
+        Route::get('/user/{id}', [UserController::class, 'show']);
+        Route::put('/user/{id}', [UserController::class, 'update']);
+        Route::delete('/user/{id}', [UserController::class, 'destroy']);
 
         // supplier
         Route::get('/suppliers', [SupplierController::class, 'index']);
@@ -115,4 +98,3 @@ Route::group(
 // Route::apiResource('detail_pengadaans', DetailPengadaanController::class);
 // Route::apiResource('detail_transaksis', DetailTransaksiController::class);
 // Route::apiResource('mutasi_danas', MutasiDanaController::class);
->>>>>>> main

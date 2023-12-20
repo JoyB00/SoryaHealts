@@ -88,8 +88,12 @@ Route::group(
         Route::post('/logout', [UserClient::class, 'logout'])->name('logout');
         Route::get('/DetailObat', [ObatClient::class, 'show'])->name('detailObat');
         Route::get('/DetailArtikel', [ArtikelClient::class, 'show'])->name('detailArtikel');
+        //baru
+        Route::get('/profile', [UserClient::class, 'gotoProfile'])->name('profile');
     }
 );
+
+
 Route::get('/', [HomeClient::class, 'getAllData'])->name('home');
 Route::get('/DaftarObat', [HomeClient::class, 'daftarObat'])->name('daftarObat');
 Route::get('/JenisObat', [HomeClient::class, 'sortByJenisObat'])->name('sortByJenisObat');

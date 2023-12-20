@@ -166,7 +166,6 @@ class UserClient extends Controller
     }
 
 
-
     public function logout()
     {
 
@@ -205,5 +204,10 @@ class UserClient extends Controller
             'supplier' => $supplier, 'produk' => $produk,
             'customer' => $customer, 'staff' => $staff, 'mutasi_dana' => $mutasiDana
         ]);
+    }
+
+    public function gotoProfile()
+    {
+        return view('profile');
     }
 }
