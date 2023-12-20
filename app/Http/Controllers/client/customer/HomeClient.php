@@ -27,6 +27,12 @@ class HomeClient extends Controller
         return view('daftarObat', ['obat' => $obat]);
     }
 
+    public function formTestimoni()
+    {
+        $testimoni = Testimoni::inRandomOrder()->get();
+        return view('testimoni', ['testimoni' => $testimoni]);
+    }
+
     public function sortByJenisObat(Request $request)
     {
 

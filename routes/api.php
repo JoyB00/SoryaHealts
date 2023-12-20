@@ -82,6 +82,17 @@ Route::group(
         Route::get('/mutasiPenjualan', [MutasiDanaController::class, 'indexPenjualan']);
         Route::get('/mutasiPembelian', [MutasiDanaController::class, 'indexPembelian']);
         Route::post('/mutasiDana', [MutasiDanaController::class, 'store']);
+
+        //testimoni
+        Route::get('/testimoni', [App\Http\Controllers\api\TestimoniController::class, 'index']);
+        Route::post('/testimoni', [App\Http\Controllers\api\TestimoniController::class,'store']);
+        Route::get('/testimoni/{id}', [App\Http\Controllers\api\TestimoniController::class,'show']);
+        Route::put('/testimoni/{id}', [App\Http\Controllers\api\TestimoniController::class, 'update']);
+        Route::delete('/testimoni/{id}', [App\Http\Controllers\api\TestimoniController::class, 'destroy']);
+
+        // Pengadaan Obat
+        Route::get('/pengadaanObat', [PengadaanObatController::class, 'index']);
+        Route::post('/pengadaanObat', [PengadaanObatController::class,'store']);
     }
 
 );

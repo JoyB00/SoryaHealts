@@ -34,7 +34,8 @@
         <div class="col-md-8 col-12 card">
             <div class="card-body">
                 <h5 style="text-align: end;">Berikan Rating Apotek SorYaHealts</h5>
-                <form action="">
+                <form action="" method="post">
+                    @csrf
                     <div class="star-widget">
                         <input type="radio" name="rate" id="rate-5">
                         <label for="rate-5" class="fas fa-star"></label>

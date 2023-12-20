@@ -81,15 +81,17 @@ Route::group(
     }
 );
 
-
 Route::group(
     ['middleware' =>  ['auth', 'cekRole:admin,customer']],
     function () {
         Route::post('/logout', [UserClient::class, 'logout'])->name('logout');
         Route::get('/DetailObat', [ObatClient::class, 'show'])->name('detailObat');
         Route::get('/DetailArtikel', [ArtikelClient::class, 'show'])->name('detailArtikel');
+        Route::get('/FormTestimoni', [HomeClient::class, 'formTestimoni'])->name('formTestimoni');
     }
 );
+
+//semua user dengan kondisir belum login pun bisa masuk
 Route::get('/', [HomeClient::class, 'getAllData'])->name('home');
 Route::get('/DaftarObat', [HomeClient::class, 'daftarObat'])->name('daftarObat');
 Route::get('/JenisObat', [HomeClient::class, 'sortByJenisObat'])->name('sortByJenisObat');
@@ -97,6 +99,8 @@ Route::get('/KategoriObat', [HomeClient::class, 'sortByKategoriObat'])->name('so
 Route::get('/Artikel', [HomeClient::class, 'artikel'])->name('artikel');
 Route::get('/TopikArtikel', [HomeClient::class, 'sortByTopikArtikel'])->name('sortByTopikArtikel');
 Route::get('/TentangKami', [HomeClient::class, 'tentangKami'])->name('tentangKami');
+
+
 
 
 // Baruu
