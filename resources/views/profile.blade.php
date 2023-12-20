@@ -1,12 +1,11 @@
 @extends('user')
 
 @section('main')
-
 <div class="row ps-md-5 ps-3">
     <div class="col-xl-4 col-12 card mt-4 mx-xl-0 mx-auto" style="height: 360px; width: 360px;">
         <div class="card-body p-4 ">
             <div class="card mx-auto" style="height: 300px; width: 300px;">
-                <img class="img-fluid rounded-circle mt-2 profile-photo" src="{{ auth()->user()->profile ? auth()->user()->profile : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="height: 300px; width: 300px;">
+                <img alt="{{$user['profile']}}" class="img-fluid profile-photo" src="{{ auth()->user()->profile ? asset('public/images/'. $user['profile']) : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="height: 300px; width: 300px;">
             </div>
         </div>
     </div>
@@ -50,7 +49,7 @@
                 <h4 style="font-family: lato regular; font-weight: bold;">Nomor Handphone</h4>
             </div>
             <div class="col-7">
-                <h4 style="font-family: lato regular; font-size: 18px;">: {{$user['no_telp']}}</h4>
+                <h4 style="font-family: lato regular; font-size: 18px;">: 081234567890</h4>
             </div>
         </div>
         <form class="mt-4" action="">
@@ -59,12 +58,10 @@
     </div>
 </div>
 
-
 <script>
     function previewImage() {
         const fileInput = document.getElementById('formFile');
         const imagePreview = document.getElementById('imagePreview');
-
         const file = fileInput.files;
 
         if (file) {
@@ -74,12 +71,78 @@
                 imagePreview.src = e.target.result;
             };
 
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file[0]); // Menggunakan file pertama dalam daftar file (jika ada)
         }
     }
 </script>
 
+<!-- Tambahkan bagian script berikut di bagian head atau diakhir body -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var showToast = function(message, autohide = true) {
+            var liveToast = new bootstrap.Toast(document.getElementById('liveToast'), {
+                autohide: autohide
+            });
+
+            document.getElementById('liveToast').getElementsByClassName('toast-body')[0].innerText = message;
+
+            liveToast.show();
+        };
+
+        // Cek apakah ada pesan berhasil dari server, jika ada, tampilkan toast
+        var successMessage = "{{ Session::get('message') }}";
+        if (successMessage) {
+            showToast(successMessage);
+        }
+    });
+</script>
+
+<script>
+    function validateFile() {
+        var fileInput = document.getElementById('formFile');
+        var fileName = fileInput.value;
+
+        if (!fileName) {
+            alert('Silakan pilih file gambar terlebih dahulu.');
+            return false;
+        }
+
+        // Lanjutkan dengan pengiriman formulir jika validasi berhasil
+        // Misalnya, jika Anda menggunakan form.submit();
+    }
+</script>
+
+<!-- Toast container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <!-- Toast untuk keberhasilan -->
+    <div id="successToast" class="toast bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto text-white">Pemberitahuan</strong>
+            <small class="text-white">Baru saja</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body text-white">
+            Profil berhasil diperbarui!
+        </div>
+    </div>
+
+    <!-- Toast untuk kegagalan -->
+    <div id="errorToast" class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto text-white">Pemberitahuan</strong>
+            <small class="text-white">Baru saja</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body text-white">
+            Gagal mengedit profil. Silakan coba lagi.
+        </div>
+    </div>
+</div>
+
+
+
 @endsection
+
 
 <div class="modal fade" id="profileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 900px;">
@@ -99,7 +162,7 @@
                                 <img id="imagePreview" class="mx-auto" src="{{$user['profile']}}" style="height: 200px; width: 200px;">
                             </div>
                             <div class="mb-3 mt-3 card bg-success mx-auto" style="width: 200px;">
-                                <input style="font-family: Lato light;" type="file" id="formFile" accept="image/*" onchange="previewImage()" name="image">
+                                <input style="font-family: Lato light;" type="file" id="formFile" accept="image/*" onchange="previewImage()" name="profile">
                                 <label for="formFile" id="labelFile">Pilih File</label>
                             </div>
                             <p style="text-align: center; font-size: x-small; font-family: lato light;">Rekomendasi ukuran 300px x 300px</p>
@@ -175,14 +238,17 @@
                             <!-- Input Email -->
                             <div class="row mb-3" style="font-size: 17px;">
                                 <div class="col-3">
-                                    <label for="noHp" class="mb-1">No Hp</label>
+                                    <label for="no_telp" class="mb-1">No Hp</label>
                                 </div>
                                 <div class="col-8">
-                                    <input style="font-family: Lato light;" id="no_telp" name="no_telp" type="number" class="form-control" value="{{$user['no_hp']}}" required>
+                                    <input style="font-family: Lato light;" id="no_telp" name="no_telp" type="number" class="form-control" value="{{$user['no_telp']}}" required>
                                 </div>
                             </div>
                             <div class="row mt-4 pe-5" style="font-size: 17px;">
-                                <button type="submit" class="btn btn-outline-success">Simpan Perubahan</button>
+                                <button type="submit" class="btn btn-outline-success" onclick="validateFile()">Simpan Perubahan</button>
+
+
+
                             </div>
                         </div>
                     </div>

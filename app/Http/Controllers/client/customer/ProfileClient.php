@@ -24,8 +24,17 @@ class ProfileClient extends Controller
         $email = $request->email;
         $gender = $request->gender;
         $tglLahir = $request->tglLahir;
-        $profil = $request->profil;
+
         $id = auth()->user()->id;
+
+        if ($request->hasFile('profile')) {
+            $profil = $request->file('profile');
+            $profil_ekstensi = $profil->extension();
+            $profile_nama = date('ymdhis') . "." . $profil_ekstensi;
+            $profil->move(public_path('public/images'), $profile_nama);
+        } else {
+            $profile_nama = auth()->user()->profile;
+        }
 
         $parameter = [
             'nama' => $nama,
@@ -33,27 +42,30 @@ class ProfileClient extends Controller
             'jenis_kelamin' => $gender,
             'no_telp' => $no_telp,
             'tanggal_lahir' => $tglLahir,
-            'profil' => $profil,
+            'profile' => $profile_nama,
         ];
 
-        // try {
-        $client = new Client();
-        $url = "http://127.0.0.1:8000/api/user/$id";
-        $response = $client->request('PUT', $url, [
-            'headers' => [
-                'Content-type' => 'application/json',
-                'Authorization' => 'Bearer ' . $_SESSION['access_token']
-            ],
-            'body' => json_encode($parameter),
-        ]);
-        $content = $response->getBody()->getContents();
-        $contentArray = json_decode($content, true);
-        $user = $contentArray["data"];
-        Session::flash('message', 'Berhasil Memperbarui Data User');
 
-        return redirect()->route('updateProfile', ['user' => $user]);
-        // } catch (\Exception $e) {
-        //     return redirect()->route('updateProfile', ['user' => $user]);
-        // }
+        try {
+            $client = new Client();
+            $url = "http://127.0.0.1:8000/api/user/$id";
+            $response = $client->request('PUT', $url, [
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
+                ],
+                'body' => json_encode($parameter),
+            ]);
+            $content = $response->getBody()->getContents();
+            $contentArray = json_decode($content, true);
+            $user = $contentArray["data"];
+
+            Session::flash('message', 'Berhasil Memperbarui Data User');
+            toastr()->error('Please enter a valid amount. Minimum top-up is IDR 50,000.');
+
+            return redirect()->route('updateProfile', ['user' => $user]);
+        } catch (\Exception $e) {
+            return redirect()->route('updateProfile', ['user' => $user]);
+        }
     }
 }

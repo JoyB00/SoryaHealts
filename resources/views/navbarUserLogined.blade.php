@@ -130,7 +130,8 @@
                     </ul>
                     <div class="d-flex justify-content-center" id="navbarNav">
                         <label for="dropdownMenu2">
-                            <img class="img-fluid rounded-circle mt-2 profile-photo" src="{{ auth()->user()->profile ? auth()->user()->profile : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="width: 35px; height: 35px; background-color:grey;">
+                            <img class="img-fluid rounded-circle mt-2 profile-photo" src="{{ auth()->user()->profile ? asset('public/images/'. auth()->user()->profile) : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="width: 35px; height: 35px; background-color:grey;">
+
                         </label>
                         <div class="dropdown ">
                             <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 25px;">
