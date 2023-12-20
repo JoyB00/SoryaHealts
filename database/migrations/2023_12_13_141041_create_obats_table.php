@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('kategori_obat');
             $table->string('dosis');
             $table->string('golongan_obat');
+            $table->longText('gambar_obat');
             $table->timestamps();
         });
     }

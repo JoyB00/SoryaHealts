@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\client;
+namespace App\Http\Controllers\client\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Authenticate;

@@ -1,7 +1,7 @@
 @extends('admin')
 @section('content')
 <style>
-    .btn-primary.px-4{
+    .btn-primary.px-4 {
         border: none;
     }
 </style>
@@ -9,18 +9,11 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Transactions</h1>
-                <p>Stock Out</p>
-            </div>
-            <!-- <div class="col-xl-6">
-                <ol class="breadcrumb float-sm-right">
-                    <button class="btn-primary px-4" style="border-radius: 7px;" data-toggle="modal" data-target="#productModal"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0,0,256,256">
-<g fill="#ffffff" fill-rule="evenodd" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M11,2v9h-9v2h9v9h2v-9h9v-2h-9v-9z"></path></g></g>
-</svg>Add Produck</button>
+                <div class="col-sm-6">
+                    <h1>Transactions</h1>
+                    <p>Stock Out</p>
+                </div>
 
-                </ol>
-            </div> -->
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -30,7 +23,7 @@
             <th>ID</th>
             <th>Nama Obat</th>
             <th>Qty</th>
-            <th  style="width: 200px;">Action</th>
+            <th style="width: 200px;">Action</th>
         </tr>
         @forelse ($obat as $item)
         <tr>
@@ -53,14 +46,14 @@
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-        <div class="modal-header">
+            <div class="modal-header">
                 <h5 class="modal-title" id="productModalLabel">Update User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form>
+                <form>
                     <div class="form-group">
                         <label for="productID">ID: </label>
                         <input type="text" class="form-control" id="supplierID" placeholder="unTouchable">
@@ -89,7 +82,7 @@
                             <input type="number" class="form-control" id="stock" placeholder="Masukan Jumlah Obat">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="productDeskripsi">Deskripsi Obat:</label>
                         <input type="text" class="form-control" id="deskripsi" placeholder="Masukan Deskripsi Obat">
@@ -137,7 +130,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form>
+                <form>
                     <div class="form-group">
                         <label for="productID">ID: </label>
                         <input type="text" class="form-control" id="supplierID" placeholder="unTouchable">
@@ -166,7 +159,7 @@
                             <input type="number" class="form-control" id="stock" placeholder="Masukan Jumlah Obat">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="productDeskripsi">Deskripsi Obat:</label>
                         <input type="text" class="form-control" id="deskripsi" placeholder="Masukan Deskripsi Obat">

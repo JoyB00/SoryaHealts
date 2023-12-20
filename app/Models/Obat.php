@@ -21,5 +21,6 @@ class Obat extends Model
         'kategori_obat',
         'dosis',
         'golongan_obat',
+        'gambar_obat',
     ];
 }

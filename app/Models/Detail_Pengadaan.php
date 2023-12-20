@@ -13,7 +13,7 @@ class Detail_Pengadaan extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_pengadaian',
+        'id_pengadaan',
         'id_obat',
         'jumlah_obat'
     ];
@@ -23,7 +23,8 @@ class Detail_Pengadaan extends Model
         return $this->belongsTo(Obat::class, 'id_obat');
     }
 
-    public function pengadaan(){
+    public function pengadaan()
+    {
         return $this->belongsTo(Pengadaan_Obat::class, 'id_pengadaan');
     }
 }

@@ -1,7 +1,7 @@
 @extends('admin')
 @section('content')
 <style>
-    .btn-primary.px-4{
+    .btn-primary.px-4 {
         border: none;
     }
 </style>
@@ -9,48 +9,55 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Reports</h1>
-                        Stock In
-            </div>
-            <!-- <div class="col-xl-6">
-                <ol class="breadcrumb float-sm-right">
-                    <button class="btn-primary px-4" style="border-radius: 7px;" data-toggle="modal" data-target="#productModal"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0,0,256,256">
-<g fill="#ffffff" fill-rule="evenodd" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M11,2v9h-9v2h9v9h2v-9h9v-2h-9v-9z"></path></g></g>
-</svg>Add Produck</button>
-
-                </ol>
-            </div> -->
+                <div class="col-sm-6">
+                    <h1>Reports</h1>
+                    Stock In
+                </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
     <table class="table table-striped border-dark text-center">
         <tr class="">
             <th>No</th>
-            <th>Nama Obat</th>
-            <th>Harga Obat</th>
-            <th>Qty</th>
-            <th>Total</th>
+            <th>Tanggal Transaksi</th>
+            <th>Nama Supplier</th>
+            <th>Deskripsi</th>
+            <th>Total Harga</th>
         </tr>
-        @forelse ($hasil_masuk as $item)
+        @forelse ($mutasiDana as $item)
         <tr>
-            <td>{{ $item["no"] }}</td>
-            <td>{{ $item["nama"] }}</td>
-            <td>{{ $item["harga"] }}</td>
-            <td>{{ $item["qty"] }}</td>
-            <td>{{ $item["total"] }}</td>
+            <td class="text-center align-middle">{{$loop->iteration}}</td>
+            <td class="text-center align-middle">{{$item['transaksi']['tanggal_transaksi']}}</td>
+            <td class="text-center align-middle">{{$item['transaksi']['user']['email']}}</td>
+            <td class="text-left">{{$item['detail_mutasi']}}
+                <ul>
+                    <?php
+                    $totalHarga = 0
+                    ?>
+                    @foreach($detailTransaksi as $obat)
+                    @if($obat['id_transaksi'] == $item['id_transaksi'])
+                    <?php
+                    $totalHarga = $totalHarga + ($obat['obat']['harga_obat'] * $obat['jumlah_obat'])
+                    ?>
+                    <li> {{$obat['jumlah_obat']}} buah {{$obat['obat']['nama_obat']}}</li>
+                    @endif
+                    @endforeach
+                </ul>
+            </td>
+            <td class="text-center align-middle"><span class="badge-success p-2 rounded-pill">+Rp. {{$totalHarga}}</span></td>
         </tr>
         @empty
-        <div class="alert alert-danger">Data Kelas masi kosong</div>
+        <div class="alert alert-danger">Data Pembelian masih kosong</div>
         @endforelse
     </table>
+
 </div>
 
 <!-- Modal for Update -->
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-        <div class="modal-header">
+            <div class="modal-header">
                 <h5 class="modal-title" id="productModalLabel">Update User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -58,7 +65,7 @@
             </div>
             <div class="modal-body">
                 <form>
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="productID">ID: </label>
                         <input type="text" class="form-control" id="supplierID" placeholder="unTouchable">
                     </div>

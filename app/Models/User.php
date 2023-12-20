@@ -30,6 +30,7 @@ class User extends Authenticatable
         'no_telp',
         'tanggal_lahir',
         'role',
+        'profile',
         'verify_key',
         'active',
     ];

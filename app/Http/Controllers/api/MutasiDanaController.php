@@ -8,10 +8,27 @@ use App\Models\Mutasi_Dana;
 
 class MutasiDanaController extends Controller
 {
-    public function index()
+    public function indexPenjualan()
     {
         try {
-            $mutasiDana = Mutasi_Dana::all();
+            $mutasiDana = Mutasi_Dana::with('transaksi.user', 'transaksi.staf')->whereNot('id_transaksi', null)->get();
+            return response()->json([
+                'status' => true,
+                'message' => 'Berhasil ambil data',
+                'data' => $mutasiDana
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage(),
+                'data' => []
+            ], 400);
+        }
+    }
+    public function indexPembelian()
+    {
+        try {
+            $mutasiDana = Mutasi_Dana::with('pengadaan', 'pengadaan.supplier')->whereNot('id_pengadaan', null)->get();
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',

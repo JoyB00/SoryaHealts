@@ -11,7 +11,7 @@ class DetailPengadaanController extends Controller
     public function index()
     {
         try {
-            $detailPengadaan = Detail_Pengadaan::all();
+            $detailPengadaan = Detail_Pengadaan::with('obat', 'pengadaan')->get();
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',

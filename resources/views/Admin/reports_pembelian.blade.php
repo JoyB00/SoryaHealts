@@ -1,7 +1,7 @@
 @extends('admin')
 @section('content')
 <style>
-    .btn-primary.px-4{
+    .btn-primary.px-4 {
         border: none;
     }
 </style>
@@ -10,11 +10,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Reports</h1>
-                    Sales
-                </div>
-                <div class="col-xl-3 d-flex align-items-center ml-auto" style=" border: 5px solid #3498db;">
-                    <h3 style="padding: 5px;">Saldo Klinik: Rp 120000</h3>
+                    <h1>Laporan Pembelian</h1>
+                    Apotek SorYaHealts
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -22,26 +19,35 @@
     <table class="table table-striped border-dark text-center">
         <tr class="">
             <th>No</th>
-            <th>Nama Obat</th>
-            <th>Harga Obat</th>
-            <th>Qty</th>
-            <th>Total</th>
-            <!-- <th  style="width: 200px;">Action</th> -->
+            <th>Tanggal Transaksi</th>
+            <th>Nama Supplier</th>
+            <th>Deskripsi</th>
+            <th>Total Harga</th>
         </tr>
-        @forelse ($hasil_jual as $item)
+        @forelse ($mutasiDana as $item)
         <tr>
-            <td>{{ $item["no"] }}</td>
-            <td>{{ $item["nama"] }}</td>
-            <td>{{ $item["harga"] }}</td>
-            <td>{{ $item["qty"] }}</td>
-            <td>{{ $item["total"] }}</td>
-            <!-- <td class="d-flex justify-content-center" style="width: 200px;"> -->
-                <!-- <a href="" class="btn btn-primary ms-1" style="border-radius: 10px;" data-toggle="modal" data-target="#updateModal">Update</a> -->
-                <!-- <a href="" class="btn btn-danger" style="border-radius: 10px;" data-toggle="modal" data-target="#deleteModal">Delete</a> -->
-            <!-- </td> -->
+            <td class="text-center align-middle">{{$loop->iteration}}</td>
+            <td class="text-center align-middle">{{$item['pengadaan']['tanggal_pengadaan']}}</td>
+            <td class="text-center align-middle">{{$item['pengadaan']['supplier']['nama_supplier']}}</td>
+            <td class="text-left">{{$item['detail_mutasi']}}
+                <ul>
+                    <?php
+                    $totalHarga = 0
+                    ?>
+                    @foreach($detailPengadaan as $obat)
+                    @if($obat['id_pengadaan'] == $item['id_pengadaan'])
+                    <?php
+                    $totalHarga = $totalHarga + ($obat['obat']['harga_obat'] * $obat['jumlah_obat'])
+                    ?>
+                    <li> {{$obat['jumlah_obat']}} buah {{$obat['obat']['nama_obat']}}</li>
+                    @endif
+                    @endforeach
+                </ul>
+            </td>
+            <td class="text-center align-middle"><span class="badge-danger p-2 rounded-pill">-Rp. {{$totalHarga}}</span></td>
         </tr>
         @empty
-        <div class="alert alert-danger">Data Kelas masi kosong</div>
+        <div class="alert alert-danger">Data Pembelian masih kosong</div>
         @endforelse
     </table>
 </div>
@@ -50,14 +56,14 @@
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-        <div class="modal-header">
+            <div class="modal-header">
                 <h5 class="modal-title" id="productModalLabel">Update User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form>
+                <form>
                     <div class="form-group">
                         <label for="productID">ID: </label>
                         <input type="text" class="form-control" id="supplierID" placeholder="unTouchable">
@@ -86,7 +92,7 @@
                             <input type="number" class="form-control" id="stock" placeholder="Masukan Jumlah Obat">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="productDeskripsi">Deskripsi Obat:</label>
                         <input type="text" class="form-control" id="deskripsi" placeholder="Masukan Deskripsi Obat">
@@ -134,7 +140,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form>
+                <form>
                     <div class="form-group">
                         <label for="productID">ID: </label>
                         <input type="text" class="form-control" id="supplierID" placeholder="unTouchable">
@@ -163,7 +169,7 @@
                             <input type="number" class="form-control" id="stock" placeholder="Masukan Jumlah Obat">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="productDeskripsi">Deskripsi Obat:</label>
                         <input type="text" class="form-control" id="deskripsi" placeholder="Masukan Deskripsi Obat">

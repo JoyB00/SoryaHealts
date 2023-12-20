@@ -10,11 +10,19 @@ use App\Http\Controllers\api\TestimoniController;
 use App\Http\Controllers\api\TransaksiController;
 =======
 use App\Http\Controllers\api\AlamatController;
+use App\Http\Controllers\api\ArtikelController;
+use App\Http\Controllers\api\DetailPengadaanController;
+use App\Http\Controllers\api\MutasiDanaController;
 use App\Http\Controllers\api\ObatController;
 use App\Http\Controllers\api\PengadaanObatController;
 use App\Http\Controllers\api\StafController;
 use App\Http\Controllers\api\SupplierController;
 use App\Http\Controllers\api\UserController;
+<<<<<<< HEAD
+>>>>>>> main
+=======
+use App\Http\Controllers\client\DetailPengadaan;
+use App\Http\Controllers\client\DetailPengadaanClient;
 >>>>>>> main
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +59,7 @@ Route::group(
     function () {
         Route::get('/alamat', [App\Http\Controllers\api\AlamatController::class, 'index']);
         // customer
+        Route::post('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
         Route::get('/user', [UserController::class, 'index']);
 
         // supplier
@@ -67,6 +76,13 @@ Route::group(
         Route::put('/obat/{id}', [ObatController::class, 'update']);
         Route::delete('/obat/{id}', [ObatController::class, 'destroy']);
 
+        // Artikel
+        Route::get('/artikel', [ArtikelController::class, 'index']);
+        Route::post('/artikel', [ArtikelController::class, 'store']);
+        Route::get('/artikel/{id}', [ArtikelController::class, 'show']);
+        Route::put('/artikel/{id}', [ArtikelController::class, 'update']);
+        Route::delete('/artikel/{id}', [ArtikelController::class, 'destroy']);
+
         // Staf
         Route::get('/staf', [StafController::class, 'index']);
         Route::post('/staf', [StafController::class, 'store']);
@@ -77,6 +93,20 @@ Route::group(
         // Pengadaan Obat
         Route::get('/pengadaanObat', [PengadaanObatController::class, 'index']);
         Route::post('/pengadaanObat', [PengadaanObatController::class, 'store']);
+        Route::get('/pengadaanObatDetail/{id}', [PengadaanObatController::class, 'show']);
+        Route::delete('/pengadaanObat/{id}', [PengadaanObatController::class, 'destroy']);
+
+        // Detail Pengadaan
+        Route::get('/detailPengadaan', [DetailPengadaanController::class, 'index']);
+        Route::post('/detailPengadaan', [DetailPengadaanController::class, 'store']);
+        Route::get('/detailPengadaan/{id}', [DetailPengadaanController::class, 'show']);
+        Route::put('/detailPengadaan/{id}', [DetailPengadaanController::class, 'update']);
+        Route::delete('/detailPengadaan/{id}', [DetailPengadaanController::class, 'destroy']);
+
+        // Mutasi Dana
+        Route::get('/mutasiPenjualan', [MutasiDanaController::class, 'indexPenjualan']);
+        Route::get('/mutasiPembelian', [MutasiDanaController::class, 'indexPembelian']);
+        Route::post('/mutasiDana', [MutasiDanaController::class, 'store']);
     }
 
 );

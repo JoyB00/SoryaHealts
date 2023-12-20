@@ -8,25 +8,38 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
   <!-- JQVMap -->
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
   <!-- Daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     .sidebar {
@@ -68,10 +81,12 @@
         <!-- Notifications Dropdown Menu -->
 
         <li class="nav-item dropdown">
-          <a class="nav-link" href="{{url('login')}}">
-            <i class="fas fa-power-off" style="color: red;"></i>
-
-          </a>
+          <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button class="btn nav-link" type="submit">
+              <i class="fas fa-power-off" style="color: red;"></i>
+            </button>
+          </form>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -132,8 +147,15 @@
               <a href="{{route('supplierIndex')}}" class="nav-link{{ Request::is('supplier*') ? ' active' : '' }}">
                 <i class="nav-icon fas fa-truck"></i>
                 <p>
-                  Suppliers
-                  <!-- <span class="right badge badge-danger">New</span> -->
+                  Pemasok
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('artikelIndex')}}" class="nav-link{{ Request::is('artikel*') ? ' active' : '' }}">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Artikel
                 </p>
               </a>
             </li>
@@ -141,76 +163,62 @@
               <a href="{{route('obatIndex')}}" class="nav-link{{ Request::is('obat*') ? ' active' : '' }}">
                 <i class="nav-icon fas fa-box"></i>
                 <p>
-                  Products
+                  Produk
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link{{ Request::is('customer*') || Request::is('staf*') ? ' active' : '' }}">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
-                  Customers/Staff
+                  Kustomer & Staf
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{route('customerIndex')}}" class="nav-link{{ Request::is('customers*') ? ' active' : '' }}">
+                  <a href="{{route('customerIndex')}}" class="nav-link{{ Request::is('customer*') ? ' active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Customer</p>
+                    <p>Kustomer</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('stafIndex')}}" class="nav-link{{ Request::is('users*') ? ' active' : '' }}">
+                  <a href="{{route('stafIndex')}}" class="nav-link{{ Request::is('staf*') ? ' active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Staff</p>
+                    <p>Staf</p>
                   </a>
                 </li>
               </ul>
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{route('pengadaanIndex')}}" class="nav-link{{ Request::is('pengadaan*') ? ' active' : '' }}">
                 <i class="nav-icon fas fa-money"></i>
                 <p>
-                  Transactions
-                  <i class="fas fa-angle-left right"></i>
+                  Pengadaan
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('pengadaanIndex')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Stock In</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{route('pengadaanIndex')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Stock Out</p>
-                  </a>
-                </li>
-              </ul>
+
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link{{ Request::is('mutasiPembelian*') || Request::is('mutasiPenjualan*') ? ' active' : '' }}">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
-                  Reports
+                  Laporan
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{url('reports_sales')}}" class="nav-link">
+                  <a href="{{route('mutasiPembelian')}}" class="nav-link{{ Request::is('mutasiPembelian*') ? ' active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Sales</p>
+                    <p>Pembelian</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('reports_stockIn')}}" class="nav-link">
+                  <a href="{{route('mutasiPenjualan')}}" class="nav-link{{ Request::is('mutasiPenjualan*') ? ' active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Stock in</p>
+                    <p>Penjualan</p>
                   </a>
                 </li>
               </ul>

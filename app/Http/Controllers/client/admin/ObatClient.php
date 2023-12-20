@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\client;
+namespace App\Http\Controllers\client\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Detail_Pengadaan;
+use App\Models\Obat;
+use App\Models\Pengadaan_Obat;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Session;
 use GuzzleHttp\Client;
@@ -37,15 +40,34 @@ class ObatClient extends Controller
      */
     public function store(Request $request)
     {
-        $nama_supplier = $request->supplierName;
-        $no_telp_supplier = $request->phoneNumber;
-        $email_supplier = $request->email;
+        $namaObat = $request->namaObat;
+        $golonganObat = $request->golonganObat;
+        $jenisObat = $request->jenisObat;
+        $kategoriObat = $request->kategoriObat;
+        $dosisObat = $request->dosisObat;
+        $deskripsiObat = $request->deskripsiObat;
+        $hargaObat = $request->hargaObat;
+        $idPengadaan = $request->idPengadaan;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imagePath =  $image->move(public_path('public/images/obat'), $image->getClientOriginalName());
+            $imageUrl = $image->getClientOriginalName();
+        }
 
         $parameter = [
-            'nama_supplier' => $nama_supplier,
-            'no_telp_supplier' => $no_telp_supplier,
-            'email_supplier' => $email_supplier,
+            'nama_obat' => $namaObat,
+            'golongan_obat' => $golonganObat,
+            'jenis_obat' => $jenisObat,
+            'kategori_obat' => $kategoriObat,
+            'dosis' => $dosisObat,
+            'deskripsi' => $deskripsiObat,
+            'stok_obat' => 0,
+            'harga_obat' => $hargaObat,
+            'gambar_obat' => $imageUrl,
         ];
+
+
         try {
             $client = new Client();
             $url = "http://127.0.0.1:8000/api/obat";
@@ -59,8 +81,14 @@ class ObatClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $obat = $contentArray["data"];
+
+
             Session::flash('message', 'Berhasil Menambah Data Supplier');
-            return redirect()->route('supplierIndex', ['obat' => $obat]);
+            $pengadaan = Pengadaan_Obat::with('supplier')->where('id', $idPengadaan)->first();
+            $detailPengadaan = Detail_Pengadaan::where('id_pengadaan', $pengadaan['id'])->get();
+            $obat = Obat::all();
+
+            return view('Admin/pengadaan/pengadaanObat', ['pengadaan' => $pengadaan, 'detailPengadaan' => $detailPengadaan, 'obat' => $obat]);
         } catch (\Exception $e) {
             return redirect()->route('supplierIndex');
         }
@@ -69,8 +97,10 @@ class ObatClient extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
+        $id = $request->id_obat;
+
         try {
             $client = new Client();
             $url = "http://127.0.0.1:8000/api/obat/$id";
@@ -85,10 +115,9 @@ class ObatClient extends Controller
 
             $obat = $contentArray["data"];
 
-            return view('Admin.suppliers', ['obat' => $obat]);
+            return view('transaksi', ['obat' => $obat]);
         } catch (\Exception $e) {
-            print_r($_SESSION['access_token']);
-            return view('Admin.suppliers', ['obat' => []]);
+            return view('transaksi', ['obat' => []]);
         }
     }
 
@@ -97,15 +126,34 @@ class ObatClient extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $nama_supplier = $request->supplierName;
-        $no_telp_supplier = $request->phoneNumber;
-        $email_supplier = $request->email;
+        $obat = Obat::where('id', $id)->first();
+
+        $namaObat = $request->namaObat;
+        $golonganObat = $request->golonganObat;
+        $jenisObat = $request->jenisObat;
+        $kategoriObat = $request->kategoriObat;
+        $dosisObat = $request->dosisObat;
+        $deskripsiObat = $request->deskripsiObat;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imagePath =  $image->move(public_path('public/images/obat'), $image->getClientOriginalName());
+            $imageUrl = $image->getClientOriginalName();
+        } else {
+            $imageUrl = $obat['gambar_obat'];
+        }
 
         $parameter = [
-            'nama_supplier' => $nama_supplier,
-            'no_telp_supplier' => $no_telp_supplier,
-            'email_supplier' => $email_supplier,
+            'nama_obat' => $namaObat,
+            'golongan_obat' => $golonganObat,
+            'jenis_obat' => $jenisObat,
+            'kategori_obat' => $kategoriObat,
+            'dosis' => $dosisObat,
+            'deskripsi' => $deskripsiObat,
+            'gambar_obat' => $imageUrl,
         ];
+
+
         try {
             $client = new Client();
             $url = "http://127.0.0.1:8000/api/obat/$id";
@@ -119,11 +167,10 @@ class ObatClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $obat = $contentArray["data"];
-            Session::flash('message', 'Berhasil Memperbarui Data Supplier');
 
-            return redirect()->route('supplierIndex', ['obat' => $obat]);
+            return redirect()->route('obatIndex', ['obat' => $obat]);
         } catch (\Exception $e) {
-            return redirect()->route('supplierIndex');
+            return route('obatIndex', ['obat' => []]);
         }
     }
 

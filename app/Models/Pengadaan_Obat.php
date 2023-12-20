@@ -14,7 +14,8 @@ class Pengadaan_Obat extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id_supplier',
-        'tanggal_pengadaan'
+        'tanggal_pengadaan',
+        'status'
 
     ];
     public function supplier()

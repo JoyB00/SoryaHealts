@@ -7,6 +7,7 @@
     <meta http-equiv="X-AU-Compatible" content="ie-edge">
     <title>Verifikasi Akun</title>
 </head>
+
 <body>
     <p>
         Halo <b>{{ $details['username']}}</b>
