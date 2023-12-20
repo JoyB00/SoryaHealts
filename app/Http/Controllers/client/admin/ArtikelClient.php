@@ -85,27 +85,29 @@ class ArtikelClient extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        try {
-            $client = new Client();
-            $url = "http://127.0.0.1:8000/api/artikel/$id";
-            $response = $client->request('GET', $url, [
-                'headers' => [
-                    'Content-type' => 'application/json',
-                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
-                ]
-            ]);
-            $content = $response->getBody()->getContents();
-            $contentArray = json_decode($content, true);
+        $id = $request->id_artikel;
+        // try {
+        $client = new Client();
+        $url = "http://127.0.0.1:8000/api/artikel/$id";
+        $response = $client->request('GET', $url, [
+            'headers' => [
+                'Content-type' => 'application/json',
+                'Authorization' => 'Bearer ' . $_SESSION['access_token']
+            ]
+        ]);
+        $content = $response->getBody()->getContents();
+        $contentArray = json_decode($content, true);
 
-            $artikel = $contentArray["data"];
+        $artikel = $contentArray["data"];
+        $artikelAll =  Artikel::inRandomOrder()->get();
 
-            return view('Admin.artikel', ['artikel' => $artikel]);
-        } catch (\Exception $e) {
-            print_r($_SESSION['access_token']);
-            return view('Admin.artikel', ['artikel' => []]);
-        }
+        return view('detailArtikel', ['artikel' => $artikel, 'artikelAll' => $artikelAll]);
+        // } catch (\Exception $e) {
+        //     print_r($_SESSION['access_token']);
+        //     return view('detailArtikel', ['artikel' => []]);
+        // }
     }
 
     /**
