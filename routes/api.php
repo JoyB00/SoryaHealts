@@ -93,6 +93,13 @@ Route::group(
         // Pengadaan Obat
         Route::get('/pengadaanObat', [PengadaanObatController::class, 'index']);
         Route::post('/pengadaanObat', [PengadaanObatController::class,'store']);
+
+        //alamat
+        Route::get('/alamat', [AlamatController::class, 'index']);
+        Route::post('/alamat', [AlamatController::class,'store']);
+        Route::get('/alamat/{id}', [AlamatController::class,'show']);
+        Route::put('/alamat/{id}', [AlamatController::class, 'update']);    
+        Route::delete('/alamat/{id}', [AlamatController::class, 'destroy']);
     }
 
 );

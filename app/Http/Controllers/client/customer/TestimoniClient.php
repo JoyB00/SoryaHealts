@@ -48,7 +48,7 @@ class TestimoniClient extends Controller
             'ulasan' => $ulasan,
             'rating' => $rating,
         ];
-        // try {
+        try {
         $client = new Client();
         $url = "http://127.0.0.1:8000/api/testimoni";
         $response = $client->request('POST', $url, [
@@ -63,9 +63,9 @@ class TestimoniClient extends Controller
         $testimoni = $contentArray["data"];
         Session::flash('message', 'Berhasil Menambah Data Testimoni Client');
         return redirect()->route('formTestimoni', ['testimoni' => $testimoni]);
-        // } catch (\Exception $e) {
-        // return redirect()->route('home');
-        // }
+        } catch (\Exception $e) {
+        return redirect()->route('home');
+        }
     }
 
     public function show(string $id)

@@ -114,6 +114,4 @@ class AlamatController extends Controller
             ], 400);
         }
     }
-
- 
 }
