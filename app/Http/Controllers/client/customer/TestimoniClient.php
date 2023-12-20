@@ -4,6 +4,7 @@ namespace App\Http\Controllers\client\customer;
 
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Session;

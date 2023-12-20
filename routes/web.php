@@ -11,6 +11,7 @@ use App\Http\Controllers\client\customer\HomeClient;
 use App\Http\Controllers\client\customer\TestimoniClient;
 use App\Http\Controllers\client\customer\KeranjangClient;
 use App\Http\Controllers\client\customer\ProfileClient;
+use App\Http\Controllers\client\customer\AlamatClient;
 use App\Http\Controllers\client\customer\TransaksiClient;
 use App\Http\Controllers\client\UserClient;
 use App\Models\Transaksi;
@@ -94,11 +95,12 @@ Route::group(
         Route::get('/DetailArtikel', [ArtikelClient::class, 'show'])->name('detailArtikel');
         Route::get('/FormTestimoni', [HomeClient::class, 'formTestimoni'])->name('formTestimoni');
         Route::post('/FormTestimoni', [TestimoniClient::class, 'store'])->name('testimoniStore');
-        
+
         Route::get('/profile', [ProfileClient::class, 'gotoProfile'])->name('gotoProfile');
         Route::get('/keranjang', [KeranjangClient::class, 'gotoKeranjang'])->name('gotoKeranjang');
         Route::post('/transaksi', [TransaksiClient::class, 'store'])->name('transaksi');
         Route::put('/profile', [ProfileClient::class, 'update'])->name('updateProfile');
+        Route::get('/alamat', [AlamatClient::class, 'gotoAlamat'])->name('gotoAlamat');
     }
 );
 
