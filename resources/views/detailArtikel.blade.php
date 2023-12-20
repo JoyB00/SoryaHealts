@@ -75,7 +75,10 @@
                                         <div class="deskripsi-container" style=" white-space: nowrap; overflow: hidden; text-overflow: clip;">
                                             <p id="deskripsi-artikel" class="card-text" style="font-family: lato light; font-size: 10px;">{{$artikelAll[$j]['deskripsi']}}</p>
                                         </div>
-                                        <a href="{{url('artikelDetail')}}" class="btn btn-outline-success mt-3 btn-sm">Lihat Selengkapnya</a>
+                                        <form action="{{route('detailArtikel')}}" method="get">
+                                            <input type="text" value="{{$artikelAll[$j]['id']}}" name="id_artikel" hidden>
+                                            <button class="btn btn-outline-success mt-3 btn-sm">Lihat Selengkapnya</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

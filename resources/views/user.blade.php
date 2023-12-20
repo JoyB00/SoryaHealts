@@ -1,4 +1,4 @@
-@extends(empty(session('userLogint')) || $userLogin[0]['email']==='' ? 'navbarUser' : 'navbarUserLogined')
+@extends(Auth::check() ? 'navbarUserLogined' : 'navbarUser')
 
 @section('content')
 <link rel="stylesheet" href="styles/user_styles.css">
@@ -6,22 +6,21 @@
 <div class="pt-5 my-3 row">
     <div class=" pt-5 mt-sm-0 row">
         <div class="profile-container row">
-            <ul class="d-flex px-5 py-0 ">
+            <ul class="d-flex px-5 mb-0 border-bottom" style="height: 60px;">
                 <li class="mb-0 me-5" style="color: grey; list-style: none; font-size: 20px;">
-                    <a class=" {{ ($title === 'Profile') ? 'actived' : ''}}" aria-current="page" href="{{url('/profile')}}">Profil Anda</a>
+                    <a class=" {{ (Request::is('*profile')) ? 'actived' : '' }}" aria-current="page" href="{{route('gotoProfile')}}">Profil Anda</a>
                 </li>
                 <li class="nav-item mb-0 me-5" style="color: grey; list-style: none; font-size: 20px;">
-                    <a class="{{ ($title === 'Daftar Alamat') ? 'actived' : ''}}" href="{{url('/daftarAlamat')}}">Daftar Alamat</a>
+                    <a class=" {{ (Request::is('*alamat')) ? 'actived' : '' }}" href="{{url('/daftarAlamat')}}">Daftar Alamat</a>
                 </li>
                 <li class="mb-0 me-5" style="color: grey; list-style: none; font-size: 20px;">
-                    <a class=" {{ ($title === 'Keranjang Belanja') ? 'actived' : ''}}" href="{{url('/keranjang')}}">Keranjang Belanja</a>
+                    <a class="  {{ (Request::is('*keranjang')) ? 'actived' : '' }}" href="{{url('/keranjang')}}">Keranjang Belanja</a>
                 </li>
                 <li class="mb-0 me-5" style="color: grey; list-style: none; font-size: 20px;">
-                    <a class="  {{ ($title === 'Testimoni') ? 'actived' : ''}}" href="{{url('/testimoni')}}">Testimoni</a>
+                    <a class="   {{ (Request::is('*testimoni')) ? 'actived' : '' }}" href="{{url('/testimoni')}}">Testimoni</a>
                 </li>
             </ul>
-            <hr style="color: #4CAF50;">
-            <div>
+            <div class="container">
                 @yield('main')
             </div>
         </div>

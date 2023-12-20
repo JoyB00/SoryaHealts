@@ -41,7 +41,10 @@
                     <img src="{{asset('public/images/artikel/'. $artikel[0]['gambar_artikel'])}}" class="mx-auto w-100" alt="...">
                     <div class="card-body bg-success text-white d-flex flex-column justify-content-between ">
                         <h3 class="card-title">{{$artikel[0]['judul']}}</h3>
-                        <a href="{{url('artikelDetail')}}" class="btn btn-outline-light">Lihat Selengkapnya</a>
+                        <form action="{{route('detailArtikel')}}" method="get">
+                            <input type="text" value="{{$artikel[0]['id']}}" name="id_artikel" hidden>
+                            <button class="btn btn-outline-light w-100">Lihat Selengkapnya</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -114,7 +117,8 @@
             <?php
             $artikelItem = request()->is('Artikel') ? $artikel : $artikelByTopik;
             ?>
-            @for ($i = 0; $i < count($artikelItem); $i++) <div class="col-xl-3 col-md-4 col-sm-6 animate__animated animate__zoomIn item mb-sm-0 mb-5">
+            @for ($i = 0; $i < count($artikelItem); $i++) 
+            <div class="col-xl-3 col-md-4 col-sm-6 animate__animated animate__zoomIn item mb-sm-0 mb-5">
                 <div class="card mb-5 card-general-artikel mb-sm-3 " style="height: 480px;">
                     <img src="{{asset('public/images/artikel/'. $artikelItem[$i]['gambar_artikel'])}}" class="card-img-top w-100 mx-auto" alt="...">
                     <div class="card-body bg-success text-white d-flex flex-column justify-content-between">
@@ -123,7 +127,10 @@
                         <div class="deskripsi-container" style=" white-space: nowrap; overflow: hidden; text-overflow: clip;">
                             <p id="deskripsi-artikel" class="card-text" style="font-family: lato light; font-size: 13px;">{{$artikelItem[$i]['deskripsi']}}</p>
                         </div>
-                        <a href="{{url('artikelDetail')}}" class="btn btn-warning">Lihat Selengkapnya</a>
+                        <form action="{{route('detailArtikel')}}" method="get">
+                            <input type="text" value="{{$artikelItem[$i]['id']}}" name="id_artikel" hidden>
+                            <button class="btn btn-warning">Lihat Selengkapnya</button>
+                        </form>
                     </div>
                 </div>
         </div>

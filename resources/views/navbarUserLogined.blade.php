@@ -122,7 +122,7 @@
                             <a class="nav-link {{ (Request::is('*Obat')) ? 'actived' : '' }}" href="{{route('daftarObat')}}">Daftar Obat</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link {{ (Request::is('Artikel')) ? 'actived' : '' }}" href="{{route('artikel')}}">Artikel</a>
+                            <a class="nav-link {{ (Request::is('*Artikel')) ? 'actived' : '' }}" href="{{route('artikel')}}">Artikel</a>
                         </li>
                         <li class="nav-item me-3">
                             <a class="nav-link  {{ (Request::is('TentangKami')) ? 'actived' : '' }}" href="{{route('tentangKami')}}">About Us</a>
@@ -137,7 +137,7 @@
                                 {{auth()->user()->nama}}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <li><a class="dropdown-item" href="{{url('/profile')}}"><i class="fa-solid fa-user me-2"></i>Profil Anda</a></li>
+                                <li><a class="dropdown-item" href="{{route('gotoProfile')}}"><i class="fa-solid fa-user me-2"></i>Profil Anda</a></li>
                                 <li><a class="dropdown-item" href="{{url('/keranjang')}}"><i class="fa-solid fa-cart-shopping me-2"></i> Keranjang Belanja</a></li>
                                 <li><a class="dropdown-item" href="{{url('/testimoni')}}"><i class="fa-solid fa-pen me-2"></i>Tulis Testimoni</a></li>
 
