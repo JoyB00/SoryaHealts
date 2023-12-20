@@ -106,36 +106,27 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $validationRules = [
-                'nama' => 'max:60',
-                'email' => 'email:rfc,dns|unique:users,email,' . $id,
-                'password' => 'min:8',
-                'no_telp' => 'min:11',
-            ];
-
-            $validate = Validator::make($request->all(), $validationRules);
-
-            if ($validate->fails()) {
-                return response(['message' => $validate->errors()->first()], 400);
-            }
-
             $user = User::find($id);
-
             if (!$user) {
-                return response(['message' => 'User not found'], 404);
+                throw new \Exception('user tidak ditemukan');
             }
+
             $user->update($request->all());
 
-            return response([
-                'message' => 'User data updated successfully',
-                'user' => $user,
+            return response()->json([
+                'status' => true,
+                'message' => 'Berhasil update data',
+                'data' => $user
             ], 200);
         } catch (\Exception $e) {
-            return response([
-                'status' => false,
-                'message' => $e->getMessage(),
-                'data' => []
-            ], 400);
+            return response()->json(
+                [
+                    'status' => false,
+                    'message' => $e->getMessage(),
+                    'data' => []
+                ],
+                400
+            );
         }
     }
 }

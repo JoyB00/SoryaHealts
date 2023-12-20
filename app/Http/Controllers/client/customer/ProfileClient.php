@@ -19,20 +19,20 @@ class ProfileClient extends Controller
 
     public function update(Request $request)
     {
-        $nama_user = $request->nama;
-        $no_telp_user = $request->noHp;
-        $email_user = $request->email;
-        $jenis_kelamin = $request->gender;
-        $tanggal_lahir = $request->tglLahir;
+        $nama = $request->nama;
+        $no_telp = $request->no_telp;
+        $email = $request->email;
+        $gender = $request->gender;
+        $tglLahir = $request->tglLahir;
         $profil = $request->profil;
         $id = auth()->user()->id;
 
         $parameter = [
-            'nama' => $nama_user,
-            'email' => $email_user,
-            'jenis_kelamin' => $jenis_kelamin,
-            'no_telp' => $no_telp_user,
-            'tanggal_lahir' => $tanggal_lahir,
+            'nama' => $nama,
+            'email' => $email,
+            'jenis_kelamin' => $gender,
+            'no_telp' => $no_telp,
+            'tanggal_lahir' => $tglLahir,
             'profil' => $profil,
         ];
 

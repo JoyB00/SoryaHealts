@@ -34,8 +34,6 @@ Route::group(
     ['middleware' =>  ['auth', 'cekRole:admin']],
     function () {
 
-
-
         Route::get('/dashboard', [UserClient::class, 'gotoDashboardAdmin'])->name('admin');
         Route::get('/customer', [UserClient::class, 'index'])->name('customerIndex');
 
@@ -95,8 +93,6 @@ Route::group(
         Route::put('/profile', [ProfileClient::class, 'update'])->name('updateProfile');
     }
 );
-
-
 Route::get('/', [HomeClient::class, 'getAllData'])->name('home');
 Route::get('/DaftarObat', [HomeClient::class, 'daftarObat'])->name('daftarObat');
 Route::get('/JenisObat', [HomeClient::class, 'sortByJenisObat'])->name('sortByJenisObat');
@@ -892,45 +888,45 @@ Route::get('/TentangKami', [HomeClient::class, 'tentangKami'])->name('tentangKam
 
 
 
-Route::get('/customers', function () {
-    return view(
-        'Admin/customers',
+// Route::get('/customers', function () {
+//     return view(
+//         'Admin/customers',
 
-    );
-});
+//     );
+// });
 
-Route::get('/users', function () {
-    return view(
-        'Admin/users',
-    );
-});
+// Route::get('/users', function () {
+//     return view(
+//         'Admin/users',
+//     );
+// });
 
-Route::get('/products', function () {
-    return view(
-        'Admin/products',
-    );
-});
+// Route::get('/products', function () {
+//     return view(
+//         'Admin/products',
+//     );
+// });
 
-Route::get('/transactions_stockIn', function () {
-    return view(
-        'Admin/transactions_stockIn',
-    );
-});
+// Route::get('/transactions_stockIn', function () {
+//     return view(
+//         'Admin/transactions_stockIn',
+//     );
+// });
 
-Route::get('/transactions_stockOut', function () {
-    return view(
-        'Admin/transactions_stockOut'
-    );
-});
+// Route::get('/transactions_stockOut', function () {
+//     return view(
+//         'Admin/transactions_stockOut'
+//     );
+// });
 
-Route::get('/reports_sales', function () {
-    return view(
-        'Admin/reports_sales'
-    );
-});
+// Route::get('/reports_sales', function () {
+//     return view(
+//         'Admin/reports_sales'
+//     );
+// });
 
-Route::get('/reports_stockIn', function () {
-    return view(
-        'Admin/reports_stockIn'
-    );
-});
+// Route::get('/reports_stockIn', function () {
+//     return view(
+//         'Admin/reports_stockIn'
+//     );
+// });
