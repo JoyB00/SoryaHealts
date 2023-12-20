@@ -24,8 +24,13 @@ class ProfileClient extends Controller
         $email = $request->email;
         $gender = $request->gender;
         $tglLahir = $request->tglLahir;
-        $profil = $request->profil;
+
         $id = auth()->user()->id;
+
+        $profil = $request->file('profile');
+        $profil_ekstensi = $profil->extension();
+        $profile_nama = date('ymdhis') . "." . $profil_ekstensi;
+        $profil->move(public_path('public/images'), $profile_nama);
 
         $parameter = [
             'nama' => $nama,
@@ -33,8 +38,9 @@ class ProfileClient extends Controller
             'jenis_kelamin' => $gender,
             'no_telp' => $no_telp,
             'tanggal_lahir' => $tglLahir,
-            'profil' => $profil,
+            'profile' => $profile_nama,
         ];
+
 
         // try {
         $client = new Client();
