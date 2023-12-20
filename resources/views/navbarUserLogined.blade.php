@@ -139,7 +139,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <li><a class="dropdown-item" href="{{route('gotoProfile')}}"><i class="fa-solid fa-user me-2"></i>Profil Anda</a></li>
                                 <li><a class="dropdown-item" href="{{url('/keranjang')}}"><i class="fa-solid fa-cart-shopping me-2"></i> Keranjang Belanja</a></li>
-                                <li><a class="dropdown-item" href="{{url('/testimoni')}}"><i class="fa-solid fa-pen me-2"></i>Tulis Testimoni</a></li>
+                                <li><a class="dropdown-item" href="{{route('formTestimoni')}}"><i class="fa-solid fa-pen me-2"></i>Tulis Testimoni</a></li>
 
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf

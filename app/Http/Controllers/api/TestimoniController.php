@@ -11,11 +11,12 @@ class TestimoniController extends Controller
     public function index()
     {
         try {
-            $alamat = Testimoni::all();
+            $testimoni = Testimoni::all();
+
             return response()->json([
+                'data' => $testimoni,
                 'status' => true,
-                'message' => 'Berhasil ambil data',
-                'data' => $alamat
+                'message' => 'Berhasil ambil data'
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -29,12 +30,12 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         try {
-            $alamat = Testimoni::create($request->all());
+            $testimoni = Testimoni::create($request->all());
 
             return response()->json([
+                'data' => $testimoni,
                 'status' => true,
                 'message' => 'Berhasil insert data',
-                'data' => $alamat
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -44,18 +45,19 @@ class TestimoniController extends Controller
             ], 400);
         }
     }
+
     public function show($id)
     {
         try {
-            $alamat = Testimoni::find($id);
+            $testimoni = Testimoni::find($id);
 
-            if (!$alamat) {
-                throw new \Exception('Alamat tidak ditemukan');
+            if (!$testimoni) {
+                throw new \Exception('Testimoni tidak ditemukan');
             }
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',
-                'data' => $alamat
+                'data' => $testimoni
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -65,20 +67,21 @@ class TestimoniController extends Controller
             ], 400);
         }
     }
+
     public function update(Request $request, $id)
     {
         try {
-            $alamat = Testimoni::find($id);
-            if (!$alamat) {
-                throw new \Exception('Alamat tidak ditemukan');
+            $testimoni = Testimoni::find($id);
+            if (!$testimoni) {
+                throw new \Exception('Supplier tidak ditemukan');
             }
 
-            $alamat->update($request->all());
+            $testimoni->update($request->all());
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil update data',
-                'data' => $alamat
+                'data' => $testimoni
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -88,20 +91,21 @@ class TestimoniController extends Controller
             ], 400);
         }
     }
+
     public function destroy($id)
     {
         try {
-            $alamat = Testimoni::find($id);
-            if (!$alamat) {
-                throw new \Exception('Berita tidak ditemukan');
+            $testimoni = Testimoni::find($id);
+            if (!$testimoni) {
+                throw new \Exception('Supplier tidak ditemukan');
             }
 
-            $alamat->delete();
+            $testimoni->delete();
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil delete data',
-                'data' => $alamat
+                'data' => $testimoni
             ], 200);
         } catch (\Exception $e) {
             return response()->json([

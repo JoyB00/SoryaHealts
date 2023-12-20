@@ -86,6 +86,24 @@ Route::group(
         Route::get('/mutasiPembelian', [MutasiDanaController::class, 'indexPembelian']);
         Route::post('/mutasiDana', [MutasiDanaController::class, 'store']);
 
+        //testimoni
+        Route::get('/testimoni', [App\Http\Controllers\api\TestimoniController::class, 'index']);
+        Route::post('/testimoni', [App\Http\Controllers\api\TestimoniController::class,'store']);
+        Route::get('/testimoni/{id}', [App\Http\Controllers\api\TestimoniController::class,'show']);
+        Route::put('/testimoni/{id}', [App\Http\Controllers\api\TestimoniController::class, 'update']);
+        Route::delete('/testimoni/{id}', [App\Http\Controllers\api\TestimoniController::class, 'destroy']);
+
+        // Pengadaan Obat
+        Route::get('/pengadaanObat', [PengadaanObatController::class, 'index']);
+        Route::post('/pengadaanObat', [PengadaanObatController::class,'store']);
+
+        //alamat
+        Route::get('/alamat', [AlamatController::class, 'index']);
+        Route::post('/alamat', [AlamatController::class,'store']);
+        Route::get('/alamat/{id}', [AlamatController::class,'show']);
+        Route::put('/alamat/{id}', [AlamatController::class, 'update']);    
+        Route::delete('/alamat/{id}', [AlamatController::class, 'destroy']);
+
         // Transaksi
         Route::get('/transaksi', [PengadaanObatController::class, 'index']);
         Route::post('/transaksi', [PengadaanObatController::class, 'store']);

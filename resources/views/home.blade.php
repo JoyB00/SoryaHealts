@@ -143,7 +143,7 @@
     <h1 class="ms-5 mt-5 title-section" style="font-size: 3vw;">Testimoni Customer</h1>
     <div class="d-flex justify-content-between pe-5">
         <p class="ps-5 text-secondary">Testimoni dari seluruh pengguna website SorYaHealts. Jangan lupa ajukan kritik dan saran anda juga ya !</p>
-        <a href="{{url('/testimoni')}}" class="nav-link">Tulis Testimoni <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
+        <a href="{{route('formTestimoni')}}" class="nav-link">Tulis Testimoni <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
     </div>
 </div>
 <!-- Foto Testimoni -->

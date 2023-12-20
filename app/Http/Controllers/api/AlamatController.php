@@ -11,7 +11,7 @@ class AlamatController extends Controller
     public function index()
     {
         try {
-            $alamat = Alamat::all();
+            $alamat = Alamat::where('id_user', auth()->user()->id)->get();
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',
@@ -114,6 +114,4 @@ class AlamatController extends Controller
             ], 400);
         }
     }
-
- 
 }
