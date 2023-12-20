@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Detail_Pengadaan;
 use App\Models\Obat;
 use App\Models\Pengadaan_Obat;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Session;
 use GuzzleHttp\Client;
@@ -28,7 +29,6 @@ class ObatClient extends Controller
             $contentArray = json_decode($content, true);
 
             $obat = $contentArray["data"];
-
             return view('Admin.products', ['obat' => $obat]);
         } catch (\Exception $e) {
             return view('Admin.products', ['obat' => []]);
@@ -115,7 +115,8 @@ class ObatClient extends Controller
 
             $obat = $contentArray["data"];
 
-            return view('transaksi', ['obat' => $obat]);
+            $transaksi = Transaksi::where('id_user', auth()->user()->id)->first();
+            return view('transaksi', ['obat' => $obat, 'transaksi' => $transaksi]);
         } catch (\Exception $e) {
             return view('transaksi', ['obat' => []]);
         }

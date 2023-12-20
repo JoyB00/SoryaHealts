@@ -17,25 +17,26 @@
                 <th>Bayar</th>
                 <th></th>
             </thead>
-            @for($item=0; $item < count($keranjang); $item++) <tr>
-                <th style="width: 150px;"><img src="{{$keranjang[$item]['image']}}" alt="gambarProduk" style="width: 120px;"></th>
-                <th class="py-5">{{$keranjang[$item]['nama_obat']}}</th>
-                <th class="py-5">Rp <?php echo number_format($keranjang[$item]['harga']) ?> / {{$keranjang[$item]['jenis_obat']}}</th>
+            @forelse($keranjang as $item) <tr>
+                <th style="width: 150px;"><img src="{{asset('public/images/obat/'. $item['obat']['gambar_obat'])}}" alt="gambarProduk" style="width: 120px;"></th>
+                <th class="py-5">{{$item['obat']['nama_obat']}}</th>
+                <th class="py-5">Rp <?php echo number_format($item['obat']['harga_obat']) ?></th>
                 <th class="pt-3">
                     <div class="mb-3">
                         <label for="kuantitas" class="form-label"></label>
-                        <select id="kuantitas" class="form-select" aria-valuenow="">
-                            <option selected> {{$keranjang[$item]['jumlah']}}</option>
-                            @for($i=5; $i<=100; $i+=5) <option>{{$i}}</option>
+                        <select id="kuantitas" class="form-select">
+                            <option selected> {{$item['jumlah_obat']}}</option>
+                            @for($i=5; $i<=100; $i+=5) <option value="{{$i}}">{{$i}}</option>
                                 @endfor
                         </select>
                     </div>
                 </th>
                 <th style="width: 150px;"></th>
-                <th class="py-5">Rp <?php echo number_format($keranjang[$item]['harga'] * $keranjang[$item]['jumlah']) ?></th>
+                <th class="py-5">Rp <?php echo number_format($item['obat']['harga_obat'] * $item['jumlah_obat']) ?></th>
                 <th class="py-5"><a class="link mx-auto" href=""><i class="fa-solid fa-trash"></i></a></th>
-                </tr>
-                @endfor
+            </tr>
+            @empty
+            @endforelse
         </table>
     </div>
     <div class="mt-3 row mx-2">

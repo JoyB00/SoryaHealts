@@ -14,7 +14,7 @@
                     <a class=" {{ (Request::is('*alamat')) ? 'actived' : '' }}" href="{{url('/daftarAlamat')}}">Daftar Alamat</a>
                 </li>
                 <li class="mb-0 me-5" style="color: grey; list-style: none; font-size: 20px;">
-                    <a class="  {{ (Request::is('*keranjang')) ? 'actived' : '' }}" href="{{url('/keranjang')}}">Keranjang Belanja</a>
+                    <a class="  {{ (Request::is('*keranjang')) ? 'actived' : '' }}" href="{{route('gotoKeranjang')}}">Keranjang Belanja</a>
                 </li>
                 <li class="mb-0 me-5" style="color: grey; list-style: none; font-size: 20px;">
                     <a class="   {{ (Request::is('*testimoni')) ? 'actived' : '' }}" href="{{url('/testimoni')}}">Testimoni</a>

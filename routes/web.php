@@ -8,8 +8,11 @@ use App\Http\Controllers\client\admin\PengadaanClient;
 use App\Http\Controllers\client\admin\StafClient;
 use App\Http\Controllers\client\admin\SupplierClient;
 use App\Http\Controllers\client\customer\HomeClient;
+use App\Http\Controllers\client\customer\KeranjangClient;
 use App\Http\Controllers\client\customer\ProfileClient;
+use App\Http\Controllers\client\customer\TransaksiClient;
 use App\Http\Controllers\client\UserClient;
+use App\Models\Transaksi;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
 
@@ -90,6 +93,8 @@ Route::group(
         Route::get('/DetailObat', [ObatClient::class, 'show'])->name('detailObat');
         Route::get('/DetailArtikel', [ArtikelClient::class, 'show'])->name('detailArtikel');
         Route::get('/profile', [ProfileClient::class, 'gotoProfile'])->name('gotoProfile');
+        Route::get('/keranjang', [KeranjangClient::class, 'gotoKeranjang'])->name('gotoKeranjang');
+        Route::post('/transaksi', [TransaksiClient::class, 'store'])->name('transaksi');
     }
 );
 Route::get('/', [HomeClient::class, 'getAllData'])->name('home');

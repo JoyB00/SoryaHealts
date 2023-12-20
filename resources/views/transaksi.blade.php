@@ -57,7 +57,7 @@
                                                         <button type="button" class="btn btn-primary btn-lg" id="decrementButton">-</button>
                                                     </div>
                                                     <div class=" col-4 text-center">
-                                                        <p id="count">0</p>
+                                                        <p id="count">1</p>
                                                     </div>
                                                     <div class="col-4">
                                                         <button type="button" class="btn btn-primary btn-lg" id="incrementButton">+</button>
@@ -70,9 +70,15 @@
                                         Dosis : {{$obat['dosis']}}
                                     </div>
                                     <div class="nav mx-sm-0 mx-auto row">
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahKeranjang">
+                                        @if(is_null($transaksi))
+                                        <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#tambahKeranjang">
+                                            Buat Transaksi
+                                        </button>
+                                        @else
+                                        <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#tambahKeranjang">
                                             Tambah Keranjang
                                         </button>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -97,20 +103,22 @@
     <script>
         $(document).ready(function() {
             // Inisialisasi nilai awal
-            var count = 0;
+            var count = 1;
 
             // Tangani klik pada tombol increment
             $('#incrementButton').click(function() {
                 count = count + 1;
                 // Perbarui teks pada elemen dengan id "count"
                 $('#count').text(count);
+                $('#countValue').val(count);
             });
 
             $('#decrementButton').click(function() {
-                if (count > 0) {
+                if (count > 1) {
                     count = count - 1;
                     // Perbarui teks pada elemen dengan id "count"
                     $('#count').text(count);
+                    $('#countValue').val(count);
                 }
             });
         });
@@ -131,7 +139,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Keluar</button>
-                <a href="{{url('keranjang')}}" class="btn btn-success">Lihat Keranjang</a>
+                <form action="{{route('transaksi')}}" method="post">
+                    @csrf
+                    <input type="text" value="{{$obat['id']}}" name="idObat" hidden >
+                    <input type="text" value="1" name="countValue" id="countValue" hidden>
+                    <button type="submit" class="btn btn-success">Lihat Keranjang</button>
+                </form>
             </div>
         </div>
     </div>
