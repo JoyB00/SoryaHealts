@@ -90,7 +90,7 @@ class AlamatClient extends Controller
             'deskripsi' => $deskripsi,
         ];
 
-        // try {
+        try {
             $client = new Client();
             $url = "http://127.0.0.1:8000/api/alamat";
             $response = $client->request('POST', $url, [
@@ -105,9 +105,9 @@ class AlamatClient extends Controller
             $alamat = $contentArray["data"];
             Session::flash('message', 'Berhasil Menambah Data Alamat');
             return redirect()->route('gotoAlamat', ['alamat' => $alamat]);
-        // } catch (\Exception $e) {
-        //     return redirect()->route('gotoAlamat');
-        // }
+        } catch (\Exception $e) {
+            return redirect()->route('gotoAlamat');
+        }
     }
 
     public function update(Request $request, string $id)
@@ -132,9 +132,9 @@ class AlamatClient extends Controller
         $alamat = $contentArray["data"];
         Session::flash('message', 'Berhasil Memperbarui Data Alamat');
 
-        return redirect()->route('updateAlamat', ['alamat' => $alamat]);
+        return redirect()->route('gotoAlamat', ['alamat' => $alamat]);
         // } catch (\Exception $e) {
-        //     return redirect()->route('alamatIndex');
+        //     return redirect()->route('gotoAlamat');
         // }
     }
 }

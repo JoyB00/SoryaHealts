@@ -119,6 +119,7 @@ Route::group(
         // Route::post('/alamat', [AlamatClient::class, 'index'])->name('alamatIndex');
         Route::post('/alamat', [AlamatClient::class, 'store'])->name('alamatStore');
         Route::put('/alamat/{id}', [AlamatClient::class, 'update'])->name('updateAlamat');
+        
     }
 );
 
