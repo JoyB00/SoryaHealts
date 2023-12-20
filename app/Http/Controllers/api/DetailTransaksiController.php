@@ -45,10 +45,10 @@ class DetailTransaksiController extends Controller
         }
     }
 
-    public function show($id)
+    public function show($id_transaksi)
     {
         try {
-            $detailTransaksi = Detail_Transaksi::find($id);
+            $detailTransaksi = Detail_Transaksi::where('id_transaksi', $id_transaksi)->get();
 
             if (!$detailTransaksi) {
                 throw new \Exception('Detail transaksi tidak ditemukan');

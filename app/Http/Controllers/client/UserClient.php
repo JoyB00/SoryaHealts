@@ -165,8 +165,6 @@ class UserClient extends Controller
         }
     }
 
-
-
     public function logout()
     {
 
