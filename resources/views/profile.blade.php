@@ -97,25 +97,9 @@
     });
 </script>
 
-<script>
-    function validateFile() {
-        var fileInput = document.getElementById('formFile');
-        var fileName = fileInput.value;
-
-        if (!fileName) {
-            alert('Silakan pilih file gambar terlebih dahulu.');
-            return false;
-        }
-
-        // Lanjutkan dengan pengiriman formulir jika validasi berhasil
-        // Misalnya, jika Anda menggunakan form.submit();
-    }
-</script>
-
 <!-- Toast container -->
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <!-- Toast untuk keberhasilan -->
-    <div id="successToast" class="toast bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id="liveToast" class="toast bg-success" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <strong class="me-auto text-white">Pemberitahuan</strong>
             <small class="text-white">Baru saja</small>
@@ -125,20 +109,7 @@
             Profil berhasil diperbarui!
         </div>
     </div>
-
-    <!-- Toast untuk kegagalan -->
-    <div id="errorToast" class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto text-white">Pemberitahuan</strong>
-            <small class="text-white">Baru saja</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body text-white">
-            Gagal mengedit profil. Silakan coba lagi.
-        </div>
-    </div>
 </div>
-
 
 
 @endsection
@@ -238,16 +209,14 @@
                             <!-- Input Email -->
                             <div class="row mb-3" style="font-size: 17px;">
                                 <div class="col-3">
-                                    <label for="no_telp" class="mb-1">No Hp</label>
+                                    <label for="noHp" class="mb-1">No Hp</label>
                                 </div>
                                 <div class="col-8">
-                                    <input style="font-family: Lato light;" id="no_telp" name="no_telp" type="number" class="form-control" value="{{$user['no_telp']}}" required>
+                                    <input style="font-family: Lato light;" id="no_telp" name="no_telp" type="number" class="form-control" value="{{$user['no_hp']}}" required>
                                 </div>
                             </div>
                             <div class="row mt-4 pe-5" style="font-size: 17px;">
-                                <button type="submit" class="btn btn-outline-success" onclick="validateFile()">Simpan Perubahan</button>
-
-
+                                <button type="submit" class="btn btn-outline-success">Simpan Perubahan</button>
 
                             </div>
                         </div>
