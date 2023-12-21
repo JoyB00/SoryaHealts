@@ -32,9 +32,10 @@
 
 ## Bonus yang diambil
 1.	Routes API
+   
         Route::get('/alamat', [App\Http\Controllers\api\AlamatController::class, 'index']);
   	
-        // user
+        // customer
         Route::post('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
         Route::get('/user', [UserController::class, 'index']);
         Route::put('/user/{id}', [UserController::class, 'update']);
