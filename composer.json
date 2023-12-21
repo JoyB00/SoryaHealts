@@ -12,7 +12,8 @@
         "laravel/passport": "^11.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "mckenziearts/laravel-notify": "^2.4"
+        "mckenziearts/laravel-notify": "^2.4",
+        "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -105,7 +105,8 @@ class MutasiDanaClient extends Controller
                 $obat->save();
             });
 
-            Session::flash('message', 'Berhasil Menambah Data Supplier');
+
+            toastr()->success('Berhasil Melakukan Pengadaan Obat');
             $supplier = Supplier::all();
             $pengadaanAll =  Pengadaan_Obat::all();
 
@@ -129,31 +130,32 @@ class MutasiDanaClient extends Controller
             'detail_mutasi' => "Transaksi Obat User Apotek",
             'saldo' => $current_mutasiDana['saldo'] + $totalHarga,
         ];
-        // try {
+        try {
 
-        $client = new Client();
-        $url = "http://127.0.0.1:8000/api/mutasiDana";
-        $response = $client->request('POST', $url, [
-            'headers' => [
-                'Content-type' => 'application/json',
-                'Authorization' => 'Bearer ' . $_SESSION['access_token']
-            ],
-            'body' => json_encode($parameter),
-        ]);
-        $content = $response->getBody()->getContents();
-        $contentArray = json_decode($content, true);
+            $client = new Client();
+            $url = "http://127.0.0.1:8000/api/mutasiDana";
+            $response = $client->request('POST', $url, [
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
+                ],
+                'body' => json_encode($parameter),
+            ]);
+            $content = $response->getBody()->getContents();
+            $contentArray = json_decode($content, true);
 
-        $transaksi['status'] = 1;
-        $transaksi->save();
+            $transaksi['status'] = 1;
+            $transaksi->save();
 
-        $detail_transaksi->each(function ($item) {
-            $obat = Obat::find($item['id_obat']);
-            $obat['stok_obat'] = $obat['stok_obat'] - $item['jumlah_obat'];
-            $obat->save();
-        });
-        return redirect()->route('home');
-        // } catch (\Exception $e) {
-        //     return redirect()->back();
-        // }
+            $detail_transaksi->each(function ($item) {
+                $obat = Obat::find($item['id_obat']);
+                $obat['stok_obat'] = $obat['stok_obat'] - $item['jumlah_obat'];
+                $obat->save();
+            });
+            toastr()->success('Berhasil Melakukan Transaksi Obat');
+            return redirect()->route('home');
+        } catch (\Exception $e) {
+            return redirect()->back();
+        }
     }
 }

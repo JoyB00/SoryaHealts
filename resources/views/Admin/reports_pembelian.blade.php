@@ -44,7 +44,7 @@
                     @endforeach
                 </ul>
             </td>
-            <td class="text-center align-middle"><span class="badge-danger p-2 rounded-pill">-Rp. {{$totalHarga}}</span></td>
+            <td class="text-center align-middle"><span class="badge-danger p-2 rounded-pill">-Rp. <?php echo number_format($totalHarga) ?></span></td>
         </tr>
         @empty
         <div class="alert alert-danger">Data Pembelian masih kosong</div>

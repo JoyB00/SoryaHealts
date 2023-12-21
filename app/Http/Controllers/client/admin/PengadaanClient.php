@@ -63,8 +63,7 @@ class PengadaanClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $data = $contentArray["data"];
-            Session::flash('message', 'Berhasil Menambah Data Supplier');
-
+            toastr()->success('Berhasil Menambahkan Data Pengadaan');
             $pengadaan = Pengadaan_Obat::with('supplier')->where('id', $data['id'])->first();
 
             $detailPengadaan = Detail_Pengadaan::where('id_pengadaan', $pengadaan['id'])->get();
@@ -118,7 +117,7 @@ class PengadaanClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $pengadaan = $contentArray["data"];
-            Session::flash('message', 'Berhasil Menghapus Data Supplier');
+            toastr()->success('Berhasil Menghapus Data Pengadaan');
 
             return redirect()->route('pengadaanIndex', ['pengadaan' => $pengadaan]);
         } catch (\Exception $e) {

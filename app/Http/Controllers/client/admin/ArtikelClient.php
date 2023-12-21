@@ -75,7 +75,7 @@ class ArtikelClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $artikel = $contentArray["data"];
-            Session::flash('message', 'Berhasil Menambah Data Artikel');
+            toastr()->success('Berhasil Menambahkan Data Artikel');
             return redirect()->route('artikelIndex', ['artikel' => $artikel]);
         } catch (\Exception $e) {
             return redirect()->route('artikelIndex');
@@ -88,26 +88,26 @@ class ArtikelClient extends Controller
     public function show(Request $request)
     {
         $id = $request->id_artikel;
-        // try {
-        $client = new Client();
-        $url = "http://127.0.0.1:8000/api/artikel/$id";
-        $response = $client->request('GET', $url, [
-            'headers' => [
-                'Content-type' => 'application/json',
-                'Authorization' => 'Bearer ' . $_SESSION['access_token']
-            ]
-        ]);
-        $content = $response->getBody()->getContents();
-        $contentArray = json_decode($content, true);
+        try {
+            $client = new Client();
+            $url = "http://127.0.0.1:8000/api/artikel/$id";
+            $response = $client->request('GET', $url, [
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
+                ]
+            ]);
+            $content = $response->getBody()->getContents();
+            $contentArray = json_decode($content, true);
 
-        $artikel = $contentArray["data"];
-        $artikelAll =  Artikel::inRandomOrder()->get();
+            $artikel = $contentArray["data"];
+            $artikelAll =  Artikel::inRandomOrder()->get();
 
-        return view('detailArtikel', ['artikel' => $artikel, 'artikelAll' => $artikelAll]);
-        // } catch (\Exception $e) {
-        //     print_r($_SESSION['access_token']);
-        //     return view('detailArtikel', ['artikel' => []]);
-        // }
+            return view('detailArtikel', ['artikel' => $artikel, 'artikelAll' => $artikelAll]);
+        } catch (\Exception $e) {
+            print_r($_SESSION['access_token']);
+            return view('detailArtikel', ['artikel' => []]);
+        }
     }
 
     /**
@@ -155,7 +155,7 @@ class ArtikelClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $artikel = $contentArray["data"];
-            Session::flash('message', 'Berhasil Memperbarui Data Artikel');
+            toastr()->success('Berhasil Memperbarui Data Artikel');
 
             return redirect()->route('artikelIndex', ['artikel' => $artikel]);
         } catch (\Exception $e) {
@@ -182,7 +182,7 @@ class ArtikelClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $artikel = $contentArray["data"];
-            Session::flash('message', 'Berhasil Menghapus Data Artikel');
+            toastr()->success('Berhasil Menghapus Data Artikel');
             return redirect()->route('artikelIndex', ['artikel' => $artikel]);
         } catch (\Exception $e) {
             return redirect()->route('artikelIndex');

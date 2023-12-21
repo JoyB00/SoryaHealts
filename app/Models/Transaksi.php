@@ -16,11 +16,16 @@ class Transaksi extends Model
         'id_user',
         'tanggal_transaksi',
         'status',
+        'id_alamat',
         'metode_pembayaran',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user');
+    }
+    public function alamat()
+    {
+        return $this->belongsTo(Alamat::class, 'id_alamat');
     }
 }

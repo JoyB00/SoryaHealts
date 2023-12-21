@@ -92,7 +92,7 @@
                             <div class="col-sm-5 col-12 my-1">
                                 <h3 class="text-center" style="font-size: 18px;">Silahkan Edit Alamat Anda</h3>
                                 <div class="card mx-auto mt-5" style="height: 250px; width: 250px;">
-                                    <img id="imagePreview" class="mx-auto " src="{{$user['profile']}}" style="height: 250px; width: 250px;">
+                                    <img alt="{{$user['profile']}}" class="img-fluid profile-photo" src="{{ auth()->user()->profile ? asset('public/images/'. $user['profile']) : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="height: 250px; width: 250px;">
                                 </div>
                             </div>
                             <div class="col-sm-7 col-12 mt-5 ms-sm-0 ms-4">
@@ -150,7 +150,7 @@
                             <div class="col-sm-5 col-12 my-1">
                                 <h3 class="text-center" style="font-size: 18px;">Silahkan Tambahkan Alamat Anda</h3>
                                 <div class="card mx-auto mt-5" style="height: 250px; width: 250px;">
-                                    <img id="imagePreview" class="mx-auto " src="{{$user['profile']}}" style="height: 250px; width: 250px;">
+                                    <img alt="{{$user['profile']}}" class="img-fluid profile-photo" src="{{ auth()->user()->profile ? asset('public/images/'. $user['profile']) : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="height: 250px; width: 250px;">
                                 </div>
                             </div>
                             <div class="col-sm-7 col-12 mt-5 ms-sm-0 ms-4">

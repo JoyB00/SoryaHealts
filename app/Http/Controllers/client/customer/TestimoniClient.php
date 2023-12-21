@@ -25,13 +25,11 @@ class TestimoniClient extends Controller
             ]);
 
             $content = $response->getBody()->getContents();
-            // $data = json_decode($content, true);
             $contentArray = json_decode($content, true);
 
             $testimoni = $contentArray["data"];
 
             return view('testimoni', ['testimoni' => $testimoni]);
-            // return view('home', compact('testimoni'));
         } catch (\Exception $e) {
             // Catch any other exceptions
             return view('testimoni', ['testimoni' => []]);
@@ -50,22 +48,22 @@ class TestimoniClient extends Controller
             'rating' => $rating,
         ];
         try {
-        $client = new Client();
-        $url = "http://127.0.0.1:8000/api/testimoni";
-        $response = $client->request('POST', $url, [
-            'headers' => [
-                'Content-type' => 'application/json',
-                'Authorization' => 'Bearer ' . $_SESSION['access_token']
-            ],
-            'body' => json_encode($parameter),
-        ]);
-        $content = $response->getBody()->getContents();
-        $contentArray = json_decode($content, true);
-        $testimoni = $contentArray["data"];
-        Session::flash('message', 'Berhasil Menambah Data Testimoni Client');
-        return redirect()->route('formTestimoni', ['testimoni' => $testimoni]);
+            $client = new Client();
+            $url = "http://127.0.0.1:8000/api/testimoni";
+            $response = $client->request('POST', $url, [
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
+                ],
+                'body' => json_encode($parameter),
+            ]);
+            $content = $response->getBody()->getContents();
+            $contentArray = json_decode($content, true);
+            $testimoni = $contentArray["data"];
+            toastr()->success('Berhasil Menambahkan Testimoni');
+            return redirect()->route('formTestimoni', ['testimoni' => $testimoni]);
         } catch (\Exception $e) {
-        return redirect()->route('home');
+            return redirect()->route('home');
         }
     }
 
@@ -106,7 +104,7 @@ class TestimoniClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $testimoni = $contentArray["data"];
-            Session::flash('message', 'Berhasil Menghapus Data Testimoni');
+            toastr()->success('Berhasil Menghapus Testimoni');
             return redirect()->route('testimoniIndex', ['testimoni' => $testimoni]);
         } catch (\Exception $e) {
             return redirect()->route('testimoniIndex');

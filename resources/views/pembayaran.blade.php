@@ -13,12 +13,10 @@
             <div class="row justify-content-start mt-10">
                 <h1>Daftar Keranjang</h1>
                 <div class="col-md-12"> <!-- ukuran dari form pembatas -->
-
-
                     <div class="card card mb-4 p-4"> <!--card deskripsi-->
                         <div class="card-header bg-transparent mb-0">
                             <h5 class="text-start"> Alamat</h5>
-                            <p>Jalan Melati No. 456, Desa Harapan Jaya, Kabupaten Mawar Sejahtera, Provinsi Cinta Damai</p>
+                            <p>{{$transaksi['alamat']['deskripsi']}}</p>
                         </div>
                         <div class="row m-2 card-header">
 
@@ -32,7 +30,9 @@
                                             <strong>{{$keranjang[$i]['obat']['nama_obat']}}</strong>
                                             <div class="row mt-2">
                                                 <div class="col-xl-2 col-12">Harga</div>
-                                                <div class="col-xl-10 col-12">: Rp {{$keranjang[$i]['obat']['harga_obat']}}</div>
+                                                <div class="col-xl-10 col-12">: Rp
+                                                    <?php echo number_format($keranjang[$i]['obat']['harga_obat']) ?>
+                                                </div>
                                             </div>
                                             <div class="row mt-2">
                                                 <div class="col-xl-2 col-12">Jumlah</div>
@@ -78,7 +78,8 @@
                                                     $totalHarga = $totalHarga + ($keranjang[$i]['obat']['harga_obat'] * $keranjang[$i]['jumlah_obat']);
                                                 }
                                                 $totalHarga = $totalHarga + 10000;
-                                                echo $totalHarga
+                                                echo number_format($totalHarga)
+
                                                 ?> </h5>
                                         </div>
 

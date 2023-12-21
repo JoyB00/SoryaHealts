@@ -78,6 +78,7 @@ class TransaksiClient extends Controller
         $keranjangArray = json_decode($keranjang, true);
         $detailTransaksi = $keranjangArray["data"];
 
+        toastr()->success('Berhasil Membuat Satu Transaksi');
         return redirect()->route('gotoKeranjang', ['transaksi' => $data, 'keranjang' => $detailTransaksi]);
         // } catch (\Exception $e) {
         //     return redirect()->route('gotoKeranjang', ['transaksi' => [], 'keranjang' => []]);

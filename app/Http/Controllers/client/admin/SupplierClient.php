@@ -64,7 +64,7 @@ class SupplierClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $pemasok = $contentArray["data"];
-            Session::flash('message', 'Berhasil Menambah Data Supplier');
+            toastr()->success('Berhasil Menambahkan Data Supplier');
             return redirect()->route('supplierIndex', ['pemasok' => $pemasok]);
         } catch (\Exception $e) {
             return redirect()->route('supplierIndex');
@@ -124,7 +124,7 @@ class SupplierClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $pemasok = $contentArray["data"];
-            Session::flash('message', 'Berhasil Memperbarui Data Supplier');
+            toastr()->success('Berhasil Memperbarui Data Supplier');
 
             return redirect()->route('supplierIndex', ['pemasok' => $pemasok]);
         } catch (\Exception $e) {
@@ -149,7 +149,7 @@ class SupplierClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $pemasok = $contentArray["data"];
-            Session::flash('message', 'Berhasil Menghapus Data Supplier');
+            toastr()->success('Berhasil Menghapus Data Supplier');
             return redirect()->route('supplierIndex', ['pemasok' => $pemasok]);
         } catch (\Exception $e) {
             return redirect()->route('supplierIndex');

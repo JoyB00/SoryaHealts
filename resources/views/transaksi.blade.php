@@ -44,7 +44,7 @@
                                                 Harga
                                             </div>
                                             <div class="col-xl-6 col-12"> <!--konten kiri  (penjelasa harga)-->
-                                                {{$obat['harga_obat']}}
+                                                Rp <?php echo number_format($obat['harga_obat']) ?>
                                             </div>
                                         </div>
                                         <div class="row mb-2 justify-content-start align-items-start "> <!--Jumlah-->

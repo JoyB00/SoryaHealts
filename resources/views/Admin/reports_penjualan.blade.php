@@ -20,8 +20,9 @@
         <tr class="">
             <th>No</th>
             <th>Tanggal Transaksi</th>
-            <th>Nama Supplier</th>
-            <th>Deskripsi</th>
+            <th>Email Customer</th>
+            <th>Alamat Customer</th>
+            <th style="width: 400px;">Deskripsi</th>
             <th>Total Harga</th>
         </tr>
         @forelse ($mutasiDana as $item)
@@ -29,6 +30,7 @@
             <td class="text-center align-middle">{{$loop->iteration}}</td>
             <td class="text-center align-middle">{{$item['transaksi']['tanggal_transaksi']}}</td>
             <td class="text-center align-middle">{{$item['transaksi']['user']['email']}}</td>
+            <td class="text-center align-middle">{{$item['transaksi']['alamat']['deskripsi']}}</td>
             <td class="text-left">{{$item['detail_mutasi']}}
                 <ul>
                     <?php
@@ -44,7 +46,7 @@
                     @endforeach
                 </ul>
             </td>
-            <td class="text-center align-middle"><span class="badge-success p-2 rounded-pill">+Rp. {{$totalHarga}}</span></td>
+            <td class="text-center align-middle"><span class="badge-success p-2 rounded-pill">+Rp. <?php echo number_format($totalHarga) ?></span></td>
         </tr>
         @empty
         <div class="alert alert-danger">Data Pembelian masih kosong</div>

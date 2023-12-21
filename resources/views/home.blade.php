@@ -43,21 +43,21 @@
                     <a href="#daftar-item-testimoni" class="col-md-4 col-12 card p-4 animate__animated animate__zoomIn card-info-user" style="text-decoration: none;">
                         <div class="d-flex text-left justify-content-center">
                             <p><i class="fa-solid fa-user " style="color: #03acf2; font-size: 70px;"></i></p>
-                            <h2 class="ms-2 text-success fw-bold">{{count($userAll)}}++<br><span class="text-black fs-3">Pengguna</span></h2>
+                            <h2 class="ms-2 text-success fw-bold">{{count($userAll)}}000++<br><span class="text-black fs-3">Pengguna</span></h2>
                         </div>
-                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Lebih dari {{count($userAll)}} pengguna sudah berkunjung dan menjadi bagian keluarga sehat apotek SorYaHealts</p>
+                        <p style="text-align: center; font-size: 10px; margin: 0 50px;">Lebih dari {{count($userAll)}}000 pengguna sudah berkunjung dan menjadi bagian keluarga sehat apotek SorYaHealts</p>
                     </a>
                     <a href="#daftar-obat-text" class="col-md-4 col-12 card p-4 my-md-0 my-3 animate__animated animate__zoomIn card-info-obat" style="text-decoration: none;">
                         <div class="d-flex text-left justify-content-center">
                             <p><i class="fa-solid fa-tablets" style="color: #03acf2; font-size: 70px;"></i></p>
-                            <h2 class="ms-2 text-success fw-bold">{{count($obat)}}++<br><span class="text-black fs-3">Obat</span></h2>
+                            <h2 class="ms-2 text-success fw-bold">{{count($obat)}}000++<br><span class="text-black fs-3">Obat</span></h2>
                         </div>
                         <p style="text-align: center; font-size: 10px; margin: 0 50px;">Tersedia berbagai macam jenis maupun kategori obat yang membantu menjaga kesehatan anda </p>
                     </a>
                     <a href="#daftar-item-text" class="col-md-4 col-12 card p-4 animate__animated animate__zoomIn card-info-artikel" style="text-decoration: none;">
                         <div class="d-flex text-left justify-content-center ">
                             <p><i class="fa-regular fa-newspaper" style="color: #03acf2; font-size: 70px;"></i></p>
-                            <h2 class="ms-2 text-success fw-bold">{{count($artikel)}}++<br><span class="text-black fs-3">Artikel</span></h2>
+                            <h2 class="ms-2 text-success fw-bold">{{count($artikel)}}000++<br><span class="text-black fs-3">Artikel</span></h2>
                         </div>
                         <p style="text-align: center; font-size: 10px; margin: 0 50px;">Ketahui berbagai tata cara dalam menjaga kesehatan anda melalui artikel-artikel yang sudah kami sediakan</p>
                     </a>
@@ -89,14 +89,22 @@
                     <img class="img-fluid mx-auto" src="{{asset('public/images/obat/'. $item['gambar_obat'])}}">
                     <div class="card-body d-flex flex-column pb-0 mb-0 bg-success">
                         <p><span class="badge rounded-pill border border-white mb-0">{{$item['jenis_obat']}}</span></p>
-                        <a href="{{url('/transaksi')}}" class="card-title text-obat" style="text-decoration: none; font-size: 18px; display: -webkit-box; overflow: hidden; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                            {{$item['nama_obat']}}
-                        </a>
+                        <form action="{{route('detailObat')}}" method="Get">
+                            <input type="text" value="{{$item['id']}}" name="id_obat" hidden>
+                            <button class="card-title text-obat bg-transparent border-0" style="text-decoration: none; font-size: 18px; display: flex; flex-direction: column;align-items: flex-start;  overflow: hidden; text-align: left;">
+                                <div style="max-height: 80px; overflow: hidden;">
+                                    {{$item['nama_obat']}}
+                                </div>
+                            </button>
+                        </form>
                         <p class="card-text  d-block text-white" style="font-family: Lato light;  font-weight: bold;">{{$item['harga']}}</p>
                     </div>
                     <div class="card-footer bg-success border-0" style="background-color: white; border-top: none;">
                         <p class="mt-1 text-white"><span class="badge border border-white rounded-pill">{{$item['kategori_obat']}}</span> </p>
-                        <a href="{{url('/transaksi')}}" class="btn btn-warning">Lihat Detail</a>
+                        <form action="{{route('detailObat')}}" method="Get">
+                            <input type="text" value="{{$item['id']}}" name="id_obat" hidden>
+                            <button type="submit" class="btn btn-warning">Lihat Detail</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -127,7 +135,10 @@
                 <div class="deskripsi-container" style=" white-space: nowrap; overflow: hidden; text-overflow: clip;">
                     <p id="deskripsi-artikel" class="card-text">{{$item['deskripsi']}}</p>
                 </div>
-                <a href="{{url('artikelDetail')}}" class="btn btn-warning">Lihat Selengkapnya</a>
+                <form action="{{route('detailArtikel')}}" method="get">
+                    <input type="text" value="{{$item['id']}}" name="id_artikel" hidden>
+                    <button class="btn btn-warning w-100">Lihat Selengkapnya</button>
+                </form>
             </div>
         </div>
     </div>
@@ -154,8 +165,10 @@
             @forelse($testimoni as $item) <div class="item">
                 <div class="card" style="height: 400px; border-radius: 50px;">
                     <div class="card-body">
-                        <div class="d-flex ms-sm-2 ms-0 mt-4">
-                            <img class="img-fluid  rounded-circle" src="{{ auth()->user()->profile ? auth()->user()->profile : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png' }}" style="width: 75px; height: 75px; background-color:white;">
+                        <div class="d-flex ms-sm-3 ms-0 mt-4">
+                            <img class="img-fluid  rounded-circle" class="img-fluid profile-photo" src="{{
+                                $item['user']['profile'] ?
+                                asset('public/images/'. $item['user']['profile']) : 'https://cliply.co/wp-content/uploads/2020/08/442008111_GLANCING_AVATAR_3D_400.png'}}" alt="{{$item['profile']}}" style="width: 50px; height: 50px; background-color:white;">
                             <h5 class="my-auto ms-1 userTesti-name">{{$item['user']['nama']}}</h5>
                         </div>
                         <p class="card-text ms-0 mt-3 userTesti-text " style="text-align: justify;"><i class="fa-solid fa-quote-left"></i> {{$item['ulasan']}} <i class="fa-solid fa-quote-right"></i></p>

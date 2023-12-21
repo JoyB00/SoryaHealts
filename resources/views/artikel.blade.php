@@ -117,8 +117,7 @@
             <?php
             $artikelItem = request()->is('Artikel') ? $artikel : $artikelByTopik;
             ?>
-            @for ($i = 0; $i < count($artikelItem); $i++) 
-            <div class="col-xl-3 col-md-4 col-sm-6 animate__animated animate__zoomIn item mb-sm-0 mb-5">
+            @for ($i = 0; $i < count($artikelItem); $i++) <div class="col-xl-3 col-md-4 col-sm-6 animate__animated animate__zoomIn item mb-sm-0 mb-5">
                 <div class="card mb-5 card-general-artikel mb-sm-3 " style="height: 480px;">
                     <img src="{{asset('public/images/artikel/'. $artikelItem[$i]['gambar_artikel'])}}" class="card-img-top w-100 mx-auto" alt="...">
                     <div class="card-body bg-success text-white d-flex flex-column justify-content-between">

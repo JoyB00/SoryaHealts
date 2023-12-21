@@ -22,7 +22,8 @@
       <div class="small-box bg-blue">
         <div class="inner">
           <p>Saldo Apotek SorYaHealts</p>
-          <h3>Rp. {{$mutasi_dana['saldo']}}</h3>
+          <h3>Rp. <?php echo number_format($mutasi_dana['saldo']) ?>
+          </h3>
         </div>
         <div class="icon">
           <i class="fa-solid fa-coins"></i>

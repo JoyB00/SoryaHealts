@@ -34,7 +34,7 @@
                     <form action="{{route('deleteItem')}}" method="post">
                         @csrf
                         @method('Delete')
-                        <input type="text" name="no" id="no" value="{{$loop->iteration}}">
+                        <input type="text" name="no" id="no" value="{{$loop->iteration}}" hidden>
                         <input type="text" name="idDetail" id="idDetail" value="{{$item['id']}}" hidden>
                         <button class="btn" data-bs-toggle="modal" data-bs-target=""><i class="fa-solid fa-trash"></i></button>
                     </form>

@@ -11,7 +11,7 @@ class MutasiDanaController extends Controller
     public function indexPenjualan()
     {
         try {
-            $mutasiDana = Mutasi_Dana::with('transaksi.user')->whereNot('id_transaksi', null)->get();
+            $mutasiDana = Mutasi_Dana::with('transaksi.user', 'transaksi.alamat')->whereNot('id_transaksi', null)->get();
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil ambil data',

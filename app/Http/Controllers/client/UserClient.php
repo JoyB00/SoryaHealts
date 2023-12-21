@@ -14,6 +14,7 @@ use App\Models\Staf;
 use \Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Exception\RequestException;
 
 session_start();
 
@@ -87,9 +88,13 @@ class UserClient extends Controller
             Session::flash('message', 'Link verifikasi telah dikirim ke email anda. Silahkan cek email anda untuk mengaktifkan akun.');
 
             return redirect()->route('login');
-        } catch (\Exception $e) {
-            Session::flash('error',  $e->getMessage());
-            return redirect()->route('register');
+        } catch (RequestException $e) {
+            $errorResponse = json_decode($e->getResponse()->getBody()->getContents(), true);
+            $errorMessage = $errorResponse['message'] ?? 'Terjadi kesalahan saat melakukan registrasi.';
+
+            Session::flash('error', $errorMessage);
+
+            return redirect()->back()->withInput();
         }
     }
 
@@ -139,6 +144,7 @@ class UserClient extends Controller
             Auth::login($user);
             $_SESSION['access_token'] = $contentArray['access_token'];
 
+            toastr()->success('Selamat datang ' . $user->nama);
 
             if ($userData['role'] == 'admin') {
                 return redirect()->route('admin', ['user' => $contentArray['user']]);
@@ -179,6 +185,7 @@ class UserClient extends Controller
             ]);
             $content = $response->getBody()->getContents();
 
+            toastr()->success('Terima Kasih');
             if (auth()->user()->role == 'admin') {
                 Auth::logout();
                 return redirect()->route('login');

@@ -39,7 +39,8 @@
 
                                     <div class="row mt-2">
                                         <div class="col-xl-2 col-12">Harga</div>
-                                        <div class="col-xl-10 col-12">: Rp {{$keranjang[$i]['obat']['harga_obat']}}</div>
+                                        <div class="col-xl-10 col-12">: Rp <?php echo number_format($keranjang[$i]['obat']['harga_obat']) ?>
+                                        </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-xl-2 col-12">Jumlah</div>
@@ -74,7 +75,9 @@
                                 <p>{{$keranjang[$i]['obat']['nama_obat']}}</p>
                             </div>
                             <div class="col-4">
-                                <p>Rp. {{$keranjang[$i]['obat']['harga_obat'] * $keranjang[$i]['jumlah_obat']}}</p>
+                                <p>
+                                    Rp. <?php echo number_format($keranjang[$i]['obat']['harga_obat'] * $keranjang[$i]['jumlah_obat']) ?>
+                                </p>
                             </div>
                     </div>
                     @endfor
@@ -86,7 +89,7 @@
                             <p>Biaya Admin</p>
                         </div>
                         <div class="col-4">
-                            <p>Rp. 10000</p>
+                            <p>Rp. 10,000</p>
                         </div>
                     </div>
                 </div>
@@ -105,7 +108,7 @@
                                 $x = $x + ($keranjang[$i]['obat']['harga_obat'] * $keranjang[$i]['jumlah_obat']);
                             }
                             $x = $x + 10000;
-                            echo $x
+                            echo number_format($x)
                             ?>
                         </div>
 
@@ -126,7 +129,7 @@
                         <h5 class="text-start"> Alamat</h5>
                         <select name="alamat" id="alamat_lengkap" class="form-select" required>
                             <option value="" selected disabled>Pilih Alamat</option>
-                            @for($i=0; $i < count($keranjang); $i++) <option value="jalan Kenangan">jalan Kenangan</option>
+                            @for($i=0; $i < count($alamat); $i++) <option value="{{$alamat[$i]['id']}}">{{$alamat[$i]['deskripsi']}}</option>
                                 @endfor
                         </select>
                     </div>

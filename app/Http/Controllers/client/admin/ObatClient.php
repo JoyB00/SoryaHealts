@@ -169,7 +169,7 @@ class ObatClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $obat = $contentArray["data"];
-
+            toastr()->success('Berhasil Memperbarui Data Obat');
             return redirect()->route('obatIndex', ['obat' => $obat]);
         } catch (\Exception $e) {
             return route('obatIndex', ['obat' => []]);
@@ -179,24 +179,4 @@ class ObatClient extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        try {
-            $client = new Client();
-            $url = "http://127.0.0.1:8000/api/obat/$id";
-            $response = $client->request('Delete', $url, [
-                'headers' => [
-                    'Content-type' => 'application/json',
-                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
-                ],
-            ]);
-            $content = $response->getBody()->getContents();
-            $contentArray = json_decode($content, true);
-            $obat = $contentArray["data"];
-            Session::flash('message', 'Berhasil Menghapus Data Supplier');
-            return redirect()->route('supplierIndex', ['obat' => $obat]);
-        } catch (\Exception $e) {
-            return redirect()->route('supplierIndex');
-        }
-    }
 }

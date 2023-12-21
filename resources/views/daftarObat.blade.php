@@ -123,7 +123,8 @@
                                 </button>
                             </form>
 
-                            <p class="card-text  d-block text-white" style="font-family: Lato light;  font-weight: bold;">{{$item['harga']}}</p>
+                            <p class="card-text  d-block text-white" style="font-family: Lato light;  font-weight: bold;">{{$item['harga']}}
+                            </p>
                         </div>
                         <div class="card-footer bg-success border-0" style="background-color: white; border-top: none;">
                             <p class="mt-1 text-white"><span class="badge border border-white rounded-pill">{{$item['kategori_obat']}}</span> </p>

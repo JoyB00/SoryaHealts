@@ -86,6 +86,7 @@ class DetailPengadaanClient extends Controller
                 $obat = Obat::all();
             }
 
+            toastr()->success('Berhasil Menambahkan Data Detail Pengandaan');
             return view('Admin/pengadaan/pengadaanObat', ['pengadaan' => $pengadaan, 'detailPengadaan' => $detailPengadaan, 'obat' => $obat]);
         } catch (\Exception $e) {
             return redirect()->route('pengadaanShow');
@@ -95,26 +96,28 @@ class DetailPengadaanClient extends Controller
     public function destroy(Request $request)
     {
         $id_pengadaan = $request->idPengadaan;
-        // try {
-        $id = $request->idDetailPengadaan;
-        $pengadaan = Pengadaan_Obat::with('supplier')->where('id', $id_pengadaan)->first();
-        $client = new Client();
-        $url = "http://127.0.0.1:8000/api/detailPengadaan/$id";
-        $response = $client->request('Delete', $url, [
-            'headers' => [
-                'Content-type' => 'application/json',
-                'Authorization' => 'Bearer ' . $_SESSION['access_token']
-            ],
-        ]);
-        $content = $response->getBody()->getContents();
+        try {
+            $id = $request->idDetailPengadaan;
+            $pengadaan = Pengadaan_Obat::with('supplier')->where('id', $id_pengadaan)->first();
+            $client = new Client();
+            $url = "http://127.0.0.1:8000/api/detailPengadaan/$id";
+            $response = $client->request('Delete', $url, [
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
+                ],
+            ]);
+            $content = $response->getBody()->getContents();
 
-        Session::flash('message', 'Berhasil Menghapus Data Produk');
+            Session::flash('message', 'Berhasil Menghapus Data Produk');
 
-        $detailPengadaan = Detail_Pengadaan::with('obat')->where('id_pengadaan', $pengadaan['id'])->get();
-        $obat = Obat::all();
-        return view('Admin/pengadaan/pengadaanObat', ['pengadaan' => $pengadaan, 'detailPengadaan' => $detailPengadaan, 'obat' => $obat]);
-        // } catch (\Exception $e) {
-        //     return redirect()->route('pengadaanShow');
-        // }
+            $detailPengadaan = Detail_Pengadaan::with('obat')->where('id_pengadaan', $pengadaan['id'])->get();
+            $obat = Obat::all();
+
+            toastr()->success('Berhasil Menghapus Data Detail Pengandaan');
+            return view('Admin/pengadaan/pengadaanObat', ['pengadaan' => $pengadaan, 'detailPengadaan' => $detailPengadaan, 'obat' => $obat]);
+        } catch (\Exception $e) {
+            return redirect()->route('pengadaanShow');
+        }
     }
 }

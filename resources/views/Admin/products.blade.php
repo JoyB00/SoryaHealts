@@ -16,6 +16,11 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
+    @if(session('error'))
+    <div class="alert alert-danger mx-3 text-center">
+        <p class="mb-0"><i class="fa-solid fa-circle-exclamation"></i> {{session('error')}}</p>
+    </div>
+    @endif
     <table class="table table-striped border-dark text-center">
         <tr class="">
             <th>No</th>

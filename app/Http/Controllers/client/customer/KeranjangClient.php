@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client\customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Alamat;
 use App\Models\Detail_Transaksi;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
@@ -83,6 +84,7 @@ class KeranjangClient extends Controller
             $keranjang = $response->getBody()->getContents();
             $keranjangArray = json_decode($keranjang, true);
             $detailTransaksi = $keranjangArray["data"];
+            toastr()->success('Berhasil Memasukkan Ke Keranjang');
             return redirect()->route('gotoKeranjang', ['transaksi' => $transaksi, 'keranjang' => $detailTransaksi]);
         } catch (\Exception $e) {
             return redirect()->route('gotoKeranjang', ['transaksi' => [], 'keranjang' => []]);
@@ -94,6 +96,7 @@ class KeranjangClient extends Controller
 
         try {
             $transaksi = Transaksi::where('id_user', auth()->user()->id)->where('status', 0)->first();
+            $alamat = Alamat::where('id_user', auth()->user()->id)->get();
             $id = $transaksi['id'];
 
             $client = new Client();
@@ -109,7 +112,7 @@ class KeranjangClient extends Controller
             $contentArray = json_decode($content, true);
             $data = $contentArray["data"];
 
-            return view('halamanBeli', ['keranjang' => $data, 'transaksi' => $transaksi]);
+            return view('halamanBeli', ['keranjang' => $data, 'transaksi' => $transaksi, 'alamat' => $alamat]);
         } catch (\Exception $e) {
             return view('halamanBeli', ['keranjang' => []]);
         }
@@ -133,6 +136,7 @@ class KeranjangClient extends Controller
             ]);
 
             $transaksi['metode_pembayaran'] = $request->metode;
+            $transaksi['id_alamat'] = $request->alamat;
             $transaksi->save();
 
             $content = $response->getBody()->getContents();
@@ -151,7 +155,7 @@ class KeranjangClient extends Controller
         $index = $request->no;
         $detail_temp = Detail_Transaksi::where('id_transaksi', $id)->get();
         $id_detail = $detail_temp[$index - 1]['id'];
-        // dd($id_detail);
+
         try {
             $client = new Client();
             $url = "http://127.0.0.1:8000/api/keranjang/$id_detail";

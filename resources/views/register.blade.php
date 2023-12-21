@@ -17,6 +17,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="body-login">
@@ -50,26 +52,6 @@
                             </svg>
                         </span>
                     </a>
-                    <!-- <div class="mt-3 dropdown-container dropdown-menu dropdown-menu-end" aria-labelledby="drop2">
-                        <div class="message-body">
-                            <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
-                                <i class="fa fa-tachometer"></i>
-                                <p class="mb-0 fs-6">Dashboard</p>
-                            </a>
-                            <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
-                                <i class="fa fa-user"></i>
-                                <p class="mb-0 fs-6">Account</p>
-                            </a>
-                            <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
-                                <i class="fa fa-history"></i>
-                                <p class="mb-0 fs-6">History</p>
-                            </a>
-                            <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
-                                <i class="fa fa-sign-out"></i>
-                                <p class="mb-0 fs-6">Logout</p>
-                            </a>
-                        </div>
-                    </div> -->
                 </div>
             </div>
     </header>
@@ -82,7 +64,7 @@
                         <h2 class="judul-form">Buat Akun Anda</h2>
                         @if(session('error'))
                         <div class="alert alert-danger mx-3 text-center">
-                            {{session('error')}}
+                            <p class="mb-0"><i class="fa-solid fa-circle-exclamation"></i> {{session('error')}}</p>
                         </div>
                         @endif
                         <div class="social-buttons">
@@ -144,19 +126,19 @@
                             @csrf
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="nama" class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" id="inputName4" placeholder="Masukkan Nama" required>
+                                <input type="text" name="nama" class="form-control" id="inputName4" value="{{ old('nama') }}" required>
                             </div>
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="no_telp" class="form-label">Nomor Telepon</label>
-                                <input type="number" name="no_telp" class="form-control" id="inputName4" placeholder="Masukkan No Telpon (Minimal 11 digit)" required>
+                                <input type="number" name="no_telp" class="form-control" id="inputName4" value="{{ old('no_telp') }}" required>
                             </div>
                             <div class="col-md-8 offset-md-2 col-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" id="inputName4" placeholder="Masukkan Email" required>
+                                <input type="email" name="email" class="form-control" id="inputName4" value="{{ old('email') }}" required>
                             </div>
                             <div class="col-md-8 offset-md-2">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control custom-input" id="inputPassword4" placeholder="Masukkan Password (Minimal 8 karakter)" required>
+                                <input type="password" name="password" class="form-control custom-input" id="inputPassword4" value="{{ old('password') }}" required>
                             </div>
 
                             <div class="form-check offset-md-2 mb-2">

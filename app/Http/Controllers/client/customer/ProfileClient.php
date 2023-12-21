@@ -61,7 +61,7 @@ class ProfileClient extends Controller
             $user = $contentArray["data"];
 
             Session::flash('message', 'Berhasil Memperbarui Data User');
-            toastr()->error('Please enter a valid amount. Minimum top-up is IDR 50,000.');
+            toastr()->success('Berhasil Edit Profil');
 
             return redirect()->route('updateProfile', ['user' => $user]);
         } catch (\Exception $e) {

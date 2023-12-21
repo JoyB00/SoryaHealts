@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Session;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 session_start();
 class StafClient extends Controller
@@ -46,24 +47,29 @@ class StafClient extends Controller
             'email_staf' => $emailStaf,
             'password_staf' => $passwordStaf,
         ];
-        // try {
-        $client = new Client();
-        $url = "http://127.0.0.1:8000/api/staf";
-        $response = $client->request('POST', $url, [
-            'headers' => [
-                'Content-type' => 'application/json',
-                'Authorization' => 'Bearer ' . $_SESSION['access_token']
-            ],
-            'body' => json_encode($parameter),
-        ]);
-        $content = $response->getBody()->getContents();
-        $contentArray = json_decode($content, true);
-        $staf = $contentArray["data"];
-        Session::flash('message', 'Berhasil Menambah Data Staf');
-        return redirect()->route('stafIndex', ['staf' => $staf]);
-        // } catch (\Exception $e) {
-        //     return redirect()->route('stafIndex');
-        // }
+        try {
+            $client = new Client();
+            $url = "http://127.0.0.1:8000/api/staf";
+            $response = $client->request('POST', $url, [
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $_SESSION['access_token']
+                ],
+                'body' => json_encode($parameter),
+            ]);
+            $content = $response->getBody()->getContents();
+            $contentArray = json_decode($content, true);
+            $staf = $contentArray["data"];
+            toastr()->success('Berhasil Menambahkan Data Staf');
+            return redirect()->route('stafIndex', ['staf' => $staf]);
+        } catch (RequestException $e) {
+            $errorResponse = json_decode($e->getResponse()->getBody()->getContents(), true);
+            $errorMessage = $errorResponse['message'] ?? 'Terjadi kesalahan saat melakukan registrasi.';
+
+            Session::flash('error', $errorMessage);
+
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -119,11 +125,18 @@ class StafClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $staf = $contentArray["data"];
-            Session::flash('message', 'Berhasil Memperbarui Data Staf');
+            toastr()->success('Berhasil Memperbarui Data Staf');
 
             return redirect()->route('stafIndex', ['staf' => $staf]);
-        } catch (\Exception $e) {
-            return redirect()->route('stafIndex');
+        } catch (RequestException $e) {
+
+            $errorResponse = json_decode($e->getResponse()->getBody()->getContents(), true);
+
+            $errorMessage = 'Email Invalid or Already used' ?? 'Terjadi kesalahan saat melakukan registrasi.';
+
+            Session::flash('error', $errorMessage);
+
+            return redirect()->back()->withInput();
         }
     }
 
@@ -144,7 +157,7 @@ class StafClient extends Controller
             $content = $response->getBody()->getContents();
             $contentArray = json_decode($content, true);
             $staf = $contentArray["data"];
-            Session::flash('message', 'Berhasil Menghapus Data Staf');
+            toastr()->success('Berhasil Menghapus Data Staf');
             return redirect()->route('stafIndex', ['staf' => $staf]);
         } catch (\Exception $e) {
             return redirect()->route('stafIndex');

@@ -106,7 +106,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="deskripsi">Deskripsi Artikel:</label>
-                                <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" style="resize: none; height: 200px;" required>value="{{$item['deskripsi']}}"</textarea>
+                                <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" style="resize: none; height: 200px;" required>"{{$item['deskripsi']}}"</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">
                                 Simpan
