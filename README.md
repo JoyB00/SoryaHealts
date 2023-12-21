@@ -22,11 +22,16 @@
     a.	Username : dendypramartha03e@gmail.com
     b.	Password : 12345678
 
+## Cara Run 
+
+1. Run Backend
+    php artisan serve
+2. Run Frontend
+    php artisan serve --port=8001
+3. Port yang digunakan untuk menampilan tampilan di browser adalah 8001
+
 ## Bonus yang diambil
-1.	Hosting : 
-    a.	Backend
-    b.	Forntend
-2.	Routes API
+1.	Routes API
         Route::get('/alamat', [App\Http\Controllers\api\AlamatController::class, 'index']);
   	
         // user
