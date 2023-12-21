@@ -1,8 +1,11 @@
-## About Laravel
-<title> UAS Pemrograman Web Gasal 2023/2024 </title>
+## UAS Pemrograman Web Gasal 2023/2024
 <hr>
+
 ## Kelas B kelompok 1
+
 <hr>
+
+## Anggota Kelompok
 <ul>
     <li>I Kadek Dendy Pramartha (210711095) - </li>
     <li>Candra Dionisius Sihotang (210711241) - </li>
@@ -10,35 +13,23 @@
        
 </ul>
 
-## Username dan Password login
-<ol>
-    <li>User Login
-        <ul>
-            <li>Username : dendypramartha7e@gmail.com</li>
-            <li>Password : 12345678 </li> 
-        </ul>
-    </li>
-    <li>Admin Login
-        <ul>
-            <li>Username : dendypramartha03e@gmail.com</li>
-            <li>Password : admin123 </li>  
-        </ul>
-    </li>
-</ol>
+## Username & Password Login :
+
+1.	User Login
+    a.	Username : dendypramartha7e@gmail.com
+    b.	Password : 12345678
+2.	Admin login
+    a.	Username : dendypramartha03e@gmail.com
+    b.	Password : 12345678
 
 ## Bonus yang diambil
-
-<ol>
-    <li>Hosting 
-        <ul>
-            <li>Backend : ...</li>
-            <li>Frontend : ... </li>
-        </ul>
-    </li>
-    <li>Routes API :
-        <ul>
-                <li>Route::get('/alamat', [App\Http\Controllers\api\AlamatController::class, 'index']);
-        // customer
+1.	Hosting : 
+    a.	Backend
+    b.	Forntend
+2.	Routes API
+        Route::get('/alamat', [App\Http\Controllers\api\AlamatController::class, 'index']);
+  	
+        // user
         Route::post('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
         Route::get('/user', [UserController::class, 'index']);
         Route::put('/user/{id}', [UserController::class, 'update']);
@@ -116,8 +107,4 @@
         Route::post('/keranjang', [DetailTransaksiController::class, 'store']);
         Route::get('/keranjang/{id}', [DetailTransaksiController::class, 'show']);
         Route::put('/keranjang/{id}', [DetailTransaksiController::class, 'update']);
-        Route::delete('/keranjang/{id}', [DetailTransaksiController::class, 'destroy']);</li>
-                
-        </ul>
-    </li>
-</ol>
+        Route::delete('/keranjang/{id}', [DetailTransaksiController::class, 'destroy']);
